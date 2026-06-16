@@ -1,0 +1,413 @@
+{
+  "comps": {
+    "title": "Comps (Metagame)",
+    "description": "Explore top meta comps built by the community.",
+    "createNew": "Create new comp",
+    "searchPlaceholder": "Search comp name, synergy, or author...",
+    "advancedFilter": "Advanced filter",
+    "updatedAt": "Updated {{date}}",
+    "votes": "Votes",
+    "empty": "No comps match your filters.",
+    "clearFilters": "Clear all filters",
+    "trending": "Trending",
+    "tabs": {
+      "all": "All",
+      "hot": "Hot comps",
+      "new": "New comps",
+      "following": "Following"
+    },
+    "tierFilter": {
+      "all": "All tiers",
+      "s": "S Tier",
+      "a": "A Tier",
+      "b": "B Tier"
+    },
+    "compareMode": "Compare",
+    "compareModeOn": "Selecting",
+    "compareHint": "Pick 2–3 comps to compare. Tap Compare on the bottom bar."
+  },
+  "compDetail": {
+    "backToList": "Back to comp list",
+    "byAuthor": "By",
+    "updatedAt": "Updated:",
+    "votes": "Votes",
+    "overviewTitle": "Strategy overview",
+    "stats": {
+      "top1": "Top 1 rate",
+      "top4": "Top 4",
+      "difficulty": "Difficulty",
+      "style": "Playstyle"
+    },
+    "difficultyModerate": "Moderate",
+    "styleFast8": "Fast 8",
+    "quickReview": "Quick review",
+    "strengthsTitle": "Strengths",
+    "weaknessesTitle": "Weaknesses",
+    "requiredLineup": "Required lineup ({{count}})",
+    "coreBadge": "CORE",
+    "goldCost": "{{cost}} Gold",
+    "positioningTitle": "Positioning",
+    "boardStages": {
+      "early": "Stage 1-3",
+      "final": "Final board"
+    },
+    "positioningHint": "* Drag to reposition units on the board",
+    "synergiesTitle": "Active synergies",
+    "itemSuggestions": "Item suggestions",
+    "itemGroups": {
+      "carry": "DAMAGE CARRY",
+      "frontline": "FRONTLINE TANKS"
+    },
+    "multiAnalysis": "Multi-axis analysis",
+    "coreTitle": "Core units",
+    "flexTitle": "Flex / bench",
+    "mainCore": "MAIN CORE",
+    "difficultyEasy": "Easy",
+    "difficultyMedium": "Moderate",
+    "difficultyHard": "Hard",
+    "unitCount": "Units",
+    "roadmapTitle": "Build roadmap",
+    "roadmapEarly": "Early (1–10)",
+    "roadmapMid": "Mid (11–20)",
+    "roadmapLate": "Late (21+)",
+    "countersTitle": "Matchups & counters",
+    "strongAgainst": "Strong against",
+    "weakAgainst": "Weak against",
+    "counterFix": "How to handle",
+    "tipsTitle": "Advanced tips",
+    "radar": {
+      "attack": "Attack",
+      "defense": "Defense",
+      "control": "Control",
+      "difficulty": "Difficulty",
+      "econ": "Economy",
+      "lateGame": "Late game",
+      "stats": "Stats"
+    }
+  },
+  "heroes": {
+    "title": "Heroes",
+    "description": "Full hero list for the current season.",
+    "searchPlaceholder": "Search heroes...",
+    "filterByCost": "Cost",
+    "allCosts": "All costs",
+    "filterByRace": "Filter by race",
+    "filterByClass": "Filter by class",
+    "allRaces": "All races",
+    "allClasses": "All classes",
+    "newBadge": "New",
+    "filterNew": "New heroes",
+    "allHeroes": "All",
+    "onlyNew": "New only",
+    "clearFilters": "Clear filters",
+    "empty": "No heroes match the current filters.",
+    "compareMode": "Compare",
+    "compareModeOn": "Selecting",
+    "compareHint": "Pick 2–3 heroes to compare stats. Tap Compare on the bottom bar."
+  },
+  "heroDetail": {
+    "notFound": "Hero not found",
+    "backToList": "Back to hero list",
+    "newBadge": "New hero",
+    "breadcrumb": "Heroes",
+    "goldCost": "{{cost}} Gold",
+    "skillTitle": "Ability",
+    "statsTitle": "Stats",
+    "stats": {
+      "hp": "Health (HP)",
+      "atk": "Attack (ATK)",
+      "armor": "Armor",
+      "mr": "Magic resist",
+      "atkSpeed": "ATK SPD",
+      "range": "Range",
+      "star": "Stats at {{star}} star"
+    },
+    "traitsTitle": "Races & Classes",
+    "traitUndefined": "Races / Classes undefined",
+    "tacticalTitle": "Tactical notes",
+    "recommendedItems": "Recommended items",
+    "noRecommendedItems": "No specific item recommendations for this hero yet.",
+    "relatedComps": "Related comps",
+    "quickFilter": "Quick filter",
+    "viewSameCost": "View {{cost}}-cost heroes",
+    "viewSameClass": "View {{class}} class",
+    "viewSameRace": "View {{race}} race",
+    "selectStar": "Star level",
+    "skins": "Skins",
+    "lore": "Background",
+    "loreExpand": "Read more",
+    "loreCollapse": "Show less",
+    "rarity": "Rarity",
+    "synergiesTitle": "Synergies",
+    "relatedByRace": "Same race",
+    "relatedByClass": "Same class",
+    "relatedByCost": "Same cost (${{cost}})",
+    "toggleFavorite": "Toggle favorite hero",
+    "descriptionFallback": "Look up stats and abilities for this chess piece."
+  },
+  "items": {
+    "title": "Item Library",
+    "description": "Browse items by tier, effects, and tactical recommendations for your carry.",
+    "searchPlaceholder": "Search items...",
+    "filterByCategory": "Filter by category",
+    "filterByTier": "Filter by tier",
+    "allCategories": "All categories",
+    "empty": "No items match your filters."
+  },
+  "itemDetail": {
+    "notFound": "Item not found",
+    "backToLibrary": "Back to library",
+    "breadcrumbLibrary": "Items",
+    "category": {
+      "defense": "Defense",
+      "magic": "Magic",
+      "attack": "Attack",
+      "utility": "Utility"
+    },
+    "specialEffect": "Special effect",
+    "statBonusesTitle": "Stat bonuses",
+    "tacticalReview": "Tactical review",
+    "recommendedHeroes": "Recommended heroes",
+    "relatedComps": "Related comps",
+    "relatedItems": "Related items",
+    "goldCost": "{{cost}} GOLD",
+    "viewAllHeroes": "VIEW ALL HEROES",
+    "metaAnalysisTitle": "Meta analysis",
+    "metaAnalysisHighTier": "High-tier item suited for main carries in the current meta.",
+    "metaAnalysisSituational": "Situational item — consider comp and opponents."
+  },
+  "relics": {
+    "title": "Relic Library",
+    "description": "Explore special effects from relics.",
+    "searchPlaceholder": "Search relics...",
+    "filterByType": "Filter by relic type",
+    "priority": "Priority: {{tier}}",
+    "empty": "No relics match your search."
+  },
+  "relicDetail": {
+    "notFound": "Relic not found",
+    "backToLibrary": "Back to relic library",
+    "priority": "Priority: {{tier}}",
+    "specialEffect": "Special effect",
+    "tacticalReview": "Tactical review",
+    "stats": {
+      "appearance": "APPEARANCE RATE",
+      "winRate": "WIN RATE (TOP 1)"
+    },
+    "addToBuilder": "ADD TO BUILDER",
+    "relatedRelics": "Related relics"
+  },
+  "races": {
+    "title": "Races",
+    "description": "Explore races and their powerful activation effects.",
+    "searchPlaceholder": "Search races...",
+    "heroCount": "{{count}} Heroes",
+    "descriptionPending": "Description for this race is being updated...",
+    "milestonesTitle": "Activation milestones"
+  },
+  "traits": {
+    "title": "Races / Classes",
+    "description": "Look up race and class synergies — thresholds, members, and suggested comps.",
+    "searchPlaceholder": "Search races or classes...",
+    "heroCount": "{{count}} Heroes",
+    "descriptionPending": "Description is being updated...",
+    "milestonesPreview": "Thresholds",
+    "typeRace": "Race",
+    "typeClass": "Class",
+    "sortLabel": "Sort by",
+    "filterByTab": "Filter by type",
+    "sortName": "Name A–Z",
+    "sortHeroCount": "Hero count",
+    "empty": "No matching race or class found.",
+    "tabs": {
+      "all": "All ({{count}})",
+      "race": "Races ({{count}})",
+      "class": "Classes ({{count}})"
+    },
+    "tabsShort": {
+      "all": "All",
+      "race": "Race",
+      "class": "Class"
+    }
+  },
+  "traitDetail": {
+    "notFound": "Race or class not found",
+    "breadcrumb": "Races / Classes",
+    "breadcrumbRace": "Race",
+    "breadcrumbClass": "Class",
+    "badge": "Synergy",
+    "synergiesTitle": "Synergy effects",
+    "milestoneActivate": "Activate at {{count}} units",
+    "milestoneCountColumn": "Units",
+    "milestoneEffectColumn": "Effect",
+    "recommendedBadge": "Recommended",
+    "membersTitle": "Hero roster",
+    "pieceCount": "{{count}} heroes",
+    "recommendedComps": "Suggested lineups",
+    "recommendedMilestone": "Run at {{count}}",
+    "compTraitCount": "{{count}} trait heroes",
+    "backToList": "Back to Races / Classes list",
+    "metaTitle": "Meta overview",
+    "tierLabel": "Tier rating",
+    "tierSuffix": "Tier",
+    "pickRate": "Pick rate",
+    "compUsage": "Featured in {{count}} meta comps",
+    "phaseTitle": "Phase strength",
+    "phaseEarly": "Early game",
+    "phaseMid": "Mid game",
+    "phaseLate": "Late game",
+    "interactionsTitle": "Trait interactions",
+    "synergyPartners": "Often paired with",
+    "counters": "Counters",
+    "counteredBy": "Countered by",
+    "heuristicNote": "Meta data is derived from hero rosters and comps — indicative only.",
+    "noPartners": "Not enough data to suggest partners.",
+    "noMatchups": "Undetermined",
+    "availabilityCommon": "Easy to find",
+    "availabilityUncommon": "Medium",
+    "availabilityRare": "Rare",
+    "statTier": "Tier",
+    "statPickRate": "Pick rate",
+    "statHeroCount": "Heroes",
+    "statMilestone": "Recommended",
+    "loreTitle": "Description"
+  },
+  "raceDetail": {
+    "notFound": "Race not found",
+    "breadcrumb": "Race",
+    "badge": "Special Race",
+    "synergiesTitle": "Activation effects",
+    "milestoneActivate": "Activate at {{count}} units",
+    "membersTitle": "Race members",
+    "pieceCount": "{{count}} Units",
+    "recommendedComps": "Recommended comps",
+    "backToList": "Back to race list"
+  },
+  "classes": {
+    "title": "Classes",
+    "description": "Learn the unique traits of each class.",
+    "searchPlaceholder": "Search classes...",
+    "heroCount": "{{count}} Heroes",
+    "descriptionPending": "Description for this class is being updated...",
+    "milestonesTitle": "Activation milestones"
+  },
+  "classDetail": {
+    "notFound": "Class not found",
+    "breadcrumb": "Class",
+    "badge": "Class trait",
+    "synergiesTitle": "Activation effects",
+    "milestoneActivate": "Activate at {{count}} units",
+    "membersTitle": "Class members",
+    "pieceCount": "{{count}} Units",
+    "recommendedComps": "Recommended comps",
+    "backToList": "Back to class list"
+  },
+  "leaderboard": {
+    "title": "Hall of Fame",
+    "description": "Recognizing players who share outstanding comps, articles, and meta insights.",
+    "podiumTitle": "Top 3 contributors",
+    "stats": {
+      "contributors": "Contributors",
+      "totalComps": "Total comps",
+      "totalPosts": "Total articles"
+    },
+    "tiers": {
+      "legend": "Legend",
+      "master": "Master",
+      "expert": "Expert",
+      "member": "Member"
+    },
+    "tabs": {
+      "comps": "Meta comps",
+      "contributors": "Contributors",
+      "heroes": "Featured heroes",
+      "players": "MMR players"
+    },
+    "cols": {
+      "comps": {
+        "rank": "Rank",
+        "strategy": "Strategy",
+        "tier": "Tier",
+        "likes": "Likes",
+        "winRate": "Win forecast"
+      },
+      "contributors": {
+        "rank": "Rank",
+        "contributor": "Contributor",
+        "comps": "Comps",
+        "posts": "Posts",
+        "reputation": "Reputation",
+        "badge": "Badge"
+      },
+      "heroes": {
+        "hero": "Hero",
+        "cost": "Cost",
+        "appearance": "Appearance",
+        "trend": "Trend"
+      },
+      "players": {
+        "player": "Player",
+        "server": "Server",
+        "mmr": "MMR",
+        "tier": "Tier",
+        "winRate": "Win rate"
+      }
+    },
+    "authorRole": "Contributor",
+    "metaBadge": "meta",
+    "ctaTitle": "Want to be recognized?",
+    "ctaDesc": "Share a comp or write an article — every contribution is tracked automatically.",
+    "ctaButton": "BUILD NOW",
+    "ctaComp": "Create comp",
+    "ctaPost": "Write article"
+  },
+  "profile": {
+    "title": "Profile",
+    "description": "Manage saved content, posts, and account settings.",
+    "memberSince": "Member since {{date}}",
+    "summary": {
+      "heroes": "Saved heroes",
+      "comps": "Saved comps",
+      "posts": "Posts"
+    },
+    "tabs": {
+      "favorites": "Favorites",
+      "activity": "Activity",
+      "settings": "Settings"
+    },
+    "favHeroes": "Favorite heroes ({{count}})",
+    "noFavHeroes": "You haven't saved any favorite heroes yet.",
+    "browseHeroes": "Browse hero list",
+    "savedComps": "Saved comps ({{count}})",
+    "noSavedComps": "You haven't saved any favorite comps yet.",
+    "browseComps": "Browse meta comps",
+    "myPosts": "My posts",
+    "postStatus": {
+      "published": "Published",
+      "pending": "Pending review",
+      "draft": "Draft"
+    },
+    "activity": {
+      "quickLinks": "Quick links",
+      "noPosts": "You haven't published any posts yet.",
+      "createPost": "Write a new post",
+      "views": "{{count}} views",
+      "linkComps": "Browse comps",
+      "linkTeamBuilder": "Team builder tool",
+      "linkCommunity": "Community",
+      "linkLeaderboard": "Contributor leaderboard"
+    },
+    "settings": {
+      "title": "Account settings",
+      "displayName": "Display name",
+      "avatarUrl": "Avatar URL",
+      "email": "Email",
+      "emailReadonly": "Email cannot be changed in the current version.",
+      "save": "Save changes",
+      "saved": "Changes saved.",
+      "uploadAvatar": "Upload avatar",
+      "uploadingAvatar": "Uploading...",
+      "invalidAvatarUrl": "Avatar must be an HTTPS URL or upload via Cloudinary — not base64."
+    }
+  }
+}

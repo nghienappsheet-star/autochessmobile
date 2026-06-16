@@ -1,0 +1,46 @@
+---
+description: Vietnamese URL slugs, nav config, public vs admin routing, lazy loading
+globs: src/App.tsx,src/pages/**,src/config/nav.ts
+alwaysApply: false
+---
+
+# Routing & Navigation
+
+## URL slugs (Vietnamese)
+
+Public routes use Vietnamese slugs: `/tuong`, `/doi-hinh`, `/cong-cu`, `/tin-tuc`, etc. Do not introduce English slugs for new public pages.
+
+## Two shells
+
+| Shell | Layout | Base path |
+|-------|--------|-----------|
+| Public | `Layout` | `/` |
+| Admin | `AdminLayout` | `/admin` |
+
+## Adding a public route
+
+Update all three together:
+
+1. `Route` in `src/App.tsx` under `<Route path="/" element={<Layout />}>`
+2. Entry in `NAV_ITEMS` (`src/config/nav.ts`) with `labelKey`
+3. i18n keys in `src/locales/{vi,en}/nav.json`
+
+## Adding an admin route
+
+1. `Route` under `<Route path="/admin" element={<AdminLayout />}>`
+2. Item in `ADMIN_NAV` (`src/components/AdminSidebar.tsx`)
+3. Title entry in `ADMIN_ROUTE_TITLES` (`src/hooks/useDocumentTitle.ts`)
+
+## Lazy loading (required for new pages)
+
+```tsx
+const NewPage = React.lazy(() => import("./pages/NewPage").then(m => ({ default: m.NewPage })))
+
+<React.Suspense fallback={null}>
+  <Route path="new-slug" element={<NewPage />} />
+</React.Suspense>
+```
+
+## Legacy redirects
+
+When renaming trait routes, add redirect components (see `LegacyTraitRedirects.tsx`) — never break old URLs silently.

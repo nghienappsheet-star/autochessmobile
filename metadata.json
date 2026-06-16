@@ -1,0 +1,12 @@
+{
+  "name": "Autochess Mobile VN",
+  "description": "Cổng thông tin cộng đồng Autochess Mobile Việt Nam chuyên nghiệp",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

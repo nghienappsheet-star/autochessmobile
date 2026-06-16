@@ -1,0 +1,60 @@
+{
+  "metaBadge": "Meta S20",
+  "patchNote": "Bản cập nhật 20.5 — điều chỉnh tướng Warrior & Hunter",
+  "viewPatchNotes": "Xem patch notes →",
+  "noBanners": "Hiện tại không có thông báo nào mới.",
+  "slideAria": "Chuyển đến slide {{n}}",
+  "stats": {
+    "comps": "ĐỘI HÌNH",
+    "compsSub": "Được tạo bởi cộng đồng",
+    "votes": "LƯỢT BÌNH CHỌN",
+    "votesSub": "Tổng số lượt vote",
+    "users": "NGƯỜI DÙNG",
+    "usersSub": "Thành viên hoạt động",
+    "posts": "BÀI VIẾT",
+    "postsSub": "Bài viết & hướng dẫn"
+  },
+  "trendingCompsTitle": "Đội hình xu hướng",
+  "trendingCompsSubtitle": "Do cộng đồng bình chọn",
+  "featuredHeroesTitle": "Tướng nổi bật",
+  "featuredDiscussionsTitle": "Thảo luận nổi bật",
+  "buildCompTitle": "Tạo đội hình",
+  "buildCompDesc": "Xây dựng đội hình meta từ danh sách tướng, tộc và hệ — lưu và chia sẻ với cộng đồng.",
+  "buildCompCta": "Bắt đầu tạo",
+  "findCompTitle": "Tìm đội hình phù hợp",
+  "findCompDesc": "Chọn tướng bạn đang có trên bàn cờ — hệ thống gợi ý đội hình meta phù hợp nhất với tỷ lệ khớp.",
+  "findCompCta": "Bắt đầu tìm kiếm",
+  "latestPostsTitle": "Bài viết mới nhất",
+  "leaderboardTitle": "Bảng xếp hạng",
+  "leaderboardTabs": {
+    "global": "Toàn server",
+    "vn": "Việt Nam",
+    "friends": "Bạn bè"
+  },
+  "leaderboardCols": {
+    "player": "Người chơi",
+    "score": "Điểm"
+  },
+  "usefulToolsTitle": "Công cụ hữu ích",
+  "tools": {
+    "teamBuilder": { "title": "Tạo đội hình", "desc": "Xây dựng đội hình Meta" },
+    "heroList": { "title": "Danh sách tướng", "desc": "Thông tin 160+ vị tướng" },
+    "itemList": { "title": "Danh sách trang bị", "desc": "Chỉ số và cách ghép đồ" },
+    "compFinder": { "title": "Tìm đội hình phù hợp", "desc": "Gợi ý theo trang bị đang có" }
+  },
+  "tierSuffix": "Tier",
+  "partnersTitle": "Đối tác & Nhà tài trợ",
+  "partnersSubtitle": "Đồng hành cùng cộng đồng Auto Chess Mobile VN",
+  "donateTitle": "Ủng hộ dự án",
+  "donateSubtitle": "Giúp chúng tôi duy trì và phát triển cẩm nang meta miễn phí",
+  "donateBankLabel": "Ngân hàng",
+  "donateAccountLabel": "Số tài khoản",
+  "donateHolderLabel": "Chủ tài khoản",
+  "donateCopy": "Sao chép STK",
+  "donateCopied": "Đã sao chép!",
+  "donateScanHint": "Quét mã QR bằng app ngân hàng để chuyển khoản nhanh",
+  "donateQrExpand": "Phóng to mã QR để quét",
+  "donateQrPopupTitle": "Quét mã chuyển khoản",
+  "donateTransparency": "Mọi đóng góp được dùng để duy trì máy chủ và phát triển nội dung.",
+  "donateJoinCommunity": "Tham gia cộng đồng"
+}

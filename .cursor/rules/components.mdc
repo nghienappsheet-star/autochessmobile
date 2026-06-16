@@ -1,0 +1,49 @@
+---
+description: Shared UI component usage rules — reuse ui/core, no duplicate styles
+globs: src/**/*.tsx
+alwaysApply: false
+---
+
+# Component Rules
+
+## Always use shared components from `src/components/ui/core.tsx`
+
+| Need | Use |
+|------|-----|
+| Container/panel | `Card`, `CardHeader`, `CardTitle`, `CardContent` |
+| Actions | `Button` (variants: default, outline, ghost, secondary, danger) |
+| Text input | `Input` |
+| Dropdown / filter / pick value | `Select`, `SelectTrigger`, `SelectValue`, `SelectContent`, `SelectItem` |
+| Status/tag | `Badge` (including tier-s/a/b/c variants) |
+| Modal | `Dialog`, `DialogContent`, `DialogHeader`, `DialogTitle` |
+| Divider | `Separator` |
+
+## Do NOT
+
+- Create new button/card/badge styles inline when a core component exists
+- Hardcode background colors on cards (`bg-[#050505]`, `bg-[#0A0A0A]`, etc.)
+- Add `italic` to any className
+- Use `font-black` for headings — use `font-bold` or `font-semibold`
+- Duplicate nav config — use `NAV_ITEMS` from `@/config/nav`
+
+## Layout patterns
+
+- **Public website**: `Layout` — full-width `Header` with horizontal nav (`HeaderNav` at xl+), mobile drawer (`Sidebar`), bottom `MobileNav` (xl:hidden). No left sidebar on desktop.
+- **Admin**: `AdminLayout` — left `AdminSidebar` + `AdminHeader` + main (`max-w-[1600px]`)
+- **PageContainer** (`src/components/layout/PageContainer.tsx`) — shared horizontal padding + max-width. Use instead of duplicating `max-w-[1400px] px-4 sm:px-6 lg:px-8`.
+  - `full` — 1400px (home, lists, grids)
+  - `article` — max-w-3xl (~768px) prose column
+  - `reading` — max-w-4xl (~896px) editor / long-form
+  - `narrow` — max-w-2xl
+- Public shell: `Header`, `Layout` main, and `Footer` use `PageContainer`.
+- **PageHeader** (`src/components/layout/PageHeader.tsx`) — page title + description + optional action slot (filters, CTAs).
+- Admin content max-width: `max-w-[1600px]` in `AdminLayout` (Phase 7 may add `AdminPageContainer`).
+- Main padding: `p-4 sm:p-6 lg:p-8` (public), `p-4 sm:p-6` (admin)
+
+## Hero cost colors
+
+Use `heroCostBarClass()` / `heroCostBadgeClass()` from `@/lib/cost-colors` instead of raw `purple-500`, `blue-500`, etc.
+
+## Class merging
+
+Always use `cn()` from `@/lib/utils` when combining conditional classes.

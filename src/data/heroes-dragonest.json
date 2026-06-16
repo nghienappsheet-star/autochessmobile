@@ -1,0 +1,4508 @@
+{
+  "audit": {
+    "importedAt": "2026-06-16T07:05:05.779Z",
+    "matched": [
+      {
+        "heroId": "hawk",
+        "name": "Hawk",
+        "dragonestId": "101855090d47"
+      },
+      {
+        "heroId": "unknown_horror",
+        "name": "Unknown Horror",
+        "dragonestId": "100baa36cabb"
+      },
+      {
+        "heroId": "goddess_of_war",
+        "name": "Goddess of War",
+        "dragonestId": "1971fc43d24"
+      },
+      {
+        "heroId": "mist_phantom_king",
+        "name": "Mist Phantom King",
+        "dragonestId": "fdb57ef3521"
+      },
+      {
+        "heroId": "resentful_murk",
+        "name": "Resentful Murk",
+        "dragonestId": "f0fc5fccbac"
+      },
+      {
+        "heroId": "unicorn",
+        "name": "Unicorn",
+        "dragonestId": "16eaba5e231"
+      },
+      {
+        "heroId": "ogre_mage",
+        "name": "Ogre Mage",
+        "dragonestId": "e52b47ab944"
+      },
+      {
+        "heroId": "sky_breaker",
+        "name": "Sky Breaker",
+        "dragonestId": "e52b47ac658"
+      },
+      {
+        "heroId": "redaxe_chief",
+        "name": "Redaxe Chief",
+        "dragonestId": "e52b47ac681"
+      },
+      {
+        "heroId": "tusk_champion",
+        "name": "Tusk Champion",
+        "dragonestId": "e52b47ac74b"
+      },
+      {
+        "heroId": "taboo_witcher",
+        "name": "Taboo Witcher",
+        "dragonestId": "e52b47acaf2"
+      },
+      {
+        "heroId": "defector",
+        "name": "Defector",
+        "dragonestId": "e52b47ad218"
+      },
+      {
+        "heroId": "frost_knight",
+        "name": "Frost Knight",
+        "dragonestId": "e52b47ad240"
+      },
+      {
+        "heroId": "the_source",
+        "name": "The Source",
+        "dragonestId": "e52b47ad454"
+      },
+      {
+        "heroId": "egersis_ranger",
+        "name": "Egersis Ranger",
+        "dragonestId": "e52b47ad599"
+      },
+      {
+        "heroId": "stone_spirit",
+        "name": "Stone Spirit",
+        "dragonestId": "e52b47ad730"
+      },
+      {
+        "heroId": "heaven_bomber",
+        "name": "Heaven Bomber",
+        "dragonestId": "e52b47ad780"
+      },
+      {
+        "heroId": "soul_breaker",
+        "name": "Soul Breaker",
+        "dragonestId": "e52b47ad7a7"
+      },
+      {
+        "heroId": "god_of_war",
+        "name": "God of War",
+        "dragonestId": "e52b47aec6b"
+      },
+      {
+        "heroId": "winter_chiropteran",
+        "name": "Winter Chiropteran",
+        "dragonestId": "e52b47b0144"
+      },
+      {
+        "heroId": "soul_devourer",
+        "name": "Soul Devourer",
+        "dragonestId": "174432540cf"
+      },
+      {
+        "heroId": "goddess_of_light",
+        "name": "Goddess of Light",
+        "dragonestId": "e714b66f227"
+      },
+      {
+        "heroId": "light_blade",
+        "name": "Light Blade",
+        "dragonestId": "16eaba5e1a3"
+      },
+      {
+        "heroId": "wisper_seer",
+        "name": "Wisper Seer",
+        "dragonestId": "16eaba5e1af"
+      },
+      {
+        "heroId": "venom",
+        "name": "Venom",
+        "dragonestId": "e52b47aca4f"
+      },
+      {
+        "heroId": "dwarf_sniper",
+        "name": "Dwarf Sniper",
+        "dragonestId": "e52b47aca9f"
+      },
+      {
+        "heroId": "desperate_doctor",
+        "name": "Desperate Doctor",
+        "dragonestId": "e52b47ad291"
+      },
+      {
+        "heroId": "abyssal_guard",
+        "name": "Abyssal Guard",
+        "dragonestId": "e52b47ad2e9"
+      },
+      {
+        "heroId": "abyssalcrawler",
+        "name": "Abyssalcrawler",
+        "dragonestId": "e52b47ad42b"
+      },
+      {
+        "heroId": "skull_hunter",
+        "name": "Skull Hunter",
+        "dragonestId": "e52b47ad548"
+      },
+      {
+        "heroId": "swordman",
+        "name": "Swordman",
+        "dragonestId": "e52b47ad571"
+      },
+      {
+        "heroId": "hell_knight",
+        "name": "Hell Knight",
+        "dragonestId": "e52b47ad708"
+      },
+      {
+        "heroId": "phantom_queen",
+        "name": "Phantom Queen",
+        "dragonestId": "e52b47ad758"
+      },
+      {
+        "heroId": "water_spirit",
+        "name": "Water Spirit",
+        "dragonestId": "e52b47ad7cf"
+      },
+      {
+        "heroId": "ripper",
+        "name": "Ripper",
+        "dragonestId": "e52b47ad81f"
+      },
+      {
+        "heroId": "shining_archer",
+        "name": "Shining Archer",
+        "dragonestId": "e52b47afcfe"
+      },
+      {
+        "heroId": "penitent_bishop",
+        "name": "Penitent Bishop",
+        "dragonestId": "fff98fc739e"
+      },
+      {
+        "heroId": "eclipse_of_darkness",
+        "name": "Eclipse of Darkness",
+        "dragonestId": "f7a6c42ce05"
+      },
+      {
+        "heroId": "qin_xuan",
+        "name": "Qin Xuan",
+        "dragonestId": "186c50163ff"
+      },
+      {
+        "heroId": "bobo",
+        "name": "Bobo",
+        "dragonestId": "f105de1774a"
+      },
+      {
+        "heroId": "gem_artisan",
+        "name": "Gem Artisan",
+        "dragonestId": "17acc21aa79"
+      },
+      {
+        "heroId": "ghost_kid",
+        "name": "Ghost Kid",
+        "dragonestId": "1727d59a49c"
+      },
+      {
+        "heroId": "umbra",
+        "name": "Umbra",
+        "dragonestId": "e5991cf27f5"
+      },
+      {
+        "heroId": "berserker",
+        "name": "Berserker",
+        "dragonestId": "16eaba5e235"
+      },
+      {
+        "heroId": "evil_knight",
+        "name": "Evil Knight",
+        "dragonestId": "e52b47ab96d"
+      },
+      {
+        "heroId": "warpwood_sage",
+        "name": "Warpwood Sage",
+        "dragonestId": "e52b47acb1b"
+      },
+      {
+        "heroId": "wind_ranger",
+        "name": "Wind Ranger",
+        "dragonestId": "e52b47ad179"
+      },
+      {
+        "heroId": "shadowcrawler",
+        "name": "Shadowcrawler",
+        "dragonestId": "e52b47ad1c8"
+      },
+      {
+        "heroId": "werewolf",
+        "name": "Werewolf",
+        "dragonestId": "e52b47ad47d"
+      },
+      {
+        "heroId": "argali_knight",
+        "name": "Argali Knight",
+        "dragonestId": "e52b47ad4a5"
+      },
+      {
+        "heroId": "flame_wizard",
+        "name": "Flame Wizard",
+        "dragonestId": "e52b47ad4f7"
+      },
+      {
+        "heroId": "poisonous_worm",
+        "name": "Poisonous Worm",
+        "dragonestId": "e52b47ad63b"
+      },
+      {
+        "heroId": "fallen_witcher",
+        "name": "Fallen Witcher",
+        "dragonestId": "e52b47ad690"
+      },
+      {
+        "heroId": "shadow_devil",
+        "name": "Shadow Devil",
+        "dragonestId": "e52b47ad6b9"
+      },
+      {
+        "heroId": "lord_of_sand",
+        "name": "Lord of Sand",
+        "dragonestId": "e52b47ad6e0"
+      },
+      {
+        "heroId": "thunder_spirit",
+        "name": "Thunder Spirit",
+        "dragonestId": "e52b47ad7f7"
+      },
+      {
+        "heroId": "fortune_teller",
+        "name": "Fortune Teller",
+        "dragonestId": "e52b47afdcb"
+      },
+      {
+        "heroId": "grand_herald",
+        "name": "Grand Herald",
+        "dragonestId": "e52b47b13a8"
+      },
+      {
+        "heroId": "cave_prodigy",
+        "name": "Cave Prodigy",
+        "dragonestId": "ed1d548b4ea"
+      },
+      {
+        "heroId": "thorn_predator",
+        "name": "Thorn Predator",
+        "dragonestId": "e7beff4feee"
+      },
+      {
+        "heroId": "spider_queen",
+        "name": "Spider Queen",
+        "dragonestId": "e7bef0c026b"
+      },
+      {
+        "heroId": "shining_assassin",
+        "name": "Shining Assassin",
+        "dragonestId": "e52b47ad1f0"
+      },
+      {
+        "heroId": "razorclaw",
+        "name": "Razorclaw",
+        "dragonestId": "e52b47ad362"
+      },
+      {
+        "heroId": "dragon_knight",
+        "name": "Dragon Knight",
+        "dragonestId": "e52b47ad38a"
+      },
+      {
+        "heroId": "siren",
+        "name": "Siren",
+        "dragonestId": "e52b47ad3b4"
+      },
+      {
+        "heroId": "storm_shaman",
+        "name": "Storm Shaman",
+        "dragonestId": "e52b47ad3db"
+      },
+      {
+        "heroId": "venomancer",
+        "name": "Venomancer",
+        "dragonestId": "e52b47ad404"
+      },
+      {
+        "heroId": "pirate_captain",
+        "name": "Pirate Captain",
+        "dragonestId": "e52b47ad4ce"
+      },
+      {
+        "heroId": "tortola_elder",
+        "name": "Tortola Elder",
+        "dragonestId": "e52b47ad51f"
+      },
+      {
+        "heroId": "soul_reaper",
+        "name": "Soul Reaper",
+        "dragonestId": "e52b47ad5c1"
+      },
+      {
+        "heroId": "doom_arbiter",
+        "name": "Doom Arbiter",
+        "dragonestId": "e52b47ad665"
+      },
+      {
+        "heroId": "grimtouch",
+        "name": "Grimtouch",
+        "dragonestId": "e52b47b13cf"
+      },
+      {
+        "heroId": "sacred_lancer",
+        "name": "Sacred Lancer",
+        "dragonestId": "e8432f6fa43"
+      },
+      {
+        "heroId": "the_scryer",
+        "name": "The Scryer",
+        "dragonestId": "e69444fe2ce"
+      },
+      {
+        "heroId": "frostblaze_dragon",
+        "name": "Frostblaze Dragon",
+        "dragonestId": "e5991b4bd56"
+      },
+      {
+        "heroId": "strange_egg",
+        "name": "Strange Egg",
+        "dragonestId": "e52b47abc41"
+      },
+      {
+        "heroId": "helicopter",
+        "name": "Helicopter",
+        "dragonestId": "e52b47acac7"
+      },
+      {
+        "heroId": "devastator",
+        "name": "Devastator",
+        "dragonestId": "e52b47ad269"
+      },
+      {
+        "heroId": "dark_spirit",
+        "name": "Dark Spirit",
+        "dragonestId": "e52b47ad2c1"
+      },
+      {
+        "heroId": "tsunami_stalker",
+        "name": "Tsunami Stalker",
+        "dragonestId": "e52b47ad311"
+      },
+      {
+        "heroId": "god_of_thunder",
+        "name": "God of Thunder",
+        "dragonestId": "e52b47aec44"
+      },
+      {
+        "heroId": "rogue_guard",
+        "name": "Rogue Guard",
+        "dragonestId": "e52b47afeed"
+      },
+      {
+        "heroId": "khan",
+        "name": "Khan",
+        "dragonestId": "edde7225351"
+      },
+      {
+        "heroId": "penitent_bishop",
+        "name": "Penitent Bishop·Mammon",
+        "dragonestId": "fff990c4266"
+      }
+    ],
+    "unmatched": []
+  },
+  "enrichments": {
+    "hawk": {
+      "dragonestId": "101855090d47",
+      "chessTitle": "Falcon",
+      "rarity": "Common",
+      "description": "Hawk — Falcon",
+      "iconUrl": "/heroes/hawk/icon.png",
+      "portraitUrl": "/heroes/hawk/portrait.png",
+      "imageUrl": "/heroes/hawk/icon.png",
+      "skill": {
+        "name": "Eagle Eye",
+        "type": "Active",
+        "desc": "Whenever an ally casts an active ability, Falcon instantly fires Arcane Missiles at enemies, dealing magical damage.  Ability Type: Active  Target: Single  Impact: Enemy  Damage Type: Magical Damage  Magical Damage: 150  CD: 2 ",
+        "descByStar": [
+          "Whenever an ally casts an active ability, Falcon instantly fires Arcane Missiles at enemies, dealing magical damage.  Ability Type: Active  Target: Single  Impact: Enemy  Damage Type: Magical Damage  Magical Damage: 150  CD: 2 ",
+          "Whenever an ally casts an active ability, Falcon instantly fires Arcane Missiles at enemies, dealing magical damage.  Ability Type: Active  Target: Single  Impact: Enemy  Damage Type: Magical Damage  Magical Damage:  250  CD: 2 ",
+          "Whenever an ally casts an active ability, Falcon instantly fires Arcane Missiles at enemies, dealing magical damage.  Ability Type: Active  Target: Single  Impact: Enemy  Damage Type: Magical Damage  Magical Damage: 350  CD: 2 "
+        ],
+        "iconUrl": "/heroes/hawk/skill.png"
+      },
+      "stats": {
+        "hp": [
+          550,
+          1100,
+          2200
+        ],
+        "atk": [
+          50,
+          100,
+          200
+        ],
+        "armor": 1,
+        "mr": 10,
+        "atkSpeed": 1.5,
+        "range": 4
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/hawk/portrait.png",
+          "isDefault": true
+        }
+      ]
+    },
+    "unknown_horror": {
+      "dragonestId": "100baa36cabb",
+      "chessTitle": "？？？",
+      "rarity": "Common",
+      "description": "Unknown Horror — ？？？",
+      "iconUrl": "/heroes/unknown_horror/icon.png",
+      "portraitUrl": "/heroes/unknown_horror/portrait.png",
+      "imageUrl": "/heroes/unknown_horror/icon.png",
+      "skill": {
+        "name": "Endless Terror",
+        "type": "Active",
+        "desc": " Grabs a random enemy piece, immobilizing it and dealing continuous pure damage.",
+        "descByStar": [
+          " Grabs a random enemy piece, immobilizing it and dealing continuous pure damage.",
+          " Grabs a random enemy piece, immobilizing it and dealing continuous pure damage.",
+          " Grabs a random enemy piece, immobilizing it and dealing continuous pure damage."
+        ],
+        "iconUrl": "/heroes/unknown_horror/skill.png"
+      },
+      "stats": {
+        "hp": [
+          550,
+          1100,
+          2200
+        ],
+        "atk": [
+          45,
+          90,
+          180
+        ],
+        "armor": 3,
+        "mr": 10,
+        "atkSpeed": 1.5,
+        "range": 3
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/unknown_horror/portrait.png",
+          "isDefault": true
+        }
+      ]
+    },
+    "goddess_of_war": {
+      "dragonestId": "1971fc43d24",
+      "chessTitle": "Valkyrie",
+      "rarity": "Rare",
+      "description": "Goddess of War — Valkyrie",
+      "iconUrl": "/heroes/goddess_of_war/icon.png",
+      "portraitUrl": "/heroes/goddess_of_war/portrait.png",
+      "imageUrl": "/heroes/goddess_of_war/icon.png",
+      "skill": {
+        "name": "Shining Combo",
+        "type": "Active",
+        "desc": "Ability: [Shining Combo] Rapidly swings a warhammer, dealing physical damage with base attacks to surrounding enemies. The final strike slams the hammer into the ground, dealing additional damage and stunning enemies. Swing/Slam Extra DMG: 15/30/45 Stun Duration: 0.5/0.5/1 Swing Range: 160 Slam Range: 160/160/234 CD: 10/8/6",
+        "descByStar": [
+          "Ability: [Shining Combo] Rapidly swings a warhammer, dealing physical damage with base attacks to surrounding enemies. The final strike slams the hammer into the ground, dealing additional damage and stunning enemies. Swing/Slam Extra DMG: 15/30/45 Stun Duration: 0.5/0.5/1 Swing Range: 160 Slam Range: 160/160/234 CD: 10/8/6",
+          "Ability: [Shining Combo] Rapidly swings a warhammer, dealing physical damage with base attacks to surrounding enemies. The final strike slams the hammer into the ground, dealing additional damage and stunning enemies. Swing/Slam Extra DMG: 15/30/45 Stun Duration: 0.5/0.5/1 Swing Range: 160 Slam Range: 160/160/234 CD: 10/8/6",
+          "Ability: [Shining Combo] Rapidly swings a warhammer, dealing physical damage with base attacks to surrounding enemies. The final strike slams the hammer into the ground, dealing additional damage and stunning enemies. Swing/Slam Extra DMG: 15/30/45 Stun Duration: 0.5/0.5/1 Swing Range: 160 Slam Range: 160/160/234 CD: 10/8/6"
+        ],
+        "iconUrl": "/heroes/goddess_of_war/skill.png"
+      },
+      "stats": {
+        "hp": [
+          700,
+          1400,
+          2800
+        ],
+        "atk": [
+          90,
+          180,
+          360
+        ],
+        "armor": 7,
+        "mr": 0,
+        "atkSpeed": 1.6,
+        "range": 1.6
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/goddess_of_war/portrait.png",
+          "isDefault": true
+        }
+      ]
+    },
+    "mist_phantom_king": {
+      "dragonestId": "fdb57ef3521",
+      "chessTitle": "Wuril",
+      "rarity": "Rare",
+      "description": "Mist Phantom King — Wuril",
+      "iconUrl": "/heroes/mist_phantom_king/icon.png",
+      "portraitUrl": "/heroes/mist_phantom_king/portrait.png",
+      "imageUrl": "/heroes/mist_phantom_king/icon.png",
+      "skill": {
+        "name": "Smoke Trick",
+        "type": "Active",
+        "desc": "Instantly deploys a smoke grenade. If there are enemy pieces nearby, the grenade will be deployed at the location of Wuril; otherwise, it will be deployed at the symmetric point on the board from Wuril's position. Enemies within the smoke grenade will be silenced and blinded (with a chance of missing attacks).",
+        "descByStar": [
+          "Instantly deploys a smoke grenade. If there are enemy pieces nearby, the grenade will be deployed at the location of Wuril; otherwise, it will be deployed at the symmetric point on the board from Wuril's position. Enemies within the smoke grenade will be silenced and blinded (with a chance of missing attacks).",
+          "Instantly deploys a smoke grenade. If there are enemy pieces nearby, the grenade will be deployed at the location of Wuril; otherwise, it will be deployed at the symmetric point on the board from Wuril's position. Enemies within the smoke grenade will be silenced and blinded (with a chance of missing attacks).",
+          "Instantly deploys a smoke grenade. If there are enemy pieces nearby, the grenade will be deployed at the location of Wuril; otherwise, it will be deployed at the symmetric point on the board from Wuril's position. Enemies within the smoke grenade will be silenced and blinded (with a chance of missing attacks)."
+        ],
+        "iconUrl": "/heroes/mist_phantom_king/skill.png"
+      },
+      "stats": {
+        "hp": [
+          500,
+          1000,
+          2000
+        ],
+        "atk": [
+          70,
+          140,
+          280
+        ],
+        "armor": 5,
+        "atkSpeed": 0,
+        "range": 1.6
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/mist_phantom_king/portrait.png",
+          "isDefault": true
+        }
+      ]
+    },
+    "resentful_murk": {
+      "dragonestId": "f0fc5fccbac",
+      "chessTitle": "Xiao",
+      "rarity": "Common",
+      "description": "Resentful Murk — Xiao",
+      "lore": "Stay Tuned.",
+      "iconUrl": "/heroes/resentful_murk/icon.png",
+      "portraitUrl": "/heroes/resentful_murk/portrait.png",
+      "imageUrl": "/heroes/resentful_murk/icon.png",
+      "skill": {
+        "name": "Apparition",
+        "type": "Active",
+        "desc": "Take the mirror point symmetrical to the center of the chessboard as a reference, and target the enemy unit closest to that mirror point, swapping positions with the target, dealing 100 magical damage, and stunning it for 2 seconds. Ally normal attacks give priority to the target for 2 seconds. Pierces ability immunity.",
+        "descByStar": [
+          "Take the mirror point symmetrical to the center of the chessboard as a reference, and target the enemy unit closest to that mirror point, swapping positions with the target, dealing 100 magical damage, and stunning it for 2 seconds. Ally normal attacks give priority to the target for 2 seconds. Pierces ability immunity.",
+          "Take the mirror point symmetrical to the center of the chessboard as a reference, and target the enemy unit closest to that mirror point, swapping positions with the target, dealing 200 magical damage, and stunning it for 2.5 seconds. Ally normal attacks give priority to the target for 3 seconds. Pierces ability immunity.",
+          "Take the mirror point symmetrical to the center of the chessboard as a reference, and target the enemy unit closest to that mirror point, swapping positions with the target, dealing 250 magical damage, and stunning it for 3 seconds. Ally normal attacks give priority to the target for 4 seconds. Pierces ability immunity."
+        ],
+        "iconUrl": "/heroes/resentful_murk/skill.png"
+      },
+      "stats": {
+        "hp": [
+          500,
+          1000,
+          2000
+        ],
+        "atk": [
+          60,
+          120,
+          240
+        ],
+        "armor": 2,
+        "mr": 0,
+        "atkSpeed": 1.3,
+        "range": 3
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/resentful_murk/portrait.png",
+          "isDefault": true
+        }
+      ]
+    },
+    "unicorn": {
+      "dragonestId": "16eaba5e231",
+      "chessTitle": "Unicorn",
+      "rarity": "Common",
+      "description": "Unicorn — Unicorn",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/unicorn/icon.png",
+      "portraitUrl": "/heroes/unicorn/portrait.png",
+      "imageUrl": "/heroes/unicorn/icon.png",
+      "skill": {
+        "name": "Cure",
+        "type": "Active",
+        "desc": "Passive: When Unicorn receives base attacks, reduces the attacker's ATK Speed by 5% for 5 seconds. Active: Heals 25 HP every 1.5 seconds to 3 random allies within 3 grids, lasting for 11 seconds.",
+        "descByStar": [
+          "Passive: When Unicorn receives base attacks, reduces the attacker's ATK Speed by 5% for 5 seconds. Active: Heals 25 HP every 1.5 seconds to 3 random allies within 3 grids, lasting for 11 seconds.",
+          "Passive: When Unicorn receives base attacks, reduces the attacker's ATK Speed by 15% for 5 seconds. Active: Heals 25 HP every 1.5 seconds to 5 random allies within 3 grids, lasting for 11 seconds.",
+          "Passive: When Unicorn receives base attacks, reduces the attacker's ATK Speed by 25% for 5 seconds. Active: Heals 25 HP every 1.5 seconds to 7 random allies within 3 grids, lasting for 11 seconds."
+        ],
+        "iconUrl": "/heroes/unicorn/skill.png"
+      },
+      "stats": {
+        "hp": [
+          400,
+          800,
+          1600
+        ],
+        "atk": [
+          55,
+          110,
+          220
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 3
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/unicorn/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "winter-sweetie",
+          "name": "Winter Sweetie",
+          "imageUrl": "/heroes/unicorn/skins/winter-sweetie.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "ogre_mage": {
+      "dragonestId": "e52b47ab944",
+      "chessTitle": "Hum&Huh",
+      "rarity": "Common",
+      "description": "Ogre Mage — Hum&Huh",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/ogre_mage/icon.png",
+      "portraitUrl": "/heroes/ogre_mage/portrait.png",
+      "imageUrl": "/heroes/ogre_mage/icon.png",
+      "skill": {
+        "name": "Irritate",
+        "type": "Active",
+        "desc": "Buffs a random Ally for 30 seconds, giving the target ally 30% chances to restore 100 Mana and resets their Ability after casting",
+        "descByStar": [
+          "Buffs a random Ally for 30 seconds, giving the target ally 30% chances to restore 100 Mana and resets their Ability after casting",
+          "Buffs a random Ally for 30 seconds, giving the target ally 40% chances to restore 100 Mana and resets their Ability after casting",
+          "Buffs a random Ally for 30 seconds, giving the target ally 50% chances to restore 100 Mana and resets their Ability after casting"
+        ],
+        "iconUrl": "/heroes/ogre_mage/skill.png"
+      },
+      "stats": {
+        "hp": [
+          700,
+          1400,
+          2800
+        ],
+        "atk": [
+          60,
+          120,
+          240
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 2
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/ogre_mage/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "xu-chu",
+          "name": "Xu Chu",
+          "imageUrl": "/heroes/ogre_mage/skins/xu-chu.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "sky_breaker": {
+      "dragonestId": "e52b47ac658",
+      "chessTitle": "BT.011",
+      "rarity": "Common",
+      "description": "Sky Breaker — BT.011",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/sky_breaker/icon.png",
+      "portraitUrl": "/heroes/sky_breaker/portrait.png",
+      "imageUrl": "/heroes/sky_breaker/icon.png",
+      "skill": {
+        "name": "Battery Assault",
+        "type": "Active",
+        "desc": "Discharges magical damages at random nearby enemy chess pieces within 2 grids, dealing 50 magical damages and stunning for 0.1 seconds every 0.7 seconds up to 5 seconds.",
+        "descByStar": [
+          "Discharges magical damages at random nearby enemy chess pieces within 2 grids, dealing 50 magical damages and stunning for 0.1 seconds every 0.7 seconds up to 5 seconds.",
+          "Discharges magical damages at random nearby enemy chess pieces within 2 grids, dealing 75 damages and stunning for 0.1 seconds every 0.7 seconds up to 5 seconds.",
+          "Discharges magical damages at random nearby enemy chess pieces within 2 grids, dealing 100 magical damages and stunning for 0.1 seconds every 0.7 seconds up to 5 seconds."
+        ],
+        "iconUrl": "/heroes/sky_breaker/skill.png"
+      },
+      "stats": {
+        "hp": [
+          700,
+          1400,
+          2800
+        ],
+        "atk": [
+          45,
+          90,
+          180
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 2
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/sky_breaker/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "mega-2049",
+          "name": "Mega 2049",
+          "imageUrl": "/heroes/sky_breaker/skins/mega-2049.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "redaxe_chief": {
+      "dragonestId": "e52b47ac681",
+      "chessTitle": "Axe·Redaxe",
+      "rarity": "Common",
+      "description": "Redaxe Chief — Axe·Redaxe",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/redaxe_chief/icon.png",
+      "portraitUrl": "/heroes/redaxe_chief/portrait.png",
+      "imageUrl": "/heroes/redaxe_chief/icon.png",
+      "skill": {
+        "name": "Taunts",
+        "type": "Active",
+        "desc": "Taunts enemies within 1 grids, forcing them to attack himself in 2.5 seconds, while he gains 10 bonus armor",
+        "descByStar": [
+          "Taunts enemies within 1 grids, forcing them to attack himself in 2.5 seconds, while he gains 10 bonus armor",
+          "Taunts enemies within 1 grids, forcing them to attack himself in 3.5 seconds, while he gains 15 bonus armor",
+          "Taunts enemies within 1 grids, forcing them to attack himself in 4.5 seconds, while he gains 20 bonus armor"
+        ],
+        "iconUrl": "/heroes/redaxe_chief/skill.png"
+      },
+      "stats": {
+        "hp": [
+          700,
+          1400,
+          2800
+        ],
+        "atk": [
+          52.5,
+          105,
+          210
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 1
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/redaxe_chief/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "long-vacation",
+          "name": "Long Vacation",
+          "imageUrl": "/heroes/redaxe_chief/skins/long-vacation.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "tusk_champion": {
+      "dragonestId": "e52b47ac74b",
+      "chessTitle": "Lord of Tundra",
+      "rarity": "Common",
+      "description": "Tusk Champion — Lord of Tundra",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/tusk_champion/icon.png",
+      "portraitUrl": "/heroes/tusk_champion/portrait.png",
+      "imageUrl": "/heroes/tusk_champion/icon.png",
+      "skill": {
+        "name": "Arctic Punch",
+        "type": "Active",
+        "desc": "Next normal attack launches its target into air for 1 seconds and deals 3 times damages",
+        "descByStar": [
+          "Next normal attack launches its target into air for 1 seconds and deals 3 times damages",
+          "Next normal attack launches its target into air for 1 seconds and deals 3.5 times damages",
+          "Next normal attack launches its target into air for 1 seconds and deals 4 times damages"
+        ],
+        "iconUrl": "/heroes/tusk_champion/skill.png"
+      },
+      "stats": {
+        "hp": [
+          650,
+          1300,
+          2600
+        ],
+        "atk": [
+          52.5,
+          105,
+          210
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 1
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/tusk_champion/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "cowhand-lord-of-tundra",
+          "name": "Cowhand Lord of Tundra",
+          "imageUrl": "/heroes/tusk_champion/skins/cowhand-lord-of-tundra.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "taboo_witcher": {
+      "dragonestId": "e52b47acaf2",
+      "chessTitle": "Dee",
+      "rarity": "Common",
+      "description": "Taboo Witcher — Dee",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/taboo_witcher/icon.png",
+      "portraitUrl": "/heroes/taboo_witcher/portrait.png",
+      "imageUrl": "/heroes/taboo_witcher/icon.png",
+      "skill": {
+        "name": "Soul Break",
+        "type": "Active",
+        "desc": "Burns an opponent's 30 magic on each attack, dealing 60% of magic burnt bonus physical damages to the target",
+        "descByStar": [
+          "Burns an opponent's 30 magic on each attack, dealing 60% of magic burnt bonus physical damages to the target",
+          "Burns an opponent's 60 magic on each attack, dealing 60% of magic burnt bonus physical damages to the target",
+          "Burns an opponent's 90 magic on each attack, dealing 60% of magic burnt bonus physical damages to the target"
+        ],
+        "iconUrl": "/heroes/taboo_witcher/skill.png"
+      },
+      "stats": {
+        "hp": [
+          550,
+          1100,
+          2200
+        ],
+        "atk": [
+          50,
+          100,
+          200
+        ],
+        "armor": 5,
+        "mr": 10,
+        "atkSpeed": 1,
+        "range": 2
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/taboo_witcher/portrait.png",
+          "isDefault": true
+        }
+      ]
+    },
+    "defector": {
+      "dragonestId": "e52b47ad218",
+      "chessTitle": "Shamen'du",
+      "rarity": "Common",
+      "description": "Defector — Shamen'du",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/defector/icon.png",
+      "portraitUrl": "/heroes/defector/portrait.png",
+      "imageUrl": "/heroes/defector/icon.png",
+      "skill": {
+        "name": "Hex",
+        "type": "Active",
+        "desc": "Transforms an enemy piece into a harmless penguin, disabling their attacks and abilities in 4 seconds.",
+        "descByStar": [
+          "Transforms an enemy piece into a harmless penguin, disabling their attacks and abilities in 4 seconds.",
+          "Transforms an enemy piece into a harmless penguin, disabling their attacks and abilities in 6 seconds.",
+          "Transforms an enemy piece into a harmless penguin, disabling their attacks and abilities in 8 seconds."
+        ],
+        "iconUrl": "/heroes/defector/skill.png"
+      },
+      "stats": {
+        "hp": [
+          550,
+          1100,
+          2200
+        ],
+        "atk": [
+          45,
+          90,
+          180
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 3
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/defector/portrait.png",
+          "isDefault": true
+        }
+      ]
+    },
+    "frost_knight": {
+      "dragonestId": "e52b47ad240",
+      "chessTitle": "Bat'du",
+      "rarity": "Common",
+      "description": "Frost Knight — Bat'du",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/frost_knight/icon.png",
+      "portraitUrl": "/heroes/frost_knight/portrait.png",
+      "imageUrl": "/heroes/frost_knight/icon.png",
+      "skill": {
+        "name": "Snowbomb Blast",
+        "type": "Active",
+        "desc": "Slow enemy units of 2-grid radius 1 seconds of their movement and taking bonus 50 magical damagess every time Frost Knight attacks. Get to at most 4 stacks and last 20 seconds",
+        "descByStar": [
+          "Slow enemy units of 2-grid radius 1 seconds of their movement and taking bonus 50 magical damagess every time Frost Knight attacks. Get to at most 4 stacks and last 20 seconds",
+          "Slow enemy units of 2-grid radius 1 seconds of their movement and taking bonus 75 magical damagess every time Frost Knight attacks. Get to at most 6 stacks and last 20 seconds",
+          "Slow enemy units of 2-grid radius 1 seconds of their movement and taking bonus 100 magical damagess every time Frost Knight attacks. Get to at most 10 stacks and last 20 seconds"
+        ],
+        "iconUrl": "/heroes/frost_knight/skill.png"
+      },
+      "stats": {
+        "hp": [
+          500,
+          1000,
+          2000
+        ],
+        "atk": [
+          47.5,
+          95,
+          190
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 3
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/frost_knight/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "merchant-bat-du",
+          "name": "Merchant Bat'du",
+          "imageUrl": "/heroes/frost_knight/skins/merchant-bat-du.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "the_source": {
+      "dragonestId": "e52b47ad454",
+      "chessTitle": "Icey Deer",
+      "rarity": "Common",
+      "description": "The Source — Icey Deer",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/the_source/icon.png",
+      "portraitUrl": "/heroes/the_source/portrait.png",
+      "imageUrl": "/heroes/the_source/icon.png",
+      "skill": {
+        "name": "Awaken",
+        "type": "Active",
+        "desc": "Grants 10 magic regeneration for all allied chess pieces in every 2 seconds",
+        "descByStar": [
+          "Grants 10 magic regeneration for all allied chess pieces in every 2 seconds",
+          "Grants 15 magic regeneration for all allied chess pieces in every 2 seconds",
+          "Grants 20 magic regeneration for all allied chess pieces in every 2 seconds"
+        ],
+        "iconUrl": "/heroes/the_source/skill.png"
+      },
+      "stats": {
+        "hp": [
+          450,
+          900,
+          1800
+        ],
+        "atk": [
+          42.5,
+          85,
+          170
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 5
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/the_source/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "candy-mage",
+          "name": "Candy Mage",
+          "imageUrl": "/heroes/the_source/skins/candy-mage.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "egersis_ranger": {
+      "dragonestId": "e52b47ad599",
+      "chessTitle": "So",
+      "rarity": "Common",
+      "description": "Egersis Ranger — So",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/egersis_ranger/icon.png",
+      "portraitUrl": "/heroes/egersis_ranger/portrait.png",
+      "imageUrl": "/heroes/egersis_ranger/icon.png",
+      "skill": {
+        "name": "Marksmanship",
+        "type": "Active",
+        "desc": "Increases 25% attack speed and 25% ATK for itself.",
+        "descByStar": [
+          "Increases 25% attack speed and 25% ATK for itself.",
+          "Increases 35% attack speed and 35% ATK for itself.",
+          "Increases 45% attack speed and 45% ATK for itself."
+        ],
+        "iconUrl": "/heroes/egersis_ranger/skill.png"
+      },
+      "stats": {
+        "hp": [
+          450,
+          900,
+          1800
+        ],
+        "atk": [
+          45,
+          90,
+          180
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 5
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/egersis_ranger/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "love-seeker",
+          "name": "Love Seeker",
+          "imageUrl": "/heroes/egersis_ranger/skins/love-seeker.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "stone_spirit": {
+      "dragonestId": "e52b47ad730",
+      "chessTitle": "Stein",
+      "rarity": "Common",
+      "description": "Stone Spirit — Stein",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/stone_spirit/icon.png",
+      "portraitUrl": "/heroes/stone_spirit/portrait.png",
+      "imageUrl": "/heroes/stone_spirit/icon.png",
+      "skill": {
+        "name": "Toss",
+        "type": "Active",
+        "desc": "Grab a nearby enemy within 1 grids, and lunches it at the farthest grid, to deal 100 physical damages and stun for 1.5 seconds",
+        "descByStar": [
+          "Grab a nearby enemy within 1 grids, and lunches it at the farthest grid, to deal 100 physical damages and stun for 1.5 seconds",
+          "Grab a nearby enemy within 1 grids, and lunches it at the farthest grid, to deal 200 physical damages and stun for 2 seconds",
+          "Grab a nearby enemy within 1 grids, and lunches it at the farthest grid, to deal 300 physical damages and stun for 2.5 seconds"
+        ],
+        "iconUrl": "/heroes/stone_spirit/skill.png"
+      },
+      "stats": {
+        "hp": [
+          650,
+          1300,
+          2600
+        ],
+        "atk": [
+          80,
+          160,
+          320
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 2
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/stone_spirit/portrait.png",
+          "isDefault": true
+        }
+      ]
+    },
+    "heaven_bomber": {
+      "dragonestId": "e52b47ad780",
+      "chessTitle": "Golby Dwarf",
+      "rarity": "Common",
+      "description": "Heaven Bomber — Golby Dwarf",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/heaven_bomber/icon.png",
+      "portraitUrl": "/heroes/heaven_bomber/portrait.png",
+      "imageUrl": "/heroes/heaven_bomber/icon.png",
+      "skill": {
+        "name": "Tracing Missile",
+        "type": "Active",
+        "desc": "Launches 3 rockets to strike random enemy chess pieces, each missile deals 150 magical damage to a random enemy unit",
+        "descByStar": [
+          "Launches 3 rockets to strike random enemy chess pieces, each missile deals 150 magical damage to a random enemy unit",
+          "Launches 3 rockets to strike random enemy chess pieces, each missile deals 250 magical damage to a random enemy unit",
+          "Launches 3 rockets to strike random enemy chess pieces, each missile deals 450 magical damage to a random enemy unit"
+        ],
+        "iconUrl": "/heroes/heaven_bomber/skill.png"
+      },
+      "stats": {
+        "hp": [
+          500,
+          1000,
+          2000
+        ],
+        "atk": [
+          45,
+          90,
+          180
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 4
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/heaven_bomber/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "ultra-2049",
+          "name": "Ultra 2049",
+          "imageUrl": "/heroes/heaven_bomber/skins/ultra-2049.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "soul_breaker": {
+      "dragonestId": "e52b47ad7a7",
+      "chessTitle": "Golby Sword",
+      "rarity": "Common",
+      "description": "Soul Breaker — Golby Sword",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/soul_breaker/icon.png",
+      "portraitUrl": "/heroes/soul_breaker/portrait.png",
+      "imageUrl": "/heroes/soul_breaker/icon.png",
+      "skill": {
+        "name": "Paralysis Shuriken",
+        "type": "Active",
+        "desc": "Hurls a shuriken at a random enemy unit, dealing 300 magical damages and stunning for 0.1 seconds.",
+        "descByStar": [
+          "Hurls a shuriken at a random enemy unit, dealing 300 magical damages and stunning for 0.1 seconds.",
+          "Hurls a shuriken at a random enemy unit, dealing 500 magical damages and stunning for 0.1 seconds.",
+          "Hurls a shuriken at a random enemy unit, dealing 700 magical damages and stunning for 0.1  seconds."
+        ],
+        "iconUrl": "/heroes/soul_breaker/skill.png"
+      },
+      "stats": {
+        "hp": [
+          550,
+          1100,
+          2200
+        ],
+        "atk": [
+          60,
+          120,
+          240
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 1
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/soul_breaker/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "sword-2049",
+          "name": "Sword 2049",
+          "imageUrl": "/heroes/soul_breaker/skins/sword-2049.png",
+          "isDefault": false
+        },
+        {
+          "id": "sword-2077",
+          "name": "Sword 2077",
+          "imageUrl": "/heroes/soul_breaker/skins/sword-2077.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "god_of_war": {
+      "dragonestId": "e52b47aec6b",
+      "chessTitle": "Ares",
+      "rarity": "Rare",
+      "description": "God of War — Ares",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/god_of_war/icon.png",
+      "portraitUrl": "/heroes/god_of_war/portrait.png",
+      "imageUrl": "/heroes/god_of_war/icon.png",
+      "skill": {
+        "name": "Shield Crash",
+        "type": "Active",
+        "desc": "Reduces Physical Damage by 30% upon receiving attack from the front, and by 15% from the side. Meanwhile, deals 300 Physical Damage to enemies within 3 grids ahead every 8 seconds.Also knocks back enemies within range for 1 grid.",
+        "descByStar": [
+          "Reduces Physical Damage by 30% upon receiving attack from the front, and by 15% from the side. Meanwhile, deals 300 Physical Damage to enemies within 3 grids ahead every 8 seconds.Also knocks back enemies within range for 1 grid.",
+          "Reduces Physical Damage by 45% upon receiving attack from the front, and by 22% from the side. Meanwhile, deals 400 Physical Damage to enemies within 3 grids ahead every 8 seconds. Also knocks back enemies within range for 1 grid.",
+          "Reduces Physical Damage by 60% upon receiving attack from the front, and by 30% from the side. Meanwhile, deals 500 Physical Damage to enemies within 3 grids ahead every 8 seconds. Also knocks back enemies within range for 1 grid."
+        ],
+        "iconUrl": "/heroes/god_of_war/skill.png"
+      },
+      "stats": {
+        "hp": [
+          800,
+          1600,
+          3200
+        ],
+        "atk": [
+          0,
+          0,
+          0
+        ],
+        "armor": 6,
+        "atkSpeed": 1,
+        "range": 2
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/god_of_war/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "ares-paradise",
+          "name": "Ares Paradise",
+          "imageUrl": "/heroes/god_of_war/skins/ares-paradise.png",
+          "isDefault": false
+        },
+        {
+          "id": "ares-order",
+          "name": "Ares Order",
+          "imageUrl": "/heroes/god_of_war/skins/ares-order.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "winter_chiropteran": {
+      "dragonestId": "e52b47b0144",
+      "chessTitle": "Frosgon",
+      "rarity": "Common",
+      "description": "Winter Chiropteran — Frosgon",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/winter_chiropteran/icon.png",
+      "portraitUrl": "/heroes/winter_chiropteran/portrait.png",
+      "imageUrl": "/heroes/winter_chiropteran/icon.png",
+      "skill": {
+        "name": "Cool Healing",
+        "type": "Active",
+        "desc": "Freezes an ally with HP that is lower than 50%, protecting them from losing HP and recovers their HP by 20+ 10%*HP for 2 seconds",
+        "descByStar": [
+          "Freezes an ally with HP that is lower than 50%, protecting them from losing HP and recovers their HP by 20+ 10%*HP for 2 seconds",
+          "Freezes an ally with HP that is lower than 50%, protecting them from losing HP and recovers their HP by 20+ 10%*HP for 3 seconds",
+          "Freezes an ally with HP that is lower than 50%, protecting them from losing HP and recovers their HP by 20+ 10%*HP for 4 seconds"
+        ],
+        "iconUrl": "/heroes/winter_chiropteran/skill.png"
+      },
+      "stats": {
+        "hp": [
+          600,
+          1200,
+          2400
+        ],
+        "atk": [
+          47.5,
+          95,
+          190
+        ],
+        "armor": 0,
+        "mr": 10,
+        "atkSpeed": 1,
+        "range": 4
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/winter_chiropteran/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "winter-chiropteran-red",
+          "name": "Winter Chiropteran [Red]",
+          "imageUrl": "/heroes/winter_chiropteran/skins/winter-chiropteran-red.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "soul_devourer": {
+      "dragonestId": "174432540cf",
+      "chessTitle": "Murmur",
+      "rarity": "Rare",
+      "description": "Soul Devourer — Murmur",
+      "lore": "In retrospect, it was he who summoned a great number of spirits in the graveyard and wanted to conduct thorough research on them.\nHowever, it was unfortunate that something went wrong and his soul was caught by the magic circle.\nDrifting in the vast sea of souls, no other soul except him was able to stay sober and sane.\nHe once tried to rouse them from chaos and then dug into their memories, but all these were in vain. An everlasting fierce howl echoed to his ears and time became pointless.\nOn the brink of collapse, the initial issue popped into his mind - where's the root, where's the destiny?\nHe made up his mind eventually by deciding to shake off the chains and being free.\nA whirlpool appeared in the sea of souls. At the eye of the whirlpool was him, who was absorbing the energy of souls.\nHis body had become a statue after 42 years passed, but today after absorbing the whole energy of the sea, he was finally reborn.\nRebirth and the powerful strength of souls within his body made him unstable and emotional. He started forgetting everything including his original intention and was unable to use the power.\nIt’s time to embark on the journey to find himself!",
+      "iconUrl": "/heroes/soul_devourer/icon.png",
+      "portraitUrl": "/heroes/soul_devourer/portrait.png",
+      "imageUrl": "/heroes/soul_devourer/icon.png",
+      "skill": {
+        "name": "Turning Tables",
+        "type": "Active",
+        "desc": "Drains 15 mana from an enemy piece every second for 4 seconds. Then, transfers all his mana to 1 random allied piece, reducing their CD time by 2 second if their ability is on cooldown.",
+        "descByStar": [
+          "Drains 15 mana from an enemy piece every second for 4 seconds. Then, transfers all his mana to 1 random allied piece, reducing their CD time by 2 second if their ability is on cooldown.",
+          "Drains 25 mana from an enemy piece every second for 3 seconds. Then, transfers all his mana to 2 random allied pieces, reducing their CD time by 4 second if their ability is on cooldown.",
+          "Drains 45 mana from an enemy piece every second for 2 seconds. Then, transfers all his mana to 3 random allied piece, reducing their CD time by 6 second if their ability is on cooldown."
+        ],
+        "iconUrl": "/heroes/soul_devourer/skill.png"
+      },
+      "stats": {
+        "hp": [
+          500,
+          1000,
+          2000
+        ],
+        "atk": [
+          50,
+          100,
+          200
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1.7,
+        "range": 4
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/soul_devourer/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "soul-devourer-green",
+          "name": "Soul Devourer[Green]",
+          "imageUrl": "/heroes/soul_devourer/skins/soul-devourer-green.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "goddess_of_light": {
+      "dragonestId": "e714b66f227",
+      "chessTitle": "Dawnstar",
+      "description": "Goddess of Light — Dawnstar",
+      "lore": "Stay tuned!",
+      "iconUrl": "/heroes/goddess_of_light/icon.png",
+      "portraitUrl": "/heroes/goddess_of_light/portrait.png",
+      "imageUrl": "/heroes/goddess_of_light/icon.png",
+      "skill": {
+        "name": "Spiritbind",
+        "type": "Active",
+        "desc": "Imprisons 1 enemy pieces for 5 seconds, disarms them and reduces their Magic Resistance by 20%, but the pieces imprisoned will be immune to Physical Damage.",
+        "descByStar": [
+          "Imprisons 1 enemy pieces for 5 seconds, disarms them and reduces their Magic Resistance by 20%, but the pieces imprisoned will be immune to Physical Damage.",
+          "Imprisons 2 enemies pieces for 5 seconds, disarms them and reduces their Magic Resistance by 30%, but the pieces imprisoned will be immune to Physical Damage.",
+          "Imprisons 4 enemies pieces for 5 seconds, disarms them and reduces their Magic Resistance by 50%, but the pieces imprisoned will be immune to Physical Damage."
+        ],
+        "iconUrl": "/heroes/goddess_of_light/skill.png"
+      },
+      "stats": {
+        "hp": [
+          400,
+          800,
+          1600
+        ],
+        "atk": [
+          52.5,
+          105,
+          210
+        ],
+        "armor": 0,
+        "mr": 10,
+        "atkSpeed": 1.3,
+        "range": 4
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/goddess_of_light/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "one-year-dawnstar",
+          "name": "One Year Dawnstar",
+          "imageUrl": "/heroes/goddess_of_light/skins/one-year-dawnstar.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "light_blade": {
+      "dragonestId": "16eaba5e1a3",
+      "chessTitle": "Yn",
+      "description": "Light Blade — Yn",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/light_blade/icon.png",
+      "portraitUrl": "/heroes/light_blade/portrait.png",
+      "imageUrl": "/heroes/light_blade/icon.png",
+      "skill": {
+        "name": "Moon Glaives",
+        "type": "Active",
+        "desc": "Attacks bounce between enemy pieces for at most 3 times, reducing 30% damages for every time it bounces",
+        "descByStar": [
+          "Attacks bounce between enemy pieces for at most 3 times, reducing 30% damages for every time it bounces",
+          "Attacks bounce between enemy pieces for at most 6 times, reducing 30% damages for every time it bounces",
+          "Attacks bounce between enemy pieces for at most 9 times, reducing 30% damages for every time it bounces"
+        ],
+        "iconUrl": "/heroes/light_blade/skill.png"
+      },
+      "stats": {
+        "hp": [
+          500,
+          1000,
+          2000
+        ],
+        "atk": [
+          55,
+          110,
+          220
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 3
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/light_blade/portrait.png",
+          "isDefault": true
+        }
+      ]
+    },
+    "wisper_seer": {
+      "dragonestId": "16eaba5e1af",
+      "chessTitle": "Bn",
+      "description": "Wisper Seer — Bn",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/wisper_seer/icon.png",
+      "portraitUrl": "/heroes/wisper_seer/portrait.png",
+      "imageUrl": "/heroes/wisper_seer/icon.png",
+      "skill": {
+        "name": "Nature's Call",
+        "type": "Active",
+        "desc": "Summons 1 Treant to random grids on the edge of the chessboard to assist in battle.",
+        "descByStar": [
+          "Summons 1 Treant to random grids on the edge of the chessboard to assist in battle.",
+          "Summons 2 strong Treants to random grids on the edge of the chessboard to assist in battle.",
+          "Summons 2 powerful Treants to random grids on the edge of the chessboard to assist in battle."
+        ],
+        "iconUrl": "/heroes/wisper_seer/skill.png"
+      },
+      "stats": {
+        "hp": [
+          500,
+          1000,
+          1900
+        ],
+        "atk": [
+          47.5,
+          95,
+          190
+        ],
+        "armor": 2,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 3
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/wisper_seer/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "snowland-gentleman",
+          "name": "Snowland Gentleman",
+          "imageUrl": "/heroes/wisper_seer/skins/snowland-gentleman.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "venom": {
+      "dragonestId": "e52b47aca4f",
+      "chessTitle": "Posoragon",
+      "rarity": "Rare",
+      "description": "Venom — Posoragon",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/venom/icon.png",
+      "portraitUrl": "/heroes/venom/portrait.png",
+      "imageUrl": "/heroes/venom/icon.png",
+      "skill": {
+        "name": "Viper Strike",
+        "type": "Active",
+        "desc": "Slows the targeted enemy unit's 40% attack speed and deals 150 magical damages per second in 5 seconds",
+        "descByStar": [
+          "Slows the targeted enemy unit's 40% attack speed and deals 150 magical damages per second in 5 seconds",
+          "Slows the targeted enemy unit's 60% attack speed and deals 250 magical damages per second in 5seconds",
+          "Slows the targeted enemy unit's 80% attack speed and deals 350 magical damages per second in 5 seconds"
+        ],
+        "iconUrl": "/heroes/venom/skill.png"
+      },
+      "stats": {
+        "hp": [
+          500,
+          1000,
+          2000
+        ],
+        "atk": [
+          55,
+          110,
+          220
+        ],
+        "armor": 5,
+        "mr": 20,
+        "atkSpeed": 1,
+        "range": 3
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/venom/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "venom-red",
+          "name": "Venom [Red]",
+          "imageUrl": "/heroes/venom/skins/venom-red.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "dwarf_sniper": {
+      "dragonestId": "e52b47aca9f",
+      "chessTitle": "Musket Kar Bronskin",
+      "description": "Dwarf Sniper — Musket Kar Bronskin",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/dwarf_sniper/icon.png",
+      "portraitUrl": "/heroes/dwarf_sniper/portrait.png",
+      "imageUrl": "/heroes/dwarf_sniper/icon.png",
+      "skill": {
+        "name": "Headshot",
+        "type": "Active",
+        "desc": "Locks onto an target piece and, after 0.5 seconds of aiming, fire a shot that deals 400 magical damages to target.",
+        "descByStar": [
+          "Locks onto an target piece and, after 0.5 seconds of aiming, fire a shot that deals 400 magical damages to target.",
+          "Locks onto an target piece and, after 0.5 seconds of aiming, fire a shot that deals 600 magical damages to target.",
+          "Locks onto an target piece and, after 0.5 seconds of aiming, fire a shot that deals 800 magical damages to target."
+        ],
+        "iconUrl": "/heroes/dwarf_sniper/skill.png"
+      },
+      "stats": {
+        "hp": [
+          450,
+          900,
+          1800
+        ],
+        "atk": [
+          70,
+          140,
+          280
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 5
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/dwarf_sniper/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "one-year-musket",
+          "name": "One Year Musket",
+          "imageUrl": "/heroes/dwarf_sniper/skins/one-year-musket.png",
+          "isDefault": false
+        },
+        {
+          "id": "red-beard-musket",
+          "name": "Red Beard Musket",
+          "imageUrl": "/heroes/dwarf_sniper/skins/red-beard-musket.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "desperate_doctor": {
+      "dragonestId": "e52b47ad291",
+      "chessTitle": "Voo'du",
+      "description": "Desperate Doctor — Voo'du",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/desperate_doctor/icon.png",
+      "portraitUrl": "/heroes/desperate_doctor/portrait.png",
+      "imageUrl": "/heroes/desperate_doctor/icon.png",
+      "skill": {
+        "name": "Ricocheting Cask",
+        "type": "Active",
+        "desc": "Launches a cask of paralyzing powder that ricochets between enemy chess pieces up to 4 times, dealing 60 damages and stunning those it hits for 1 seconds",
+        "descByStar": [
+          "Launches a cask of paralyzing powder that ricochets between enemy chess pieces up to 4 times, dealing 60 damages and stunning those it hits for 1 seconds",
+          "Launches a cask of paralyzing powder that ricochets between enemy chess pieces up to 6 times, dealing 80 damages and stunning those it hits for 1 seconds",
+          "Launches a cask of paralyzing powder that ricochets between enemy chess pieces up to 8 times, dealing 100 damages and stunning those it hits for 1 second"
+        ],
+        "iconUrl": "/heroes/desperate_doctor/skill.png"
+      },
+      "stats": {
+        "hp": [
+          550,
+          1100,
+          2200
+        ],
+        "atk": [
+          45,
+          90,
+          180
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 3
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/desperate_doctor/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "merchant-voo-du",
+          "name": "Merchant Voo’du",
+          "imageUrl": "/heroes/desperate_doctor/skins/merchant-voo-du.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "abyssal_guard": {
+      "dragonestId": "e52b47ad2e9",
+      "chessTitle": "Triton",
+      "description": "Abyssal Guard — Triton",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/abyssal_guard/icon.png",
+      "portraitUrl": "/heroes/abyssal_guard/portrait.png",
+      "imageUrl": "/heroes/abyssal_guard/icon.png",
+      "skill": {
+        "name": "Corrosion",
+        "type": "Active",
+        "desc": "Randomly reduces 15 armor to an enemy unit's for 20 seconds",
+        "descByStar": [
+          "Randomly reduces 15 armor to an enemy unit's for 20 seconds",
+          "Randomly reduces 30 armor to an enemy unit's for 20 seconds",
+          "Randomly reduces 45 armor to an enemy unit's for 20 seconds"
+        ],
+        "iconUrl": "/heroes/abyssal_guard/skill.png"
+      },
+      "stats": {
+        "hp": [
+          650,
+          1300,
+          2600
+        ],
+        "atk": [
+          85,
+          170,
+          340
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 2
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/abyssal_guard/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "abyssal-guard-blue",
+          "name": "Abyssal Guard [Blue]",
+          "imageUrl": "/heroes/abyssal_guard/skins/abyssal-guard-blue.png",
+          "isDefault": false
+        },
+        {
+          "id": "one-year-triton",
+          "name": "One Year Triton",
+          "imageUrl": "/heroes/abyssal_guard/skins/one-year-triton.png",
+          "isDefault": false
+        },
+        {
+          "id": "kraken-triton",
+          "name": "Kraken Triton",
+          "imageUrl": "/heroes/abyssal_guard/skins/kraken-triton.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "abyssalcrawler": {
+      "dragonestId": "e52b47ad42b",
+      "chessTitle": "Nana",
+      "description": "Abyssalcrawler — Nana",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/abyssalcrawler/icon.png",
+      "portraitUrl": "/heroes/abyssalcrawler/portrait.png",
+      "imageUrl": "/heroes/abyssalcrawler/icon.png",
+      "skill": {
+        "name": "Spiral Crawler",
+        "type": "Active",
+        "desc": "Every Base attack will steal 3% ATK Speed from the enemy. Can stack up to 20 times.",
+        "descByStar": [
+          "Every Base attack will steal 3% ATK Speed from the enemy. Can stack up to 20 times.",
+          "Every Base attack will steal 5% ATK Speed from the enemy. Can stack up to 20 times.",
+          "Every Base attack will steal 7% ATK Speed from the enemy. Can stack up to 20 times."
+        ],
+        "iconUrl": "/heroes/abyssalcrawler/skill.png"
+      },
+      "stats": {
+        "hp": [
+          500,
+          1000,
+          2000
+        ],
+        "atk": [
+          55,
+          110,
+          220
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 2
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/abyssalcrawler/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "abyssalcrawler-blue",
+          "name": "Abyssalcrawler [Blue]",
+          "imageUrl": "/heroes/abyssalcrawler/skins/abyssalcrawler-blue.png",
+          "isDefault": false
+        },
+        {
+          "id": "kraken-nana",
+          "name": "Kraken Nana",
+          "imageUrl": "/heroes/abyssalcrawler/skins/kraken-nana.png",
+          "isDefault": false
+        },
+        {
+          "id": "one-year-nana",
+          "name": "One Year Nana",
+          "imageUrl": "/heroes/abyssalcrawler/skins/one-year-nana.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "skull_hunter": {
+      "dragonestId": "e52b47ad548",
+      "chessTitle": "Eagles Skullcrusher",
+      "description": "Skull Hunter — Eagles Skullcrusher",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/skull_hunter/icon.png",
+      "portraitUrl": "/heroes/skull_hunter/portrait.png",
+      "imageUrl": "/heroes/skull_hunter/icon.png",
+      "skill": {
+        "name": "Porcupette",
+        "type": "Active",
+        "desc": "Summons a Porcupette, who deals physical damage with base attacks",
+        "descByStar": [
+          "Summons a Porcupette, who deals physical damage with base attacks",
+          "Summons a Porcupette, who deals magic damage with base attacks",
+          "Summons a Porcupette, who deals pure damage with base attacks and forces the enemies within 1 grid to attack itself for 5 seconds. CD: 30 seconds."
+        ],
+        "iconUrl": "/heroes/skull_hunter/skill.png"
+      },
+      "stats": {
+        "hp": [
+          650,
+          1300,
+          2600
+        ],
+        "atk": [
+          65,
+          130,
+          260
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 2
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/skull_hunter/portrait.png",
+          "isDefault": true
+        }
+      ]
+    },
+    "swordman": {
+      "dragonestId": "e52b47ad571",
+      "chessTitle": "Gale Thornblade",
+      "description": "Swordman — Gale Thornblade",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/swordman/icon.png",
+      "portraitUrl": "/heroes/swordman/portrait.png",
+      "imageUrl": "/heroes/swordman/icon.png",
+      "skill": {
+        "name": "Blade Fury",
+        "type": "Active",
+        "desc": "Deals 75 magical damages per second to enemy units within 1 grids in 5 seconds",
+        "descByStar": [
+          "Deals 75 magical damages per second to enemy units within 1 grids in 5 seconds",
+          "Deals 150 magical damages per second to enemy units within 1 grids in 5 seconds",
+          "Deals 225 magical damages per second to enemy units within 1 grids in 5 seconds"
+        ],
+        "iconUrl": "/heroes/swordman/skill.png"
+      },
+      "stats": {
+        "hp": [
+          600,
+          1200,
+          2400
+        ],
+        "atk": [
+          67.5,
+          135,
+          270
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 2
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/swordman/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "angler",
+          "name": "Angler",
+          "imageUrl": "/heroes/swordman/skins/angler.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "hell_knight": {
+      "dragonestId": "e52b47ad708",
+      "chessTitle": "Beelzebub",
+      "description": "Hell Knight — Beelzebub",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/hell_knight/icon.png",
+      "portraitUrl": "/heroes/hell_knight/portrait.png",
+      "imageUrl": "/heroes/hell_knight/icon.png",
+      "skill": {
+        "name": "Helling Bolt",
+        "type": "Active",
+        "desc": "Deals 50 to 200 damagess and stuns a random enemy piece for 1 to 2 seconds",
+        "descByStar": [
+          "Deals 50 to 200 damagess and stuns a random enemy piece for 1 to 2 seconds",
+          "Deals 100 to 300 damagess and stuns a random enemy piece for 1 to 3 seconds",
+          "Deals 150 to 400 damages and stuns a random enemy piece for 1 to 4 seconds"
+        ],
+        "iconUrl": "/heroes/hell_knight/skill.png"
+      },
+      "stats": {
+        "hp": [
+          700,
+          1400,
+          2800
+        ],
+        "atk": [
+          75,
+          150,
+          300
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 1
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/hell_knight/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "beelzebub-purgatory",
+          "name": "Beelzebub Purgatory",
+          "imageUrl": "/heroes/hell_knight/skins/beelzebub-purgatory.png",
+          "isDefault": false
+        },
+        {
+          "id": "beelzebub-chaos",
+          "name": "Beelzebub Chaos",
+          "imageUrl": "/heroes/hell_knight/skins/beelzebub-chaos.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "phantom_queen": {
+      "dragonestId": "e52b47ad758",
+      "chessTitle": "Asmodeus",
+      "description": "Phantom Queen — Asmodeus",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/phantom_queen/icon.png",
+      "portraitUrl": "/heroes/phantom_queen/portrait.png",
+      "imageUrl": "/heroes/phantom_queen/icon.png",
+      "skill": {
+        "name": "Scream of Devil",
+        "type": "Active",
+        "desc": "Deals 200 magical damages to nearby enemy units within 3 grids",
+        "descByStar": [
+          "Deals 200 magical damages to nearby enemy units within 3 grids",
+          "Deals 300 magical damages to nearby enemy units within 3 grids",
+          "Deals 400 magical damages to nearby enemy units within 3 grids"
+        ],
+        "iconUrl": "/heroes/phantom_queen/skill.png"
+      },
+      "stats": {
+        "hp": [
+          550,
+          1100,
+          2200
+        ],
+        "atk": [
+          57.5,
+          115,
+          230
+        ],
+        "armor": 0,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 3
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/phantom_queen/portrait.png",
+          "isDefault": true
+        }
+      ]
+    },
+    "water_spirit": {
+      "dragonestId": "e52b47ad7cf",
+      "chessTitle": "Wasser",
+      "description": "Water Spirit — Wasser",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/water_spirit/icon.png",
+      "portraitUrl": "/heroes/water_spirit/portrait.png",
+      "imageUrl": "/heroes/water_spirit/icon.png",
+      "skill": {
+        "name": "Wave Slash",
+        "type": "Active",
+        "desc": "Charges to the farthest enemy piece, dealing 200 magical damages to enemies in his path.",
+        "descByStar": [
+          "Charges to the farthest enemy piece, dealing 200 magical damages to enemies in his path.",
+          "Charges to the farthest enemy piece, dealing 300 magical damages to enemies in his path.",
+          "Charges to the farthest enemy piece, dealing 400 magical damages to enemies in his path."
+        ],
+        "iconUrl": "/heroes/water_spirit/skill.png"
+      },
+      "stats": {
+        "hp": [
+          550,
+          1100,
+          2200
+        ],
+        "atk": [
+          57.5,
+          115,
+          230
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 3
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/water_spirit/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "water-spirit-orange",
+          "name": "Water Spirit [Orange]",
+          "imageUrl": "/heroes/water_spirit/skins/water-spirit-orange.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "ripper": {
+      "dragonestId": "e52b47ad81f",
+      "chessTitle": "Golby Wood",
+      "description": "Ripper — Golby Wood",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/ripper/icon.png",
+      "portraitUrl": "/heroes/ripper/portrait.png",
+      "imageUrl": "/heroes/ripper/icon.png",
+      "skill": {
+        "name": "Reaping Death",
+        "type": "Active",
+        "desc": "Deals 150 pure damages to enemy units within 2 grids",
+        "descByStar": [
+          "Deals 150 pure damages to enemy units within 2 grids",
+          "Deals 200 pure damages to enemy units within 2 grids",
+          "Deals 250 pure damages to enemy units within 2 grids"
+        ],
+        "iconUrl": "/heroes/ripper/skill.png"
+      },
+      "stats": {
+        "hp": [
+          800,
+          1600,
+          3200
+        ],
+        "atk": [
+          57.5,
+          115,
+          230
+        ],
+        "armor": 6,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 1
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/ripper/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "ripper-2049",
+          "name": "Ripper 2049",
+          "imageUrl": "/heroes/ripper/skins/ripper-2049.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "shining_archer": {
+      "dragonestId": "e52b47afcfe",
+      "chessTitle": "Waner",
+      "description": "Shining Archer — Waner",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/shining_archer/icon.png",
+      "portraitUrl": "/heroes/shining_archer/portrait.png",
+      "imageUrl": "/heroes/shining_archer/icon.png",
+      "skill": {
+        "name": "Shooting Star",
+        "type": "Active",
+        "desc": "Deals 50 - 500 Magical Damage to the farthest piece, and stuns it for 1 - 5 seconds. The longer the distance, the greater the damage and the longer the stun duration.",
+        "descByStar": [
+          "Deals 50 - 500 Magical Damage to the farthest piece, and stuns it for 1 - 5 seconds. The longer the distance, the greater the damage and the longer the stun duration.",
+          "Deals 75 - 750 Magical Damage to the farthest piece, and stuns it for 1.5 - 7.5 seconds. The longer the distance, the greater the damage and the longer the stun duration.",
+          "Deals 100 - 1000 Magical Damage to the farthest piece, and stuns it for 2 - 10 seconds. The longer the distance, the greater the damage and the longer the stun duration."
+        ],
+        "iconUrl": "/heroes/shining_archer/skill.png"
+      },
+      "stats": {
+        "hp": [
+          600,
+          1200,
+          2400
+        ],
+        "atk": [
+          60,
+          120,
+          240
+        ],
+        "armor": 0,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 4
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/shining_archer/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "shining-watergun",
+          "name": "Shining Watergun",
+          "imageUrl": "/heroes/shining_archer/skins/shining-watergun.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "penitent_bishop": {
+      "dragonestId": "fff990c4266",
+      "chessTitle": "Penitent Bishop·Mammon",
+      "rarity": "Rare",
+      "description": "Penitent Bishop·Mammon — Penitent Bishop·Mammon",
+      "iconUrl": "/heroes/penitent_bishop/icon.png",
+      "portraitUrl": "/heroes/penitent_bishop/portrait.png",
+      "imageUrl": "/heroes/penitent_bishop/icon.png",
+      "skill": {
+        "name": "11",
+        "type": "Active",
+        "desc": "1",
+        "iconUrl": "/heroes/penitent_bishop/skill.png"
+      },
+      "stats": {
+        "armor": 1,
+        "atkSpeed": 1,
+        "range": 1
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/penitent_bishop/portrait.png",
+          "isDefault": true
+        }
+      ]
+    },
+    "eclipse_of_darkness": {
+      "dragonestId": "f7a6c42ce05",
+      "chessTitle": "Eclipse of Darkness",
+      "rarity": "Rare",
+      "description": "Eclipse of Darkness — Eclipse of Darkness",
+      "iconUrl": "/heroes/eclipse_of_darkness/icon.png",
+      "portraitUrl": "/heroes/eclipse_of_darkness/portrait.png",
+      "imageUrl": "/heroes/eclipse_of_darkness/icon.png",
+      "skill": {
+        "name": "Blood Surge",
+        "type": "Active",
+        "desc": "Eclipse of Darkness allows the specified ally piece to absorb max HP from nearby enemies, dealing pure damage to heal the target.",
+        "descByStar": [
+          "Eclipse of Darkness allows the specified ally piece to absorb max HP from nearby enemies, dealing pure damage to heal the target.",
+          "Eclipse of Darkness allows the specified ally piece to absorb max HP from nearby enemies, dealing pure damage to heal the target.",
+          "Eclipse of Darkness allows the specified ally piece to absorb max HP from nearby enemies, dealing pure damage to heal the target."
+        ],
+        "iconUrl": "/heroes/eclipse_of_darkness/skill.png"
+      },
+      "stats": {
+        "hp": [
+          750,
+          1500,
+          3000
+        ],
+        "atk": [
+          60,
+          120,
+          240
+        ],
+        "armor": 5,
+        "atkSpeed": 1.5,
+        "range": 160
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/eclipse_of_darkness/portrait.png",
+          "isDefault": true
+        }
+      ]
+    },
+    "qin_xuan": {
+      "dragonestId": "186c50163ff",
+      "chessTitle": "Plume Warrior",
+      "rarity": "Rare",
+      "description": "Qin Xuan — Plume Warrior",
+      "iconUrl": "/heroes/qin_xuan/icon.png",
+      "portraitUrl": "/heroes/qin_xuan/portrait.png",
+      "imageUrl": "/heroes/qin_xuan/icon.png",
+      "skill": {
+        "name": "Fist of Gale",
+        "type": "Active",
+        "desc": "Plume Warrior wraps her fists with a gale for 10 seconds. She will take a short rest and attack again in 2 seconds after the gale effect disappears or she deals the last blow.\\nGale: Reach the upper limit of the ATK Speed within 2 seconds and release the Fist of Gale that can punch up to 3 times, and the last blow will deal 60 magical damage to enemy pieces within 2 grids around the target, and reduce their ATK Speed by 30% for 2 seconds.",
+        "descByStar": [
+          "Plume Warrior wraps her fists with a gale for 10 seconds. She will take a short rest and attack again in 2 seconds after the gale effect disappears or she deals the last blow.\\nGale: Reach the upper limit of the ATK Speed within 2 seconds and release the Fist of Gale that can punch up to 3 times, and the last blow will deal 60 magical damage to enemy pieces within 2 grids around the target, and reduce their ATK Speed by 30% for 2 seconds.",
+          "Plume Warrior wraps her fists with a gale for 10 seconds. She will take a short rest and attack again in 2 seconds after the gale effect disappears or she deals the last blow.\\nGale: Reach the upper limit of the ATK Speed within 2 seconds and release the Fist of Gale that can punch up to 4 times, and the last blow will deal 120 magical damage to enemy pieces within 2 grids around the target, and reduce their ATK Speed by 40% for 2 seconds.",
+          "Plume Warrior wraps her fists with a gale for 10 seconds. She will take a short rest and attack again in 2 seconds after the gale effect disappears or she deals the last blow.\\nGale: Reach the upper limit of the ATK Speed within 2 seconds and release the Fist of Gale that can punch up to 5 times, and the last blow will deal 240 magical damage to enemy pieces within 3 grids around the target, and reduce their ATK Speed by 50% for 2 seconds."
+        ],
+        "iconUrl": "/heroes/qin_xuan/skill.png"
+      },
+      "stats": {
+        "hp": [
+          750,
+          1500,
+          3000
+        ],
+        "atk": [
+          55,
+          110,
+          220
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1.3,
+        "range": 1
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/qin_xuan/portrait.png",
+          "isDefault": true
+        }
+      ]
+    },
+    "bobo": {
+      "dragonestId": "f105de1774a",
+      "chessTitle": "Otter Hunter",
+      "rarity": "Rare",
+      "description": "Bobo — Otter Hunter",
+      "iconUrl": "/heroes/bobo/icon.png",
+      "portraitUrl": "/heroes/bobo/portrait.png",
+      "imageUrl": "/heroes/bobo/icon.png",
+      "skill": {
+        "name": "Delicious Shell",
+        "type": "Active",
+        "desc": "Passive: After the battle begins, any ally has a 50% chance to gain the Delicious Shell state for 5 seconds when they are born. Active: Gives random 2 allies Delicious Shell to eat (This effect will give priority to allies that have not eaten Delicious Shells.), lasting 5 seconds. Delicious Shell: When attacking, the enemy unit will get stackable Vulnerability effect (Increases damage received by 1%), and when the Vulnerability accumulates to 10 stacks, the target's recovery effect is additionally reduced by 50%.",
+        "descByStar": [
+          "Passive: After the battle begins, any ally has a 50% chance to gain the Delicious Shell state for 5 seconds when they are born. Active: Gives random 2 allies Delicious Shell to eat (This effect will give priority to allies that have not eaten Delicious Shells.), lasting 5 seconds. Delicious Shell: When attacking, the enemy unit will get stackable Vulnerability effect (Increases damage received by 1%), and when the Vulnerability accumulates to 10 stacks, the target's recovery effect is additionally reduced by 50%.",
+          "Passive: After the battle begins, any ally has a 60% chance to gain the Delicious Shell state for 5 seconds when they are born. Active: Gives random 3 allies Delicious Shell to eat (This effect will give priority to allies that have not eaten Delicious Shells.), lasting 5 seconds. Delicious Shell: When attacking, the enemy unit will get stackable Vulnerability effect (Increases damage received by 1%), and when the Vulnerability accumulates to 10 stacks, the target's recovery effect is additionally reduced by 50%.",
+          "Passive: After the battle begins, any ally has a 80% chance to gain the Delicious Shell state for 5 seconds when they are born. Active: Gives random 4 allies Delicious Shell to eat (This effect will give priority to allies that have not eaten Delicious Shells.), lasting 5 seconds. Delicious Shell: When attacking, the enemy unit will get stackable Vulnerability effect (Increases damage received by 1%), and when the Vulnerability accumulates to 10 stacks, the target's recovery effect is additionally reduced by 50%."
+        ],
+        "iconUrl": "/heroes/bobo/skill.jpg"
+      },
+      "stats": {
+        "hp": [
+          600,
+          1200,
+          2400
+        ],
+        "atk": [
+          60,
+          120,
+          240
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 4
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/bobo/portrait.png",
+          "isDefault": true
+        }
+      ]
+    },
+    "gem_artisan": {
+      "dragonestId": "17acc21aa79",
+      "chessTitle": "Mana",
+      "rarity": "Rare",
+      "description": "Gem Artisan — Mana",
+      "iconUrl": "/heroes/gem_artisan/icon.png",
+      "portraitUrl": "/heroes/gem_artisan/portrait.png",
+      "imageUrl": "/heroes/gem_artisan/icon.png",
+      "skill": {
+        "name": "Gemstone Wave",
+        "type": "Active",
+        "desc": "Uses gemstone to teleport Gem Artisan (including itself and all pieces of the same name) to somewhere near a random enemy unit, dealing 200 pure damage to nearby enemies within 1 grid for every Gem Artisan that reaches the area.",
+        "descByStar": [
+          "Uses gemstone to teleport Gem Artisan (including itself and all pieces of the same name) to somewhere near a random enemy unit, dealing 200 pure damage to nearby enemies within 1 grid for every Gem Artisan that reaches the area.",
+          "Uses gemstone to teleport Gem Artisan (including itself and all pieces of the same name) to somewhere near a random enemy unit, dealing 250 pure damage to nearby enemies within 1 grid for every Gem Artisan that reaches the area.",
+          "Uses gemstone to teleport Gem Artisan (including itself and all pieces of the same name) to somewhere near a random enemy unit, dealing 300 pure damage to nearby enemies within 1 grid for every Gem Artisan that reaches the area."
+        ],
+        "iconUrl": "/heroes/gem_artisan/skill.png"
+      },
+      "stats": {
+        "hp": [
+          800,
+          1600,
+          2400
+        ],
+        "atk": [
+          55,
+          110,
+          220
+        ],
+        "armor": 6,
+        "mr": 20,
+        "atkSpeed": 1,
+        "range": 1
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/gem_artisan/portrait.png",
+          "isDefault": true
+        }
+      ]
+    },
+    "ghost_kid": {
+      "dragonestId": "1727d59a49c",
+      "chessTitle": "Anna Wes",
+      "rarity": "Rare",
+      "description": "Ghost Kid — Anna Wes",
+      "lore": "Paul had been Sigma City's patrol officer for five years, and he had seen many creepy things at night. He had seen freak stranger wearing capes and creeping around the rooftops, and the merchant who sold exotic bats, that accidentally got killed by his cargo. However, it was the first time Paul had seen a child wandering alone in the alley at midnight. It seemed that anything could happen in this dangerous part of town, it was crowded with extremists from various factions.\nPaul was in a dark alley, barely lit by the streetlight in the corner. He could only recognize the child's approximate age and height from the outline. He guessed that the girl ran out of the house for some reason. She was scared, and her body was shaking. The girl also held a distorted, strangely shaped balloon. Paul was wondering whether he could find any clues by looking at this balloon.\n\"Are you lost, little girl?\" Paul leaned down, trying not to scare her. The balloon in the girl's hand slowly floated towards him.\n\" Brother, shall we play together? The little girl looked cheerful, and didn't feel like she was in a dangerous place.\nPaul was relieved, perhaps she was just lost. He started to blame her parents for being so careless, and didn’t realize that the creepy balloon was getting closer and closer to him.\n\"What's your father's name? Where do you live? I'll take you back.\" Paul saw the little girl's appearance. She had silver hair, her deep blue eyes expressing a child's unique innocence, but her skin was pale and cold like the moonlight.\nPaul recognized her father's name from the little girl's response, a name that had frequently appeared on the headlines of newspapers recently. However, the person with this name had already turned into ashes, the whole family was killed in a fire. According to his colleagues who investigated the case, the deceased never had a daughter.\nBefore Paul could respond, the balloon in the little girl's hand was already in front of him. It turned out to be a living creature - a big head with a large and distorted mouth. It peered at him with its one, horrifying eye.\nPaul wanted to scream for help, but an inexplicable fear blocked his throat, he couldn't shout aloud! In his panic, he recalled a robbery that occurred a few blocks away not long ago. The victim claimed that he had been knocked unconscious due to a head injury. When he woke up, all of his belongings were missing. The strange thing was that the victim lost all of his happy memories afterward. The other police officers had a good laugh about this case. At this moment, Paul felt the big head gnawing at his body, its maw enveloping and restricting him. Try as he might, he could not free himself from its grasp. Before Paul lost consciousness, he felt that something was being seized from his body...\n\"Don't eat too much.\" The little girl said, which was obviously not meant for the poor security officer who was already knocked unconscious. The big head ignored her, succumbing to its monstrous glutton and greed, its appetite being satiated by taking all the happy memories away from Paul.",
+      "iconUrl": "/heroes/ghost_kid/icon.png",
+      "portraitUrl": "/heroes/ghost_kid/portrait.png",
+      "imageUrl": "/heroes/ghost_kid/icon.png",
+      "skill": {
+        "name": "Chew Chew",
+        "type": "Active",
+        "desc": "Anna throws the Big Head to the farthest enemy, dragging the target back to her and dealing 200 Physical Damage. If the target is dragged to be within 1 grid around Anna, deals a total of 150 Magical Damage over 3 times, and stuns the target for 4.5 seconds.",
+        "descByStar": [
+          "Anna throws the Big Head to the farthest enemy, dragging the target back to her and dealing 200 Physical Damage. If the target is dragged to be within 1 grid around Anna, deals a total of 150 Magical Damage over 3 times, and stuns the target for 4.5 seconds.",
+          "Anna throws the Big Head to the farthest enemy, dragging the target back to her and dealing 300 Physical Damage. If the target is dragged to be within 1 grid around Anna, deals a total of 300 Magical Damage over 3 times, and stuns the target for 4.5 seconds.",
+          "Anna throws the Big Head to the farthest enemy, dragging the target back to her and dealing 500 Physical Damage. If the target is dragged to be within 1 grid around Anna, deals a total of 200 Magical Damage over 3 times, and stuns the target for 4.5 seconds."
+        ],
+        "iconUrl": "/heroes/ghost_kid/skill.png"
+      },
+      "stats": {
+        "hp": [
+          800,
+          1600,
+          3200
+        ],
+        "atk": [
+          90,
+          180,
+          360
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1.5,
+        "range": 1
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/ghost_kid/portrait.png",
+          "isDefault": true
+        }
+      ]
+    },
+    "umbra": {
+      "dragonestId": "e5991cf27f5",
+      "chessTitle": "Digon",
+      "rarity": "Rare",
+      "description": "Umbra — Digon",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/umbra/icon.png",
+      "portraitUrl": "/heroes/umbra/portrait.png",
+      "imageUrl": "/heroes/umbra/icon.png",
+      "skill": {
+        "name": "Familiar",
+        "type": "Active",
+        "desc": "Increases Umbra's current/max HP by 80% and summons 2 Familiars to battle. Familiars share HP with Umbra.",
+        "descByStar": [
+          "Increases Umbra's current/max HP by 80% and summons 2 Familiars to battle. Familiars share HP with Umbra.",
+          "Increases Umbra's current/max HP by 80% and summons 2 strong Familiars to battle. Familiars share HP with Umbra.",
+          "Increases Umbra's current/max HP by 80% and summons 2 stronger Familiars to battle. Familiars share HP with Umbra."
+        ],
+        "iconUrl": "/heroes/umbra/skill.png"
+      },
+      "stats": {
+        "hp": [
+          800,
+          1600,
+          3200
+        ],
+        "atk": [
+          50,
+          100,
+          200
+        ],
+        "armor": 5,
+        "mr": 10,
+        "atkSpeed": 1.5,
+        "range": 3
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/umbra/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "umbra-red",
+          "name": "Umbra [Red]",
+          "imageUrl": "/heroes/umbra/skins/umbra-red.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "berserker": {
+      "dragonestId": "16eaba5e235",
+      "chessTitle": "Arour'du",
+      "rarity": "Rare",
+      "description": "Berserker — Arour'du",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/berserker/icon.png",
+      "portraitUrl": "/heroes/berserker/portrait.png",
+      "imageUrl": "/heroes/berserker/icon.png",
+      "skill": {
+        "name": "Wind Furyaxe",
+        "type": "Active",
+        "desc": "Passive: When attacking enemies within 1 grids, there is a 25% chance to trigger the effect: Deals 250 physical damage to enemy pieces within 1 grids of Berserker, and has a 30% chance to dodge base attacks of enemy pieces being damaged, lasting for 5 seconds. (CD: 4 seconds)\\nPassive: When attacking enemies in 1 grids away, there is a 25% chance to trigger the effect: Deals 250 physical damage to enemy pieces in a sector area of Berserker, and the ATK Speed of enemy pieces being damaged will be reduced by 30%, lasting for 5 seconds. (CD: 4 seconds)",
+        "descByStar": [
+          "Passive: When attacking enemies within 1 grids, there is a 25% chance to trigger the effect: Deals 250 physical damage to enemy pieces within 1 grids of Berserker, and has a 30% chance to dodge base attacks of enemy pieces being damaged, lasting for 5 seconds. (CD: 4 seconds)\\nPassive: When attacking enemies in 1 grids away, there is a 25% chance to trigger the effect: Deals 250 physical damage to enemy pieces in a sector area of Berserker, and the ATK Speed of enemy pieces being damaged will be reduced by 30%, lasting for 5 seconds. (CD: 4 seconds)",
+          "Passive: When attacking enemies within 1 grids, there is a 25% chance to trigger the effect: Deals 450 physical damage to enemy pieces within 1 grids of Berserker, and has a 30% chance to dodge base attacks of enemy pieces being damaged, lasting for 5 seconds. (CD: 3 seconds)\\nPassive: When attacking enemies in 1 grids away, there is a 25% chance to trigger the effect: Deals 450 physical damage to enemy pieces in a sector area of Berserker, and the ATK Speed of enemy pieces being damaged will be reduced by 30%, lasting for 5 seconds. (CD: 3 seconds)",
+          "Passive: When attacking enemies within 1 grids, there is a 25% chance to trigger the effect: Deals 700 physical damage to enemy pieces within 1 grids of Berserker, and has a 30% chance to dodge base attacks of enemy pieces being damaged, lasting for 5 seconds. (CD: 2 seconds)\\nPassive: When attacking enemies in 1 grids away, there is a 25% chance to trigger the effect: Deals 700 physical damage to enemy pieces in a sector area of Berserker, and the ATK Speed of enemy pieces being damaged will be reduced by 30%, lasting for 5 seconds. (CD: 2 seconds)"
+        ],
+        "iconUrl": "/heroes/berserker/skill.png"
+      },
+      "stats": {
+        "hp": [
+          750,
+          1500,
+          3000
+        ],
+        "atk": [
+          80,
+          160,
+          320
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1.1,
+        "range": 3
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/berserker/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "fighter-arour-du",
+          "name": "Fighter Arour'du",
+          "imageUrl": "/heroes/berserker/skins/fighter-arour-du.png",
+          "isDefault": false
+        },
+        {
+          "id": "merchant-arour-du",
+          "name": "Merchant Arour'du",
+          "imageUrl": "/heroes/berserker/skins/merchant-arour-du.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "evil_knight": {
+      "dragonestId": "e52b47ab96d",
+      "chessTitle": "Lizard Knight",
+      "rarity": "Rare",
+      "description": "Evil Knight — Lizard Knight",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/evil_knight/icon.png",
+      "portraitUrl": "/heroes/evil_knight/portrait.png",
+      "imageUrl": "/heroes/evil_knight/icon.png",
+      "skill": {
+        "name": "Shield of Skeleton",
+        "type": "Active",
+        "desc": "Creates a shield that absorbs 200 damages in 10 seconds  for an allied piece. When the shield is destroyed it will burst and deal damages equal to the amount  absorbed to an area of 3 radius around it.",
+        "descByStar": [
+          "Creates a shield that absorbs 200 damages in 10 seconds  for an allied piece. When the shield is destroyed it will burst and deal damages equal to the amount  absorbed to an area of 3 radius around it.",
+          "Creates a shield that absorbs 300 damages in 10 seconds  for an allied piece. When the shield is destroyed it will burst and deal damages equal to the amount  absorbed to an area of 3 radius around it.",
+          "Creates a shield that absorbs 600 damages in 10 seconds  for an allied piece. When the shield is destroyed it will burst and deal damages equal to the amount  absorbed to an area of 3 radius around it."
+        ],
+        "iconUrl": "/heroes/evil_knight/skill.png"
+      },
+      "stats": {
+        "hp": [
+          750,
+          1500,
+          3000
+        ],
+        "atk": [
+          50,
+          100,
+          200
+        ],
+        "armor": 10,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 2
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/evil_knight/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "evil-knight-blue",
+          "name": "Evil Knight [Blue]",
+          "imageUrl": "/heroes/evil_knight/skins/evil-knight-blue.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "warpwood_sage": {
+      "dragonestId": "e52b47acb1b",
+      "chessTitle": "Xu",
+      "rarity": "Rare",
+      "description": "Warpwood Sage — Xu",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/warpwood_sage/icon.png",
+      "portraitUrl": "/heroes/warpwood_sage/portrait.png",
+      "imageUrl": "/heroes/warpwood_sage/icon.png",
+      "skill": {
+        "name": "Leech Seed",
+        "type": "Active",
+        "desc": "Deals 12.5 Magical damage to a random enemy piece within 3 grids every 0.25 seconds, and recovers his own HP based on damage dealt for 5 seconds.",
+        "descByStar": [
+          "Deals 12.5 Magical damage to a random enemy piece within 3 grids every 0.25 seconds, and recovers his own HP based on damage dealt for 5 seconds.",
+          "Deals 18.75 Magical damage to a random enemy piece within 3 grids every 0.25 seconds, and recovers his own HP based on damage dealt for 5 seconds.",
+          "Deals 25 Magical damage to a random enemy piece within 3 grids every 0.25 seconds, and recovers his own HP based on damage dealt for 5 seconds."
+        ],
+        "iconUrl": "/heroes/warpwood_sage/skill.png"
+      },
+      "stats": {
+        "hp": [
+          650,
+          1300,
+          2600
+        ],
+        "atk": [
+          75,
+          150,
+          300
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 2,
+        "range": 2
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/warpwood_sage/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "candy-sage",
+          "name": "Candy Sage",
+          "imageUrl": "/heroes/warpwood_sage/skins/candy-sage.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "wind_ranger": {
+      "dragonestId": "e52b47ad179",
+      "chessTitle": "Wu",
+      "rarity": "Rare",
+      "description": "Wind Ranger — Wu",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/wind_ranger/icon.png",
+      "portraitUrl": "/heroes/wind_ranger/portrait.png",
+      "imageUrl": "/heroes/wind_ranger/icon.png",
+      "skill": {
+        "name": "Powershot",
+        "type": "Active",
+        "desc": "Charges the bow for up to 2 seconds, dealing at most 400 damages to enemy units in the path. For each enemy that powershot hits, its damages is reduced by 10%",
+        "descByStar": [
+          "Charges the bow for up to 2 seconds, dealing at most 400 damages to enemy units in the path. For each enemy that powershot hits, its damages is reduced by 10%",
+          "Charges the bow for up to 2 seconds, dealing at most 600 damages to enemy units in the path. For each enemy that powershot hits, its damages is reduced by 10%",
+          "Charges the bow for up to 2 seconds, dealing at most 800 damages to enemy units in the path. For each enemy that powershot hits, its damages is reduced by 10%"
+        ],
+        "iconUrl": "/heroes/wind_ranger/skill.png"
+      },
+      "stats": {
+        "hp": [
+          550,
+          1100,
+          2200
+        ],
+        "atk": [
+          60,
+          120,
+          240
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 0.9,
+        "range": 5
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/wind_ranger/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "heart-stealer",
+          "name": "Heart Stealer",
+          "imageUrl": "/heroes/wind_ranger/skins/heart-stealer.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "shadowcrawler": {
+      "dragonestId": "e52b47ad1c8",
+      "chessTitle": "Je",
+      "rarity": "Rare",
+      "description": "Shadowcrawler — Je",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/shadowcrawler/icon.png",
+      "portraitUrl": "/heroes/shadowcrawler/portrait.png",
+      "imageUrl": "/heroes/shadowcrawler/icon.png",
+      "skill": {
+        "name": "Coup de Ombre",
+        "type": "Active",
+        "desc": "Has a 10% chance to deal 3 times damages on attack",
+        "descByStar": [
+          "Has a 10% chance to deal 3 times damages on attack",
+          "Has a 10%chance to deal 4.5 times damages on attack",
+          "Has a 10%chance to deal 6 times damages on attack"
+        ],
+        "iconUrl": "/heroes/shadowcrawler/skill.png"
+      },
+      "stats": {
+        "hp": [
+          550,
+          1100,
+          2200
+        ],
+        "atk": [
+          85,
+          170,
+          340
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 2
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/shadowcrawler/portrait.png",
+          "isDefault": true
+        }
+      ]
+    },
+    "werewolf": {
+      "dragonestId": "e52b47ad47d",
+      "chessTitle": "Wolf Scrat",
+      "rarity": "Rare",
+      "description": "Werewolf — Wolf Scrat",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/werewolf/icon.png",
+      "portraitUrl": "/heroes/werewolf/portrait.png",
+      "imageUrl": "/heroes/werewolf/icon.png",
+      "skill": {
+        "name": "Shapeshift",
+        "type": "Active",
+        "desc": "Transform into a wolf, granting him bonus 20 % maximum HP and summons 2 wolves to battle.",
+        "descByStar": [
+          "Transform into a wolf, granting him bonus 20 % maximum HP and summons 2 wolves to battle.",
+          "Transform into a wolf, granting him bonus 35 % maximum HP and summons 2 wolves to battle.",
+          "Transform into a wolf, granting him bonus 50% maximum HP and summons 2 wolves to battle."
+        ],
+        "iconUrl": "/heroes/werewolf/skill.png"
+      },
+      "stats": {
+        "hp": [
+          750,
+          1500,
+          3000
+        ],
+        "atk": [
+          55,
+          110,
+          220
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 2
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/werewolf/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "cowhand-wolf",
+          "name": "Cowhand Wolf",
+          "imageUrl": "/heroes/werewolf/skins/cowhand-wolf.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "argali_knight": {
+      "dragonestId": "e52b47ad4a5",
+      "chessTitle": "Aries·Osterloh",
+      "rarity": "Rare",
+      "description": "Argali Knight — Aries·Osterloh",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/argali_knight/icon.png",
+      "portraitUrl": "/heroes/argali_knight/portrait.png",
+      "imageUrl": "/heroes/argali_knight/icon.png",
+      "skill": {
+        "name": "Purification",
+        "type": "Active",
+        "desc": "Deals 200 healing to a friendly chess and 250 pure damages to all nearby enemy within 2 grids,",
+        "descByStar": [
+          "Deals 200 healing to a friendly chess and 250 pure damages to all nearby enemy within 2 grids,",
+          "Deals 400 healing to a friendly chess and 350 pure damages to all nearby enemy within 2 grids",
+          "Deals 720 healing to a friendly chess and 450 pure damages to all nearby enemy within 2 grids"
+        ],
+        "iconUrl": "/heroes/argali_knight/skill.png"
+      },
+      "stats": {
+        "hp": [
+          700,
+          1400,
+          2800
+        ],
+        "atk": [
+          55,
+          110,
+          220
+        ],
+        "armor": 10,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 2
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/argali_knight/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "candy-knight",
+          "name": "Candy Knight",
+          "imageUrl": "/heroes/argali_knight/skins/candy-knight.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "flame_wizard": {
+      "dragonestId": "e52b47ad4f7",
+      "chessTitle": "Fire Bird",
+      "rarity": "Rare",
+      "description": "Flame Wizard — Fire Bird",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/flame_wizard/icon.png",
+      "portraitUrl": "/heroes/flame_wizard/portrait.png",
+      "imageUrl": "/heroes/flame_wizard/icon.png",
+      "skill": {
+        "name": "Laguna Blade",
+        "type": "Active",
+        "desc": "Deals 350 magical damages to 1 random enemy piece. After the launch of skill, attack speed increase by 40%, lasts 30 seconds, can be stacked 2 times",
+        "descByStar": [
+          "Deals 350 magical damages to 1 random enemy piece. After the launch of skill, attack speed increase by 40%, lasts 30 seconds, can be stacked 2 times",
+          "Deals 600 magical damages to 1 random enemy piece. After the launch of skill, attack speed increase by 60%, lasts 30 seconds,can be stacked 2 times",
+          "Deals 900 magical damages to 1 random enemy piece. After the launch of skill, attack speed increase by 80%, lasts 30 seconds,can be stacked 2 times"
+        ],
+        "iconUrl": "/heroes/flame_wizard/skill.png"
+      },
+      "stats": {
+        "hp": [
+          500,
+          1000,
+          2000
+        ],
+        "atk": [
+          50,
+          100,
+          200
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 5
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/flame_wizard/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "aqua-wizard",
+          "name": "Aqua Wizard",
+          "imageUrl": "/heroes/flame_wizard/skins/aqua-wizard.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "poisonous_worm": {
+      "dragonestId": "e52b47ad63b",
+      "chessTitle": "Poisonous Worm",
+      "rarity": "Rare",
+      "description": "Poisonous Worm — Poisonous Worm",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/poisonous_worm/icon.png",
+      "portraitUrl": "/heroes/poisonous_worm/portrait.png",
+      "imageUrl": "/heroes/poisonous_worm/icon.png",
+      "skill": {
+        "name": "Plague Ward",
+        "type": "Active",
+        "desc": "Summons an unmovable plague ward which slows 40% of target's attack speed in 5 seconds. Plague ward is immune to ability damage.",
+        "descByStar": [
+          "Summons an unmovable plague ward which slows 40% of target's attack speed in 5 seconds. Plague ward is immune to ability damage.",
+          "Summons an unmovable strong plague ward which slows 40% of target's attack speed in 5 seconds. Plague ward is immune to ability damage.",
+          "Summons two unmovable stronger plague wards which slows 40% of target's attack speed in 5 seconds. Plague ward is immune to ability damage."
+        ],
+        "iconUrl": "/heroes/poisonous_worm/skill.png"
+      },
+      "stats": {
+        "hp": [
+          600,
+          1200,
+          2400
+        ],
+        "atk": [
+          55,
+          110,
+          220
+        ],
+        "armor": 0,
+        "mr": 20,
+        "atkSpeed": 1,
+        "range": 3
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/poisonous_worm/portrait.png",
+          "isDefault": true
+        }
+      ]
+    },
+    "fallen_witcher": {
+      "dragonestId": "e52b47ad690",
+      "chessTitle": "Goar",
+      "rarity": "Rare",
+      "description": "Fallen Witcher — Goar",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/fallen_witcher/icon.png",
+      "portraitUrl": "/heroes/fallen_witcher/portrait.png",
+      "imageUrl": "/heroes/fallen_witcher/icon.png",
+      "skill": {
+        "name": "Metamorphism",
+        "type": "Active",
+        "desc": "Transform to a piece with ranged attack and change HP with a random allied units, granting him bonus 50 % attack speed and 80 damages for 60 seconds. Upon transformation.",
+        "descByStar": [
+          "Transform to a piece with ranged attack and change HP with a random allied units, granting him bonus 50 % attack speed and 80 damages for 60 seconds. Upon transformation.",
+          "Transform to a piece with ranged attack and and change HP with a random allied units, granting him bonus 70% attack speed and 100 damages for 60 seconds. Upon transformation.",
+          "Transform to a piece with ranged attack andand change HP with a random allied units, granting him bonus 100 % attack speed and 160 damages for 60 seconds. Upon transformation."
+        ],
+        "iconUrl": "/heroes/fallen_witcher/skill.png"
+      },
+      "stats": {
+        "hp": [
+          750,
+          1500,
+          3000
+        ],
+        "atk": [
+          70,
+          140,
+          280
+        ],
+        "armor": 5,
+        "mr": 10,
+        "atkSpeed": 1,
+        "range": 1
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/fallen_witcher/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "horus-goar",
+          "name": "Horus Goar",
+          "imageUrl": "/heroes/fallen_witcher/skins/horus-goar.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "shadow_devil": {
+      "dragonestId": "e52b47ad6b9",
+      "chessTitle": "Samael",
+      "rarity": "Rare",
+      "description": "Shadow Devil — Samael",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/shadow_devil/icon.png",
+      "portraitUrl": "/heroes/shadow_devil/portrait.png",
+      "imageUrl": "/heroes/shadow_devil/icon.png",
+      "skill": {
+        "name": "Requiem of Shadow",
+        "type": "Active",
+        "desc": "After 1.7s delay, Shadow Devil releases 8 shockwaves around itself, each dealing 200 magical damage. For every piece in the lineup that activates a Demon Synergy, the number of shockwaves +1.",
+        "descByStar": [
+          "After 1.7s delay, Shadow Devil releases 8 shockwaves around itself, each dealing 200 magical damage. For every piece in the lineup that activates a Demon Synergy, the number of shockwaves +1.",
+          "After 1.7s delay, Shadow Devil releases 9 shockwaves around itself, each dealing 250 magical damage. For every piece in the lineup that activates a Demon Synergy, the number of shockwaves +1.",
+          "After 1.7s delay, Shadow Devil releases 10 shockwaves around itself, each dealing 300 magical damage. For every piece in the lineup that activates a Demon Synergy, the number of shockwaves +1."
+        ],
+        "iconUrl": "/heroes/shadow_devil/skill.png"
+      },
+      "stats": {
+        "hp": [
+          550,
+          1100,
+          2200
+        ],
+        "atk": [
+          80,
+          160,
+          320
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1.1,
+        "range": 4
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/shadow_devil/portrait.png",
+          "isDefault": true
+        }
+      ]
+    },
+    "lord_of_sand": {
+      "dragonestId": "e52b47ad6e0",
+      "chessTitle": "Lord of Sand",
+      "rarity": "Rare",
+      "description": "Lord of Sand — Lord of Sand",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/lord_of_sand/icon.png",
+      "portraitUrl": "/heroes/lord_of_sand/portrait.png",
+      "imageUrl": "/heroes/lord_of_sand/icon.png",
+      "skill": {
+        "name": "Burrow Dash",
+        "type": "Active",
+        "desc": "Burrows into the ground and tunnels to the farthest piece on the board, dealing 150 damages and stun enemy units in the path for 1.5 seconds",
+        "descByStar": [
+          "Burrows into the ground and tunnels to the farthest piece on the board, dealing 150 damages and stun enemy units in the path for 1.5 seconds",
+          "Burrows into the ground and tunnels to the farthest piece on the board, dealing 250 damages and stun enemy units in the path for 1.5 seconds",
+          "Burrows into the ground and tunnels to the farthest piece on the board, dealing 450 damages and stun enemy units in the path for 1.5 seconds"
+        ],
+        "iconUrl": "/heroes/lord_of_sand/skill.png"
+      },
+      "stats": {
+        "hp": [
+          600,
+          1200,
+          2400
+        ],
+        "atk": [
+          52.5,
+          105,
+          210
+        ],
+        "armor": 10,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 2
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/lord_of_sand/portrait.png",
+          "isDefault": true
+        }
+      ]
+    },
+    "thunder_spirit": {
+      "dragonestId": "e52b47ad7f7",
+      "chessTitle": "Donner",
+      "rarity": "Rare",
+      "description": "Thunder Spirit — Donner",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/thunder_spirit/icon.png",
+      "portraitUrl": "/heroes/thunder_spirit/portrait.png",
+      "imageUrl": "/heroes/thunder_spirit/icon.png",
+      "skill": {
+        "name": "Lightning Nova",
+        "type": "Active",
+        "desc": "Release a wave of plasma that grows in power as it expands, dealing 100 damages in max radius of 3 and 10 as minimum damages.",
+        "descByStar": [
+          "Release a wave of plasma that grows in power as it expands, dealing 100 damages in max radius of 3 and 10 as minimum damages.",
+          "Release a wave of plasma that grows in power as it expands, dealing 175 damages in max radius of 3 and 10 as minimum damages.",
+          "Release a wave of plasma that grows in power as it expands, dealing 250 damages in max radius of 3 and 10 as minimum damages."
+        ],
+        "iconUrl": "/heroes/thunder_spirit/skill.png"
+      },
+      "stats": {
+        "hp": [
+          750,
+          1500,
+          3000
+        ],
+        "atk": [
+          60,
+          120,
+          240
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 3
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/thunder_spirit/portrait.png",
+          "isDefault": true
+        }
+      ]
+    },
+    "fortune_teller": {
+      "dragonestId": "e52b47afdcb",
+      "chessTitle": "Pri'du",
+      "rarity": "Rare",
+      "description": "Fortune Teller — Pri'du",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/fortune_teller/icon.png",
+      "portraitUrl": "/heroes/fortune_teller/portrait.png",
+      "imageUrl": "/heroes/fortune_teller/icon.png",
+      "skill": {
+        "name": "Life Extension",
+        "type": "Active",
+        "desc": "Prevents 1 allied piece from being eliminated within 5 seconds",
+        "descByStar": [
+          "Prevents 1 allied piece from being eliminated within 5 seconds",
+          "Prevents 2 allied piece from being eliminated within 5 seconds",
+          "Prevents 3 allied piece from being eliminated within 5 seconds"
+        ],
+        "iconUrl": "/heroes/fortune_teller/skill.jpg"
+      },
+      "stats": {
+        "hp": [
+          550,
+          1100,
+          2200
+        ],
+        "atk": [
+          62.5,
+          125,
+          250
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 3
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/fortune_teller/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "merchant-pri-du",
+          "name": "Merchant Pri'du",
+          "imageUrl": "/heroes/fortune_teller/skins/merchant-pri-du.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "grand_herald": {
+      "dragonestId": "e52b47b13a8",
+      "chessTitle": "Hermes",
+      "rarity": "Rare",
+      "description": "Grand Herald — Hermes",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/grand_herald/icon.png",
+      "portraitUrl": "/heroes/grand_herald/portrait.png",
+      "imageUrl": "/heroes/grand_herald/icon.png",
+      "skill": {
+        "name": "Take Control",
+        "type": "Active",
+        "desc": "Passive: Reduces Skill CD by 10%. Active: Clones one skill of the nearest centrosymmetric enemy when the battle starts",
+        "descByStar": [
+          "Passive: Reduces Skill CD by 10%. Active: Clones one skill of the nearest centrosymmetric enemy when the battle starts",
+          "Passive: Reduces Skill CD by 20%. Active: Clones one skill of the nearest centrosymmetric enemy when the battle starts",
+          "Passive: Reduces Skill CD by 30%. Active: Clones one skill of the nearest centrosymmetric enemy when the battle starts"
+        ],
+        "iconUrl": "/heroes/grand_herald/skill.png"
+      },
+      "stats": {
+        "hp": [
+          600,
+          1200,
+          2400
+        ],
+        "atk": [
+          55,
+          110,
+          220
+        ],
+        "armor": 0,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 4
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/grand_herald/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "hermes-order",
+          "name": "Hermes Order",
+          "imageUrl": "/heroes/grand_herald/skins/hermes-order.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "cave_prodigy": {
+      "dragonestId": "ed1d548b4ea",
+      "chessTitle": "Shire Strikeboar",
+      "rarity": "Epic",
+      "description": "Cave Prodigy — Shire Strikeboar",
+      "iconUrl": "/heroes/cave_prodigy/icon.png",
+      "portraitUrl": "/heroes/cave_prodigy/portrait.png",
+      "imageUrl": "/heroes/cave_prodigy/icon.png",
+      "skill": {
+        "name": "Hero's Back",
+        "type": "Active",
+        "desc": "Summons a unit of the highest cost that has been killed in this round, grants it with 100 initial mana. If it’s a chess piece or a summon, it will have the same star level as Cave Prodigy; if it’s a creep, then it will stay the same.",
+        "descByStar": [
+          "Summons a unit of the highest cost that has been killed in this round, grants it with 100 initial mana. If it’s a chess piece or a summon, it will have the same star level as Cave Prodigy; if it’s a creep, then it will stay the same.",
+          "Summons a unit of the highest cost that has been killed in this round, grants it with 100 initial mana. If it’s a chess piece or a summon, it will have the same star level as Cave Prodigy; if it’s a creep, then it will stay the same.",
+          "Summons a unit of the highest cost that has been killed in this round, grants it with 100 initial mana. If it’s a chess piece or a summon, it will have the same star level as Cave Prodigy; if it’s a creep, then it will stay the same."
+        ],
+        "iconUrl": "/heroes/cave_prodigy/skill.png"
+      },
+      "stats": {
+        "hp": [
+          800,
+          1600,
+          3200
+        ],
+        "atk": [
+          50,
+          100,
+          200
+        ],
+        "armor": 6,
+        "mr": 10,
+        "atkSpeed": 1.4,
+        "range": 3
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/cave_prodigy/portrait.png",
+          "isDefault": true
+        }
+      ]
+    },
+    "thorn_predator": {
+      "dragonestId": "e7beff4feee",
+      "chessTitle": "Thorn Predator",
+      "rarity": "Epic",
+      "description": "Thorn Predator — Thorn Predator",
+      "lore": "Hunger, fear, despair. When it comes to the terrifying thing that never stops hunting in the desert, the talkative adventurers in the bar will tacitly lower their voices or even keep silent.\nThorn Predator, a deadly threat hidden in the desert. His horror stems from his purity-pure predatory instincts and cruel actions.\nHe moved with his claw feet and ambushed all prey that entered its predator range with sharp spikes day and night.",
+      "iconUrl": "/heroes/thorn_predator/icon.png",
+      "portraitUrl": "/heroes/thorn_predator/portrait.png",
+      "imageUrl": "/heroes/thorn_predator/icon.png",
+      "skill": {
+        "name": "Thorn Shell",
+        "type": "Active",
+        "desc": "The Predator activates a Thorn Shell which can reflect and disable the damage received (each attacker can only be applied once), and stun the attacker for 1 seconds. The Thorn Shell lasts for 4 seconds.",
+        "descByStar": [
+          "The Predator activates a Thorn Shell which can reflect and disable the damage received (each attacker can only be applied once), and stun the attacker for 1 seconds. The Thorn Shell lasts for 4 seconds.",
+          "The Predator activates a Thorn Shell which can reflect and disable the damage received (each attacker can only be applied once), and stun the attacker for 1.5 seconds. The Thorn Shell lasts for 5 seconds.",
+          "The Predator activates a Thorn Shell which can reflect and disable the damage received (each attacker can only be applied once), and stun the attacker for 2.5 seconds. The Thorn Shell lasts for 6 seconds."
+        ],
+        "iconUrl": "/heroes/thorn_predator/skill.png"
+      },
+      "stats": {
+        "hp": [
+          700,
+          1400,
+          2800
+        ],
+        "atk": [
+          67.5,
+          135,
+          270
+        ],
+        "armor": 10,
+        "mr": 0,
+        "atkSpeed": 1.2,
+        "range": 1
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/thorn_predator/portrait.png",
+          "isDefault": true
+        }
+      ]
+    },
+    "spider_queen": {
+      "dragonestId": "e7bef0c026b",
+      "chessTitle": "Ungoliant Morales",
+      "rarity": "Epic",
+      "description": "Spider Queen — Ungoliant Morales",
+      "lore": "Ungoliant Morales is a rare individual with perfect leader ability among the Insectoid. After her subversive reforms, the group not only was not annihilated by other groups but also ushered in unprecedented prosperity.\nWhile holding the absolute dominance at the top of the Insectoid in her hand, she also gave wisdom to the bottom outstanding people generously. \nBecause of this, her group was able to become the most powerful force in the Insectoid.",
+      "iconUrl": "/heroes/spider_queen/icon.png",
+      "portraitUrl": "/heroes/spider_queen/portrait.png",
+      "imageUrl": "/heroes/spider_queen/icon.png",
+      "skill": {
+        "name": "Weave Web",
+        "type": "Active",
+        "desc": "Weave a web that lasts 4 seconds. The enemies on the web cannot move and 40% of their Base attack can be evaded. If the enemy dies during the effect, a small spider will be summoned.",
+        "descByStar": [
+          "Weave a web that lasts 4 seconds. The enemies on the web cannot move and 40% of their Base attack can be evaded. If the enemy dies during the effect, a small spider will be summoned.",
+          "Weave a web that lasts 6 seconds. The enemies on the web cannot move and 60% of their Base attack can be evaded. If the enemy dies during the effect, a small spider will be summoned.",
+          "Weave a web that lasts 10 seconds. The enemies on the web cannot move and 100% of their Base attack can be evaded. If the enemy dies during the effect, a small spider will be summoned."
+        ],
+        "iconUrl": "/heroes/spider_queen/skill.png"
+      },
+      "stats": {
+        "hp": [
+          900,
+          1800,
+          3600
+        ],
+        "atk": [
+          95,
+          190,
+          380
+        ],
+        "armor": 5,
+        "mr": 5,
+        "atkSpeed": 1.2,
+        "range": 1
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/spider_queen/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "spider-queen-green",
+          "name": "Spider Queen [Green]",
+          "imageUrl": "/heroes/spider_queen/skins/spider-queen-green.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "shining_assassin": {
+      "dragonestId": "e52b47ad1f0",
+      "chessTitle": "Shor",
+      "rarity": "Epic",
+      "description": "Shining Assassin — Shor",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/shining_assassin/icon.png",
+      "portraitUrl": "/heroes/shining_assassin/portrait.png",
+      "imageUrl": "/heroes/shining_assassin/icon.png",
+      "skill": {
+        "name": "T.A. Field",
+        "type": "Active",
+        "desc": "Gain 5 times of avoidance effects and 40 bonus to damage, last for 6 seconds.",
+        "descByStar": [
+          "Gain 5 times of avoidance effects and 40 bonus to damage, last for 6 seconds.",
+          "Gain 7 times of avoidance effects and 60 bonus to damage, last for 6 seconds.",
+          "Gain 9 times of avoidance effects and 80 bonus to damage, last for 6 seconds."
+        ],
+        "iconUrl": "/heroes/shining_assassin/skill.png"
+      },
+      "stats": {
+        "hp": [
+          750,
+          1500,
+          3000
+        ],
+        "atk": [
+          100,
+          200,
+          400
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 3
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/shining_assassin/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "beach-assassin",
+          "name": "Beach Assassin",
+          "imageUrl": "/heroes/shining_assassin/skins/beach-assassin.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "razorclaw": {
+      "dragonestId": "e52b47ad362",
+      "chessTitle": "Mu Razorclaw",
+      "rarity": "Epic",
+      "description": "Razorclaw — Mu Razorclaw",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/razorclaw/icon.png",
+      "portraitUrl": "/heroes/razorclaw/portrait.png",
+      "imageUrl": "/heroes/razorclaw/icon.png",
+      "skill": {
+        "name": "Summon Spirit Bear",
+        "type": "Active",
+        "desc": "Summon a spirit bear with its attack has a 20% chance to entangle an enemy unit for 3 seconds. Summoned (Spirit Bear) Magic Resistance 10",
+        "descByStar": [
+          "Summon a spirit bear with its attack has a 20% chance to entangle an enemy unit for 3 seconds. Summoned (Spirit Bear) Magic Resistance 10",
+          "Summon a strong spirit bear with its attack has a 20%  chance to entangle an enemy unit for 3 seconds. Summoned (Spirit Bear) Magic Resistance 10",
+          "Summon a stronger spirit bear with its attack has a 20% chance to entangle an enemy unit for 3 seconds. Summoned (Spirit Bear) Magic Resistance 10"
+        ],
+        "iconUrl": "/heroes/razorclaw/skill.png"
+      },
+      "stats": {
+        "hp": [
+          800,
+          1600,
+          3000
+        ],
+        "atk": [
+          55,
+          110,
+          220
+        ],
+        "armor": 0,
+        "mr": 20,
+        "atkSpeed": 1,
+        "range": 3
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/razorclaw/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "santa-claus",
+          "name": "Santa Claus",
+          "imageUrl": "/heroes/razorclaw/skins/santa-claus.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "dragon_knight": {
+      "dragonestId": "e52b47ad38a",
+      "chessTitle": "Ilagon Tusmore",
+      "rarity": "Epic",
+      "description": "Dragon Knight — Ilagon Tusmore",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/dragon_knight/icon.png",
+      "portraitUrl": "/heroes/dragon_knight/portrait.png",
+      "imageUrl": "/heroes/dragon_knight/icon.png",
+      "skill": {
+        "name": "Resonance",
+        "type": "Active",
+        "desc": "Transforms into a powerful dragon form, granting additional 2 grids of attack range and 100 attack damages. Normal attack deals consitent magical damage.",
+        "descByStar": [
+          "Transforms into a powerful dragon form, granting additional 2 grids of attack range and 100 attack damages. Normal attack deals consitent magical damage.",
+          "Transforms into a powerful dragon form, granting additional 2 grids of attack range and 125 attack damages. Normal attack deals consitent magical damage.",
+          "Transforms into a powerful dragon form, granting additional 2 grids of attack range and 150 attack damages. Normal attack deals consitent magical damage."
+        ],
+        "iconUrl": "/heroes/dragon_knight/skill.png"
+      },
+      "stats": {
+        "hp": [
+          800,
+          1600,
+          3200
+        ],
+        "atk": [
+          65,
+          130,
+          260
+        ],
+        "armor": 10,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 1
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/dragon_knight/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "dragon-knight-red",
+          "name": "Dragon Knight [Red]",
+          "imageUrl": "/heroes/dragon_knight/skins/dragon-knight-red.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "siren": {
+      "dragonestId": "e52b47ad3b4",
+      "chessTitle": "Rusalka",
+      "rarity": "Epic",
+      "description": "Siren — Rusalka",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/siren/icon.png",
+      "portraitUrl": "/heroes/siren/portrait.png",
+      "imageUrl": "/heroes/siren/icon.png",
+      "skill": {
+        "name": "Abyssal Gaze",
+        "type": "Active",
+        "desc": "During 3 seconds, any enemy units in 4 radius looking at Siren will have their attack speed slowed for 30%. If 2 seconds of total time is accumulated looking at Siren, that piece will turn to stone for 2 seconds.",
+        "descByStar": [
+          "During 3 seconds, any enemy units in 4 radius looking at Siren will have their attack speed slowed for 30%. If 2 seconds of total time is accumulated looking at Siren, that piece will turn to stone for 2 seconds.",
+          "During 4 seconds, any enemy units in 6 radius looking at Siren will have their attack speed slowed for 30%. If 2 seconds of total time is accumulated looking at Siren, that piece will turn to stone for 2.5 seconds.",
+          "During 5 seconds, any enemy units in 7  radius looking at Siren will have their attack speed slowed for 30%. If 2 seconds of total time is accumulated looking at Siren, that piece will turn to stone for 3 seconds."
+        ],
+        "iconUrl": "/heroes/siren/skill.png"
+      },
+      "stats": {
+        "hp": [
+          750,
+          1500,
+          3000
+        ],
+        "atk": [
+          60,
+          120,
+          240
+        ],
+        "armor": 5,
+        "mr": 10,
+        "atkSpeed": 1,
+        "range": 4
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/siren/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "siren-blue",
+          "name": "Siren [Blue]",
+          "imageUrl": "/heroes/siren/skins/siren-blue.png",
+          "isDefault": false
+        },
+        {
+          "id": "kraken-rusalka",
+          "name": "Kraken Rusalka",
+          "imageUrl": "/heroes/siren/skins/kraken-rusalka.png",
+          "isDefault": false
+        },
+        {
+          "id": "one-year-rusalka",
+          "name": "One Year Rusalka",
+          "imageUrl": "/heroes/siren/skins/one-year-rusalka.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "storm_shaman": {
+      "dragonestId": "e52b47ad3db",
+      "chessTitle": "Oost Brutalthunder",
+      "rarity": "Epic",
+      "description": "Storm Shaman — Oost Brutalthunder",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/storm_shaman/icon.png",
+      "portraitUrl": "/heroes/storm_shaman/portrait.png",
+      "imageUrl": "/heroes/storm_shaman/icon.png",
+      "skill": {
+        "name": "Static Storm",
+        "type": "Active",
+        "desc": "Creates a damaging static storm that also silence enemy units in the area for 2 seconds. Dealing as maximum as 150 magical damages per second.",
+        "descByStar": [
+          "Creates a damaging static storm that also silence enemy units in the area for 2 seconds. Dealing as maximum as 150 magical damages per second.",
+          "Creates a damaging static storm that also silence enemy units in the area for 3 seconds. Dealing as maximum as 200 magical damages per second.",
+          "Creates a damaging static storm that also silence enemy units in the area for 4 seconds. Dealing as maximum as 250 magical damages per second."
+        ],
+        "iconUrl": "/heroes/storm_shaman/skill.png"
+      },
+      "stats": {
+        "hp": [
+          800,
+          1600,
+          3200
+        ],
+        "atk": [
+          47.5,
+          95,
+          190
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 4
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/storm_shaman/portrait.png",
+          "isDefault": true
+        }
+      ]
+    },
+    "venomancer": {
+      "dragonestId": "e52b47ad404",
+      "chessTitle": "Golby Moly",
+      "rarity": "Epic",
+      "description": "Venomancer — Golby Moly",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/venomancer/icon.png",
+      "portraitUrl": "/heroes/venomancer/portrait.png",
+      "imageUrl": "/heroes/venomancer/icon.png",
+      "skill": {
+        "name": "Chemical Rage",
+        "type": "Active",
+        "desc": "Generates acid mist for 15 seconds that reduces the enemy Armor by 7 if affected by the mist. Meanwhile, enters a chemically induced rage that reduces basic attack cooldown to 0.7, and restores HP by 50 every second for 60 seconds.",
+        "descByStar": [
+          "Generates acid mist for 15 seconds that reduces the enemy Armor by 7 if affected by the mist. Meanwhile, enters a chemically induced rage that reduces basic attack cooldown to 0.7, and restores HP by 50 every second for 60 seconds.",
+          "Generates acid mist for 15 seconds that reduces the enemy Armor by 7 if affected by the mist. Meanwhile, enters a chemically induced rage that reduces basic attack cooldown to 0.55, and restores HP by 75 every second for 60 seconds.",
+          "Generates acid mist for 15 seconds that reduces the enemy Armor by 10 if affected by the mist. Meanwhile, enters a chemically induced rage that reduces basic attack cooldown to 0.4, and restores HP by 100 every second for 60 seconds."
+        ],
+        "iconUrl": "/heroes/venomancer/skill.png"
+      },
+      "stats": {
+        "hp": [
+          1000,
+          2000,
+          4000
+        ],
+        "atk": [
+          65,
+          130,
+          260
+        ],
+        "armor": 0,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 1
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/venomancer/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "moree-2049",
+          "name": "Moree 2049",
+          "imageUrl": "/heroes/venomancer/skins/moree-2049.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "pirate_captain": {
+      "dragonestId": "e52b47ad4ce",
+      "chessTitle": "Jack·D·Eric",
+      "rarity": "Epic",
+      "description": "Pirate Captain — Jack·D·Eric",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/pirate_captain/icon.png",
+      "portraitUrl": "/heroes/pirate_captain/portrait.png",
+      "imageUrl": "/heroes/pirate_captain/icon.png",
+      "skill": {
+        "name": "Ghostly ship",
+        "type": "Active",
+        "desc": "Summon a ghostly ship smashes the target area, causing 1  seconds of stunning and 150 damages.",
+        "descByStar": [
+          "Summon a ghostly ship smashes the target area, causing 1  seconds of stunning and 150 damages.",
+          "Summon a ghostly ship smashes the target area, causing 1.5  seconds of stunning and 250 damages.",
+          "Summon a ghostly ship smashes the target area, causing 2 seconds of stunning and 350 damages."
+        ],
+        "iconUrl": "/heroes/pirate_captain/skill.jpg"
+      },
+      "stats": {
+        "hp": [
+          950,
+          1900,
+          3800
+        ],
+        "atk": [
+          82.5,
+          165,
+          330
+        ],
+        "armor": 8,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 2
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/pirate_captain/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "red-beard-jack",
+          "name": "Red Beard Jack",
+          "imageUrl": "/heroes/pirate_captain/skins/red-beard-jack.png",
+          "isDefault": false
+        },
+        {
+          "id": "one-year-jack",
+          "name": "One Year Jack",
+          "imageUrl": "/heroes/pirate_captain/skins/one-year-jack.png",
+          "isDefault": false
+        },
+        {
+          "id": "li-xuan-yuan",
+          "name": "Li Xuan Yuan",
+          "imageUrl": "/heroes/pirate_captain/skins/li-xuan-yuan.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "tortola_elder": {
+      "dragonestId": "e52b47ad51f",
+      "chessTitle": "Turt Saruman",
+      "rarity": "Epic",
+      "description": "Tortola Elder — Turt Saruman",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/tortola_elder/icon.png",
+      "portraitUrl": "/heroes/tortola_elder/portrait.png",
+      "imageUrl": "/heroes/tortola_elder/icon.png",
+      "skill": {
+        "name": "Kamehameha",
+        "type": "Active",
+        "desc": "Channels for at most 3 seconds then release a pulsing wave, dealing at most 300 magical damages to enemy units in its path.",
+        "descByStar": [
+          "Channels for at most 3 seconds then release a pulsing wave, dealing at most 300 magical damages to enemy units in its path.",
+          "Channels for at most 3 seconds then release a pulsing wave, dealing at most 500 magical damages to enemy units in its path.",
+          "Channels for at most 3 seconds then release a pulsing wave, dealing at most 800 magical damages to enemy units in its path."
+        ],
+        "iconUrl": "/heroes/tortola_elder/skill.png"
+      },
+      "stats": {
+        "hp": [
+          650,
+          1300,
+          2600
+        ],
+        "atk": [
+          42.5,
+          85,
+          170
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 5
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/tortola_elder/portrait.png",
+          "isDefault": true
+        }
+      ]
+    },
+    "soul_reaper": {
+      "dragonestId": "e52b47ad5c1",
+      "chessTitle": "Scolle Warlock",
+      "rarity": "Epic",
+      "description": "Soul Reaper — Scolle Warlock",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/soul_reaper/icon.png",
+      "portraitUrl": "/heroes/soul_reaper/portrait.png",
+      "imageUrl": "/heroes/soul_reaper/icon.png",
+      "skill": {
+        "name": "Heartstopper Pulse",
+        "type": "Active",
+        "desc": "Deal 100 magical damages to enemy units and 100 heal to allied units in 3 radius.",
+        "descByStar": [
+          "Deal 100 magical damages to enemy units and 100 heal to allied units in 3 radius.",
+          "Deal 150 magical damages to enemy units and 150 heal to allied units in 3 radius.",
+          "Deal 200 magical damages to enemy units and 200 heal to allied units in 3 radius."
+        ],
+        "iconUrl": "/heroes/soul_reaper/skill.png"
+      },
+      "stats": {
+        "hp": [
+          850,
+          1700,
+          3400
+        ],
+        "atk": [
+          55,
+          110,
+          220
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 3
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/soul_reaper/portrait.png",
+          "isDefault": true
+        }
+      ]
+    },
+    "doom_arbiter": {
+      "dragonestId": "e52b47ad665",
+      "chessTitle": "Berial",
+      "rarity": "Epic",
+      "description": "Doom Arbiter — Berial",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/doom_arbiter/icon.png",
+      "portraitUrl": "/heroes/doom_arbiter/portrait.png",
+      "imageUrl": "/heroes/doom_arbiter/icon.png",
+      "skill": {
+        "name": "Doom Curse",
+        "type": "Active",
+        "desc": "Silence an enemy piece, dealing 60 pure damages in 10 seconds",
+        "descByStar": [
+          "Silence an enemy piece, dealing 60 pure damages in 10 seconds",
+          "Silence an enemy piece, dealing 90 pure damages in 15 seconds",
+          "Silence an enemy piece, dealing 120 pure damages in 20 seconds"
+        ],
+        "iconUrl": "/heroes/doom_arbiter/skill.png"
+      },
+      "stats": {
+        "hp": [
+          950,
+          1900,
+          3800
+        ],
+        "atk": [
+          115,
+          230,
+          460
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 1
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/doom_arbiter/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "berial-chaos",
+          "name": "Berial Chaos",
+          "imageUrl": "/heroes/doom_arbiter/skins/berial-chaos.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "grimtouch": {
+      "dragonestId": "e52b47b13cf",
+      "chessTitle": "Washaak",
+      "rarity": "Epic",
+      "description": "Grimtouch — Washaak",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/grimtouch/icon.png",
+      "portraitUrl": "/heroes/grimtouch/portrait.png",
+      "imageUrl": "/heroes/grimtouch/icon.png",
+      "skill": {
+        "name": "Ink Splash",
+        "type": "Active",
+        "desc": "Releases a forward ink wave, deals 100 Magical Damage to enemies along the path, each piece hit increases damage by 30, accompanied with 1x Ink Touch effect. Ink Touch: Target skill attack on any Ink Touched pieces would be imposed on all other directional Ink Touched pieces",
+        "descByStar": [
+          "Releases a forward ink wave, deals 100 Magical Damage to enemies along the path, each piece hit increases damage by 30, accompanied with 1x Ink Touch effect. Ink Touch: Target skill attack on any Ink Touched pieces would be imposed on all other directional Ink Touched pieces",
+          "Releases a forward ink wave, deals 150 Magical Damage to enemies along the path, each piece hit increases damage by 45, accompanied with 2x Ink Touch effect. Ink Touch: Target skill attack on any Ink Touched pieces would be imposed on all other directional Ink Touched pieces",
+          "Releases a forward ink wave, deals 200 Magical Damage to enemies along the path, each piece hit increases damage by 60, accompanied with 4x Ink Touch effect. Ink Touch: Target skill attack on any Ink Touched pieces would be imposed on all other directional Ink Touched pieces"
+        ],
+        "iconUrl": "/heroes/grimtouch/skill.png"
+      },
+      "stats": {
+        "hp": [
+          750,
+          1500,
+          3000
+        ],
+        "atk": [
+          80,
+          160,
+          320
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 3
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/grimtouch/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "washaak-chaos",
+          "name": "Washaak Chaos",
+          "imageUrl": "/heroes/grimtouch/skins/washaak-chaos.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "sacred_lancer": {
+      "dragonestId": "e8432f6fa43",
+      "chessTitle": "Skar'du",
+      "rarity": "Legendary",
+      "description": "Sacred Lancer — Skar'du",
+      "lore": "Skar'du was originally a weak person, the sickness is tormenting her body but unable to defeat her will. After receiving treatment from Desperate Doctor, she turned into a powerful warrior. She built her prestige in the army by that ancestral lance. That red short lance that belongs to her is a symbol of victory.",
+      "iconUrl": "/heroes/sacred_lancer/icon.png",
+      "portraitUrl": "/heroes/sacred_lancer/portrait.png",
+      "imageUrl": "/heroes/sacred_lancer/icon.png",
+      "skill": {
+        "name": "Cursed Lance",
+        "type": "Active",
+        "desc": "Feeds her Lance with blood, sacrificing 15 HP at each base attack, and multiple attacks will stack additional 20 Magic damage per second to the target, lasts 8 seconds; for each loss of 10% HP, increases 10% ATK speed, 10% Magic resistance and 0.5% HP regeneration per second.",
+        "descByStar": [
+          "Feeds her Lance with blood, sacrificing 15 HP at each base attack, and multiple attacks will stack additional 20 Magic damage per second to the target, lasts 8 seconds; for each loss of 10% HP, increases 10% ATK speed, 10% Magic resistance and 0.5% HP regeneration per second.",
+          "Feeds her Lance with blood, sacrificing 15 HP at each base attack, and multiple attacks will stack additional 30 Magic damage per second to the target, lasts 8 seconds; for each loss of 10% HP, increases 15% ATK speed, 10% Magic resistance and 0.5% HP regeneration per second.",
+          "Feeds her Lance with blood, sacrificing 15 HP at each base attack, and multiple attacks will stack additional 50 Magic damage per second to the target, lasts 8 seconds; for each loss of 10% HP, increases 25% ATK speed, 10% Magic resistance and 0.5% HP regeneration per second."
+        ],
+        "iconUrl": "/heroes/sacred_lancer/skill.png"
+      },
+      "stats": {
+        "hp": [
+          1050,
+          2100,
+          4200
+        ],
+        "atk": [
+          90,
+          180,
+          360
+        ],
+        "armor": 10,
+        "mr": 10,
+        "atkSpeed": 1.1,
+        "range": 3
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/sacred_lancer/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "sacred-lancer-yellow",
+          "name": "Sacred Lancer [Yellow]",
+          "imageUrl": "/heroes/sacred_lancer/skins/sacred-lancer-yellow.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "the_scryer": {
+      "dragonestId": "e69444fe2ce",
+      "chessTitle": "Ro",
+      "rarity": "Legendary",
+      "description": "The Scryer — Ro",
+      "lore": "Stay tuned!",
+      "iconUrl": "/heroes/the_scryer/icon.png",
+      "portraitUrl": "/heroes/the_scryer/portrait.png",
+      "imageUrl": "/heroes/the_scryer/icon.png",
+      "skill": {
+        "name": "Raven Arcane",
+        "type": "Active",
+        "desc": "Active: Casts an ability based on the highest activated tier Class/Race Synergy of the enemy's lineup (with at least 3 chess pieces). Passive: Regenerates 10 Mana per second. When the first enemy's Mana is full, Silence it for 3 seconds. Mage/Shaman/Divinity: Electromagnetic Pulse, Warrior/Cave Clan/Goblin: Darkfeathered Servants, Mech/Warlock/Marine: Blood Surge, Hunter/Assassin/Glacier: Sonic Attack, Knight/Human/Egersis: Bolt of Lightning, Beast/Feathered/Demon: Earth's Fury, Druid/Spirit/Dragon: Whirlwind Attack",
+        "descByStar": [
+          "Active: Casts an ability based on the highest activated tier Class/Race Synergy of the enemy's lineup (with at least 3 chess pieces). Passive: Regenerates 10 Mana per second. When the first enemy's Mana is full, Silence it for 3 seconds. Mage/Shaman/Divinity: Electromagnetic Pulse, Warrior/Cave Clan/Goblin: Darkfeathered Servants, Mech/Warlock/Marine: Blood Surge, Hunter/Assassin/Glacier: Sonic Attack, Knight/Human/Egersis: Bolt of Lightning, Beast/Feathered/Demon: Earth's Fury, Druid/Spirit/Dragon: Whirlwind Attack",
+          "Active: Casts an ability based on the highest activated tier Class/Race Synergy of the enemy's lineup (with at least 3 chess pieces). Passive: Regenerates 10 Mana per second. When the first enemy's Mana is full, Silence it for 3 seconds. Mage/Shaman/Divinity: Electromagnetic Pulse, Warrior/Cave Clan/Goblin: Darkfeathered Servants, Mech/Warlock/Marine: Blood Surge, Hunter/Assassin/Glacier: Sonic Attack, Knight/Human/Egersis: Bolt of Lightning, Beast/Feathered/Demon: Earth's Fury, Druid/Spirit/Dragon: Whirlwind Attack",
+          "Active: Casts an ability based on the highest activated tier Class/Race Synergy of the enemy's lineup (with at least 3 chess pieces). Passive: Regenerates 10 Mana per second. When the first enemy's Mana is full, Silence it for 3 seconds. Mage/Shaman/Divinity: Electromagnetic Pulse, Warrior/Cave Clan/Goblin: Darkfeathered Servants, Mech/Warlock/Marine: Blood Surge, Hunter/Assassin/Glacier: Sonic Attack, Knight/Human/Egersis: Bolt of Lightning, Beast/Feathered/Demon: Earth's Fury, Druid/Spirit/Dragon: Whirlwind Attack"
+        ],
+        "iconUrl": "/heroes/the_scryer/skill.png"
+      },
+      "stats": {
+        "hp": [
+          1000,
+          2000,
+          4000
+        ],
+        "atk": [
+          75,
+          150,
+          300
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 1.1,
+        "range": 4
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/the_scryer/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "the-scryer-red",
+          "name": "The Scryer [Red]",
+          "imageUrl": "/heroes/the_scryer/skins/the-scryer-red.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "frostblaze_dragon": {
+      "dragonestId": "e5991b4bd56",
+      "chessTitle": "Bayrison",
+      "rarity": "Legendary",
+      "description": "Frostblaze Dragon — Bayrison",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/frostblaze_dragon/icon.png",
+      "portraitUrl": "/heroes/frostblaze_dragon/portrait.png",
+      "imageUrl": "/heroes/frostblaze_dragon/icon.png",
+      "skill": {
+        "name": "Icebound Wall",
+        "type": "Active",
+        "desc": "Builds an Icebound wall on your right, dealing 200 magical damage to enemy passing through the wall and reducing their attack speed by 30% for 3 seconds. All pieces won't target enemies on the other side of the wall.",
+        "descByStar": [
+          "Builds an Icebound wall on your right, dealing 200 magical damage to enemy passing through the wall and reducing their attack speed by 30% for 3 seconds. All pieces won't target enemies on the other side of the wall.",
+          "Builds an Icebound wall on your right, dealing 300 magical damage to enemy passing through the wall and reducing their attack speed by 30% for 3 seconds. All pieces won't target enemies on the other side of the wall.",
+          "Builds an Icebound wall on your right, dealing 400 magical damage to enemy passing through the wall and reducing their attack speed by 30% for 3 seconds. All pieces won't target enemies on the other side of the wall."
+        ],
+        "iconUrl": "/heroes/frostblaze_dragon/skill.png"
+      },
+      "stats": {
+        "hp": [
+          900,
+          1800,
+          3600
+        ],
+        "atk": [
+          60,
+          120,
+          240
+        ],
+        "armor": 0,
+        "mr": 20,
+        "atkSpeed": 1.1,
+        "range": 4
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/frostblaze_dragon/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "frostblaze-dragon-red",
+          "name": "Frostblaze Dragon [Red]",
+          "imageUrl": "/heroes/frostblaze_dragon/skins/frostblaze-dragon-red.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "strange_egg": {
+      "dragonestId": "e52b47abc41",
+      "chessTitle": "Circular",
+      "rarity": "Legendary",
+      "description": "Strange Egg — Circular",
+      "lore": "0",
+      "iconUrl": "/heroes/strange_egg/icon.png",
+      "portraitUrl": "/heroes/strange_egg/portrait.png",
+      "imageUrl": "/heroes/strange_egg/icon.png",
+      "skill": {
+        "name": "Ever Changing",
+        "type": "Active",
+        "desc": "If you need 1 piece to rank up your piece, drag the Strange Egg to the target piece, and it'll be whatever you want it to be.",
+        "iconUrl": "/heroes/strange_egg/skill.png"
+      },
+      "stats": {
+        "armor": 0,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 3
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/strange_egg/portrait.png",
+          "isDefault": true
+        }
+      ]
+    },
+    "helicopter": {
+      "dragonestId": "e52b47acac7",
+      "chessTitle": "Black Hawk Titanium",
+      "rarity": "Legendary",
+      "description": "Helicopter — Black Hawk Titanium",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/helicopter/icon.png",
+      "portraitUrl": "/heroes/helicopter/portrait.png",
+      "imageUrl": "/heroes/helicopter/icon.png",
+      "skill": {
+        "name": "Call Down",
+        "type": "Active",
+        "desc": "Call down 2 aerial missiles strike enemy units in 4 radius. Each of them deals 200 magical damages",
+        "descByStar": [
+          "Call down 2 aerial missiles strike enemy units in 4 radius. Each of them deals 200 magical damages",
+          "Call down 2 aerial missiles strike enemy units in 4  radius. Each of them deals 300 magical damages",
+          "Call down 2 aerial missiles strike enemy units in 4 radius. Each of them deals 400 magical damages"
+        ],
+        "iconUrl": "/heroes/helicopter/skill.png"
+      },
+      "stats": {
+        "hp": [
+          900,
+          1800,
+          3600
+        ],
+        "atk": [
+          77.5,
+          155,
+          310
+        ],
+        "armor": 10,
+        "mr": 0,
+        "atkSpeed": 0.9,
+        "range": 3
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/helicopter/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "one-year-black",
+          "name": "One Year Black",
+          "imageUrl": "/heroes/helicopter/skins/one-year-black.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "devastator": {
+      "dragonestId": "e52b47ad269",
+      "chessTitle": "Golby Boom",
+      "rarity": "Legendary",
+      "description": "Devastator — Golby Boom",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/devastator/icon.png",
+      "portraitUrl": "/heroes/devastator/portrait.png",
+      "imageUrl": "/heroes/devastator/icon.png",
+      "skill": {
+        "name": "Delayed Action Bomb",
+        "type": "Active",
+        "desc": "Plant an explosive that will detonate after 3 seconds and deal 500 physical damages to enemy units in 4 radius.",
+        "descByStar": [
+          "Plant an explosive that will detonate after 3 seconds and deal 500 physical damages to enemy units in 4 radius.",
+          "Plant an explosive that will detonate after 3 seconds and deal 800 physical damages to enemy units in 4 radius.",
+          "Plant an explosive that will detonate after 3 seconds and deal 1100 physical damages to enemy units in 4 radius."
+        ],
+        "iconUrl": "/heroes/devastator/skill.png"
+      },
+      "stats": {
+        "hp": [
+          1000,
+          2000,
+          4000
+        ],
+        "atk": [
+          50,
+          100,
+          200
+        ],
+        "armor": 10,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 4
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/devastator/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "blast-2049",
+          "name": "Blast 2049",
+          "imageUrl": "/heroes/devastator/skins/blast-2049.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "dark_spirit": {
+      "dragonestId": "e52b47ad2c1",
+      "chessTitle": "Dunkel",
+      "rarity": "Legendary",
+      "description": "Dark Spirit — Dunkel",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/dark_spirit/icon.png",
+      "portraitUrl": "/heroes/dark_spirit/portrait.png",
+      "imageUrl": "/heroes/dark_spirit/icon.png",
+      "skill": {
+        "name": "Black Hole",
+        "type": "Active",
+        "desc": "Deals pure damage equals to 4% of the max HP per second for enemy pieces within 3 grids. It lasts for 8 seconds.",
+        "descByStar": [
+          "Deals pure damage equals to 4% of the max HP per second for enemy pieces within 3 grids. It lasts for 8 seconds.",
+          "Deals pure damage equals to 6% of the max HP per second for enemy pieces within 3 grids. It lasts for 8 seconds.",
+          "Deals pure damage equals to 8% of the max HP per second for enemy pieces within 3 grids. It lasts for 8 seconds."
+        ],
+        "iconUrl": "/heroes/dark_spirit/skill.png"
+      },
+      "stats": {
+        "hp": [
+          1000,
+          2000,
+          4000
+        ],
+        "atk": [
+          50,
+          100,
+          200
+        ],
+        "armor": 5,
+        "mr": 40,
+        "atkSpeed": 1,
+        "range": 3
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/dark_spirit/portrait.png",
+          "isDefault": true
+        }
+      ]
+    },
+    "tsunami_stalker": {
+      "dragonestId": "e52b47ad311",
+      "chessTitle": "Nyarlat",
+      "rarity": "Legendary",
+      "description": "Tsunami Stalker — Nyarlat",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/tsunami_stalker/icon.png",
+      "portraitUrl": "/heroes/tsunami_stalker/portrait.png",
+      "imageUrl": "/heroes/tsunami_stalker/icon.png",
+      "skill": {
+        "name": "Ravaging Tentacles",
+        "type": "Active",
+        "desc": "Slam the ground, causing the tentacles to erupt in all directions and in at most 3 radius, dealing 100 magical damages and stunning enemy units for 2 seconds.",
+        "descByStar": [
+          "Slam the ground, causing the tentacles to erupt in all directions and in at most 3 radius, dealing 100 magical damages and stunning enemy units for 2 seconds.",
+          "Slam the ground, causing the tentacles to erupt in all directions and in at most 5 radius, dealing 200 magical damages and stunning enemy units for 2 seconds.",
+          "Slam the ground, causing the tentacles to erupt in all directions and in at most 6 radius, dealing 300 magical damages and stunning enemy units for 2 seconds."
+        ],
+        "iconUrl": "/heroes/tsunami_stalker/skill.png"
+      },
+      "stats": {
+        "hp": [
+          950,
+          1900,
+          3800
+        ],
+        "atk": [
+          50,
+          100,
+          200
+        ],
+        "armor": 5,
+        "mr": 0,
+        "atkSpeed": 2,
+        "range": 1
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/tsunami_stalker/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "tsunami-stalker-blue",
+          "name": "Tsunami Stalker [Blue]",
+          "imageUrl": "/heroes/tsunami_stalker/skins/tsunami-stalker-blue.png",
+          "isDefault": false
+        },
+        {
+          "id": "one-year-nyarlat",
+          "name": "One Year Nyarlat",
+          "imageUrl": "/heroes/tsunami_stalker/skins/one-year-nyarlat.png",
+          "isDefault": false
+        },
+        {
+          "id": "kraken-nyarlat",
+          "name": "Kraken Nyarlat",
+          "imageUrl": "/heroes/tsunami_stalker/skins/kraken-nyarlat.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "god_of_thunder": {
+      "dragonestId": "e52b47aec44",
+      "chessTitle": "Zeus",
+      "rarity": "Legendary",
+      "description": "God of Thunder — Zeus",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/god_of_thunder/icon.png",
+      "portraitUrl": "/heroes/god_of_thunder/portrait.png",
+      "imageUrl": "/heroes/god_of_thunder/icon.png",
+      "skill": {
+        "name": "Zeus' Punishment",
+        "type": "Active",
+        "desc": "Summons thunder to punish at least 1 enemy piece, and has a 50% chance of dealing 15% of the target piece's remaining HP +250 Magical damage equals to it.",
+        "descByStar": [
+          "Summons thunder to punish at least 1 enemy piece, and has a 50% chance of dealing 15% of the target piece's remaining HP +250 Magical damage equals to it.",
+          "Summons thunder to punish at least 1 enemy piece, and has a 50% chance of dealing 25% of the target piece's remaining HP +350 Magical damage equals to it.",
+          "Summons thunder to punish at least 1 enemy piece, and has a 50% chance of dealing 35% of the target piece's remaining HP +450 Magical damage equals to it."
+        ],
+        "iconUrl": "/heroes/god_of_thunder/skill.png"
+      },
+      "stats": {
+        "hp": [
+          950,
+          1900,
+          3800
+        ],
+        "atk": [
+          60,
+          120,
+          240
+        ],
+        "armor": 0,
+        "mr": 40,
+        "atkSpeed": 1,
+        "range": 3
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/god_of_thunder/portrait.png",
+          "isDefault": true
+        },
+        {
+          "id": "zeus-order",
+          "name": "Zeus Order",
+          "imageUrl": "/heroes/god_of_thunder/skins/zeus-order.png",
+          "isDefault": false
+        }
+      ]
+    },
+    "rogue_guard": {
+      "dragonestId": "e52b47afeed",
+      "chessTitle": "Lucifer",
+      "rarity": "Legendary",
+      "description": "Rogue Guard — Lucifer",
+      "lore": "Stay tuned",
+      "iconUrl": "/heroes/rogue_guard/icon.png",
+      "portraitUrl": "/heroes/rogue_guard/portrait.png",
+      "imageUrl": "/heroes/rogue_guard/icon.png",
+      "skill": {
+        "name": "Crazy Dance",
+        "type": "Active",
+        "desc": "Passive: Deals 50% splash physical damage to enemies within 2.5 grids. Active: All ally Demon pieces' attack increases by 150 for 60 seconds. Also increases its own ATK which equals to number of allied pieces with Demon synergy*35.",
+        "descByStar": [
+          "Passive: Deals 50% splash physical damage to enemies within 2.5 grids. Active: All ally Demon pieces' attack increases by 150 for 60 seconds. Also increases its own ATK which equals to number of allied pieces with Demon synergy*35.",
+          "Passive: Deals 50% splash physical damage to enemies within 2.5 grids. Active: All ally Demon pieces' attack increases by 200 for 60 seconds. Also increases its own ATK which equals to number of allied pieces with Demon synergy*45.",
+          "Passive: Deals 50% splash physical damage to enemies within 2.5 grids. Active: All ally Demon pieces' attack increases by 250 for 60 seconds. Also increases its own ATK which equals to number of allied pieces with Demon synergy*60."
+        ],
+        "iconUrl": "/heroes/rogue_guard/skill.jpg"
+      },
+      "stats": {
+        "hp": [
+          1200,
+          2400,
+          4800
+        ],
+        "atk": [
+          125,
+          250,
+          500
+        ],
+        "armor": 10,
+        "mr": 0,
+        "atkSpeed": 1,
+        "range": 1
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/rogue_guard/portrait.png",
+          "isDefault": true
+        }
+      ]
+    },
+    "khan": {
+      "dragonestId": "edde7225351",
+      "chessTitle": "Uriyang Modu",
+      "rarity": "Legendary",
+      "description": "Khan — Uriyang Modu",
+      "iconUrl": "/heroes/khan/icon.png",
+      "portraitUrl": "/heroes/khan/portrait.png",
+      "imageUrl": "/heroes/khan/icon.png",
+      "skill": {
+        "name": "Earth Cracking",
+        "type": "Active",
+        "desc": "Slash a crack ahead with the axe, pulling enemy units within range toward the crack after 3 seconds and stunning them for 2 seconds while dealing damage equals to their maximum HP 10%+100 (50% is magical damage, 50% is physical damage).",
+        "descByStar": [
+          "Slash a crack ahead with the axe, pulling enemy units within range toward the crack after 3 seconds and stunning them for 2 seconds while dealing damage equals to their maximum HP 10%+100 (50% is magical damage, 50% is physical damage).",
+          "Slash a crack ahead with the axe, pulling enemy units within range toward the crack after 3 seconds and stunning them for 2.5 seconds while dealing damage equals to their maximum HP 15%+150 (50% is magical damage, 50% is physical damage).",
+          "Slash a crack ahead with the axe, pulling enemy units within range toward the crack after 3 seconds and stunning them for 3 seconds while dealing damage equals to their maximum HP 20%+200 (50% is magical damage, 50% is physical damage)."
+        ],
+        "iconUrl": "/heroes/khan/skill.png"
+      },
+      "stats": {
+        "hp": [
+          1000,
+          2000,
+          4000
+        ],
+        "atk": [
+          115,
+          230,
+          460
+        ],
+        "armor": 10,
+        "mr": 20,
+        "atkSpeed": 1.3,
+        "range": 1
+      },
+      "skins": [
+        {
+          "id": "default",
+          "name": "Default",
+          "imageUrl": "/heroes/khan/portrait.png",
+          "isDefault": true
+        }
+      ]
+    }
+  }
+}

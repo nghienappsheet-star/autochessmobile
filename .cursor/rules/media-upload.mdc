@@ -1,0 +1,56 @@
+---
+description: Image upload policy — Cloudinary only, no base64 in persistence
+globs: src/lib/cloudinary.ts,src/lib/media-url.ts,src/components/**/Image*.tsx,src/components/shared/CloudinaryFileUpload.tsx,src/components/admin/AdminMedia*.tsx,src/pages/AdminMediaPage.tsx,src/pages/PostEditorPage.tsx,src/pages/CommunityComposerPage.tsx,src/components/profile/ProfileSettingsTab.tsx
+alwaysApply: false
+---
+
+# Media Upload Policy
+
+## Never persist inline image data
+
+- **Never** store `data:image/...;base64,...` or `blob:` URLs in localStorage, Supabase columns, or any database field.
+- **Never** upload user images to Supabase Storage — this project does not use that pattern.
+- **Never** use `FileReader.readAsDataURL()` for images that will be saved to app state or backend.
+
+## File uploads → Cloudinary only
+
+User-facing file pickers must upload via [`uploadImageToCloudinary`](src/lib/cloudinary.ts) (unsigned preset).
+
+Required env (see [`.env.example`](.env.example)):
+
+- `VITE_CLOUDINARY_CLOUD_NAME`
+- `VITE_CLOUDINARY_UPLOAD_PRESET`
+
+Reuse [`CloudinaryFileUpload`](src/components/shared/CloudinaryFileUpload.tsx) instead of duplicating upload logic.
+
+## Allowed stored URL formats
+
+Validate with helpers from [`src/lib/media-url.ts`](src/lib/media-url.ts):
+
+| Helper | Use case |
+|--------|----------|
+| `isPersistableImageUrl` | Cover images, media library, community attachments, hero icons |
+| `isPersistableAvatarValue` | Profile avatar (also allows `bg-*` Tailwind class tokens) |
+| `sanitizeCommunityImageUrls` | Strip invalid attachments before save |
+
+Allowed values:
+
+- `https://` / `http://` URLs (prefer Cloudinary `secure_url` after upload)
+- Static paths: `/heroes/...`, `/traits/...`
+- Avatar Tailwind classes: `bg-brand-gold`, etc.
+
+## Validation layers
+
+1. **UI** — block `data:` / `blob:` on paste/input; show error from i18n
+2. **DataContext** — guard `addMedia`, `updateMedia`, `addCommunityPost`, `updateCommunityPost`, `addPost`, `updatePost`
+
+## Exceptions (local only, not persisted)
+
+- Team Builder PNG export via `canvas.toDataURL` for browser download only
+- html2canvas internal placeholders
+
+## Adding new image upload surfaces
+
+1. Use `CloudinaryFileUpload` for file input
+2. Validate manual URLs with `isPersistableImageUrl` before mutation
+3. Add DataContext guard if introducing a new persisted entity with image fields

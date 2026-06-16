@@ -1,0 +1,311 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Surfaces */
+  --color-brand-bg: #0D0E12;
+  --color-brand-card: #15171D;
+  --color-brand-card-2: #1B1E26;
+  --color-brand-hover: rgba(255, 255, 255, 0.04);
+  --color-brand-border: rgba(255, 255, 255, 0.07);
+
+  /* Accent — gold gradient pair */
+  --color-brand-gold: #F5B43C;
+  --color-brand-gold-deep: #E8902A;
+  --color-brand-yellow: #F5B43C;
+  --color-brand-red: #F25C54;
+
+  /* Text */
+  --color-brand-text-main: #F5F6F8;
+  --color-brand-text-sub: #8A8F98;
+
+  /* Status */
+  --color-brand-green: #3FB950;
+
+  /* Tier colors */
+  --color-tier-s: #F25C54;
+  --color-tier-a: #F5A623;
+  --color-tier-b: #4D96F0;
+  --color-tier-c: #8A8F98;
+
+  /* Hero cost colors (game standard) */
+  --color-cost-1: #94A3B8;
+  --color-cost-2: #3FB950;
+  --color-cost-3: #4D96F0;
+  --color-cost-4: #A855F7;
+  --color-cost-5: #F5B43C;
+
+  /* Border radius — vuong hoa (8px cho card/nut/input) */
+  --radius-sm: 0.125rem;   /* 2px */
+  --radius-md: 0.25rem;    /* 4px */
+  --radius-lg: 0.375rem;   /* 6px badge */
+  --radius-xl: 0.5rem;     /* 8px card/button/input */
+  --radius-2xl: 0.625rem;  /* 10px large panel */
+  --radius-3xl: 0.75rem;   /* 12px hero/section */
+  --radius-4xl: 1rem;      /* 16px max */
+
+  /* Breakpoints */
+  --breakpoint-xs: 30rem;  /* 480px */
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-style: normal;
+  }
+
+  * {
+    font-style: normal !important;
+  }
+
+  body {
+    @apply bg-brand-bg text-brand-text-main text-[14px] leading-[1.7] font-[400] antialiased selection:bg-brand-gold selection:text-black;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-[-0.02em] leading-[1.2];
+  }
+
+  h1 { @apply text-[32px] font-[700]; }
+  h2 { @apply text-[24px] font-[700]; }
+  h3 { @apply text-[18px] font-[600]; }
+}
+
+/* Gold gradient — primary CTA (Tailwind v4 @utility avoids bg-* color utility conflicts) */
+@utility bg-gold-gradient {
+  background-color: #E8902A;
+  background-image: linear-gradient(135deg, #F5B43C 0%, #E8902A 100%);
+}
+
+@utility hover-gold-gradient {
+  &:hover {
+    background-color: #F0A040;
+    background-image: linear-gradient(135deg, #F8C45A 0%, #F0A040 100%);
+  }
+}
+
+/* Admin typography scale — semantic utilities for consistent admin UI */
+@utility admin-h1 {
+  @apply text-[22px] sm:text-[26px] font-bold tracking-tight text-brand-text-main leading-tight;
+}
+
+@utility admin-card-title {
+  @apply text-[14px] font-bold tracking-tight text-brand-text-main;
+}
+
+@utility admin-eyebrow {
+  @apply text-[11px] font-semibold uppercase tracking-wider text-brand-text-sub;
+}
+
+@utility admin-stat-value {
+  @apply text-[22px] font-bold tracking-tight text-brand-text-main;
+}
+
+@utility admin-table-head {
+  @apply text-[11px] font-semibold uppercase tracking-wider text-brand-text-sub;
+}
+
+@utility admin-table-cell {
+  @apply text-[13px] text-brand-text-main;
+}
+
+@utility admin-form-label {
+  @apply text-[12px] font-semibold text-brand-text-sub;
+}
+
+@utility admin-dialog-title {
+  @apply text-[16px] font-bold tracking-tight text-brand-text-main;
+}
+
+@utility admin-body {
+  @apply text-[13px] text-brand-text-sub font-normal;
+}
+
+@utility admin-meta {
+  @apply text-[12px] text-brand-text-sub font-normal;
+}
+
+.glass-shadow {
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.82);
+}
+
+.yellow-glow {
+  box-shadow: 0 0 20px rgba(245, 180, 60, 0.15);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes partners-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.partners-marquee-viewport {
+  position: relative;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
+
+.partners-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 1rem;
+  animation: partners-marquee 40s linear infinite;
+}
+
+.partners-marquee-viewport:hover .partners-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .partners-marquee-viewport {
+    overflow-x: auto;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+
+  .partners-marquee-track {
+    animation: none;
+    width: auto;
+  }
+}
+
+.safe-area-pb {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.safe-area-pt {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* Article markdown — design tokens only */
+.article-prose {
+  @apply text-brand-text-sub text-[15px] leading-[1.75];
+}
+
+.article-prose h2 {
+  @apply text-[22px] font-bold text-brand-text-main mt-8 mb-4 pb-2 border-b border-brand-border tracking-tight;
+}
+
+.article-prose h3 {
+  @apply text-[18px] font-semibold text-brand-text-main mt-6 mb-3 tracking-tight;
+}
+
+.article-prose h4 {
+  @apply text-[16px] font-semibold text-brand-text-main mt-4 mb-2;
+}
+
+.article-prose p {
+  @apply mb-4;
+}
+
+.article-prose a {
+  @apply text-brand-gold underline-offset-2 hover:underline;
+}
+
+.article-prose strong {
+  @apply text-brand-text-main font-semibold;
+}
+
+.article-prose em {
+  @apply text-brand-text-sub;
+}
+
+.article-prose ul,
+.article-prose ol {
+  @apply mb-4 pl-6 space-y-2;
+}
+
+.article-prose ul {
+  @apply list-disc;
+}
+
+.article-prose ol {
+  @apply list-decimal;
+}
+
+.article-prose li {
+  @apply text-brand-text-sub;
+}
+
+.article-prose blockquote {
+  @apply border-l-4 border-brand-gold pl-4 py-2 my-6 bg-brand-card-2/50 rounded-r-xl text-brand-text-main font-medium;
+}
+
+.article-prose hr {
+  @apply my-8 border-brand-border;
+}
+
+.article-prose code {
+  @apply text-[13px] font-mono bg-brand-card-2 text-brand-gold px-1.5 py-0.5 rounded-md;
+}
+
+.article-prose pre {
+  @apply mb-4 p-4 rounded-xl bg-brand-card-2 border border-brand-border overflow-x-auto;
+}
+
+.article-prose pre code {
+  @apply bg-transparent p-0 text-brand-text-main;
+}
+
+.article-prose table {
+  @apply w-full mb-6 text-[13px] border-collapse;
+}
+
+.article-prose th {
+  @apply text-left font-semibold text-brand-text-main border border-brand-border bg-brand-card-2 px-3 py-2;
+}
+
+.article-prose td {
+  @apply border border-brand-border px-3 py-2 text-brand-text-sub;
+}
+
+.article-prose img {
+  @apply rounded-xl max-w-full my-6 border border-brand-border;
+}
+

@@ -1,0 +1,38 @@
+---
+description: Performance — code splitting, memoization, image lazy loading
+globs: src/**/*.tsx
+alwaysApply: false
+---
+
+# Performance
+
+## Route-level code splitting
+
+New pages must use `React.lazy` + `Suspense` in `App.tsx`. Avoid adding eager page imports — the current `App.tsx` eagerly loads all pages and should be migrated incrementally.
+
+## Memoization
+
+- Filter/sort/map large lists: wrap in `React.useMemo` with correct deps
+- Stable callbacks passed to children: `React.useCallback`
+- List items: stable `key` (entity `id`, not array index)
+
+```tsx
+// ✅ GOOD
+const filtered = React.useMemo(() => filterHeroes(heroes, filters), [heroes, filters])
+
+// ❌ BAD — recomputes every render
+const filtered = filterHeroes(heroes, filters)
+```
+
+## Images
+
+- Content images: `loading="lazy"` and explicit `width`/`height` when possible
+- Hero portraits: avoid loading full-resolution assets in list grids
+
+## Avoid render-time heavy work
+
+Move expensive calculations to `useMemo`, utils in `src/lib/`, or precompute in `DataContext`. Never run O(n²) loops inline in JSX for large datasets.
+
+## Charts (recharts)
+
+Limit data points passed to charts. Memoize chart data transformations.

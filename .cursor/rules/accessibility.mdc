@@ -1,0 +1,39 @@
+---
+description: Accessibility — semantic HTML, ARIA, Radix primitives, focus states
+globs: src/**/*.tsx
+alwaysApply: false
+---
+
+# Accessibility
+
+## Semantic HTML
+
+Use `<nav>`, `<main>`, `<header>`, `<footer>`, `<section>`, `<article>` appropriately. Public pages already use `Layout` with `<main>` — do not nest duplicate `<main>` tags.
+
+## Icon-only buttons
+
+Every icon button needs an accessible name:
+
+```tsx
+// ✅ GOOD
+<button aria-label={t("common.close")}><X /></button>
+
+// ❌ BAD
+<button><X /></button>
+```
+
+## Images
+
+Decorative images: `alt=""`. Meaningful images: descriptive `alt` text (hero name, item name).
+
+## Dialogs & selects
+
+Use Radix primitives from `src/components/ui/core.tsx` (`Dialog`, `Select`) — they provide focus trap, Escape to close, and keyboard navigation. Do not build custom modals with bare `div` overlays.
+
+## Focus visibility
+
+Interactive elements must have visible focus states. Do not remove `outline` without replacing with a custom `focus-visible:` ring using brand tokens.
+
+## Motion
+
+Respect `prefers-reduced-motion` when adding new animations (motion/react). Avoid autoplaying motion that cannot be paused.

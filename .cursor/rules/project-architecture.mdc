@@ -1,0 +1,55 @@
+---
+description: Project architecture map, tech stack, and rule index for Auto Chess Mobile VN
+alwaysApply: true
+---
+
+# Project Architecture
+
+## Tech stack
+
+React 19 · Vite 6 · TypeScript · Tailwind CSS v4 · react-router v7 · i18next · Radix UI · recharts · motion · vite-plugin-pwa · Supabase (optional) · Vercel
+
+## Directory map
+
+| Area | Path |
+|------|------|
+| Public pages | `src/pages/` |
+| Admin pages | `src/pages/Admin*.tsx` |
+| Shared UI | `src/components/ui/core.tsx` |
+| Layout | `src/components/layout/` |
+| Admin UI | `src/components/admin/` |
+| Domain types | `src/types/domain.ts` |
+| Seed data | `src/data/` (re-exported via `src/data.ts`) |
+| App state | `src/contexts/DataContext.tsx` → `useAppStore()` |
+| Auth | `src/contexts/AuthContext.tsx` |
+| i18n | `src/i18n/` + `src/locales/{vi,en}/` |
+| Nav config | `src/config/nav.ts` |
+| Site/SEO config | `src/config/site.ts` |
+| Hooks | `src/hooks/` |
+| Utils | `src/lib/` |
+
+## Conventions
+
+- Path alias: `@/` → `src/`
+- Class merging: `cn()` from `@/lib/utils`
+- Default locale: `vi` (English secondary)
+
+## Rule index
+
+| Topic | Rule file |
+|-------|-----------|
+| Colors, typography, surfaces | `design-system.mdc` |
+| Shared components, layouts | `components.mdc` |
+| TypeScript & React patterns | `typescript-react.mdc` |
+| Translations | `i18n.mdc` |
+| Data & persistence | `data-layer.mdc` |
+| Routes & navigation | `routing-navigation.mdc` |
+| Performance | `performance.mdc` |
+| Accessibility | `accessibility.mdc` |
+| SEO & PWA | `seo-and-pwa.mdc` |
+| Media uploads (Cloudinary) | `media-upload.mdc` |
+| Supabase + Vercel deploy | `supabase-vercel.mdc` |
+
+## Agent skills (`.cursor/skills/`)
+
+`add-public-page` · `add-admin-crud` · `add-domain-entity` · `i18n-sync` · `design-review` · `ship-check` · `deploy-vercel`

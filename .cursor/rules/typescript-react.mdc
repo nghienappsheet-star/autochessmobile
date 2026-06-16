@@ -1,0 +1,44 @@
+---
+description: TypeScript and React 19 conventions for this project
+globs: src/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# TypeScript & React
+
+## Components
+
+- Functional components only; use `import * as React from "react"`
+- Export named functions: `export function HeroCard() { ... }`
+- Type props with explicit interfaces or inline object types — never `any`
+- Use `type` imports for types: `import type { Hero } from "@/types/domain"`
+
+## Class names
+
+Always merge conditional classes with `cn()`:
+
+```tsx
+// ✅ GOOD
+<div className={cn("rounded-xl border", isActive && "border-brand-gold")} />
+
+// ❌ BAD — string concatenation
+<div className={"rounded-xl " + (isActive ? "border-brand-gold" : "")} />
+```
+
+## Hooks
+
+- Custom hooks live in `src/hooks/` with `use` prefix
+- Derive filtered/sorted lists with `React.useMemo`
+- Side effects (title, meta, storage) in `React.useEffect`
+
+## State access
+
+- Game/content data: `useAppStore()` from `@/contexts/DataContext`
+- Auth: `useAuth()` from `@/contexts/AuthContext`
+- Do not duplicate persisted state in page-level localStorage
+
+## File naming
+
+- Pages: `PascalCase` + `Page` suffix (`HeroesPage.tsx`)
+- Components: `PascalCase` (`HeroPortraitPanel.tsx`)
+- Utils/hooks: `camelCase` (`hero-utils.ts`, `useFilterParams.ts`)

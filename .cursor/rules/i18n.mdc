@@ -1,0 +1,40 @@
+---
+description: i18n rules — no hardcoded UI strings, vi/en parity, namespaces
+globs: src/**/*.{ts,tsx,json}
+alwaysApply: false
+---
+
+# Internationalization
+
+## No hardcoded UI strings
+
+User-visible text must use `useTranslation(namespace)`:
+
+```tsx
+// ✅ GOOD
+const { t } = useTranslation("pages")
+<PageHeader title={t("heroes.title")} description={t("heroes.description")} />
+
+// ❌ BAD
+<PageHeader title="Tướng" description="Danh sách tướng" />
+```
+
+Exceptions: admin-only labels in `AdminSidebar`, sample seed content, proper nouns in game data.
+
+## Namespaces (from `src/i18n/config.ts`)
+
+`common` · `nav` · `auth` · `footer` · `home` · `pages` · `tools` · `community` · `news`
+
+Pick the namespace that owns the feature. Nav labels use `nav`; page copy uses `pages`.
+
+## vi/en parity
+
+Every key added to `src/locales/vi/*.json` must exist in the matching `src/locales/en/*.json` file (and vice versa). Run `node scripts/i18n-check.mjs` to verify.
+
+## Nav i18n
+
+`NAV_ITEMS` in `src/config/nav.ts` uses `labelKey` — never inline labels. Resolve via `useNavItems()` or `t("nav:home")`.
+
+## Default locale
+
+`DEFAULT_LOCALE` is `"vi"`. English is secondary; both must read naturally.

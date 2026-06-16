@@ -1,0 +1,73 @@
+---
+description: Design system tokens and styling rules for Auto Chess Mobile VN (web + admin)
+alwaysApply: true
+---
+
+# Design System — Auto Chess Mobile VN
+
+All UI changes must follow these rules for a consistent, premium dark-mode experience across public website and admin panel.
+
+## Colors — use tokens, never raw hex
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `brand-bg` | `#0D0E12` | Page background |
+| `brand-card` | `#15171D` | Cards, panels, inputs |
+| `brand-card-2` | `#1B1E26` | Elevated surfaces, hover states |
+| `brand-border` | `rgba(255,255,255,0.07)` | All borders |
+| `brand-gold` | `#F5B43C` | Primary accent, links, active text |
+| `brand-gold-deep` | `#E8902A` | Gradient end, hover accent |
+| `brand-red` | `#F25C54` | Danger, S-tier, negative trends |
+| `brand-green` | `#3FB950` | Success, positive trends |
+| `brand-text-main` | `#F5F6F8` | Headings, primary text |
+| `brand-text-sub` | `#8A8F98` | Labels, descriptions, metadata |
+| `tier-s` | `#F25C54` | S-tier badges |
+| `tier-a` | `#F5A623` | A-tier badges |
+| `tier-b` | `#4D96F0` | B-tier badges |
+| `tier-c` | `#8A8F98` | C-tier badges |
+
+**Never** use hardcoded hex like `#050505`, `#0A0A0A`, `#0D0D0D`, `#111`, `#1A1A1A`, `#222`, `#333` in components.
+
+## Typography
+
+- Font: Inter (via `font-sans`)
+- Body: 14px, weight 400, line-height 1.7
+- Headings: bold, `tracking-tight`, **no italic**
+- Uppercase: only for badges, eyebrow labels, and small stat labels — not for card titles or buttons
+- **Never** use `italic` class on any element
+- Use `font-bold` or `font-semibold` — avoid `font-black`
+
+## Border radius (vuong hoa — defined in `@theme`)
+
+| Class | Size | Usage |
+|-------|------|-------|
+| `rounded-md` | 4px | Badges |
+| `rounded-lg` | 6px | Small elements |
+| `rounded-xl` | **8px** | Cards, buttons, inputs, panels |
+| `rounded-2xl` | 10px | Large panels only |
+| `rounded-3xl` | 12px | Hero/section max |
+| `rounded-full` | circle | **Only** avatars, status dots, circular icon buttons |
+
+- Card/button/input default: `rounded-xl` (= 8px after theme override)
+- Badge default: `rounded-md` (= 4px)
+- **Do not** use `rounded-2xl`, `rounded-3xl`, or `rounded-[2rem]` on ordinary cards — use `rounded-xl`
+- Keep `rounded-full` for avatars and dot indicators only
+
+## Surfaces & Layout
+
+- Cards: `bg-brand-card border-brand-border rounded-xl`
+- Primary CTA buttons: `bg-gold-gradient` (not flat `bg-brand-gold`)
+- Active nav items: `bg-gold-gradient text-black`
+- Spacing: use Tailwind scale (p-4, p-6, gap-4, gap-6)
+
+## Charts (recharts)
+
+- Line/area stroke: `#F5B43C`
+- Area fill gradient: `#F5B43C` at 15% opacity → transparent
+- Grid: `rgba(255,255,255,0.05)`
+- Axis ticks: `#8A8F98`, fontSize 11
+- Tooltip background: `#15171D`, border `rgba(255,255,255,0.07)`
+
+## Tier badges
+
+Use Badge variants from `ui/core`: `tier-s`, `tier-a`, `tier-b`, `tier-c` — never custom inline colors.

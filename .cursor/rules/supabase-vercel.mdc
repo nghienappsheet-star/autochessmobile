@@ -1,0 +1,73 @@
+---
+description: Supabase client usage, egress optimization, and Vercel Edge Function conventions
+globs: src/lib/supabase*.ts,api/**,vercel.json
+alwaysApply: false
+---
+
+# Supabase + Vercel
+
+## Client (browser)
+
+- Use `isSupabaseConfigured()` before calling `getSupabase()` from [`src/lib/supabase.ts`](src/lib/supabase.ts).
+- Env vars (browser-safe): `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`.
+- **Never** expose `SUPABASE_SERVICE_ROLE_KEY` in client code or `VITE_*` vars.
+- App still runs on localStorage until migration — do not break offline/seed flow when Supabase is unset.
+
+```tsx
+// ✅ GOOD
+if (isSupabaseConfigured()) {
+  const supabase = getSupabase()
+  // ...
+}
+
+// ❌ BAD — crashes when env missing
+const supabase = getSupabase()
+```
+
+## Egress optimization (Supabase)
+
+Keep billed egress low:
+
+| Rule | Why |
+|------|-----|
+| **Never** `select('*')` | Fetch only needed columns |
+| Use `.range(from, to)` + `{ count: 'estimated' }` | Paginate lists; avoid full-table reads |
+| Use helpers in [`src/lib/supabase-query.ts`](src/lib/supabase-query.ts) | `selectColumns()`, `paginateQuery()`, `cachedQuery()` |
+| Cache read-heavy public data (short TTL) | `cachedQuery(key, ttlMs, fn)` |
+| Avoid Realtime unless required | Persistent connections + payload overhead |
+| Enable RLS on all public tables | Anon key stays safe; filter at DB layer |
+| Store images on **Cloudinary**, not Supabase Storage | See `media-upload.mdc` |
+
+```tsx
+// ✅ GOOD — narrow select + pagination
+const { data } = await getSupabase()
+  .from("comps")
+  .select(selectColumns("id", "name", "tier", "likes"), { count: "estimated" })
+  .order("likes", { ascending: false })
+  .range(0, 19)
+
+// ❌ BAD
+const { data } = await getSupabase().from("comps").select("*")
+```
+
+## Vercel Edge Functions (`api/`)
+
+- Set `export const config = { runtime: "edge" }`.
+- Use Web `Request` / `Response` — no Node-only APIs (`fs`, `child_process`).
+- Server secrets: `SUPABASE_SERVICE_ROLE_KEY` (Vercel project env, **not** `VITE_`).
+- Return `Cache-Control: no-store` for dynamic/API responses.
+- Example: [`api/health.ts`](../../api/health.ts) — version + commit check after deploy.
+
+## Deploy & caching ([`vercel.json`](../../vercel.json))
+
+- Build: `npm run build` → output `dist/`.
+- SPA: rewrite unmatched routes to `/index.html` (react-router deep links).
+- Long-cache hashed assets under `/assets/` (`immutable`).
+- **No-cache** `index.html`, `sw.js`, workbox files — PWA auto-update must not serve stale shell.
+
+## Migration path (future)
+
+1. Define Supabase schema + RLS policies.
+2. Replace `usePersistedEntity` reads/writes incrementally in `DataContext`.
+3. Keep seed data as fallback until cutover.
+4. Use Edge Functions for privileged ops (service role), not the browser client.

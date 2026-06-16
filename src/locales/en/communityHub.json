@@ -1,0 +1,58 @@
+{
+  "title": "Auto Chess Mobile VN Community",
+  "description": "Meet the founding team, explore community channels, and help build meta together with Vietnamese players.",
+  "visitChannel": "Visit channel",
+  "stats": {
+    "teamMembers": "Team members",
+    "channels": "Community channels",
+    "comps": "Compositions",
+    "posts": "Articles"
+  },
+  "team": {
+    "title": "Founding team",
+    "description": "The people building and maintaining the meta platform for Auto Chess Mobile VN.",
+    "viewProfile": "View profile"
+  },
+  "channels": {
+    "title": "Community channels & platforms",
+    "description": "Follow official and partner channels — each offers unique value for different learning needs."
+  },
+  "cta": {
+    "title": "Join & contribute",
+    "description": "Share comps, guides, and experience. Every contribution is recognized on the Hall of Fame.",
+    "writePost": "Write news article",
+    "joinDiscussion": "Join discussion",
+    "shareComp": "Share a comp"
+  },
+  "rules": {
+    "title": "Community guidelines",
+    "items": [
+      "Respect all members — no toxicity or personal attacks.",
+      "Content must relate to Auto Chess Mobile VN or meta strategy.",
+      "No spam, unauthorized ads, or scam links.",
+      "Credit sources when sharing others' guides or articles.",
+      "Violating comments may be hidden and accounts may be restricted."
+    ]
+  },
+  "faq": {
+    "title": "FAQ",
+    "items": [
+      {
+        "q": "How do I get on the Hall of Fame?",
+        "a": "Publish comps via Team Builder or write news/meta articles. The system automatically scores reputation from likes and contribution count."
+      },
+      {
+        "q": "Can I suggest a new YouTube/TikTok channel?",
+        "a": "Yes — contact the team via Facebook group or Discord. Approved channels appear on this page."
+      },
+      {
+        "q": "What's the difference between Discussion and News?",
+        "a": "News is editorial content (meta, patches, guides). Discussion is the community forum for Q&A and quick sharing."
+      },
+      {
+        "q": "How do I become a contributor?",
+        "a": "Contribute quality content consistently and earn community recognition. The team will reach out when a role opens."
+      }
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "metaBadge": "Meta S20",
+  "patchNote": "Patch 20.5 — Warrior & Hunter adjustments",
+  "viewPatchNotes": "View patch notes →",
+  "noBanners": "No new announcements at the moment.",
+  "slideAria": "Go to slide {{n}}",
+  "stats": {
+    "comps": "COMPS",
+    "compsSub": "Created by the community",
+    "votes": "VOTES",
+    "votesSub": "Total votes cast",
+    "users": "USERS",
+    "usersSub": "Active members",
+    "posts": "POSTS",
+    "postsSub": "Articles & guides"
+  },
+  "trendingCompsTitle": "Trending comps",
+  "trendingCompsSubtitle": "Community voted",
+  "featuredHeroesTitle": "Featured heroes",
+  "featuredDiscussionsTitle": "Featured discussions",
+  "buildCompTitle": "Build a comp",
+  "buildCompDesc": "Build meta comps from heroes, races, and classes — save and share with the community.",
+  "buildCompCta": "Start building",
+  "findCompTitle": "Find a comp that fits",
+  "findCompDesc": "Pick the units on your board — we'll suggest the best meta comps with match rates.",
+  "findCompCta": "Start searching",
+  "latestPostsTitle": "Latest articles",
+  "leaderboardTitle": "Leaderboard",
+  "leaderboardTabs": {
+    "global": "Global",
+    "vn": "Vietnam",
+    "friends": "Friends"
+  },
+  "leaderboardCols": {
+    "player": "Player",
+    "score": "Score"
+  },
+  "usefulToolsTitle": "Useful tools",
+  "tools": {
+    "teamBuilder": { "title": "Team Builder", "desc": "Build meta comps" },
+    "heroList": { "title": "Hero list", "desc": "160+ hero profiles" },
+    "itemList": { "title": "Item list", "desc": "Stats and combine recipes" },
+    "compFinder": { "title": "Comp finder", "desc": "Suggestions from your board" }
+  },
+  "tierSuffix": "Tier",
+  "partnersTitle": "Partners & Sponsors",
+  "partnersSubtitle": "Supporting the Auto Chess Mobile VN community",
+  "donateTitle": "Support the project",
+  "donateSubtitle": "Help us maintain and grow this free meta guide",
+  "donateBankLabel": "Bank",
+  "donateAccountLabel": "Account number",
+  "donateHolderLabel": "Account holder",
+  "donateCopy": "Copy account no.",
+  "donateCopied": "Copied!",
+  "donateScanHint": "Scan the QR code with your banking app for a quick transfer",
+  "donateQrExpand": "Enlarge QR code to scan",
+  "donateQrPopupTitle": "Scan to transfer",
+  "donateTransparency": "All contributions go toward server costs and content development.",
+  "donateJoinCommunity": "Join the community"
+}

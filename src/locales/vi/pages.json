@@ -1,0 +1,413 @@
+{
+  "comps": {
+    "title": "Đội hình (Metagame)",
+    "description": "Khám phá các đội hình dẫn đầu meta do cộng đồng xây dựng.",
+    "createNew": "Tạo đội hình mới",
+    "searchPlaceholder": "Tìm tên đội hình, hệ tộc hoặc tác giả...",
+    "advancedFilter": "Lọc chi tiết",
+    "updatedAt": "Cập nhật {{date}}",
+    "votes": "Bình chọn",
+    "empty": "Không tìm thấy đội hình nào phù hợp.",
+    "clearFilters": "Xóa tất cả bộ lọc",
+    "trending": "Trending",
+    "tabs": {
+      "all": "Tất cả",
+      "hot": "Đội hình hot",
+      "new": "Đội hình mới",
+      "following": "Theo dõi"
+    },
+    "tierFilter": {
+      "all": "Tất cả Tiers",
+      "s": "S Tier",
+      "a": "A Tier",
+      "b": "B Tier"
+    },
+    "compareMode": "So sánh",
+    "compareModeOn": "Đang chọn",
+    "compareHint": "Chọn 2–3 đội hình để so sánh. Bấm So sánh trên thanh dưới cùng."
+  },
+  "compDetail": {
+    "backToList": "Quay lại danh sách đội hình",
+    "byAuthor": "Bởi",
+    "updatedAt": "Cập nhật:",
+    "votes": "Bình chọn",
+    "overviewTitle": "Tổng quan chiến thuật",
+    "stats": {
+      "top1": "Tỷ lệ Top 1",
+      "top4": "Top 4",
+      "difficulty": "Độ khó",
+      "style": "Phong cách"
+    },
+    "difficultyModerate": "Vừa phải",
+    "styleFast8": "Fast 8",
+    "quickReview": "Đánh giá nhanh",
+    "strengthsTitle": "Điểm mạnh",
+    "weaknessesTitle": "Điểm yếu",
+    "requiredLineup": "Đội hình yêu cầu ({{count}})",
+    "coreBadge": "CORE",
+    "goldCost": "{{cost}} Vàng",
+    "positioningTitle": "Sắp xếp đội hình (Positioning)",
+    "boardStages": {
+      "early": "Stage 1-3",
+      "final": "Final Board"
+    },
+    "positioningHint": "* Kéo thả để thay đổi vị trí tướng trên bàn cờ",
+    "synergiesTitle": "Hệ tộc kích hoạt",
+    "itemSuggestions": "Gợi ý trang bị",
+    "itemGroups": {
+      "carry": "CHỦ LỰC SÁT THƯƠNG",
+      "frontline": "HÀNG CHỜ PHÒNG THỦ"
+    },
+    "multiAnalysis": "Phân tích đa chiều",
+    "coreTitle": "Tướng Core",
+    "flexTitle": "Tướng Flex / Dự bị",
+    "mainCore": "CORE CHÍNH",
+    "difficultyEasy": "Dễ",
+    "difficultyMedium": "Trung bình",
+    "difficultyHard": "Khó",
+    "unitCount": "Số tướng",
+    "roadmapTitle": "Lộ trình xây dựng",
+    "roadmapEarly": "Đầu game (1–10)",
+    "roadmapMid": "Giữa game (11–20)",
+    "roadmapLate": "Cuối game (21+)",
+    "countersTitle": "Đối đầu & Khắc chế",
+    "strongAgainst": "Có lợi trước",
+    "weakAgainst": "Bất lợi trước",
+    "counterFix": "Cách xử lý",
+    "tipsTitle": "Tips nâng cao",
+    "radar": {
+      "attack": "Tấn Công",
+      "defense": "Phòng Thủ",
+      "control": "Khống chế",
+      "difficulty": "Độ Khó",
+      "econ": "Kinh Tế",
+      "lateGame": "Late Game",
+      "stats": "Chỉ số"
+    }
+  },
+  "heroes": {
+    "title": "Tướng (Heroes)",
+    "description": "Danh sách toàn bộ các tướng trong mùa giải hiện tại.",
+    "searchPlaceholder": "Tìm kiếm tướng...",
+    "filterByCost": "Giá",
+    "allCosts": "Tất cả giá",
+    "filterByRace": "Lọc theo tộc",
+    "filterByClass": "Lọc theo hệ",
+    "allRaces": "Tất cả tộc",
+    "allClasses": "Tất cả hệ",
+    "newBadge": "Mới",
+    "filterNew": "Tướng mới",
+    "allHeroes": "Tất cả",
+    "onlyNew": "Chỉ tướng mới",
+    "clearFilters": "Xóa bộ lọc",
+    "empty": "Không tìm thấy tướng phù hợp với bộ lọc hiện tại.",
+    "compareMode": "So sánh",
+    "compareModeOn": "Đang chọn",
+    "compareHint": "Chọn 2–3 tướng để so sánh chỉ số. Bấm So sánh trên thanh dưới cùng."
+  },
+  "heroDetail": {
+    "notFound": "Không tìm thấy tướng này",
+    "backToList": "Quay lại danh sách tướng",
+    "newBadge": "Tướng mới",
+    "breadcrumb": "Tướng",
+    "goldCost": "{{cost}} Vàng",
+    "skillTitle": "Kỹ năng",
+    "statsTitle": "Chỉ số",
+    "stats": {
+      "hp": "Sinh lực (HP)",
+      "atk": "Sát thương (ATK)",
+      "armor": "Giáp",
+      "mr": "Kháng phép",
+      "atkSpeed": "Tốc đánh",
+      "range": "Tầm đánh",
+      "star": "Chỉ số {{star}} sao"
+    },
+    "traitsTitle": "Tộc & Hệ",
+    "traitUndefined": "Tộc / Hệ chưa xác định",
+    "tacticalTitle": "Gợi ý chiến thuật",
+    "recommendedItems": "Trang bị khuyên dùng",
+    "noRecommendedItems": "Chưa có gợi ý trang bị cụ thể cho tướng này.",
+    "relatedComps": "Đội hình liên quan",
+    "quickFilter": "Lọc nhanh",
+    "viewSameCost": "Xem tướng {{cost}} vàng",
+    "viewSameClass": "Xem hệ {{class}}",
+    "viewSameRace": "Xem tộc {{race}}",
+    "selectStar": "Chọn sao",
+    "skins": "Trang phục",
+    "lore": "Tiểu sử",
+    "loreExpand": "Xem thêm",
+    "loreCollapse": "Thu gọn",
+    "rarity": "Độ hiếm",
+    "synergiesTitle": "Tộc & Hệ",
+    "relatedByRace": "Cùng tộc",
+    "relatedByClass": "Cùng hệ",
+    "relatedByCost": "Cùng giá {{cost}} vàng",
+    "toggleFavorite": "Lưu tướng yêu thích",
+    "descriptionFallback": "Tra cứu chỉ số và kỹ năng của tướng trên bàn cờ."
+  },
+  "items": {
+    "title": "Thư viện Trang bị",
+    "description": "Tra cứu trang bị theo bậc, hiệu ứng và gợi ý chiến thuật cho carry.",
+    "searchPlaceholder": "Tìm kiếm trang bị...",
+    "filterByCategory": "Lọc theo loại",
+    "filterByTier": "Lọc theo bậc",
+    "allCategories": "Tất cả loại",
+    "empty": "Không tìm thấy trang bị phù hợp."
+  },
+  "itemDetail": {
+    "notFound": "Không tìm thấy trang bị",
+    "backToLibrary": "Quay lại thư viện",
+    "breadcrumbLibrary": "Trang bị",
+    "category": {
+      "defense": "Phòng thủ",
+      "magic": "Phép thuật",
+      "attack": "Tấn công",
+      "utility": "Tiện ích"
+    },
+    "specialEffect": "Hiệu ứng đặc biệt",
+    "statBonusesTitle": "Chỉ số cộng thêm",
+    "tacticalReview": "Đánh giá chiến thuật",
+    "recommendedHeroes": "Tướng khuyên dùng",
+    "relatedComps": "Đội hình phù hợp",
+    "relatedItems": "Trang bị liên quan",
+    "goldCost": "{{cost}} VÀNG",
+    "viewAllHeroes": "XEM TẤT CẢ TƯỚNG",
+    "metaAnalysisTitle": "Phân tích Meta",
+    "metaAnalysisHighTier": "Trang bị tier cao, phù hợp cho carry chủ lực trong meta hiện tại.",
+    "metaAnalysisSituational": "Trang bị situational — cân nhắc theo đội hình và đối thủ."
+  },
+  "relics": {
+    "title": "Thư viện Dị vật",
+    "description": "Khám phá các hiệu ứng đặc biệt từ dị vật.",
+    "searchPlaceholder": "Tìm tên dị vật...",
+    "filterByType": "Lọc theo loại dị vật",
+    "priority": "Độ ưu tiên: {{tier}}",
+    "empty": "Không tìm thấy dị vật phù hợp."
+  },
+  "relicDetail": {
+    "notFound": "Không tìm thấy dị vật",
+    "backToLibrary": "Quay lại thư viện dị vật",
+    "priority": "Độ ưu tiên: {{tier}}",
+    "specialEffect": "Hiệu ứng đặc biệt",
+    "tacticalReview": "Đánh giá chiến thuật",
+    "stats": {
+      "appearance": "TỶ LỆ XUẤT HIỆN",
+      "winRate": "WIN RATE (TOP 1)"
+    },
+    "addToBuilder": "THÊM VÀO BUILDER",
+    "relatedRelics": "Dị vật cùng loại"
+  },
+  "races": {
+    "title": "Tộc (Races)",
+    "description": "Khám phá các tộc và hiệu ứng kích hoạt mạnh mẽ.",
+    "searchPlaceholder": "Tìm kiếm tộc...",
+    "heroCount": "{{count}} Tướng",
+    "descriptionPending": "Đang cập nhật mô tả cho tộc này...",
+    "milestonesTitle": "Mốc kích hoạt"
+  },
+  "traits": {
+    "title": "Tộc / Hệ",
+    "description": "Tra cứu synergy tộc và hệ tướng — mốc kích hoạt, thành viên và đội hình gợi ý.",
+    "searchPlaceholder": "Tìm kiếm tộc hoặc hệ...",
+    "heroCount": "{{count}} Tướng",
+    "descriptionPending": "Đang cập nhật mô tả...",
+    "milestonesPreview": "Mốc",
+    "typeRace": "Tộc",
+    "typeClass": "Hệ",
+    "sortLabel": "Sắp xếp",
+    "filterByTab": "Lọc theo loại",
+    "sortName": "Theo tên A–Z",
+    "sortHeroCount": "Theo số tướng",
+    "empty": "Không tìm thấy tộc hoặc hệ phù hợp.",
+    "tabs": {
+      "all": "Tất cả ({{count}})",
+      "race": "Tộc ({{count}})",
+      "class": "Hệ ({{count}})"
+    },
+    "tabsShort": {
+      "all": "Tất cả",
+      "race": "Tộc",
+      "class": "Hệ"
+    }
+  },
+  "traitDetail": {
+    "notFound": "Không tìm thấy tộc hoặc hệ này",
+    "breadcrumb": "Tộc / Hệ",
+    "breadcrumbRace": "Tộc",
+    "breadcrumbClass": "Hệ",
+    "badge": "Synergy",
+    "synergiesTitle": "Hiệu ứng Synergy",
+    "milestoneActivate": "Kích hoạt {{count}} quân cờ",
+    "milestoneCountColumn": "Số tướng",
+    "milestoneEffectColumn": "Hiệu ứng",
+    "recommendedBadge": "Khuyên dùng",
+    "membersTitle": "Danh sách tướng",
+    "pieceCount": "{{count}} tướng",
+    "recommendedComps": "Đội hình gợi ý",
+    "recommendedMilestone": "Nên chạy {{count}}",
+    "compTraitCount": "{{count}} tướng thuộc tộc/hệ",
+    "backToList": "Quay lại danh sách Tộc / Hệ",
+    "metaTitle": "Thông tin meta",
+    "tierLabel": "Đánh giá tier",
+    "tierSuffix": "Tier",
+    "pickRate": "Độ phổ biến",
+    "compUsage": "Xuất hiện trong {{count}} đội hình meta",
+    "phaseTitle": "Sức mạnh theo giai đoạn",
+    "phaseEarly": "Early game",
+    "phaseMid": "Mid game",
+    "phaseLate": "Late game",
+    "interactionsTitle": "Tương tác tộc / hệ",
+    "synergyPartners": "Hay đi cùng",
+    "counters": "Khắc chế",
+    "counteredBy": "Bị khắc chế bởi",
+    "heuristicNote": "Dữ liệu meta được suy ra từ roster tướng và đội hình hiện có — mang tính gợi ý.",
+    "noPartners": "Chưa đủ dữ liệu để gợi ý tộc/hệ đi cùng.",
+    "noMatchups": "Chưa xác định",
+    "availabilityCommon": "Dễ kiếm",
+    "availabilityUncommon": "Trung bình",
+    "availabilityRare": "Hiếm",
+    "statTier": "Tier",
+    "statPickRate": "Pick rate",
+    "statHeroCount": "Số tướng",
+    "statMilestone": "Mốc khuyên dùng",
+    "loreTitle": "Mô tả"
+  },
+  "raceDetail": {
+    "notFound": "Không tìm thấy tộc này",
+    "breadcrumb": "Tộc",
+    "badge": "Tộc Hệ Đặc Biệt",
+    "synergiesTitle": "Hiệu ứng kích hoạt",
+    "milestoneActivate": "Kích hoạt {{count}} quân cờ",
+    "membersTitle": "Thành viên Tộc",
+    "pieceCount": "{{count}} Quân cờ",
+    "recommendedComps": "Đội hình khuyên dùng",
+    "backToList": "Quay lại danh sách tộc"
+  },
+  "classes": {
+    "title": "Hệ (Classes)",
+    "description": "Tìm hiểu kỹ năng đặc thù của các hệ tướng.",
+    "searchPlaceholder": "Tìm kiếm hệ...",
+    "heroCount": "{{count}} Tướng",
+    "descriptionPending": "Đang cập nhật mô tả cho hệ này...",
+    "milestonesTitle": "Mốc kích hoạt"
+  },
+  "classDetail": {
+    "notFound": "Không tìm thấy hệ này",
+    "breadcrumb": "Hệ",
+    "badge": "Kỹ Năng Nghề Nghiệp",
+    "synergiesTitle": "Hiệu ứng kích hoạt",
+    "milestoneActivate": "Kích hoạt {{count}} quân cờ",
+    "membersTitle": "Thành viên Hệ",
+    "pieceCount": "{{count}} Quân cờ",
+    "recommendedComps": "Đội hình khuyên dùng",
+    "backToList": "Quay lại danh sách hệ"
+  },
+  "leaderboard": {
+    "title": "Vinh danh người đóng góp",
+    "description": "Ghi nhận những kỳ thủ chia sẻ đội hình, bài viết và kinh nghiệm meta xuất sắc nhất.",
+    "podiumTitle": "Top 3 vinh danh",
+    "stats": {
+      "contributors": "Người đóng góp",
+      "totalComps": "Tổng đội hình",
+      "totalPosts": "Tổng bài viết"
+    },
+    "tiers": {
+      "legend": "Huyền thoại",
+      "master": "Cao thủ",
+      "expert": "Chuyên gia",
+      "member": "Thành viên"
+    },
+    "tabs": {
+      "comps": "Đội hình Meta",
+      "contributors": "Người đóng góp",
+      "heroes": "Tướng nổi bật",
+      "players": "Kị thủ MMR"
+    },
+    "cols": {
+      "comps": {
+        "rank": "Hạng",
+        "strategy": "Chiến thuật",
+        "tier": "Tier",
+        "likes": "Lượt thích",
+        "winRate": "Dự báo Thắng"
+      },
+      "contributors": {
+        "rank": "Hạng",
+        "contributor": "Người đóng góp",
+        "comps": "Đội hình",
+        "posts": "Bài viết",
+        "reputation": "Uy tín",
+        "badge": "Huy hiệu"
+      },
+      "heroes": {
+        "hero": "Tướng",
+        "cost": "Giá",
+        "appearance": "Xuất hiện",
+        "trend": "Xu hướng"
+      },
+      "players": {
+        "player": "Kị thủ",
+        "server": "Server",
+        "mmr": "MMR",
+        "tier": "Hạng",
+        "winRate": "Tỷ lệ thắng"
+      }
+    },
+    "authorRole": "Người đóng góp",
+    "metaBadge": "meta",
+    "ctaTitle": "Bạn muốn được vinh danh?",
+    "ctaDesc": "Chia sẻ đội hình hoặc viết bài — mọi đóng góp đều được ghi nhận tự động.",
+    "ctaButton": "XÂY DỰNG NGAY",
+    "ctaComp": "Tạo đội hình",
+    "ctaPost": "Viết bài"
+  },
+  "profile": {
+    "title": "Hồ sơ cá nhân",
+    "description": "Quản lý nội dung đã lưu, bài viết và cài đặt tài khoản.",
+    "memberSince": "Thành viên từ {{date}}",
+    "summary": {
+      "heroes": "Tướng đã lưu",
+      "comps": "Đội hình đã lưu",
+      "posts": "Bài viết"
+    },
+    "tabs": {
+      "favorites": "Yêu thích",
+      "activity": "Hoạt động",
+      "settings": "Cài đặt"
+    },
+    "favHeroes": "Tướng yêu thích ({{count}})",
+    "noFavHeroes": "Bạn chưa lưu tướng yêu thích nào.",
+    "browseHeroes": "Khám phá danh sách tướng",
+    "savedComps": "Đội hình đã lưu ({{count}})",
+    "noSavedComps": "Bạn chưa lưu đội hình yêu thích nào.",
+    "browseComps": "Khám phá đội hình meta",
+    "myPosts": "Bài viết của tôi",
+    "postStatus": {
+      "published": "Đã xuất bản",
+      "pending": "Đang chờ duyệt",
+      "draft": "Bản nháp"
+    },
+    "activity": {
+      "quickLinks": "Lối tắt",
+      "noPosts": "Bạn chưa đăng bài viết nào.",
+      "createPost": "Viết bài mới",
+      "views": "{{count}} lượt xem",
+      "linkComps": "Tra cứu đội hình",
+      "linkTeamBuilder": "Công cụ xây đội hình",
+      "linkCommunity": "Cộng đồng",
+      "linkLeaderboard": "Bảng xếp hạng đóng góp"
+    },
+    "settings": {
+      "title": "Cài đặt tài khoản",
+      "displayName": "Tên hiển thị",
+      "avatarUrl": "URL ảnh đại diện",
+      "email": "Email",
+      "emailReadonly": "Email không thể thay đổi trong phiên bản hiện tại.",
+      "save": "Lưu thay đổi",
+      "saved": "Đã lưu thay đổi.",
+      "uploadAvatar": "Tải ảnh đại diện",
+      "uploadingAvatar": "Đang tải...",
+      "invalidAvatarUrl": "Ảnh đại diện phải là URL HTTPS hoặc tải qua Cloudinary — không dùng base64."
+    }
+  }
+}

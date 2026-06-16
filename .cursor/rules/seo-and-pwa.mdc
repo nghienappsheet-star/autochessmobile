@@ -1,0 +1,36 @@
+---
+description: SEO document titles, meta descriptions, and PWA manifest conventions
+globs: src/pages/**,src/hooks/useDocumentTitle.ts,vite.config.ts
+alwaysApply: false
+---
+
+# SEO & PWA
+
+## Document titles
+
+Public pages: titles resolved via `usePublicDocumentTitle(pathname)` in `Layout`. Admin pages: `useAdminDocumentTitle(pathname)` in `AdminLayout`.
+
+When adding a new route, add an entry to the appropriate map in `src/hooks/useDocumentTitle.ts`:
+
+```tsx
+"/new-slug": pageTitle("Page Name"),           // public
+"/admin/new-slug": adminPageTitle("Page Name"), // admin
+```
+
+## Meta descriptions
+
+Public meta comes from `useSeoSettings()` → `seo.pagesMeta[path]`. Per-page overrides are managed in Admin SEO (`/admin/seo`).
+
+## PWA manifest
+
+Configured in `vite.config.ts` via `vite-plugin-pwa`:
+
+- `theme_color` and `background_color`: `#0D0E12` (matches `brand-bg`)
+- Icons: `public/icons/pwa-192x192.png`, `pwa-512x512.png`, `apple-touch-icon.png`
+- `lang`: `vi`, `start_url`: `/`
+
+Do not change theme colors to raw hex outside design tokens when updating manifest.
+
+## Site config
+
+Global site name/description: `src/config/site.ts`. SEO settings persisted via `useSiteSettings()`.

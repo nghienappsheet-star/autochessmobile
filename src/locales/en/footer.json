@@ -1,0 +1,16 @@
+{
+  "taglineMobile": "Auto Chess Mobile VN strategy handbook for Vietnamese players.",
+  "taglineDesktop": "Auto Chess Mobile VN strategy handbook — meta data, comps, and tools for Vietnamese players.",
+  "sectionLibrary": "Library",
+  "sectionTools": "Tools",
+  "sectionExplore": "Explore",
+  "nonProfit": "Non-profit",
+  "webVersion": "v1.4.2",
+  "disclaimer": "Non-profit project, not affiliated with VNG",
+  "dataPartner": "Drodo Studio is the data partner.",
+  "copyright": "© {{year}} Auto Chess Mobile VN",
+  "copyrightMobile": "© {{year}} Auto Chess Mobile VN · v1.4.2 · Non-profit",
+  "ariaFacebook": "Community Facebook",
+  "ariaOfficialSite": "Auto Chess VNG official site",
+  "ariaGithub": "GitHub"
+}

@@ -1,0 +1,141 @@
+/** Class (hệ) definitions — synced from ac.dragonest.com/en/charactor */
+export const CLASSES = [
+  {
+    id: "assassin",
+    name: "Assassin",
+    icon: "🗡️",
+    iconUrl: "/traits/assassin.png",
+    description: "Nhảy ra tuyến sau kẻ địch khi bắt đầu trận và có tỉ lệ gây sát thương chí mạng.",
+    milestones: [
+      { count: 3, effect: "All allied Assassins gain a 15% chance to exert 300% damage, and a 40% chance to deal 300% damages with their first Base attack in each round" },
+      { count: 6, effect: "All allied Assassins gain a 20% chance to exert 350% damage, and a 60% chance to deal 350% damages with their first Base attack in each round" },
+      { count: 9, effect: "All allied Assassins have 30% chance to deal 400% damages, and have 100% chance to deal 400% damages with their first base attack in each round" },
+    ],
+  },
+  {
+    id: "druid",
+    name: "Druid",
+    icon: "🌿",
+    iconUrl: "/traits/druid.png",
+    description: "Nâng cấp tướng Druid tốn ít quân cờ hơn.",
+    milestones: [
+      { count: 2, effect: "Every 2 1-star Druid on the board could combined to one 2-star Druid" },
+      { count: 4, effect: "Every 2 2-star Druid on the board could combined to one 3-star Druid" },
+    ],
+  },
+  {
+    id: "hunter",
+    name: "Hunter",
+    icon: "🏹",
+    iconUrl: "/traits/hunter.png",
+    description: "Tăng sát thương vật lý và tỉ lệ đánh chính xác (không bị né).",
+    milestones: [
+      { count: 3, effect: "All allied Hunters attack +35 and grants 30% chance to pierce through evasion" },
+      { count: 6, effect: "All allied Hunters attack +80 and grants 65% chance to pierce through evasion" },
+    ],
+  },
+  {
+    id: "knight",
+    name: "Knight",
+    icon: "🛡️",
+    iconUrl: "/traits/knight.png",
+    description: "Nhận khiên giảm sát thương vật lý và kháng phép định kỳ.",
+    milestones: [
+      { count: 2, effect: "All allied Knights gain a 100% chance at the beginning of each round and then a 25% chance in every 3 seconds, to obtain a damage-reducing shield, which grants +75% Magic Resistance, +30 Armor. The shield lasts for 2 seconds." },
+      { count: 4, effect: "All allied Knights gain a 100% chance at the beginning of each round and then a 48% chance in every 2 seconds, to obtain a damage-reducing shield, which grants +75% Magic Resistance, +30 Armor. The shield lasts for 2 seconds." },
+      { count: 6, effect: "All allied Knights gain a 100% chance at the beginning of each round and then a 65% chance in every 2 seconds, to obtain a damage-reducing shield, which grants +75% Magic Resistance, +30 Armor. The shield lasts for 2 seconds." },
+    ],
+  },
+  {
+    id: "mage",
+    name: "Mage",
+    icon: "🪄",
+    iconUrl: "/traits/mage.png",
+    description: "Giảm kháng phép của toàn bộ kẻ địch.",
+    milestones: [
+      { count: 3, effect: "All enemy lose 40% Magical Resistence" },
+      { count: 6, effect: "All enemy lose 90% Magical Resistence" },
+      { count: 9, effect: "All enemy lose 130% Magical Resistence" },
+    ],
+  },
+  {
+    id: "mech",
+    name: "Mech",
+    icon: "⚙️",
+    iconUrl: "/traits/mech.png",
+    description: "Nhận thêm vàng sau mỗi trận thắng hoặc nhận Heart of Mech.",
+    milestones: [
+      { count: 3, effect: "After winning a battle against another player, if at least one ally Mech survives, gets Heart of Mech x1." },
+      { count: 6, effect: "After winning a battle against another player, if at least one ally Mech survives, gets Golden Heart of Mech x1." },
+    ],
+  },
+  {
+    id: "priest",
+    name: "Priest",
+    icon: "✝️",
+    iconUrl: "/traits/priest.png",
+    description: "Giảm sát thương nhận vào linh thú hoặc bảo vệ linh thú.",
+    milestones: [
+      { count: 1, effect: "When the chess player receives more than 2 damage, it'll block 20% damage for the chess player" },
+      { count: 2, effect: "When the chessplayer receives more than 2 damage, blocks {0} damage for the chessplayer; and if the chessplayer receives more than 8 damage, gets Green Essence x1" },
+      { count: 3, effect: "When the chess player receives more than 2 damage, blocks 20% of damage for the chess player; when the chess player receives 8 to 14 damage, gets Green Essence x1; when the chess player receives more than 15 damage, gets Red Essence x1." },
+    ],
+  },
+  {
+    id: "shaman",
+    name: "Shaman",
+    icon: "⚡",
+    iconUrl: "/traits/shaman.png",
+    description: "Biến hình kẻ địch khi bắt đầu trận đấu.",
+    milestones: [
+      { count: 2, effect: "Change a random enemy unit into a penguin when battle starts for 6s" },
+      { count: 4, effect: "At the start of a battle, hexes a random enemy into penguin for 6s. And all Shamans get a buff: when killed by an enemy piece, hexes the enemy into a random chess piece of the same cost and the same star level.Possibility to turn into a random Chess Piece which costs +1 or +2 （+1:40%,+2:60%）" },
+    ],
+  },
+  {
+    id: "warlock",
+    name: "Warlock",
+    icon: "🔮",
+    iconUrl: "/traits/warlock.png",
+    description: "Cung cấp khả năng hút máu toàn phần từ đòn đánh và kỹ năng.",
+    milestones: [
+      { count: 2, effect: "Grants 10% lifesteal to all allied units and its skill" },
+      { count: 4, effect: "Grants 30% lifesteal to all allied units and its skill" },
+      { count: 6, effect: "Grants 60% lifesteal to all allied units and its skill" },
+    ],
+  },
+  {
+    id: "warrior",
+    name: "Warrior",
+    icon: "⚔️",
+    iconUrl: "/traits/warrior.png",
+    description: "Tăng lượng giáp vật lý cực lớn.",
+    milestones: [
+      { count: 3, effect: "All allied warrior armor +5" },
+      { count: 6, effect: "All allied warrior armor +12" },
+      { count: 9, effect: "All allied warrior armor +18. When receiving physical or magical damage, reflects pure damage equals to the value of the recipient's Armor" },
+    ],
+  },
+  {
+    id: "witcher",
+    name: "Witcher",
+    icon: "👁️",
+    iconUrl: "/traits/witcher.png",
+    description: "Kháng lại hiệu ứng của tộc Demon kẻ địch hoặc kích hoạt Demon phe mình.",
+    milestones: [
+      { count: 1, effect: "If there's any Demon pieces on the enemy Chessboard, the Demon types will be increased by 1." },
+      { count: 2, effect: "All allied demons deem to be one，The enemy demon effect is invalid" },
+    ],
+  },
+  {
+    id: "wizard",
+    name: "Wizard",
+    icon: "🔥",
+    iconUrl: "/traits/wizard.png",
+    description: "Wizard tăng sát thương phép và khả năng cast liên tục.",
+    milestones: [
+      { count: 2, effect: "Required Pieces -1 for Synergies of Race/Class that requires 4 and above Pieces" },
+      { count: 4, effect: "1 less chess piece is required for activating synergy with at least 4 unique chess pieces; if there's only the synergy of one race/class is activated other than the Wizard synergy, then the highest tier of this synergy will be activated immediately" },
+    ],
+  },
+]

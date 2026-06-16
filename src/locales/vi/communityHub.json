@@ -1,0 +1,58 @@
+{
+  "title": "Cộng đồng Auto Chess Mobile VN",
+  "description": "Gặp gỡ đội ngũ sáng lập, khám phá các kênh cộng đồng và tham gia xây dựng meta cùng kỳ thủ Việt.",
+  "visitChannel": "Truy cập kênh",
+  "stats": {
+    "teamMembers": "Thành viên đội ngũ",
+    "channels": "Kênh cộng đồng",
+    "comps": "Đội hình",
+    "posts": "Bài viết"
+  },
+  "team": {
+    "title": "Đội ngũ sáng lập",
+    "description": "Những người xây dựng và duy trì nền tảng meta cho cộng đồng Auto Chess Mobile VN.",
+    "viewProfile": "Xem hồ sơ"
+  },
+  "channels": {
+    "title": "Kênh & nền tảng cộng đồng",
+    "description": "Theo dõi các kênh chính thức và đối tác — mỗi kênh có giá trị riêng cho từng nhu cầu học tập."
+  },
+  "cta": {
+    "title": "Tham gia & đóng góp",
+    "description": "Chia sẻ giáo án, đội hình và kinh nghiệm của bạn. Mọi đóng góp đều được ghi nhận trên bảng Vinh danh.",
+    "writePost": "Viết bài tin tức",
+    "joinDiscussion": "Vào thảo luận",
+    "shareComp": "Chia sẻ đội hình"
+  },
+  "rules": {
+    "title": "Nội quy cộng đồng",
+    "items": [
+      "Tôn trọng mọi thành viên — không toxic, không công kích cá nhân.",
+      "Nội dung phải liên quan Auto Chess Mobile VN hoặc chiến thuật meta.",
+      "Không spam, quảng cáo trái phép hoặc link lừa đảo.",
+      "Ghi rõ nguồn khi chia sẻ giáo án hoặc bài viết từ người khác.",
+      "Bình luận vi phạm sẽ bị ẩn và có thể dẫn đến khóa tài khoản."
+    ]
+  },
+  "faq": {
+    "title": "Câu hỏi thường gặp",
+    "items": [
+      {
+        "q": "Làm sao để được vinh danh trên bảng Vinh danh?",
+        "a": "Đăng đội hình qua công cụ Tạo đội hình hoặc viết bài tin tức/meta. Hệ thống tự động tính điểm uy tín từ lượt thích và số lượng đóng góp."
+      },
+      {
+        "q": "Tôi có thể đề xuất kênh YouTube/TikTok mới không?",
+        "a": "Có — liên hệ đội ngũ qua group Facebook hoặc Discord. Kênh được duyệt sẽ xuất hiện trên trang này."
+      },
+      {
+        "q": "Thảo luận và Tin tức khác nhau thế nào?",
+        "a": "Tin tức là bài viết biên tập (meta, patch, hướng dẫn). Thảo luận là diễn đàn hỏi đáp và chia sẻ nhanh giữa cộng đồng."
+      },
+      {
+        "q": "Làm sao trở thành cộng tác viên?",
+        "a": "Đóng góp đều đặn nội dung chất lượng, được cộng đồng công nhận. Đội ngũ sẽ liên hệ khi có vị trí phù hợp."
+      }
+    ]
+  }
+}

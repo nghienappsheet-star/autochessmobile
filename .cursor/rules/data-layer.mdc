@@ -1,0 +1,45 @@
+---
+description: DataContext, localStorage persistence, and domain type patterns
+globs: src/contexts/**,src/lib/storage.ts,src/types/**
+alwaysApply: false
+---
+
+# Data Layer
+
+## Single source of truth
+
+All game/content state flows through `DataContext`. Pages consume via `useAppStore()` — never import seed arrays directly for mutable data.
+
+## Persistence
+
+- Helpers: `loadJson` / `saveJson` in `src/lib/storage.ts`
+- Storage keys: `STORAGE_KEYS` object in `DataContext.tsx`
+- Seed data: `src/data/` modules, versioned with `DATA_VERSION`
+
+## Adding a new entity
+
+1. Define type in `src/types/domain.ts`
+2. Add seed array in `src/data/` and re-export from `src/data.ts`
+3. Add `STORAGE_KEYS` entry in `DataContext.tsx`
+4. Add state hook (`usePersistedSeedEntity` or `usePersistedEntity`)
+5. Expose CRUD setters (`addX`, `updateX`, `deleteX`) on context value
+6. Export type from `DataContext` if consumed by pages
+
+## Mutations
+
+```tsx
+// ✅ GOOD — via context setter
+const { heroes, addHero } = useAppStore()
+addHero(newHero)
+
+// ❌ BAD — direct localStorage or mutating imported HEROES
+localStorage.setItem("heroes", ...)
+```
+
+## Validation
+
+Run `npm run validate:data` after changing seed data or domain types.
+
+## Media URLs
+
+Image fields must store HTTPS URLs, static paths (`/heroes/...`), or Cloudinary `secure_url` — **never** base64 `data:` or `blob:` URLs. File uploads go to Cloudinary only. See `media-upload.mdc` and [`src/lib/media-url.ts`](src/lib/media-url.ts).
