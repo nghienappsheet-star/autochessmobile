@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom"
 import { Card, Button, Badge, Separator } from "@/components/ui/core"
 import { Globe, Zap, TrendingUp } from "lucide-react"
 import { useAppStore } from "@/contexts/DataContext"
-import { motion } from "motion/react"
+import { motion } from "@/components/motion/MotionProvider"
 import { DetailBreadcrumb } from "@/components/layout/DetailBreadcrumb"
 import { BackButton } from "@/components/ui/BackButton"
 

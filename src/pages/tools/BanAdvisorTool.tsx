@@ -1,5 +1,5 @@
 import * as React from "react"
-import { motion } from "motion/react"
+import { motion } from "@/components/motion/MotionProvider"
 import {
   Shield,
   Sparkles,

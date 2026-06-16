@@ -33,7 +33,7 @@ import {
   TraitSearchDropdown,
 } from "@/components/layout/FilterToolbar"
 import { cn } from "@/lib/utils"
-import { motion, AnimatePresence } from "motion/react"
+import { motion, AnimatePresence } from "@/components/motion/MotionProvider"
 import { useTranslation } from "react-i18next"
 import { useAppStore } from "@/contexts/DataContext"
 import html2canvas from "html2canvas-pro"

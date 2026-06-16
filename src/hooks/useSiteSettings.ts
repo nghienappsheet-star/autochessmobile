@@ -50,7 +50,7 @@ const DEFAULTS: SiteSettings = {
   partners: DEFAULT_PARTNERS,
 }
 
-function readSettings(): SiteSettings {
+export function loadSiteSettings(): SiteSettings {
   const donateEnabledRaw = localStorage.getItem("setting_donate_enabled")
   return {
     siteName: localStorage.getItem("setting_site_name") || DEFAULTS.siteName,
@@ -69,16 +69,6 @@ function readSettings(): SiteSettings {
     donateMessage: localStorage.getItem("setting_donate_message") || DEFAULTS.donateMessage,
     partners: loadJson<SitePartner[]>("setting_partners", DEFAULTS.partners),
   }
-}
-
-export function buildVietQrUrl(settings: Pick<
-  SiteSettings,
-  "donateBankCode" | "donateAccountNo" | "donateAccountName"
->): string {
-  const bankCode = settings.donateBankCode.trim()
-  const accountNo = settings.donateAccountNo.trim()
-  const accountName = encodeURIComponent(settings.donateAccountName.trim())
-  return `https://img.vietqr.io/image/${bankCode}-${accountNo}-compact2.png?accountName=${accountName}`
 }
 
 export function saveSiteSettings(settings: SiteSettings) {
@@ -100,10 +90,10 @@ export function saveSiteSettings(settings: SiteSettings) {
 }
 
 export function useSiteSettings(): SiteSettings {
-  const [settings, setSettings] = React.useState<SiteSettings>(readSettings)
+  const [settings, setSettings] = React.useState<SiteSettings>(loadSiteSettings)
 
   React.useEffect(() => {
-    const sync = () => setSettings(readSettings())
+    const sync = () => setSettings(loadSiteSettings())
     window.addEventListener("site-settings-changed", sync)
     window.addEventListener("storage", sync)
     return () => {
@@ -150,7 +140,7 @@ function normalizePagesMeta(raw: unknown): SeoSettings["pagesMeta"] {
   return DEFAULT_PAGES_META
 }
 
-function readSeoSettings(): SeoSettings {
+export function loadSeoSettings(): SeoSettings {
   const robotsLegacy = localStorage.getItem("seo_robots")
   const jsonLegacy = localStorage.getItem("seo_schema_json")
 
@@ -178,10 +168,10 @@ export function saveSeoSettings(settings: SeoSettings) {
 }
 
 export function useSeoSettings(): SeoSettings {
-  const [settings, setSettings] = React.useState<SeoSettings>(readSeoSettings)
+  const [settings, setSettings] = React.useState<SeoSettings>(loadSeoSettings)
 
   React.useEffect(() => {
-    const sync = () => setSettings(readSeoSettings())
+    const sync = () => setSettings(loadSeoSettings())
     window.addEventListener("seo-settings-changed", sync)
     window.addEventListener("storage", sync)
     return () => {

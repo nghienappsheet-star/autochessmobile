@@ -1,7 +1,7 @@
 import * as React from "react"
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
-import { motion } from "motion/react"
+import { motion } from "@/components/motion/MotionProvider"
 import { ArrowLeft, Eye, MessageSquare, Send, X } from "lucide-react"
 import { Card, Button, Input, Badge } from "@/components/ui/core"
 import { PageContainer } from "@/components/layout/PageContainer"

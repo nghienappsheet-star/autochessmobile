@@ -4,8 +4,8 @@ import { User as UserIcon, Search, TrendingUp, Copy, Check, LayoutGrid } from "l
 import { cn } from "@/lib/utils"
 import { useAppStore } from "@/contexts/DataContext"
 import { Link, useNavigate } from "react-router-dom"
-import { motion } from "motion/react"
-import { CompListCard } from "@/components/comps/CompListCard"
+import { motion } from "@/components/motion/MotionProvider"
+import { CompTrendingCard } from "@/components/comps/CompTrendingCard"
 import { NewsPostListItem } from "@/components/news/NewsPostListItem"
 import { useFavorites } from "@/hooks/useFavorites"
 import { CommunityPostCard } from "@/components/community/CommunityPostCard"
@@ -14,10 +14,22 @@ import { getHeroIconUrl } from "@/lib/hero-utils"
 import { CLASSES } from "@/data"
 import { useTranslation } from "react-i18next"
 import { formatDate } from "@/lib/format"
-import { buildVietQrUrl, useSiteSettings, type SitePartner } from "@/hooks/useSiteSettings"
+import { DonateQrImage } from "@/components/donate/DonateQrCode"
+import { useSiteSettings, type SitePartner } from "@/hooks/useSiteSettings"
 import type { Hero } from "@/types/domain"
 
 const HERO_CLASS_ALL = "all"
+
+const BANNER_BUTTON_MOBILE_LABELS: Record<string, string> = {
+  "KHÁM PHÁ ĐỘI HÌNH": "Khám phá",
+  "ĐĂNG KÝ NGAY": "Đăng ký",
+}
+
+function bannerPrimaryButtonLabel(text: string, compact: boolean): string {
+  const normalized = text.trim()
+  if (!compact) return normalized
+  return BANNER_BUTTON_MOBILE_LABELS[normalized] ?? normalized
+}
 
 function TitleWithAccent({ title }: { title: string }) {
   const parts = title.trim().split(/\s+/)
@@ -190,7 +202,12 @@ function DonateSection() {
 
   if (!settings.donateEnabled) return null
 
-  const qrUrl = buildVietQrUrl(settings)
+  const qrSettings = {
+    bankCode: settings.donateBankCode,
+    bankName: settings.donateBankName,
+    accountNo: settings.donateAccountNo,
+    accountName: settings.donateAccountName,
+  }
 
   const handleCopy = async () => {
     try {
@@ -215,13 +232,10 @@ function DonateSection() {
             className="rounded-lg bg-white p-1.5 border border-brand-border shrink-0 self-start cursor-pointer transition-colors hover:border-brand-gold/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold/50"
             aria-label={t("home:donateQrExpand")}
           >
-            <img
-              src={qrUrl}
-              alt=""
-              loading="lazy"
-              width={72}
-              height={72}
-              className="w-[72px] h-[72px] object-contain pointer-events-none"
+            <DonateQrImage
+              settings={qrSettings}
+              size={72}
+              className="w-[72px] h-[72px] pointer-events-none"
             />
           </button>
 
@@ -233,12 +247,12 @@ function DonateSection() {
               </DialogHeader>
               <div className="flex flex-col items-center gap-4 py-2">
                 <div className="rounded-xl bg-white p-4 border border-brand-border">
-                  <img
-                    src={qrUrl}
+                  <DonateQrImage
+                    settings={qrSettings}
+                    size={240}
+                    className="w-[min(240px,70vw)] h-[min(240px,70vw)]"
                     alt={`${settings.donateBankName} ${settings.donateAccountNo}`}
-                    width={240}
-                    height={240}
-                    className="w-[min(240px,70vw)] h-[min(240px,70vw)] object-contain"
+                    title={`${settings.donateBankName} ${settings.donateAccountNo}`}
                   />
                 </div>
                 <p className="text-[13px] text-brand-text-sub text-center">
@@ -379,7 +393,7 @@ export function HomePage() {
       </div>
 
       {/* Hero Section */}
-      <div className="relative overflow-hidden rounded-xl bg-brand-bg border border-brand-border group min-h-[260px] xs:min-h-[300px] sm:min-h-[380px] md:min-h-[520px] flex items-center">
+      <div className="relative overflow-hidden rounded-xl bg-brand-bg border border-brand-border group min-h-[240px] xs:min-h-[280px] sm:min-h-[380px] md:min-h-[520px] flex items-center">
         {activeBanners.length > 0 ? (
           activeBanners.map((banner, index) => (
             <motion.div
@@ -397,19 +411,15 @@ export function HomePage() {
                 <img
                   src={banner.image}
                   alt={banner.title}
-                  className="w-full h-full object-cover object-[center_top] md:object-center grayscale-[15%] group-hover:grayscale-0 transition-all duration-1000 scale-[1.01] group-hover:scale-[1.04]"
+                  className="w-full h-full object-cover object-center md:object-center grayscale-[15%] group-hover:grayscale-0 transition-all duration-1000 scale-[1.01] group-hover:scale-[1.04]"
                 />
-                <div className="absolute inset-0 bg-black/45 z-10 md:bg-black/55" />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-bg via-brand-bg/55 to-transparent z-10 md:from-brand-bg/90 md:via-transparent" />
+                <div className="absolute inset-0 bg-black/25 z-10 md:bg-black/55" />
+                <div className="absolute inset-0 bg-gradient-to-r from-brand-bg via-brand-bg/75 to-transparent z-10 w-[78%] md:hidden" />
+                <div className="absolute inset-0 hidden md:block bg-gradient-to-t from-brand-bg/90 via-transparent to-transparent z-10" />
                 <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-brand-bg via-brand-bg/90 to-transparent z-10 w-[85%]" />
               </div>
 
-              <div
-                className={cn(
-                  "relative z-20 w-full p-5 sm:p-8 md:p-12 lg:p-16 flex flex-col justify-center items-start text-left h-full max-w-3xl",
-                  activeBanners.length > 1 && "pb-10 md:pb-0"
-                )}
-              >
+              <div className="relative z-20 w-full p-4 sm:p-8 md:p-12 lg:p-16 flex flex-col justify-center items-start text-left h-full max-w-3xl">
                 <motion.div
                   initial={false}
                   animate={{
@@ -417,7 +427,7 @@ export function HomePage() {
                     y: currentBannerIndex === index ? 0 : 20,
                   }}
                   transition={{ duration: 0.6, ease: "easeOut" }}
-                  className="space-y-3 md:space-y-6 flex flex-col items-start w-full"
+                  className="space-y-2.5 md:space-y-6 flex flex-col items-start w-full max-w-[min(100%,18rem)] sm:max-w-xs md:max-w-2xl"
                 >
                   {banner.subtitle && (
                     <span className="hidden md:inline-flex items-center gap-2 bg-brand-gold/10 text-brand-gold border border-brand-gold/20 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.15em] rounded-md leading-none w-fit">
@@ -425,17 +435,28 @@ export function HomePage() {
                       {banner.subtitle}
                     </span>
                   )}
-                  <h1 className="text-[22px] sm:text-[26px] md:text-[44px] lg:text-[52px] leading-[1.1] font-bold tracking-tight line-clamp-2 md:line-clamp-none sm:uppercase max-w-2xl">
-                    <TitleWithAccent title={banner.title} />
-                  </h1>
+                  <div className="flex flex-col items-start gap-3.5 w-full md:contents">
+                    <h1 className="w-full min-w-0 text-[18px] xs:text-[20px] sm:text-[26px] md:text-[44px] lg:text-[52px] leading-tight font-bold tracking-tight line-clamp-1 md:line-clamp-none md:uppercase max-w-2xl">
+                      <TitleWithAccent title={banner.title} />
+                    </h1>
+                    {banner.primaryButtonText && (
+                      <Button
+                        size="sm"
+                        onClick={() => navigate(banner.primaryButtonLink)}
+                        className="self-start h-9 px-3.5 w-auto md:hidden font-semibold text-[11px] normal-case tracking-normal shadow-lg shadow-brand-gold/20 hover:shadow-brand-gold/30"
+                      >
+                        {bannerPrimaryButtonLabel(banner.primaryButtonText, true)}
+                      </Button>
+                    )}
+                  </div>
                   <p className="hidden md:block text-brand-text-sub text-[14px] md:text-[15px] max-w-lg font-normal leading-relaxed opacity-90 text-balance">
                     {banner.description}
                   </p>
-                  <div className="flex flex-wrap items-center justify-start gap-3 sm:gap-4 pt-1 w-full sm:w-auto">
+                  <div className="hidden md:flex flex-wrap items-center justify-start gap-3 sm:gap-4 pt-1 w-full sm:w-auto">
                     {banner.primaryButtonText && (
                       <Button
                         onClick={() => navigate(banner.primaryButtonLink)}
-                        className="h-11 w-full sm:w-auto sm:min-w-[140px] md:h-12 md:px-8 md:min-w-[140px] font-semibold text-[12px] md:text-[13px] uppercase tracking-wide shadow-lg shadow-brand-gold/20 hover:shadow-brand-gold/30"
+                        className="h-11 sm:min-w-[140px] md:h-12 md:px-8 md:min-w-[140px] font-semibold text-[12px] md:text-[13px] uppercase tracking-wide shadow-lg shadow-brand-gold/20 hover:shadow-brand-gold/30"
                       >
                         {banner.primaryButtonText}
                       </Button>
@@ -444,7 +465,7 @@ export function HomePage() {
                       <Button
                         onClick={() => navigate(banner.secondaryButtonLink)}
                         variant="outline"
-                        className="hidden md:inline-flex min-w-[140px] px-8 h-12 font-semibold text-[13px] uppercase tracking-wide bg-white/10 border-white/25 text-white hover:bg-white/15 hover:border-white/40"
+                        className="min-w-[140px] px-8 h-12 font-semibold text-[13px] uppercase tracking-wide bg-white/10 border-white/25 text-white hover:bg-white/15 hover:border-white/40"
                       >
                         {banner.secondaryButtonText}
                       </Button>
@@ -515,7 +536,7 @@ export function HomePage() {
           onAction={() => navigate("/doi-hinh")}
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {trendingComps.map((comp, idx) => (
             <motion.div
               initial={{ opacity: 0, y: 10 }}
@@ -524,9 +545,8 @@ export function HomePage() {
               key={comp.id}
               className="h-full"
             >
-              <CompListCard
+              <CompTrendingCard
                 comp={comp}
-                rank={idx + 1}
                 heroes={heroes}
                 isFavorite={isFavorite(comp.id)}
                 onToggleFavorite={() => toggleFavorite(comp.id)}

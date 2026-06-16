@@ -6,7 +6,7 @@ import { Medal, ChevronRight, LayoutGrid, PenLine } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useTranslation } from "react-i18next"
 import { getPageIcon } from "@/config/icons"
-import { motion } from "motion/react"
+import { motion } from "@/components/motion/MotionProvider"
 
 const parseLikes = (likes: string) => {
   if (likes.endsWith("K")) return parseFloat(likes.replace("K", "")) * 1000

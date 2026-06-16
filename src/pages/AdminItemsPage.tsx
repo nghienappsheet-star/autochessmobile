@@ -1,5 +1,4 @@
 import * as React from "react"
-import { Link } from "react-router-dom"
 import {
   Button,
   Badge,
@@ -16,6 +15,7 @@ import { slugifyItemId } from "@/lib/admin-utils"
 import type { Item } from "@/types/domain"
 import {
   AdminPageHeader,
+  AdminSuccessBanner,
   AdminDeleteDialog,
   AdminListShell,
   AdminDataTable,
@@ -27,15 +27,25 @@ import {
   AdminTd,
   AdminTableFooterText,
   AdminFormDialog,
-  AdminDetailDialog,
-  AdminItemForm,
+  AdminItemDetailDialog,
+  AdminRowActions,
+} from "@/components/admin"
+import {
   EMPTY_ITEM_FORM,
   itemFormFromItem,
   itemFromFormValue,
-  AdminRowActions,
-} from "@/components/admin"
-import { useAdminPagination } from "@/hooks/useAdminPagination"
-import { useAdminCrudDialogs } from "@/hooks/useAdminCrudDialogs"
+} from "@/components/admin/AdminItemForm"
+import { useAdminListPage } from "@/hooks/useAdminListPage"
+
+const AdminItemForm = React.lazy(() =>
+  import("@/components/admin/AdminItemForm").then((m) => ({ default: m.AdminItemForm }))
+)
+
+function ItemFormFallback() {
+  return (
+    <div className="py-12 text-center admin-meta text-brand-text-sub">Đang tải biểu mẫu trang bị...</div>
+  )
+}
 
 export function AdminItemsPage() {
   const { items, heroes, addItem, updateItem, deleteItem } = useAppStore()
@@ -45,7 +55,35 @@ export function AdminItemsPage() {
   const [isDetailOpen, setIsDetailOpen] = React.useState(false)
   const [detailItem, setDetailItem] = React.useState<Item | null>(null)
 
-  const dialogs = useAdminCrudDialogs<Item>()
+  const matchItem = React.useCallback(
+    (item: Item, q: string) => {
+      const query = q.toLowerCase()
+      const matchesSearch =
+        item.name.toLowerCase().includes(query) ||
+        item.stats.toLowerCase().includes(query)
+      const matchesTier = selectedTier === "Tất cả Bậc" || item.tier === Number(selectedTier)
+      return matchesSearch && matchesTier
+    },
+    [selectedTier]
+  )
+
+  const {
+    dialogs,
+    successMessage,
+    showSuccess,
+    filteredItems,
+    paginatedItems,
+    currentPage,
+    setCurrentPage,
+    totalPages,
+    startIndex,
+    pageSize,
+  } = useAdminListPage({
+    items,
+    searchTerm: search,
+    match: matchItem,
+    resetDeps: [selectedTier],
+  })
 
   const handleCreateItem = () => {
     if (!newItem.name.trim()) return
@@ -55,50 +93,45 @@ export function AdminItemsPage() {
     )
     addItem(itemFromFormValue(newItem, id))
     setNewItem(EMPTY_ITEM_FORM)
+    showSuccess(`Đã thêm trang bị "${newItem.name.trim()}".`)
     dialogs.closeAdd()
   }
 
   const handleUpdateItem = () => {
     if (!dialogs.editingItem || !dialogs.editingItem.name.trim()) return
     updateItem(dialogs.editingItem.id, dialogs.editingItem)
+    showSuccess(`Đã cập nhật trang bị "${dialogs.editingItem.name}".`)
     dialogs.closeEdit()
   }
 
   const confirmDeleteItem = () => {
     if (dialogs.deleteTarget) {
       deleteItem(dialogs.deleteTarget.id)
+      showSuccess(`Đã xóa trang bị "${dialogs.deleteTarget.name}".`)
       dialogs.closeDelete()
     }
   }
-
-  const filteredItems = items.filter((item) => {
-    const matchesSearch =
-      item.name.toLowerCase().includes(search.toLowerCase()) ||
-      item.stats.toLowerCase().includes(search.toLowerCase())
-    const matchesTier = selectedTier === "Tất cả Bậc" || item.tier === Number(selectedTier)
-    return matchesSearch && matchesTier
-  })
-
-  const { currentPage, setCurrentPage, totalPages, startIndex, pageSize, paginatedItems } =
-    useAdminPagination(filteredItems, [search, selectedTier])
 
   return (
     <>
       <AdminListShell
         header={
-          <AdminPageHeader
-            icon={Package}
-            title="Quản lý trang bị"
-            description="Cập nhật kho tàng vật phẩm tranh đoạt chiến thuật, chỉ số cộng thêm và thuộc tính trang bị nâng cấp."
-          >
-            <Button
-              size="default"
-              onClick={dialogs.openAdd}
-              className="gap-2 bg-gold-gradient text-black font-bold admin-meta uppercase tracking-wider h-11 px-6 rounded-xl transition-all hover:scale-[1.02]"
+          <>
+            <AdminPageHeader
+              icon={Package}
+              title="Quản lý trang bị"
+              description="Cập nhật kho tàng vật phẩm tranh đoạt chiến thuật, chỉ số cộng thêm và thuộc tính trang bị nâng cấp."
             >
-              <Plus className="h-4.5 w-4.5 stroke-[3px]" /> Thêm trang bị mới
-            </Button>
-          </AdminPageHeader>
+              <Button
+                size="default"
+                onClick={dialogs.openAdd}
+                className="gap-2 bg-gold-gradient text-black font-bold admin-meta uppercase tracking-wider h-11 px-6 rounded-xl transition-all hover:scale-[1.02]"
+              >
+                <Plus className="h-4.5 w-4.5 stroke-[3px]" /> Thêm trang bị mới
+              </Button>
+            </AdminPageHeader>
+            <AdminSuccessBanner message={successMessage ?? ""} />
+          </>
         }
       >
         <AdminDataTable
@@ -240,7 +273,9 @@ export function AdminItemsPage() {
         submitLabel="Lưu trang bị"
         cancelLabel="Hủy bỏ"
       >
-        <AdminItemForm value={newItem} onChange={setNewItem} heroes={heroes} />
+        <React.Suspense fallback={<ItemFormFallback />}>
+          <AdminItemForm value={newItem} onChange={setNewItem} heroes={heroes} />
+        </React.Suspense>
       </AdminFormDialog>
 
       <AdminFormDialog
@@ -257,89 +292,19 @@ export function AdminItemsPage() {
         cancelLabel="Hủy bỏ"
       >
         {dialogs.editingItem && (
-          <AdminItemForm
-            value={itemFormFromItem(dialogs.editingItem, heroes)}
-            onChange={(value) =>
-              dialogs.setEditingItem(itemFromFormValue(value, dialogs.editingItem!.id))
-            }
-            heroes={heroes}
-          />
+          <React.Suspense fallback={<ItemFormFallback />}>
+            <AdminItemForm
+              value={itemFormFromItem(dialogs.editingItem, heroes)}
+              onChange={(value) =>
+                dialogs.setEditingItem(itemFromFormValue(value, dialogs.editingItem!.id))
+              }
+              heroes={heroes}
+            />
+          </React.Suspense>
         )}
       </AdminFormDialog>
 
-      <AdminDetailDialog
-        open={isDetailOpen}
-        onOpenChange={setIsDetailOpen}
-        title={detailItem?.name ?? "Chi tiết trang bị"}
-        size="md"
-        footer={
-          detailItem ? (
-            <>
-              <Button asChild className="w-full sm:flex-1 h-11 bg-gold-gradient text-black rounded-xl font-bold uppercase admin-meta">
-                <Link to={`/trang-bi/${detailItem.id}`} target="_blank" rel="noreferrer">
-                  Xem trên web
-                </Link>
-              </Button>
-              <Button
-                onClick={() => setIsDetailOpen(false)}
-                variant="outline"
-                className="w-full sm:flex-1 h-11 border-brand-border text-brand-text-main hover:bg-brand-card-2 rounded-xl font-bold uppercase admin-meta tracking-widest"
-              >
-                Đóng
-              </Button>
-            </>
-          ) : undefined
-        }
-      >
-        {detailItem && (
-          <div className="space-y-5">
-            <div className="flex flex-col items-center text-center space-y-4 pb-4 border-b border-brand-border">
-              <div className="w-16 h-16 rounded-xl bg-gradient-to-tr from-brand-gold/25 to-orange-500/5 border border-brand-gold/30 flex items-center justify-center text-brand-gold shadow-[0_0_20px_rgba(245,180,60,0.1)]">
-                <Package className="h-8 w-8 text-brand-gold" />
-              </div>
-              <div className="flex items-center justify-center gap-2">
-                <Badge variant={detailItem.tier >= 4 ? "danger-solid" : "warning"}>
-                  BẬC {detailItem.tier}
-                </Badge>
-                <Badge variant="success">TRANG BỊ MÙA MỚI</Badge>
-              </div>
-            </div>
-
-            {detailItem.description && (
-              <div className="space-y-1.5">
-                <span className="admin-form-label">Mô tả</span>
-                <div className="p-3.5 rounded-xl bg-brand-card-2 border border-brand-border text-brand-text-sub leading-relaxed">
-                  {detailItem.description}
-                </div>
-              </div>
-            )}
-            <div className="space-y-1.5">
-              <span className="admin-form-label">Chỉ số tăng dồn</span>
-              <div className="p-3.5 rounded-xl bg-brand-card-2 border border-brand-border text-brand-text-sub leading-relaxed font-normal whitespace-pre-line admin-body">
-                {detailItem.stats}
-              </div>
-            </div>
-            {detailItem.effect && (
-              <div className="space-y-1.5">
-                <span className="admin-form-label">Hiệu ứng đặc biệt</span>
-                <div className="p-3.5 rounded-xl bg-brand-card-2/50 border border-brand-border text-brand-text-sub">
-                  {detailItem.effect}
-                </div>
-              </div>
-            )}
-            {detailItem.tacticalNotes && detailItem.tacticalNotes.length > 0 && (
-              <div className="space-y-1.5">
-                <span className="admin-form-label">Chiến thuật</span>
-                <ul className="p-3.5 rounded-xl bg-brand-card-2/50 border border-brand-border space-y-1 text-brand-text-sub list-disc pl-5">
-                  {detailItem.tacticalNotes.map((note) => (
-                    <li key={note}>{note}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
-        )}
-      </AdminDetailDialog>
+      <AdminItemDetailDialog item={detailItem} open={isDetailOpen} onOpenChange={setIsDetailOpen} />
 
       <AdminDeleteDialog
         open={dialogs.isDeleteOpen}

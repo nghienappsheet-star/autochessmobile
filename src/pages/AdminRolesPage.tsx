@@ -5,24 +5,19 @@ import {
   Input,
   Badge,
 } from "@/components/ui/core"
-import { Shield, Plus, Edit2, Trash2, Key, Users, Lock } from "lucide-react"
+import { Shield, Plus, Key, Users, Lock } from "lucide-react"
 import { cn } from "@/lib/utils"
 import {
   AdminPageHeader,
   AdminSuccessBanner,
   AdminFormDialog,
   AdminField,
+  AdminDeleteDialog,
+  AdminTableActionButton,
 } from "@/components/admin"
-import { AdminDeleteDialog } from "@/components/admin/AdminDeleteDialog"
-
-type Role = {
-  id: string
-  name: string
-  code: string
-  desc: string
-  users: number
-  scopes: string[]
-}
+import { useAdminCrudDialogs } from "@/hooks/useAdminCrudDialogs"
+import { useAdminSuccessToast } from "@/hooks/useAdminSuccessToast"
+import { useAdminRolesState, type AdminRoleRecord } from "@/lib/admin-store"
 
 const AVAILABLE_SCOPES = [
   "all",
@@ -77,27 +72,19 @@ function ScopeChecklist({
 }
 
 export function AdminRolesPage() {
-  const [roles, setRoles] = React.useState<Role[]>([
-    { id: "1", name: "Super Admin", code: "SUPER_ADMIN", desc: "Toàn quyền cấu hình hệ thống, quản lý cơ sở dữ liệu, sửa đổi tướng, tộc hệ và tài khoản người dùng.", users: 2, scopes: ["all"] },
-    { id: "2", name: "Editor", code: "EDITOR", desc: "Được quyền biên tập bài viết, đăng tin tức, quản lý Banners và tạo các cẩm nang đội hình mới.", users: 4, scopes: ["write:posts", "write:comps", "read:heroes"] },
-    { id: "3", name: "Moderator", code: "MODERATOR", desc: "Duyệt bình luận của cộng đồng, kiểm duyệt nội dung bài đăng thành viên và báo cáo vi phạm.", users: 3, scopes: ["read:users", "write:comments", "flag_moderate"] },
-    { id: "4", name: "Vip Member", code: "VIP_MEMBER", desc: "Người dùng đặc biệt, hưởng đặc quyền bình luận nâng cao và ưu tiên duyệt bài đăng chiến thuật nhanh.", users: 84, scopes: ["priority_posting"] },
-  ])
+  const [roles, setRoles] = useAdminRolesState()
 
   const [newName, setNewName] = React.useState("")
   const [newCode, setNewCode] = React.useState("")
   const [newDesc, setNewDesc] = React.useState("")
   const [newScopes, setNewScopes] = React.useState<string[]>(["read:all"])
-  const [successMsg, setSuccessMsg] = React.useState("")
-
-  const [editingRole, setEditingRole] = React.useState<Role | null>(null)
-  const [isEditOpen, setIsEditOpen] = React.useState(false)
-  const [deleteTarget, setDeleteTarget] = React.useState<{ id: string; name: string } | null>(null)
+  const { successMessage, showSuccess } = useAdminSuccessToast()
+  const dialogs = useAdminCrudDialogs<AdminRoleRecord>()
 
   const handleCreateRole = () => {
     if (!newName.trim() || !newCode.trim()) return
     const id = (roles.length + 1).toString()
-    const newRole: Role = {
+    const newRole: AdminRoleRecord = {
       id,
       name: newName,
       code: newCode.toUpperCase().replace(/\s+/g, "_"),
@@ -110,21 +97,21 @@ export function AdminRolesPage() {
     setNewCode("")
     setNewDesc("")
     setNewScopes(["read:all"])
-    setSuccessMsg(`Đã tạo vai trò ${newName} thành công!`)
-    setTimeout(() => setSuccessMsg(""), 3000)
+    showSuccess(`Đã tạo vai trò ${newName} thành công!`)
   }
 
   const handleUpdateRole = () => {
-    if (!editingRole || !editingRole.name.trim() || !editingRole.code.trim()) return
-    setRoles((prev) => prev.map((r) => (r.id === editingRole.id ? editingRole : r)))
-    setEditingRole(null)
-    setIsEditOpen(false)
-    setSuccessMsg(`Đã cập nhật vai trò ${editingRole.name}.`)
-    setTimeout(() => setSuccessMsg(""), 3000)
+    if (!dialogs.editingItem || !dialogs.editingItem.name.trim() || !dialogs.editingItem.code.trim()) return
+    setRoles((prev) => prev.map((r) => (r.id === dialogs.editingItem!.id ? dialogs.editingItem! : r)))
+    showSuccess(`Đã cập nhật vai trò ${dialogs.editingItem.name}.`)
+    dialogs.closeEdit()
   }
 
-  const handleDeleteRole = (id: string) => {
-    setRoles((prev) => prev.filter((r) => r.id !== id))
+  const handleDeleteRole = () => {
+    if (!dialogs.deleteTarget) return
+    setRoles((prev) => prev.filter((r) => r.id !== dialogs.deleteTarget!.id))
+    showSuccess(`Đã xóa vai trò ${dialogs.deleteTarget.name}.`)
+    dialogs.closeDelete()
   }
 
   return (
@@ -135,7 +122,7 @@ export function AdminRolesPage() {
         description="Quản lý định nghĩa phân quyền (Scopes) và vai trò (Roles) trong ban quản trị."
       />
 
-      <AdminSuccessBanner message={successMsg} />
+      <AdminSuccessBanner message={successMessage ?? ""} />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-4">
@@ -157,26 +144,16 @@ export function AdminRolesPage() {
                   </span>
                   {role.code !== "SUPER_ADMIN" && (
                     <>
-                      <Button
-                        onClick={() => {
-                          setEditingRole({ ...role, scopes: [...role.scopes] })
-                          setIsEditOpen(true)
-                        }}
-                        variant="ghost"
-                        size="icon"
-                        className="h-8 w-8 rounded-lg text-brand-gold"
-                        title="Sửa vai trò"
-                      >
-                        <Edit2 className="h-4 w-4" />
-                      </Button>
-                      <Button
-                        onClick={() => setDeleteTarget({ id: role.id, name: role.name })}
-                        variant="ghost"
-                        size="icon"
-                        className="h-8 w-8 text-brand-red rounded-lg"
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </Button>
+                      <AdminTableActionButton
+                        variant="edit"
+                        onClick={() => dialogs.openEdit({ ...role, scopes: [...role.scopes] })}
+                        label="Sửa vai trò"
+                      />
+                      <AdminTableActionButton
+                        variant="delete"
+                        onClick={() => dialogs.openDelete(role)}
+                        label="Xóa vai trò"
+                      />
                     </>
                   )}
                 </div>
@@ -239,41 +216,55 @@ export function AdminRolesPage() {
       </div>
 
       <AdminFormDialog
-        open={isEditOpen}
-        onOpenChange={setIsEditOpen}
+        open={dialogs.isEditOpen}
+        onOpenChange={(open) => {
+          dialogs.setIsEditOpen(open)
+          if (!open) dialogs.closeEdit()
+        }}
         title="Sửa vai trò"
         description="Cập nhật tên, mô tả và phạm vi quyền của vai trò."
         size="md"
         onSubmit={handleUpdateRole}
         submitLabel="Lưu thay đổi"
       >
-        {editingRole && (
+        {dialogs.editingItem && (
           <div className="space-y-4">
             <AdminField label="Tên hiển thị">
               <Input
-                value={editingRole.name}
-                onChange={(e) => setEditingRole({ ...editingRole, name: e.target.value })}
+                value={dialogs.editingItem.name}
+                onChange={(e) =>
+                  dialogs.setEditingItem({ ...dialogs.editingItem!, name: e.target.value })
+                }
                 className="bg-brand-card-2 border-brand-border rounded-xl"
               />
             </AdminField>
             <AdminField label="Mã vai trò">
               <Input
-                value={editingRole.code}
-                onChange={(e) => setEditingRole({ ...editingRole, code: e.target.value.toUpperCase().replace(/\s+/g, "_") })}
+                value={dialogs.editingItem.code}
+                onChange={(e) =>
+                  dialogs.setEditingItem({
+                    ...dialogs.editingItem!,
+                    code: e.target.value.toUpperCase().replace(/\s+/g, "_"),
+                  })
+                }
                 className="bg-brand-card-2 border-brand-border rounded-xl font-mono"
               />
             </AdminField>
             <AdminField label="Mô tả">
               <textarea
-                value={editingRole.desc}
-                onChange={(e) => setEditingRole({ ...editingRole, desc: e.target.value })}
+                value={dialogs.editingItem.desc}
+                onChange={(e) =>
+                  dialogs.setEditingItem({ ...dialogs.editingItem!, desc: e.target.value })
+                }
                 className="w-full h-24 bg-brand-card-2 border border-brand-border rounded-xl p-4 text-[13px] text-brand-text-main"
               />
             </AdminField>
             <AdminField label="Scopes">
               <ScopeChecklist
-                selected={editingRole.scopes}
-                onChange={(scopes) => setEditingRole({ ...editingRole, scopes })}
+                selected={dialogs.editingItem.scopes}
+                onChange={(scopes) =>
+                  dialogs.setEditingItem({ ...dialogs.editingItem!, scopes })
+                }
               />
             </AdminField>
           </div>
@@ -281,18 +272,18 @@ export function AdminRolesPage() {
       </AdminFormDialog>
 
       <AdminDeleteDialog
-        open={!!deleteTarget}
-        onOpenChange={(open) => !open && setDeleteTarget(null)}
+        open={dialogs.isDeleteOpen}
+        onOpenChange={(open) => {
+          dialogs.setIsDeleteOpen(open)
+          if (!open) dialogs.closeDelete()
+        }}
         title="Xóa vai trò"
         description={
-          deleteTarget
-            ? `Bạn muốn xóa vai trò "${deleteTarget.name}" ra khỏi hệ thống?`
+          dialogs.deleteTarget
+            ? `Bạn muốn xóa vai trò "${dialogs.deleteTarget.name}" ra khỏi hệ thống?`
             : ""
         }
-        onConfirm={() => {
-          if (deleteTarget) handleDeleteRole(deleteTarget.id)
-          setDeleteTarget(null)
-        }}
+        onConfirm={handleDeleteRole}
       />
     </div>
   )

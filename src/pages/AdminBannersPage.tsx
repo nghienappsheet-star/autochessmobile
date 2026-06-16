@@ -2,7 +2,6 @@ import * as React from "react"
 import {
   Card,
   Button,
-  Badge,
   Select,
   SelectTrigger,
   SelectValue,
@@ -16,6 +15,7 @@ import { nextNumericId } from "@/lib/admin-utils"
 import type { Banner } from "@/types/domain"
 import {
   AdminPageHeader,
+  AdminSuccessBanner,
   AdminDeleteDialog,
   AdminListShell,
   AdminDataTable,
@@ -27,15 +27,25 @@ import {
   AdminTd,
   AdminTableFooterText,
   AdminFormDialog,
-  AdminDetailDialog,
-  AdminBannerForm,
+  AdminBannerDetailDialog,
+  AdminRowActions,
+} from "@/components/admin"
+import {
   EMPTY_BANNER_FORM,
   bannerFormFromBanner,
   bannerFromFormValue,
-  AdminRowActions,
-} from "@/components/admin"
-import { useAdminPagination } from "@/hooks/useAdminPagination"
-import { useAdminCrudDialogs } from "@/hooks/useAdminCrudDialogs"
+} from "@/components/admin/AdminBannerForm"
+import { useAdminListPage } from "@/hooks/useAdminListPage"
+
+const AdminBannerForm = React.lazy(() =>
+  import("@/components/admin/AdminBannerForm").then((m) => ({ default: m.AdminBannerForm }))
+)
+
+function BannerFormFallback() {
+  return (
+    <div className="py-12 text-center admin-meta text-brand-text-sub">Đang tải biểu mẫu banner...</div>
+  )
+}
 
 export function AdminBannersPage() {
   const { banners, addBanner, updateBanner, deleteBanner } = useAppStore()
@@ -45,13 +55,42 @@ export function AdminBannersPage() {
   const [isDetailOpen, setIsDetailOpen] = React.useState(false)
   const [detailBanner, setDetailBanner] = React.useState<Banner | null>(null)
 
-  const dialogs = useAdminCrudDialogs<Banner>()
+  const matchBanner = React.useCallback(
+    (banner: Banner, q: string) => {
+      const query = q.toLowerCase()
+      const matchesSearch =
+        banner.title.toLowerCase().includes(query) ||
+        banner.subtitle.toLowerCase().includes(query)
+      const matchesStatus = selectedStatus === "Tất cả trạng thái" || banner.status === selectedStatus
+      return matchesSearch && matchesStatus
+    },
+    [selectedStatus]
+  )
+
+  const {
+    dialogs,
+    successMessage,
+    showSuccess,
+    filteredItems: filteredBanners,
+    paginatedItems: paginatedBanners,
+    currentPage,
+    setCurrentPage,
+    totalPages,
+    startIndex,
+    pageSize,
+  } = useAdminListPage({
+    items: banners,
+    searchTerm,
+    match: matchBanner,
+    resetDeps: [selectedStatus],
+  })
 
   const handleCreateBanner = () => {
     if (!newBanner.title.trim()) return
     const id = nextNumericId(banners)
     addBanner(bannerFromFormValue(newBanner, id))
     setNewBanner(EMPTY_BANNER_FORM)
+    showSuccess(`Đã tạo banner "${newBanner.title.trim()}" thành công!`)
     dialogs.closeAdd()
   }
 
@@ -61,26 +100,17 @@ export function AdminBannersPage() {
       dialogs.editingItem.id,
       bannerFromFormValue(bannerFormFromBanner(dialogs.editingItem), dialogs.editingItem.id, dialogs.editingItem)
     )
+    showSuccess(`Đã cập nhật banner "${dialogs.editingItem.title}".`)
     dialogs.closeEdit()
   }
 
   const confirmDeleteBanner = () => {
     if (dialogs.deleteTarget) {
       deleteBanner(dialogs.deleteTarget.id)
+      showSuccess(`Đã xóa banner "${dialogs.deleteTarget.title}".`)
       dialogs.closeDelete()
     }
   }
-
-  const filteredBanners = banners.filter((banner) => {
-    const matchesSearch =
-      banner.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      banner.subtitle.toLowerCase().includes(searchTerm.toLowerCase())
-    const matchesStatus = selectedStatus === "Tất cả trạng thái" || banner.status === selectedStatus
-    return matchesSearch && matchesStatus
-  })
-
-  const { currentPage, setCurrentPage, totalPages, startIndex, pageSize, paginatedItems: paginatedBanners } =
-    useAdminPagination(filteredBanners, [searchTerm, selectedStatus])
 
   const totalBanners = banners.length
   const activeBannersCount = banners.filter((b) => b.status === "Hiện").length
@@ -90,19 +120,22 @@ export function AdminBannersPage() {
     <>
       <AdminListShell
         header={
-          <AdminPageHeader
-            icon={ImageIcon}
-            title="Quản lý banners"
-            description="Cấu hình trang hoàng sảnh chính website, tin tức sự kiện, và chiến dịch quảng cáo trọng tâm mùa giải."
-          >
-            <Button
-              size="default"
-              onClick={dialogs.openAdd}
-              className="gap-2 bg-gold-gradient text-black font-bold admin-meta uppercase tracking-wider h-11 px-6 rounded-xl transition-all hover:scale-[1.02]"
+          <>
+            <AdminPageHeader
+              icon={ImageIcon}
+              title="Quản lý banners"
+              description="Cấu hình trang hoàng sảnh chính website, tin tức sự kiện, và chiến dịch quảng cáo trọng tâm mùa giải."
             >
-              <Plus className="h-4.5 w-4.5 stroke-[3px]" /> Thêm banner mới
-            </Button>
-          </AdminPageHeader>
+              <Button
+                size="default"
+                onClick={dialogs.openAdd}
+                className="gap-2 bg-gold-gradient text-black font-bold admin-meta uppercase tracking-wider h-11 px-6 rounded-xl transition-all hover:scale-[1.02]"
+              >
+                <Plus className="h-4.5 w-4.5 stroke-[3px]" /> Thêm banner mới
+              </Button>
+            </AdminPageHeader>
+            <AdminSuccessBanner message={successMessage ?? ""} />
+          </>
         }
         beforeList={
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 shrink-0">
@@ -264,7 +297,9 @@ export function AdminBannersPage() {
         submitLabel="Kích họa Banner"
         cancelLabel="Hủy bỏ"
       >
-        <AdminBannerForm value={newBanner} onChange={setNewBanner} />
+        <React.Suspense fallback={<BannerFormFallback />}>
+          <AdminBannerForm value={newBanner} onChange={setNewBanner} />
+        </React.Suspense>
       </AdminFormDialog>
 
       <AdminFormDialog
@@ -281,65 +316,25 @@ export function AdminBannersPage() {
         cancelLabel="Hủy bỏ"
       >
         {dialogs.editingItem && (
-          <AdminBannerForm
-            value={bannerFormFromBanner(dialogs.editingItem)}
-            onChange={(value) =>
-              dialogs.setEditingItem({
-                ...dialogs.editingItem!,
-                ...value,
-              })
-            }
-          />
+          <React.Suspense fallback={<BannerFormFallback />}>
+            <AdminBannerForm
+              value={bannerFormFromBanner(dialogs.editingItem)}
+              onChange={(value) =>
+                dialogs.setEditingItem({
+                  ...dialogs.editingItem!,
+                  ...value,
+                })
+              }
+            />
+          </React.Suspense>
         )}
       </AdminFormDialog>
 
-      <AdminDetailDialog
+      <AdminBannerDetailDialog
+        banner={detailBanner}
         open={isDetailOpen}
         onOpenChange={setIsDetailOpen}
-        title={detailBanner?.title ?? "Chi tiết banner"}
-        size="md"
-        footer={
-          <Button
-            onClick={() => setIsDetailOpen(false)}
-            className="w-full h-11 bg-transparent border border-brand-border text-brand-text-main hover:bg-brand-card-2 rounded-xl font-bold uppercase admin-meta tracking-widest"
-          >
-            Đóng cửa sổ
-          </Button>
-        }
-      >
-        {detailBanner && (
-          <div className="space-y-4">
-            <div className="w-full h-36 rounded-xl overflow-hidden border border-brand-border relative">
-              <img
-                src={detailBanner.image}
-                alt={detailBanner.title}
-                className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-            </div>
-
-            <div className="flex items-center justify-center gap-2">
-              <Badge variant={detailBanner.status === "Hiện" ? "success" : "secondary"}>
-                TRẠNG THÁI: {detailBanner.status.toUpperCase()}
-              </Badge>
-              <Badge variant="outline">SỰ KIỆN CHỦ</Badge>
-            </div>
-
-            <div className="space-y-1.5">
-              <span className="admin-form-label">Mô tả đặc quyền sự kiện</span>
-              <div className="p-4 rounded-xl bg-brand-card-2 border border-brand-border text-brand-text-sub leading-relaxed font-normal whitespace-pre-line admin-body">
-                {detailBanner.subtitle}
-              </div>
-            </div>
-
-            <div className="flex justify-between items-center text-brand-text-sub font-mono admin-meta bg-brand-card-2/50 p-3 border border-brand-border rounded-xl">
-              <span>HÀNH ĐỘNG CLICK:</span>
-              <strong className="text-brand-text-main">{detailBanner.primaryButtonText}</strong>
-            </div>
-          </div>
-        )}
-      </AdminDetailDialog>
+      />
 
       <AdminDeleteDialog
         open={dialogs.isDeleteOpen}

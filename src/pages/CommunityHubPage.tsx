@@ -11,7 +11,7 @@ import {
   LayoutGrid,
   Newspaper,
 } from "lucide-react"
-import { motion } from "motion/react"
+import { motion } from "@/components/motion/MotionProvider"
 import { Card, Badge, Button } from "@/components/ui/core"
 import { PageHeader } from "@/components/layout/PageHeader"
 import { getPageIcon } from "@/config/icons"

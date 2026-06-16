@@ -1,15 +1,6 @@
 import * as React from "react"
-import {
-  Card,
-  Button,
-  Input,
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem,
-} from "@/components/ui/core"
-import { ImageIcon, Copy, Check, Trash2, Plus, Edit2, CloudLightning } from "lucide-react"
+import { Card, Button } from "@/components/ui/core"
+import { ImageIcon, Copy, Check, Trash2, Plus, CloudLightning } from "lucide-react"
 import { useAppStore } from "@/contexts/DataContext"
 import type { MediaAsset } from "@/types/domain"
 import { nextNumericId } from "@/lib/admin-utils"
@@ -18,12 +9,27 @@ import {
   AdminSuccessBanner,
   AdminToolbar,
   AdminFormDialog,
-  AdminField,
+  AdminTableActionButton,
 } from "@/components/admin"
-import { CloudinaryFileUpload } from "@/components/shared/CloudinaryFileUpload"
+import {
+  EMPTY_MEDIA_FORM,
+  mediaFormFromAsset,
+  mediaFromFormValue,
+} from "@/components/admin/AdminMediaForm"
 import { isPersistableImageUrl } from "@/lib/media-url"
 import { AdminDeleteDialog } from "@/components/admin/AdminDeleteDialog"
 import { cn } from "@/lib/utils"
+import { useAdminListPage } from "@/hooks/useAdminListPage"
+
+const AdminMediaForm = React.lazy(() =>
+  import("@/components/admin/AdminMediaForm").then((m) => ({ default: m.AdminMediaForm }))
+)
+
+function MediaFormFallback() {
+  return (
+    <div className="py-8 text-center admin-meta text-brand-text-sub">Đang tải biểu mẫu media...</div>
+  )
+}
 
 const MEDIA_CATEGORIES = ["Tất cả", "Tướng", "Trang bị", "Banners", "Khác"]
 
@@ -31,23 +37,26 @@ export function AdminMediaPage() {
   const { media, addMedia, updateMedia, deleteMedia } = useAppStore()
   const [searchTerm, setSearchTerm] = React.useState("")
   const [selectedCategory, setSelectedCategory] = React.useState("Tất cả")
-  const [successMsg, setSuccessMsg] = React.useState("")
   const [copiedId, setCopiedId] = React.useState<string | null>(null)
-
-  const [newTitle, setNewTitle] = React.useState("")
-  const [newAlt, setNewAlt] = React.useState("")
-  const [newUrl, setNewUrl] = React.useState("")
-  const [newCategory, setNewCategory] = React.useState("Trang bị")
+  const [newMediaForm, setNewMediaForm] = React.useState(EMPTY_MEDIA_FORM)
   const [urlError, setUrlError] = React.useState<string | null>(null)
 
-  const [isEditOpen, setIsEditOpen] = React.useState(false)
-  const [editingMedia, setEditingMedia] = React.useState<MediaAsset | null>(null)
-  const [deleteTarget, setDeleteTarget] = React.useState<MediaAsset | null>(null)
+  const matchMedia = React.useCallback(
+    (m: MediaAsset, q: string) => {
+      const query = q.toLowerCase()
+      const matchesSearch = m.name.toLowerCase().includes(query)
+      const matchesCat = selectedCategory === "Tất cả" || m.category === selectedCategory
+      return matchesSearch && matchesCat
+    },
+    [selectedCategory]
+  )
 
-  const showSuccess = (msg: string) => {
-    setSuccessMsg(msg)
-    setTimeout(() => setSuccessMsg(""), 3000)
-  }
+  const { dialogs, successMessage, showSuccess, filteredItems: filteredMedia } = useAdminListPage({
+    items: media,
+    searchTerm,
+    match: matchMedia,
+    resetDeps: [selectedCategory],
+  })
 
   const handleCopyLink = (id: string, url: string) => {
     navigator.clipboard.writeText(url)
@@ -57,54 +66,37 @@ export function AdminMediaPage() {
   }
 
   const handleCreateMedia = () => {
-    if (!newTitle.trim() || !newUrl.trim()) return
-    if (!isPersistableImageUrl(newUrl)) {
+    if (!newMediaForm.title.trim() || !newMediaForm.url.trim()) return
+    if (!isPersistableImageUrl(newMediaForm.url)) {
       setUrlError("URL ảnh phải là HTTPS, đường dẫn tĩnh (/...) hoặc tải lên qua Cloudinary.")
       return
     }
     setUrlError(null)
     const id = nextNumericId(media)
-    const name = newTitle.toLowerCase().replace(/\s+/g, "_") + (newUrl.endsWith(".png") ? "" : ".png")
-    addMedia({
-      id,
-      name,
-      alt: newAlt || newTitle,
-      category: newCategory,
-      size: "120 KB",
-      url: newUrl,
-      uploadedAt: new Date().toLocaleDateString("vi-VN"),
-    })
-    setNewTitle("")
-    setNewAlt("")
-    setNewUrl("")
-    showSuccess(`Đã tải lên tệp tin đồ họa ${newTitle}!`)
+    const created = mediaFromFormValue(newMediaForm, id, "create")
+    addMedia(created)
+    setNewMediaForm(EMPTY_MEDIA_FORM)
+    showSuccess(`Đã tải lên tệp tin đồ họa ${created.alt}!`)
   }
 
   const handleUpdateMedia = () => {
-    if (!editingMedia || !editingMedia.name.trim() || !editingMedia.url.trim()) return
-    if (!isPersistableImageUrl(editingMedia.url)) {
+    if (!dialogs.editingItem || !dialogs.editingItem.name.trim() || !dialogs.editingItem.url.trim()) return
+    if (!isPersistableImageUrl(dialogs.editingItem.url)) {
       setUrlError("URL ảnh phải là HTTPS, đường dẫn tĩnh (/...) hoặc tải lên qua Cloudinary.")
       return
     }
     setUrlError(null)
-    updateMedia(editingMedia.id, editingMedia)
-    setEditingMedia(null)
-    setIsEditOpen(false)
+    updateMedia(dialogs.editingItem.id, dialogs.editingItem)
+    dialogs.closeEdit()
     showSuccess("Đã cập nhật thông tin media!")
   }
 
   const handleDeleteMedia = () => {
-    if (!deleteTarget) return
-    deleteMedia(deleteTarget.id)
-    setDeleteTarget(null)
+    if (!dialogs.deleteTarget) return
+    deleteMedia(dialogs.deleteTarget.id)
+    dialogs.closeDelete()
     showSuccess("Đã xóa tệp đồ họa khỏi thư viện.")
   }
-
-  const filteredMedia = media.filter((m) => {
-    const matchesSearch = m.name.toLowerCase().includes(searchTerm.toLowerCase())
-    const matchesCat = selectedCategory === "Tất cả" || m.category === selectedCategory
-    return matchesSearch && matchesCat
-  })
 
   return (
     <div className="space-y-8 pb-8 font-sans">
@@ -114,7 +106,7 @@ export function AdminMediaPage() {
         description="Tải lên, sao chép URL trực tiếp và quản lý toàn bộ hình ảnh dùng cho hệ thống giải đấu, trang bị và tướng."
       />
 
-      <AdminSuccessBanner message={successMsg} />
+      <AdminSuccessBanner message={successMessage ?? ""} />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-4">
@@ -171,20 +163,13 @@ export function AdminMediaPage() {
                           <Copy className="h-4 w-4" />
                         )}
                       </Button>
+                      <AdminTableActionButton
+                        variant="edit"
+                        onClick={() => dialogs.openEdit({ ...item })}
+                        label="Chỉnh sửa"
+                      />
                       <Button
-                        onClick={() => {
-                          setEditingMedia({ ...item })
-                          setIsEditOpen(true)
-                        }}
-                        variant="secondary"
-                        size="sm"
-                        className="h-8 w-8 p-0 grid place-items-center bg-brand-card text-brand-gold hover:bg-brand-card-2 border border-brand-border"
-                        title="Chỉnh sửa"
-                      >
-                        <Edit2 className="h-4 w-4" />
-                      </Button>
-                      <Button
-                        onClick={() => setDeleteTarget(item)}
+                        onClick={() => dialogs.openDelete(item)}
                         variant="danger"
                         size="sm"
                         className="h-8 w-8 p-0 grid place-items-center bg-brand-red/80 hover:bg-brand-red text-white border-transparent"
@@ -215,135 +200,64 @@ export function AdminMediaPage() {
             <h3 className="admin-card-title uppercase flex items-center gap-2 border-b border-brand-border pb-3">
               <CloudLightning className="h-4 w-4 text-brand-gold" /> Tải lên tài nguyên
             </h3>
-            <div className="space-y-4">
-              <AdminField label="Tên định danh tệp">
-                <Input
-                  value={newTitle}
-                  onChange={(e) => setNewTitle(e.target.value)}
-                  placeholder="Ví dụ: sprite_queen_crown"
-                />
-              </AdminField>
-              <AdminField label="Văn bản thay thế (Alt)">
-                <Input
-                  value={newAlt}
-                  onChange={(e) => setNewAlt(e.target.value)}
-                  placeholder="Mô tả ngắn cho SEO"
-                />
-              </AdminField>
-              <AdminField label="Đường dẫn tệp CDN/Ảnh (URL)">
-                <div className="space-y-2">
-                  <div className="flex flex-wrap gap-2">
-                    <Input
-                      value={newUrl}
-                      onChange={(e) => {
-                        const next = e.target.value
-                        const lower = next.trim().toLowerCase()
-                        if (lower.startsWith("data:") || lower.startsWith("blob:")) {
-                          setUrlError("Không lưu URL base64 hoặc blob.")
-                          return
-                        }
-                        setUrlError(null)
-                        setNewUrl(next)
-                      }}
-                      placeholder="https://..."
-                      className="flex-1 min-w-[200px]"
-                    />
-                    <CloudinaryFileUpload
-                      onUploaded={(urls) => {
-                        if (urls[0]) {
-                          setNewUrl(urls[0])
-                          setUrlError(null)
-                        }
-                      }}
-                      onError={(message) => setUrlError(message)}
-                      label="Tải file"
-                      uploadingLabel="Đang tải..."
-                    />
-                  </div>
-                  {urlError && <p className="text-[12px] text-brand-red font-medium">{urlError}</p>}
-                </div>
-              </AdminField>
-              <AdminField label="Phân nhóm Media">
-                <Select value={newCategory} onValueChange={setNewCategory}>
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Tướng">Tướng (Sprite)</SelectItem>
-                    <SelectItem value="Trang bị">Trang bị (Combat Item)</SelectItem>
-                    <SelectItem value="Banners">Ảnh Banners chính</SelectItem>
-                    <SelectItem value="Khác">Ảnh khác/Avatar</SelectItem>
-                  </SelectContent>
-                </Select>
-              </AdminField>
-
-              <Button
-                onClick={handleCreateMedia}
-                className="w-full bg-gold-gradient text-black font-bold text-[13px] h-11 rounded-xl shadow-none uppercase"
-              >
-                Nhập tài nguyên mới
-              </Button>
-            </div>
+            <React.Suspense fallback={<MediaFormFallback />}>
+              <AdminMediaForm
+                mode="create"
+                value={newMediaForm}
+                onChange={setNewMediaForm}
+                urlError={urlError}
+                onUrlError={setUrlError}
+              />
+            </React.Suspense>
+            <Button
+              onClick={handleCreateMedia}
+              className="w-full bg-gold-gradient text-black font-bold text-[13px] h-11 rounded-xl shadow-none uppercase"
+            >
+              Nhập tài nguyên mới
+            </Button>
           </Card>
         </div>
       </div>
 
       <AdminFormDialog
-        open={isEditOpen}
-        onOpenChange={setIsEditOpen}
+        open={dialogs.isEditOpen}
+        onOpenChange={(open) => {
+          dialogs.setIsEditOpen(open)
+          if (!open) dialogs.setEditingItem(null)
+        }}
         title="Chỉnh sửa media"
         description="Cập nhật tên, alt text, URL và phân loại tệp."
         size="md"
         onSubmit={handleUpdateMedia}
         submitLabel="Lưu thay đổi"
       >
-        {editingMedia && (
-          <div className="space-y-4">
-            <AdminField label="Tên tệp">
-              <Input
-                value={editingMedia.name}
-                onChange={(e) => setEditingMedia({ ...editingMedia, name: e.target.value })}
-              />
-            </AdminField>
-            <AdminField label="Alt text">
-              <Input
-                value={editingMedia.alt}
-                onChange={(e) => setEditingMedia({ ...editingMedia, alt: e.target.value })}
-              />
-            </AdminField>
-            <AdminField label="URL">
-              <Input
-                value={editingMedia.url}
-                onChange={(e) => setEditingMedia({ ...editingMedia, url: e.target.value })}
-              />
-            </AdminField>
-            <AdminField label="Phân loại">
-              <Select
-                value={editingMedia.category}
-                onValueChange={(category) => setEditingMedia({ ...editingMedia, category })}
-              >
-                <SelectTrigger>
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="Tướng">Tướng</SelectItem>
-                  <SelectItem value="Trang bị">Trang bị</SelectItem>
-                  <SelectItem value="Banners">Banners</SelectItem>
-                  <SelectItem value="Khác">Khác</SelectItem>
-                </SelectContent>
-              </Select>
-            </AdminField>
-          </div>
+        {dialogs.editingItem && (
+          <React.Suspense fallback={<MediaFormFallback />}>
+            <AdminMediaForm
+              mode="edit"
+              value={mediaFormFromAsset(dialogs.editingItem)}
+              onChange={(value) =>
+                dialogs.setEditingItem(
+                  mediaFromFormValue(value, dialogs.editingItem!.id, "edit", dialogs.editingItem!)
+                )
+              }
+              urlError={urlError}
+              onUrlError={setUrlError}
+            />
+          </React.Suspense>
         )}
       </AdminFormDialog>
 
       <AdminDeleteDialog
-        open={!!deleteTarget}
-        onOpenChange={(open) => !open && setDeleteTarget(null)}
+        open={dialogs.isDeleteOpen}
+        onOpenChange={(open) => {
+          dialogs.setIsDeleteOpen(open)
+          if (!open) dialogs.setDeleteTarget(null)
+        }}
         title="Xóa tệp media"
         description={
-          deleteTarget
-            ? `Chắc chắn muốn xóa tệp "${deleteTarget.name}"? Liên kết bài viết dùng hình ảnh này có thể bị lỗi.`
+          dialogs.deleteTarget
+            ? `Chắc chắn muốn xóa tệp "${dialogs.deleteTarget.name}"? Liên kết bài viết dùng hình ảnh này có thể bị lỗi.`
             : ""
         }
         onConfirm={handleDeleteMedia}

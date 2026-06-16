@@ -1,9 +1,10 @@
 import * as React from "react"
-import { Button, Input, Badge } from "@/components/ui/core"
-import { Plus, Edit2, Trash2, Zap, Eye, Workflow } from "lucide-react"
+import { Button, Badge } from "@/components/ui/core"
+import { Plus, Zap } from "lucide-react"
 import { useAppStore } from "@/contexts/DataContext"
 import {
   AdminDeleteDialog,
+  AdminSuccessBanner,
   AdminDataTable,
   AdminToolbar,
   AdminTable,
@@ -14,14 +15,28 @@ import {
   AdminTableFooterText,
   AdminFormDialog,
   AdminDetailDialog,
-  AdminField,
-  AdminFormGrid,
+  AdminRowActions,
+  type TraitRecord,
 } from "@/components/admin"
-import type { ClassSynergy, Hero, Race } from "@/types/domain"
+import {
+  traitFormFromRecord,
+  traitFromFormValue,
+  type TraitFormValue,
+} from "@/components/admin/AdminTraitForm.helpers"
+import type { Hero } from "@/types/domain"
 import type { TraitKind } from "@/lib/traits"
 import { TraitIcon } from "@/components/traits/TraitIcon"
+import { useAdminListPage } from "@/hooks/useAdminListPage"
 
-type TraitRecord = Race | ClassSynergy
+const AdminTraitForm = React.lazy(() =>
+  import("@/components/admin/AdminTraitForm").then((m) => ({ default: m.AdminTraitForm }))
+)
+
+function TraitFormFallback() {
+  return (
+    <div className="py-8 text-center admin-meta text-brand-text-sub">Đang tải biểu mẫu tộc/hệ...</div>
+  )
+}
 
 type AdminTraitPanelProps = {
   kind: TraitKind
@@ -81,6 +96,10 @@ function countHeroesForTrait(row: TraitRecord, heroes: Hero[], kind: TraitKind):
   return heroes.filter((h) => h.class.includes(row.name)).length
 }
 
+function emptyTraitForm(defaultIcon: string): TraitFormValue {
+  return { icon: defaultIcon, name: "", description: "" }
+}
+
 export function AdminTraitPanel({ kind }: AdminTraitPanelProps) {
   const config = PANEL_CONFIG[kind]
   const store = useAppStore()
@@ -91,69 +110,72 @@ export function AdminTraitPanel({ kind }: AdminTraitPanelProps) {
   const { heroes } = store
 
   const [searchTerm, setSearchTerm] = React.useState("")
-  const [isAddOpen, setIsAddOpen] = React.useState(false)
-  const [newIcon, setNewIcon] = React.useState<string>(config.defaultIcon)
-  const [newName, setNewName] = React.useState("")
-  const [newDesc, setNewDesc] = React.useState("")
-  const [isEditOpen, setIsEditOpen] = React.useState(false)
-  const [editingItem, setEditingItem] = React.useState<TraitRecord | null>(null)
+  const [newTraitForm, setNewTraitForm] = React.useState(() => emptyTraitForm(config.defaultIcon))
   const [isDetailOpen, setIsDetailOpen] = React.useState(false)
   const [detailItem, setDetailItem] = React.useState<TraitRecord | null>(null)
-  const [isDeleteOpen, setIsDeleteOpen] = React.useState(false)
-  const [itemToDelete, setItemToDelete] = React.useState<TraitRecord | null>(null)
-  const [currentPage, setCurrentPage] = React.useState(1)
-  const pageSize = 10
 
-  const filteredItems = items.filter((item) =>
-    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  const matchTrait = React.useCallback(
+    (item: TraitRecord, q: string) => item.name.toLowerCase().includes(q.toLowerCase()),
+    []
   )
 
-  React.useEffect(() => {
-    setCurrentPage(1)
-  }, [searchTerm, kind])
+  const {
+    dialogs,
+    successMessage,
+    showSuccess,
+    filteredItems,
+    paginatedItems,
+    currentPage,
+    setCurrentPage,
+    totalPages,
+    startIndex,
+  } = useAdminListPage({
+    items,
+    searchTerm,
+    match: matchTrait,
+    resetDeps: [kind],
+  })
 
-  const totalPages = Math.ceil(filteredItems.length / pageSize) || 1
-  const startIndex = (currentPage - 1) * pageSize
-  const paginatedItems = filteredItems.slice(startIndex, startIndex + pageSize)
+  const openAddDialog = () => {
+    setNewTraitForm(emptyTraitForm(config.defaultIcon))
+    dialogs.openAdd()
+  }
 
   const handleCreate = () => {
-    if (!newName.trim()) return
-    const id = newName.toLowerCase().replace(/\s+/g, "-")
-    addItem({
-      id,
-      name: newName,
-      icon: newIcon,
-      description: newDesc || config.defaultDesc,
-      milestones: [...config.defaultMilestones],
-    })
-    setNewName("")
-    setNewIcon(config.defaultIcon)
-    setNewDesc("")
-    setIsAddOpen(false)
+    if (!newTraitForm.name.trim()) return
+    const id = newTraitForm.name.toLowerCase().replace(/\s+/g, "-")
+    addItem(
+      traitFromFormValue(newTraitForm, id, [...config.defaultMilestones], config.defaultDesc)
+    )
+    setNewTraitForm(emptyTraitForm(config.defaultIcon))
+    showSuccess(`Đã thêm ${config.idLabel.toLowerCase()} "${newTraitForm.name.trim()}".`)
+    dialogs.closeAdd()
   }
 
   const handleUpdate = () => {
-    if (!editingItem || !editingItem.name.trim()) return
-    updateItem(editingItem.id, editingItem)
-    setEditingItem(null)
-    setIsEditOpen(false)
+    if (!dialogs.editingItem || !dialogs.editingItem.name.trim()) return
+    updateItem(dialogs.editingItem.id, dialogs.editingItem)
+    showSuccess(`Đã cập nhật "${dialogs.editingItem.name}".`)
+    dialogs.closeEdit()
   }
 
   const confirmDelete = () => {
-    if (itemToDelete) {
-      deleteItem(itemToDelete.id)
-      setIsDeleteOpen(false)
-      setItemToDelete(null)
+    if (dialogs.deleteTarget) {
+      deleteItem(dialogs.deleteTarget.id)
+      showSuccess(`Đã xóa "${dialogs.deleteTarget.name}".`)
+      dialogs.closeDelete()
     }
   }
 
   return (
     <>
+      <AdminSuccessBanner message={successMessage ?? ""} />
+
       <div className="flex flex-col flex-1 min-h-0 gap-4">
         <div className="flex justify-end shrink-0">
           <Button
             size="default"
-            onClick={() => setIsAddOpen(true)}
+            onClick={openAddDialog}
             className="gap-2 bg-gold-gradient text-black font-bold admin-meta uppercase tracking-wider h-11 px-6 rounded-xl transition-all hover:scale-[1.02]"
           >
             <Plus className="h-4.5 w-4.5 stroke-[3px]" /> {config.addButton}
@@ -172,7 +194,7 @@ export function AdminTraitPanel({ kind }: AdminTraitPanelProps) {
           footer={
             <AdminTableFooterText
               start={filteredItems.length > 0 ? startIndex + 1 : 0}
-              end={Math.min(startIndex + pageSize, filteredItems.length)}
+              end={Math.min(startIndex + 10, filteredItems.length)}
               total={filteredItems.length}
               label={config.paginationUnit}
             />
@@ -244,44 +266,14 @@ export function AdminTraitPanel({ kind }: AdminTraitPanelProps) {
                       </div>
                     </AdminTd>
                     <AdminTd className="text-right">
-                      <div className="flex justify-end gap-1.5">
-                        <Button
-                          onClick={() => {
-                            setDetailItem(row)
-                            setIsDetailOpen(true)
-                          }}
-                          variant="ghost"
-                          size="icon"
-                          className="h-9 w-9 rounded-lg hover:bg-brand-card-2 text-brand-text-sub hover:text-brand-text-main transition-all border border-transparent hover:border-brand-border"
-                          title="Xem chi tiết"
-                        >
-                          <Eye className="h-4 w-4" />
-                        </Button>
-                        <Button
-                          onClick={() => {
-                            setEditingItem({ ...row })
-                            setIsEditOpen(true)
-                          }}
-                          variant="ghost"
-                          size="icon"
-                          className="h-9 w-9 rounded-lg hover:bg-brand-card-2 text-brand-text-sub hover:text-brand-text-main transition-all border border-transparent hover:border-brand-border"
-                          title="Sửa"
-                        >
-                          <Edit2 className="h-4 w-4 text-tier-b" />
-                        </Button>
-                        <Button
-                          onClick={() => {
-                            setItemToDelete(row)
-                            setIsDeleteOpen(true)
-                          }}
-                          variant="ghost"
-                          size="icon"
-                          className="h-9 w-9 rounded-lg hover:bg-brand-card-2 text-brand-text-sub hover:text-brand-red transition-all border border-transparent hover:border-brand-border"
-                          title="Xóa"
-                        >
-                          <Trash2 className="h-4 w-4 text-brand-red/70 hover:text-brand-red" />
-                        </Button>
-                      </div>
+                      <AdminRowActions
+                        onView={() => {
+                          setDetailItem(row)
+                          setIsDetailOpen(true)
+                        }}
+                        onEdit={() => dialogs.openEdit({ ...row })}
+                        onDelete={() => dialogs.openDelete(row)}
+                      />
                     </AdminTd>
                   </AdminTr>
                 )
@@ -292,8 +284,8 @@ export function AdminTraitPanel({ kind }: AdminTraitPanelProps) {
       </div>
 
       <AdminFormDialog
-        open={isAddOpen}
-        onOpenChange={setIsAddOpen}
+        open={dialogs.isAddOpen}
+        onOpenChange={dialogs.setIsAddOpen}
         title={config.addTitle}
         description={config.addDesc}
         size="md"
@@ -301,41 +293,22 @@ export function AdminTraitPanel({ kind }: AdminTraitPanelProps) {
         submitLabel="Lưu dữ liệu"
         cancelLabel="Hủy bỏ"
       >
-        <AdminFormGrid columns={1}>
-          <div className="grid grid-cols-4 gap-4">
-            <AdminField label="Biểu tượng" className="col-span-1">
-              <Input
-                value={newIcon}
-                onChange={(e) => setNewIcon(e.target.value)}
-                placeholder={config.defaultIcon}
-                className="text-center text-xl bg-brand-card border-brand-border rounded-xl h-11 focus-visible:ring-1 focus-visible:ring-brand-gold/30"
-              />
-            </AdminField>
-            <AdminField label={config.nameLabel} className="col-span-3">
-              <Input
-                value={newName}
-                onChange={(e) => setNewName(e.target.value)}
-                placeholder={config.namePlaceholder}
-                className="bg-brand-card border-brand-border rounded-xl h-11 focus-visible:ring-1 focus-visible:ring-brand-gold/30"
-              />
-            </AdminField>
-          </div>
-          <AdminField label="Hiệu ứng kích hoạt">
-            <textarea
-              value={newDesc}
-              onChange={(e) => setNewDesc(e.target.value)}
-              className="w-full h-24 bg-brand-card border border-brand-border rounded-xl p-3 admin-body text-brand-text-main focus:outline-none focus:ring-1 focus:ring-brand-gold/30 placeholder-brand-text-sub/50 transition-all"
-              placeholder="Mô tả hiệu ứng mốc kích hoạt..."
-            />
-          </AdminField>
-        </AdminFormGrid>
+        <React.Suspense fallback={<TraitFormFallback />}>
+          <AdminTraitForm
+            value={newTraitForm}
+            onChange={setNewTraitForm}
+            nameLabel={config.nameLabel}
+            namePlaceholder={config.namePlaceholder}
+            defaultIcon={config.defaultIcon}
+          />
+        </React.Suspense>
       </AdminFormDialog>
 
       <AdminFormDialog
-        open={isEditOpen}
+        open={dialogs.isEditOpen}
         onOpenChange={(open) => {
-          setIsEditOpen(open)
-          if (!open) setEditingItem(null)
+          dialogs.setIsEditOpen(open)
+          if (!open) dialogs.setEditingItem(null)
         }}
         title={config.editTitle}
         description={config.editDesc}
@@ -344,42 +317,21 @@ export function AdminTraitPanel({ kind }: AdminTraitPanelProps) {
         submitLabel="Cập nhật dữ liệu"
         cancelLabel="Hủy bỏ"
       >
-        {editingItem && (
-          <AdminFormGrid columns={1}>
-            <div className="grid grid-cols-4 gap-4">
-              <AdminField label="Biểu tượng" className="col-span-1">
-                <Input
-                  value={editingItem.icon}
-                  onChange={(e) => setEditingItem({ ...editingItem, icon: e.target.value })}
-                  className="text-center text-xl bg-brand-card border-brand-border rounded-xl h-11 text-brand-text-main"
-                />
-              </AdminField>
-              <AdminField label={config.nameLabel} className="col-span-3">
-                <Input
-                  value={editingItem.name}
-                  onChange={(e) => setEditingItem({ ...editingItem, name: e.target.value })}
-                  className="bg-brand-card border-brand-border rounded-xl h-11"
-                />
-              </AdminField>
-            </div>
-            <AdminField label="Mô tả">
-              <textarea
-                value={editingItem.description}
-                onChange={(e) => setEditingItem({ ...editingItem, description: e.target.value })}
-                className="w-full h-24 bg-brand-card border border-brand-border rounded-xl p-3 admin-body text-brand-text-main focus:outline-none focus:ring-1 focus:ring-brand-gold/30"
-              />
-            </AdminField>
-            <AdminField label="Logo URL (iconUrl)">
-              <Input
-                value={editingItem.iconUrl ?? ""}
-                onChange={(e) =>
-                  setEditingItem({ ...editingItem, iconUrl: e.target.value || undefined })
-                }
-                placeholder="/traits/example.png"
-                className="bg-brand-card border-brand-border rounded-xl h-11 font-mono text-sm"
-              />
-            </AdminField>
-          </AdminFormGrid>
+        {dialogs.editingItem && (
+          <React.Suspense fallback={<TraitFormFallback />}>
+            <AdminTraitForm
+              showIconUrl
+              value={traitFormFromRecord(dialogs.editingItem)}
+              onChange={(value) =>
+                dialogs.setEditingItem(
+                  traitFromFormValue(value, dialogs.editingItem!.id, dialogs.editingItem!.milestones)
+                )
+              }
+              nameLabel={config.nameLabel}
+              namePlaceholder={config.namePlaceholder}
+              defaultIcon={config.defaultIcon}
+            />
+          </React.Suspense>
         )}
       </AdminFormDialog>
 
@@ -442,15 +394,15 @@ export function AdminTraitPanel({ kind }: AdminTraitPanelProps) {
       </AdminDetailDialog>
 
       <AdminDeleteDialog
-        open={isDeleteOpen}
+        open={dialogs.isDeleteOpen}
         onOpenChange={(open) => {
-          setIsDeleteOpen(open)
-          if (!open) setItemToDelete(null)
+          dialogs.setIsDeleteOpen(open)
+          if (!open) dialogs.setDeleteTarget(null)
         }}
         title={config.deleteTitle}
         description={
-          itemToDelete
-            ? `Bạn có chắc muốn xóa vĩnh viễn "${itemToDelete.name}" khỏi cẩm nang trò chơi?`
+          dialogs.deleteTarget
+            ? `Bạn có chắc muốn xóa vĩnh viễn "${dialogs.deleteTarget.name}" khỏi cẩm nang trò chơi?`
             : ""
         }
         onConfirm={confirmDelete}

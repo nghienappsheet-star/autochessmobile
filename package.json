@@ -10,6 +10,9 @@
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit",
     "validate:data": "tsx src/lib/validate-game-data.ts",
+    "test:admin-crud": "tsx scripts/admin-crud-smoke.ts",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
     "import:heroes": "node scripts/import-heroes-dragonest.mjs",
     "import:traits": "node scripts/import-traits-dragonest.mjs"
   },
@@ -30,6 +33,7 @@
     "i18next-browser-languagedetector": "^8.2.1",
     "lucide-react": "^0.546.0",
     "motion": "^12.23.24",
+    "qrcode.react": "^4.2.0",
     "react": "^19.0.1",
     "react-dom": "^19.0.1",
     "react-i18next": "^17.0.8",
@@ -41,6 +45,7 @@
     "vite": "^6.2.3"
   },
   "devDependencies": {
+    "@playwright/test": "^1.51.0",
     "@types/express": "^4.17.21",
     "@types/node": "^22.14.0",
     "autoprefixer": "^10.4.21",

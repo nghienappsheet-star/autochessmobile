@@ -1,5 +1,4 @@
-import { Eye, Edit2, Trash2 } from "lucide-react"
-import { Button } from "@/components/ui/core"
+import { AdminTableActionButton } from "./AdminTableActionButton"
 import { cn } from "@/lib/utils"
 
 type AdminRowActionsProps = {
@@ -22,42 +21,15 @@ export function AdminRowActions({
   className,
 }: AdminRowActionsProps) {
   return (
-    <div className={cn("flex items-center justify-end gap-1", className)}>
+    <div className={cn("flex items-center justify-end gap-1.5", className)}>
       {onView && (
-        <Button
-          type="button"
-          variant="ghost"
-          size="icon"
-          className="h-8 w-8 text-brand-text-sub hover:text-brand-gold"
-          onClick={onView}
-          aria-label={viewLabel}
-        >
-          <Eye className="w-4 h-4" />
-        </Button>
+        <AdminTableActionButton variant="view" onClick={onView} label={viewLabel} />
       )}
       {onEdit && (
-        <Button
-          type="button"
-          variant="ghost"
-          size="icon"
-          className="h-8 w-8 text-brand-text-sub hover:text-brand-gold"
-          onClick={onEdit}
-          aria-label={editLabel}
-        >
-          <Edit2 className="w-4 h-4" />
-        </Button>
+        <AdminTableActionButton variant="edit" onClick={onEdit} label={editLabel} />
       )}
       {onDelete && (
-        <Button
-          type="button"
-          variant="ghost"
-          size="icon"
-          className="h-8 w-8 text-brand-text-sub hover:text-brand-red"
-          onClick={onDelete}
-          aria-label={deleteLabel}
-        >
-          <Trash2 className="w-4 h-4" />
-        </Button>
+        <AdminTableActionButton variant="delete" onClick={onDelete} label={deleteLabel} />
       )}
     </div>
   )

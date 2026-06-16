@@ -1,152 +1,84 @@
 import * as React from "react"
-import { Link } from "react-router-dom"
 import {
   Button,
   Badge,
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
   SelectItem,
 } from "@/components/ui/core"
-import { Plus, Swords, Trash2, Edit2, Eye } from "lucide-react"
+import { Plus, Swords } from "lucide-react"
+import { useNavigate } from "react-router-dom"
 import { useAppStore } from "@/contexts/DataContext"
-import { HEROES } from "@/data"
 import type { Hero } from "@/types/domain"
 import { cn } from "@/lib/utils"
-import {
-  createDefaultHeroDraft,
-  normalizeHeroDraft,
-  resetHeroFieldsFromSeed,
-  slugifyHeroId,
-  type HeroResetSection,
-} from "@/lib/admin-hero-form"
 import { getHeroIconUrl } from "@/lib/hero-utils"
 import {
   AdminPageHeader,
+  AdminSuccessBanner,
   AdminDeleteDialog,
   AdminListShell,
   AdminDataTable,
   AdminToolbar,
+  AdminInlineFilter,
   AdminTable,
   AdminThead,
   AdminTh,
   AdminTr,
   AdminTd,
   AdminTableFooterText,
-  AdminFormDialog,
-  AdminDetailDialog,
-  AdminHeroForm,
+  AdminRowActions,
 } from "@/components/admin"
+import { useAdminListPage } from "@/hooks/useAdminListPage"
 
-function getSeedHero(id: string): Hero | undefined {
-  return HEROES.find((h) => h.id === id)
-}
+const ALL_RACES = "all-races"
+const ALL_CLASSES = "all-classes"
+const ALL_COSTS = "all-costs"
 
 export function AdminHeroesPage() {
-  const {
-    heroes,
-    races,
-    classes,
-    items,
-    media,
-    addHero,
-    replaceHero,
-    deleteHero,
-    resetHeroFields,
-  } = useAppStore()
+  const navigate = useNavigate()
+  const { heroes, races, classes, deleteHero } = useAppStore()
   const [search, setSearch] = React.useState("")
-  const [selectedCost, setSelectedCost] = React.useState("Tất cả giá")
+  const [selectedCost, setSelectedCost] = React.useState(ALL_COSTS)
+  const [selectedRace, setSelectedRace] = React.useState(ALL_RACES)
+  const [selectedClass, setSelectedClass] = React.useState(ALL_CLASSES)
 
-  const [isAddOpen, setIsAddOpen] = React.useState(false)
-  const [draftHero, setDraftHero] = React.useState<Hero>(() => createDefaultHeroDraft())
+  const matchHero = React.useCallback(
+    (hero: Hero, q: string) => {
+      const query = q.toLowerCase()
+      const matchesSearch =
+        hero.name.toLowerCase().includes(query) ||
+        hero.race.some((r) => r.toLowerCase().includes(query)) ||
+        hero.class.some((c) => c.toLowerCase().includes(query))
+      const matchesCost = selectedCost === ALL_COSTS || hero.cost === Number(selectedCost)
+      const matchesRace = selectedRace === ALL_RACES || hero.race.includes(selectedRace)
+      const matchesClass = selectedClass === ALL_CLASSES || hero.class.includes(selectedClass)
+      return matchesSearch && matchesCost && matchesRace && matchesClass
+    },
+    [selectedCost, selectedRace, selectedClass]
+  )
 
-  const [isEditOpen, setIsEditOpen] = React.useState(false)
-  const [editingHero, setEditingHero] = React.useState<Hero | null>(null)
-
-  const [isDetailOpen, setIsDetailOpen] = React.useState(false)
-  const [detailHero, setDetailHero] = React.useState<Hero | null>(null)
-
-  const [isDeleteOpen, setIsDeleteOpen] = React.useState(false)
-  const [heroToDelete, setHeroToDelete] = React.useState<Hero | null>(null)
-
-  const openAddDialog = () => {
-    setDraftHero(createDefaultHeroDraft())
-    setIsAddOpen(true)
-  }
-
-  const handleCreateHero = () => {
-    if (!draftHero.name.trim()) return
-    const id = slugifyHeroId(
-      draftHero.name,
-      heroes.map((h) => h.id)
-    )
-    addHero(
-      normalizeHeroDraft({
-        ...draftHero,
-        id,
-      })
-    )
-
-    setDraftHero(createDefaultHeroDraft())
-    setIsAddOpen(false)
-  }
-
-  const handleUpdateHero = () => {
-    if (!editingHero || !editingHero.name.trim()) return
-    replaceHero(normalizeHeroDraft(editingHero))
-    setEditingHero(null)
-    setIsEditOpen(false)
-  }
-
-  const handleResetSection = (section: HeroResetSection) => {
-    if (!editingHero) return
-    resetHeroFields(editingHero.id, section)
-    const seed = getSeedHero(editingHero.id)
-    setEditingHero(resetHeroFieldsFromSeed(editingHero, seed, section))
-  }
-
-  const confirmDeleteHero = () => {
-    if (heroToDelete) {
-      deleteHero(heroToDelete.id)
-      setIsDeleteOpen(false)
-      setHeroToDelete(null)
-    }
-  }
-
-  const [currentPage, setCurrentPage] = React.useState(1)
-  const pageSize = 10
-
-  const filteredHeroes = heroes.filter((hero) => {
-    const matchesSearch =
-      hero.name.toLowerCase().includes(search.toLowerCase()) ||
-      hero.race.some((r) => r.toLowerCase().includes(search.toLowerCase())) ||
-      hero.class.some((c) => c.toLowerCase().includes(search.toLowerCase()))
-
-    const matchesCost = selectedCost === "Tất cả giá" || hero.cost === Number(selectedCost)
-    return matchesSearch && matchesCost
+  const {
+    dialogs,
+    successMessage,
+    showSuccess,
+    filteredItems: filteredHeroes,
+    paginatedItems: paginatedHeroes,
+    currentPage,
+    setCurrentPage,
+    totalPages,
+    startIndex,
+  } = useAdminListPage({
+    items: heroes,
+    searchTerm: search,
+    match: matchHero,
+    resetDeps: [selectedCost, selectedRace, selectedClass],
   })
 
-  React.useEffect(() => {
-    setCurrentPage(1)
-  }, [search, selectedCost])
+  const goToEditor = (heroId: string) => navigate(`/admin/tuong/${heroId}/sua`)
 
-  const totalPages = Math.ceil(filteredHeroes.length / pageSize) || 1
-  const startIndex = (currentPage - 1) * pageSize
-  const paginatedHeroes = filteredHeroes.slice(startIndex, startIndex + pageSize)
-
-  const getCostBadgeVariant = (cost: number) => {
-    switch (cost) {
-      case 5:
-        return "warning-solid"
-      case 4:
-        return "danger-solid"
-      case 3:
-        return "success"
-      case 2:
-        return "warning"
-      default:
-        return "default"
+  const confirmDeleteHero = () => {
+    if (dialogs.deleteTarget) {
+      deleteHero(dialogs.deleteTarget.id)
+      showSuccess(`Đã xóa tướng "${dialogs.deleteTarget.name}".`)
+      dialogs.closeDelete()
     }
   }
 
@@ -169,48 +101,63 @@ export function AdminHeroesPage() {
     <>
       <AdminListShell
         header={
-          <AdminPageHeader
-            icon={Swords}
-            title="Quản lý tướng"
-            description="Cấu hình đầy đủ thông tin hiển thị trên trang /tuong — chỉ số, kỹ năng, ảnh, lore và trang bị gợi ý."
-          >
-            <Button
-              size="default"
-              onClick={openAddDialog}
-              className="gap-2 bg-gold-gradient text-black font-bold admin-meta h-11 px-6 rounded-xl transition-all hover:scale-[1.02]"
+          <>
+            <AdminPageHeader
+              icon={Swords}
+              title="Quản lý tướng"
+              description="Cấu hình đầy đủ thông tin hiển thị trên trang /tuong — chỉ số, kỹ năng, ảnh, lore và trang bị gợi ý."
             >
-              <Plus className="h-4.5 w-4.5 stroke-[3px]" /> Thêm tướng mới
-            </Button>
-          </AdminPageHeader>
+              <Button
+                size="default"
+                onClick={() => navigate("/admin/tuong/them")}
+                className="gap-2 bg-gold-gradient text-black font-bold admin-meta h-11 px-6 rounded-xl transition-all hover:scale-[1.02]"
+              >
+                <Plus className="h-4.5 w-4.5 stroke-[3px]" /> Thêm tướng mới
+              </Button>
+            </AdminPageHeader>
+            <AdminSuccessBanner message={successMessage ?? ""} />
+          </>
         }
       >
         <AdminDataTable
           fillHeight
           toolbar={
             <AdminToolbar
+              inline
               searchValue={search}
               onSearchChange={setSearch}
-              searchPlaceholder="Tìm tên, tộc, hệ hoặc kỹ năng..."
+              searchPlaceholder="Tìm tên, tộc, hệ..."
             >
-              <Select value={selectedCost} onValueChange={setSelectedCost}>
-                <SelectTrigger className="min-w-[150px]">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="Tất cả giá">Tất cả giá vàng</SelectItem>
-                  <SelectItem value="1">Giá: $1 vàng</SelectItem>
-                  <SelectItem value="2">Giá: $2 vàng</SelectItem>
-                  <SelectItem value="3">Giá: $3 vàng</SelectItem>
-                  <SelectItem value="4">Giá: $4 vàng</SelectItem>
-                  <SelectItem value="5">Giá: $5 vàng</SelectItem>
-                </SelectContent>
-              </Select>
+              <AdminInlineFilter label="Tộc" value={selectedRace} onValueChange={setSelectedRace}>
+                <SelectItem value={ALL_RACES}>Tất cả tộc</SelectItem>
+                {races.map((race) => (
+                  <SelectItem key={race.id} value={race.name}>
+                    {race.name}
+                  </SelectItem>
+                ))}
+              </AdminInlineFilter>
+              <AdminInlineFilter label="Hệ" value={selectedClass} onValueChange={setSelectedClass}>
+                <SelectItem value={ALL_CLASSES}>Tất cả hệ</SelectItem>
+                {classes.map((cls) => (
+                  <SelectItem key={cls.id} value={cls.name}>
+                    {cls.name}
+                  </SelectItem>
+                ))}
+              </AdminInlineFilter>
+              <AdminInlineFilter label="Giá vàng" value={selectedCost} onValueChange={setSelectedCost}>
+                <SelectItem value={ALL_COSTS}>Tất cả mức giá</SelectItem>
+                <SelectItem value="1">$1 vàng</SelectItem>
+                <SelectItem value="2">$2 vàng</SelectItem>
+                <SelectItem value="3">$3 vàng</SelectItem>
+                <SelectItem value="4">$4 vàng</SelectItem>
+                <SelectItem value="5">$5 vàng</SelectItem>
+              </AdminInlineFilter>
             </AdminToolbar>
           }
           footer={
             <AdminTableFooterText
               start={filteredHeroes.length > 0 ? startIndex + 1 : 0}
-              end={Math.min(startIndex + pageSize, filteredHeroes.length)}
+              end={Math.min(startIndex + 10, filteredHeroes.length)}
               total={filteredHeroes.length}
               label="đại hiệp"
             />
@@ -253,10 +200,7 @@ export function AdminHeroesPage() {
                         </div>
                         <div className="flex flex-col">
                           <button
-                            onClick={() => {
-                              setDetailHero(row)
-                              setIsDetailOpen(true)
-                            }}
+                            onClick={() => goToEditor(row.id)}
                             className="text-left font-bold text-brand-text-main admin-body hover:text-brand-gold transition-colors leading-snug tracking-tight"
                           >
                             {row.name}
@@ -324,44 +268,14 @@ export function AdminHeroesPage() {
                       </span>
                     </AdminTd>
                     <AdminTd className="text-right">
-                      <div className="flex items-center justify-end gap-1.5">
-                        <Button
-                          onClick={() => {
-                            setDetailHero(row)
-                            setIsDetailOpen(true)
-                          }}
-                          variant="ghost"
-                          size="icon"
-                          className="h-9 w-9 rounded-lg hover:bg-brand-card-2 text-brand-text-sub hover:text-brand-text-main transition-all border border-transparent hover:border-brand-border"
-                          title="Xem chi tiết"
-                        >
-                          <Eye className="h-4 w-4 text-brand-text-sub" />
-                        </Button>
-                        <Button
-                          onClick={() => {
-                            setEditingHero({ ...row })
-                            setIsEditOpen(true)
-                          }}
-                          variant="ghost"
-                          size="icon"
-                          className="h-9 w-9 rounded-lg hover:bg-brand-card-2 text-brand-text-sub hover:text-brand-text-main transition-all border border-transparent hover:border-brand-border"
-                          title="Sửa tướng"
-                        >
-                          <Edit2 className="h-4 w-4 text-tier-b" />
-                        </Button>
-                        <Button
-                          onClick={() => {
-                            setHeroToDelete(row)
-                            setIsDeleteOpen(true)
-                          }}
-                          variant="ghost"
-                          size="icon"
-                          className="h-9 w-9 rounded-lg hover:bg-brand-card-2 text-brand-text-sub hover:text-brand-red transition-all border border-transparent hover:border-brand-border"
-                          title="Xóa tướng"
-                        >
-                          <Trash2 className="h-4 w-4 text-brand-red/70 hover:text-brand-red" />
-                        </Button>
-                      </div>
+                      <AdminRowActions
+                        onView={() => goToEditor(row.id)}
+                        onEdit={() => goToEditor(row.id)}
+                        onDelete={() => dialogs.openDelete(row)}
+                        viewLabel="Xem chi tiết"
+                        editLabel="Sửa tướng"
+                        deleteLabel="Xóa tướng"
+                      />
                     </AdminTd>
                   </AdminTr>
                 )
@@ -371,204 +285,16 @@ export function AdminHeroesPage() {
         </AdminDataTable>
       </AdminListShell>
 
-      <AdminFormDialog
-        open={isAddOpen}
-        onOpenChange={setIsAddOpen}
-        title="Thêm tướng mới"
-        description="Nhập đầy đủ thông tin hiển thị trên website — tộc, hệ, chỉ số, kỹ năng, ảnh và trang bị."
-        size="xl"
-        onSubmit={handleCreateHero}
-        submitLabel="Kích hoạt Tướng"
-        cancelLabel="Hủy bỏ"
-        submitDisabled={!draftHero.name.trim()}
-      >
-        <AdminHeroForm
-          mode="create"
-          value={draftHero}
-          onChange={setDraftHero}
-          races={races}
-          classes={classes}
-          items={items}
-          media={media}
-        />
-      </AdminFormDialog>
-
-      <AdminFormDialog
-        open={isEditOpen}
-        onOpenChange={(open) => {
-          setIsEditOpen(open)
-          if (!open) setEditingHero(null)
-        }}
-        title="Chỉnh sửa anh hùng"
-        description="Cập nhật toàn bộ nội dung hiển thị trên trang chi tiết tướng."
-        size="xl"
-        onSubmit={handleUpdateHero}
-        submitLabel="Cập nhật dữ liệu"
-        cancelLabel="Hủy bỏ"
-        submitDisabled={!editingHero?.name.trim()}
-      >
-        {editingHero && (
-          <AdminHeroForm
-            mode="edit"
-            value={editingHero}
-            onChange={setEditingHero}
-            races={races}
-            classes={classes}
-            items={items}
-            media={media}
-            seedHero={getSeedHero(editingHero.id) ?? null}
-            onResetSection={handleResetSection}
-          />
-        )}
-      </AdminFormDialog>
-
-      <AdminDetailDialog
-        open={isDetailOpen}
-        onOpenChange={setIsDetailOpen}
-        title={detailHero?.name ?? "Chi tiết tướng"}
-        size="md"
-        footer={
-          detailHero ? (
-            <>
-              <Button asChild className="w-full sm:flex-1 h-11 bg-gold-gradient text-black rounded-xl font-bold uppercase admin-meta">
-                <Link to={`/tuong/${detailHero.id}`} target="_blank" rel="noreferrer">
-                  Xem trên web
-                </Link>
-              </Button>
-              <Button
-                onClick={() => setIsDetailOpen(false)}
-                variant="outline"
-                className="w-full sm:flex-1 h-11 border-brand-border text-brand-text-main hover:bg-brand-card-2 rounded-xl font-bold uppercase admin-meta tracking-widest"
-              >
-                Đóng cửa sổ
-              </Button>
-            </>
-          ) : undefined
-        }
-      >
-        {detailHero && (
-          <div className="space-y-5">
-            <div className="flex flex-col items-center text-center space-y-4 pb-4 border-b border-brand-border">
-              {getHeroIconUrl(detailHero) ? (
-                <img
-                  src={getHeroIconUrl(detailHero)}
-                  alt=""
-                  className="w-16 h-16 rounded-xl border border-brand-gold/30 object-cover"
-                />
-              ) : (
-                <div className="w-16 h-16 rounded-xl bg-gradient-to-tr from-brand-gold/25 to-orange-500/5 border border-brand-gold/30 flex items-center justify-center text-brand-gold">
-                  <Swords className="h-8 w-8 text-brand-gold" />
-                </div>
-              )}
-              <div className="flex items-center justify-center gap-2 flex-wrap">
-                <Badge variant={getCostBadgeVariant(detailHero.cost)}>$ {detailHero.cost} VÀNG</Badge>
-                {detailHero.isNew && <Badge variant="success">TƯỚNG MỚI</Badge>}
-                {detailHero.rarity && <Badge variant="outline">{detailHero.rarity}</Badge>}
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-1">
-                <span className="admin-form-label">Tộc hệ kích</span>
-                <div className="flex flex-wrap gap-1 mt-1">
-                  {detailHero.race.length === 0 ? (
-                    <span className="bg-brand-card-2 border border-brand-border text-brand-text-sub px-2 py-0.5 rounded admin-meta font-bold opacity-60">
-                      Chưa xác định
-                    </span>
-                  ) : (
-                    detailHero.race.map((r) => (
-                      <span
-                        key={r}
-                        className="bg-brand-card-2 border border-brand-border text-brand-text-sub px-2 py-0.5 rounded admin-meta font-bold"
-                      >
-                        {r}
-                      </span>
-                    ))
-                  )}
-                </div>
-              </div>
-              <div className="space-y-1">
-                <span className="admin-form-label">Hệ nghề nghiệp</span>
-                <div className="flex flex-wrap gap-1 mt-1">
-                  {detailHero.class.length === 0 ? (
-                    <span className="bg-brand-gold/10 border border-brand-gold/20 text-brand-text-sub px-2 py-0.5 rounded admin-meta font-bold opacity-60">
-                      Chưa xác định
-                    </span>
-                  ) : (
-                    detailHero.class.map((c) => (
-                      <span
-                        key={c}
-                        className="bg-brand-gold/15 border border-brand-gold/20 text-brand-gold px-2 py-0.5 rounded admin-meta font-bold"
-                      >
-                        {c}
-                      </span>
-                    ))
-                  )}
-                </div>
-              </div>
-            </div>
-
-            {detailHero.description && (
-              <p className="admin-body text-brand-text-sub leading-relaxed">{detailHero.description}</p>
-            )}
-
-            <div className="p-4 rounded-xl bg-brand-card-2 border border-brand-border space-y-2">
-              <div className="flex items-center justify-between">
-                <span className="admin-form-label text-brand-gold">
-                  KỸ NĂNG: {detailHero.skill?.name || "KỸ NĂNG ĐẶC BIỆT"}
-                </span>
-                <Badge variant="outline" className="admin-meta">
-                  {detailHero.skill?.type || "Chủ động"}
-                </Badge>
-              </div>
-              <p className="text-brand-text-sub admin-body leading-relaxed font-normal">
-                {detailHero.skill?.desc || "Gây sát thương và tạo lợi thế chiến thuật vật lý trên bàn cờ."}
-              </p>
-            </div>
-
-            <div className="space-y-3">
-              <span className="admin-form-label">Thuộc tính kỹ năng cơ bản</span>
-              <div className="grid grid-cols-2 gap-3 font-mono admin-meta text-brand-text-sub">
-                <div>
-                  HP 1★:{" "}
-                  <span className="text-brand-text-main font-bold">{detailHero.stats?.hp?.[0] ?? "—"}</span>
-                </div>
-                <div>
-                  ATK 1★:{" "}
-                  <span className="text-brand-text-main font-bold">{detailHero.stats?.atk?.[0] ?? "—"}</span>
-                </div>
-                <div>
-                  Giáp:{" "}
-                  <span className="text-brand-text-main font-bold">
-                    {typeof detailHero.stats?.armor === "number"
-                      ? detailHero.stats.armor
-                      : detailHero.stats?.armor?.[0] ?? "—"}
-                  </span>
-                </div>
-                <div>
-                  MR:{" "}
-                  <span className="text-brand-text-main font-bold">
-                    {typeof detailHero.stats?.mr === "number"
-                      ? detailHero.stats.mr
-                      : detailHero.stats?.mr?.[0] ?? "—"}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-      </AdminDetailDialog>
-
       <AdminDeleteDialog
-        open={isDeleteOpen}
+        open={dialogs.isDeleteOpen}
         onOpenChange={(open) => {
-          setIsDeleteOpen(open)
-          if (!open) setHeroToDelete(null)
+          dialogs.setIsDeleteOpen(open)
+          if (!open) dialogs.setDeleteTarget(null)
         }}
         title="Xác nhận xóa anh hùng"
         description={
-          heroToDelete
-            ? `Bạn có chắc muốn xóa vĩnh viễn tướng "${heroToDelete.name}" khỏi cẩm nang trò chơi?`
+          dialogs.deleteTarget
+            ? `Bạn có chắc muốn xóa vĩnh viễn tướng "${dialogs.deleteTarget.name}" khỏi cẩm nang trò chơi?`
             : ""
         }
         onConfirm={confirmDeleteHero}

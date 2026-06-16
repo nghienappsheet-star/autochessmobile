@@ -28,15 +28,20 @@ import {
   Shield,
   Eye,
 } from "lucide-react"
-import { motion } from "motion/react"
 import { useAppStore, type Post, type PostStatus } from "@/contexts/DataContext"
 import { useAuth } from "@/contexts/AuthContext"
-import { ArticleProse } from "@/components/ArticleProse"
 import { PageContainer } from "@/components/layout/PageContainer"
 import { AdminPageHeader } from "@/components/admin/AdminPageHeader"
-import { CloudinaryFileUpload } from "@/components/shared/CloudinaryFileUpload"
 import { isPersistableImageUrl } from "@/lib/media-url"
 import { nextNumericId } from "@/lib/admin-utils"
+
+const CloudinaryFileUpload = React.lazy(() =>
+  import("@/components/shared/CloudinaryFileUpload").then((m) => ({ default: m.CloudinaryFileUpload }))
+)
+
+const ArticleProse = React.lazy(() =>
+  import("@/components/ArticleProse").then((m) => ({ default: m.ArticleProse }))
+)
 
 const CATEGORIES = ["Tin tức", "Chiến thuật", "Hướng dẫn", "Mẹo chơi", "Thảo luận", "Review"]
 
@@ -168,7 +173,7 @@ export function PostEditorPage() {
         />
       )}
 
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+      <div>
         <Card className="bg-brand-card border-brand-border p-0 overflow-hidden rounded-xl">
           <div className="p-6 md:p-10 space-y-8">
             {!isAdminRoute && (
@@ -270,17 +275,30 @@ export function PostEditorPage() {
                   placeholder="https://..."
                   className="bg-brand-card-2 border-brand-border h-11 rounded-xl flex-1"
                 />
-                <CloudinaryFileUpload
-                  onUploaded={(urls) => {
-                    if (urls[0]) {
-                      setCoverImageUrl(urls[0])
-                      setCoverError(null)
-                    }
-                  }}
-                  onError={(message) => setCoverError(message)}
-                  label="Tải ảnh"
-                  uploadingLabel="Đang tải..."
-                />
+                <React.Suspense
+                  fallback={
+                    <Button
+                      type="button"
+                      variant="outline"
+                      disabled
+                      className="h-11 rounded-xl border-brand-border shrink-0"
+                    >
+                      Đang tải...
+                    </Button>
+                  }
+                >
+                  <CloudinaryFileUpload
+                    onUploaded={(urls) => {
+                      if (urls[0]) {
+                        setCoverImageUrl(urls[0])
+                        setCoverError(null)
+                      }
+                    }}
+                    onError={(message) => setCoverError(message)}
+                    label="Tải ảnh"
+                    uploadingLabel="Đang tải..."
+                  />
+                </React.Suspense>
                 <Button
                   type="button"
                   variant="outline"
@@ -380,7 +398,13 @@ export function PostEditorPage() {
               ) : (
                 <div className="border border-brand-border rounded-xl p-6 md:p-8 bg-brand-card-2 min-h-[420px]">
                   {content.trim() ? (
-                    <ArticleProse content={content} />
+                    <React.Suspense
+                      fallback={
+                        <p className="text-brand-text-sub text-sm">Đang tải bản xem trước...</p>
+                      }
+                    >
+                      <ArticleProse content={content} />
+                    </React.Suspense>
                   ) : (
                     <p className="text-brand-text-sub text-sm">Chưa có nội dung để xem trước.</p>
                   )}
@@ -400,7 +424,7 @@ export function PostEditorPage() {
             </Card>
           </div>
         </Card>
-      </motion.div>
+      </div>
     </>
   )
 

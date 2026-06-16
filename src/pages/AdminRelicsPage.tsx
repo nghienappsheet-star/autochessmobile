@@ -14,6 +14,7 @@ import { cn } from "@/lib/utils"
 import { nextNumericId } from "@/lib/admin-utils"
 import {
   AdminPageHeader,
+  AdminSuccessBanner,
   AdminDeleteDialog,
   AdminListShell,
   AdminDataTable,
@@ -25,14 +26,22 @@ import {
   AdminTd,
   AdminTableFooterText,
   AdminFormDialog,
-  AdminDetailDialog,
-  AdminRelicForm,
-  EMPTY_RELIC_FORM,
+  AdminRelicDetailDialog,
   AdminRowActions,
 } from "@/components/admin"
-import { useAdminPagination } from "@/hooks/useAdminPagination"
-import { useAdminCrudDialogs } from "@/hooks/useAdminCrudDialogs"
+import { EMPTY_RELIC_FORM } from "@/components/admin/AdminRelicForm"
+import { useAdminListPage } from "@/hooks/useAdminListPage"
 import type { Relic } from "@/types/domain"
+
+const AdminRelicForm = React.lazy(() =>
+  import("@/components/admin/AdminRelicForm").then((m) => ({ default: m.AdminRelicForm }))
+)
+
+function RelicFormFallback() {
+  return (
+    <div className="py-12 text-center admin-meta text-brand-text-sub">Đang tải biểu mẫu dị vật...</div>
+  )
+}
 
 export function AdminRelicsPage() {
   const { relics, addRelic, updateRelic, deleteRelic } = useAppStore()
@@ -42,7 +51,35 @@ export function AdminRelicsPage() {
   const [isDetailOpen, setIsDetailOpen] = React.useState(false)
   const [detailRelic, setDetailRelic] = React.useState<Relic | null>(null)
 
-  const dialogs = useAdminCrudDialogs<Relic>()
+  const matchRelic = React.useCallback(
+    (relic: Relic, q: string) => {
+      const query = q.toLowerCase()
+      const matchesSearch =
+        relic.name.toLowerCase().includes(query) ||
+        relic.effect.toLowerCase().includes(query)
+      const matchesType = selectedType === "Tất cả loại" || relic.type === selectedType
+      return matchesSearch && matchesType
+    },
+    [selectedType]
+  )
+
+  const {
+    dialogs,
+    successMessage,
+    showSuccess,
+    filteredItems: filteredRelics,
+    paginatedItems: paginatedRelics,
+    currentPage,
+    setCurrentPage,
+    totalPages,
+    startIndex,
+    pageSize,
+  } = useAdminListPage({
+    items: relics,
+    searchTerm,
+    match: matchRelic,
+    resetDeps: [selectedType],
+  })
 
   const handleCreateRelic = () => {
     if (!newRelic.name.trim()) return
@@ -57,50 +94,45 @@ export function AdminRelicsPage() {
       status: "Hiện",
     })
     setNewRelic(EMPTY_RELIC_FORM)
+    showSuccess(`Đã thêm dị vật "${newRelic.name.trim()}".`)
     dialogs.closeAdd()
   }
 
   const handleUpdateRelic = () => {
     if (!dialogs.editingItem || !dialogs.editingItem.name.trim()) return
     updateRelic(dialogs.editingItem.id, dialogs.editingItem)
+    showSuccess(`Đã cập nhật dị vật "${dialogs.editingItem.name}".`)
     dialogs.closeEdit()
   }
 
   const confirmDeleteRelic = () => {
     if (dialogs.deleteTarget) {
       deleteRelic(dialogs.deleteTarget.id)
+      showSuccess(`Đã xóa dị vật "${dialogs.deleteTarget.name}".`)
       dialogs.closeDelete()
     }
   }
-
-  const filteredRelics = relics.filter((relic) => {
-    const matchesSearch =
-      relic.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      relic.effect.toLowerCase().includes(searchTerm.toLowerCase())
-    const matchesType = selectedType === "Tất cả loại" || relic.type === selectedType
-    return matchesSearch && matchesType
-  })
-
-  const { currentPage, setCurrentPage, totalPages, startIndex, pageSize, paginatedItems: paginatedRelics } =
-    useAdminPagination(filteredRelics, [searchTerm, selectedType])
 
   return (
     <>
       <AdminListShell
         header={
-          <AdminPageHeader
-            icon={Gem}
-            title="Quản lý dị vật"
-            description="Bảng tinh chỉnh kĩ năng bổ trợ đặc biệt, hiệu ứng chúc phúc dị vật bổ huyết hỗ trợ tổ đội."
-          >
-            <Button
-              size="default"
-              onClick={dialogs.openAdd}
-              className="gap-2 bg-gold-gradient text-black font-bold admin-meta uppercase tracking-wider h-11 px-6 rounded-xl transition-all hover:scale-[1.02]"
+          <>
+            <AdminPageHeader
+              icon={Gem}
+              title="Quản lý dị vật"
+              description="Bảng tinh chỉnh kĩ năng bổ trợ đặc biệt, hiệu ứng chúc phúc dị vật bổ huyết hỗ trợ tổ đội."
             >
-              <Plus className="h-4.5 w-4.5 stroke-[3px]" /> Thêm dị vật mới
-            </Button>
-          </AdminPageHeader>
+              <Button
+                size="default"
+                onClick={dialogs.openAdd}
+                className="gap-2 bg-gold-gradient text-black font-bold admin-meta uppercase tracking-wider h-11 px-6 rounded-xl transition-all hover:scale-[1.02]"
+              >
+                <Plus className="h-4.5 w-4.5 stroke-[3px]" /> Thêm dị vật mới
+              </Button>
+            </AdminPageHeader>
+            <AdminSuccessBanner message={successMessage ?? ""} />
+          </>
         }
       >
         <AdminDataTable
@@ -233,7 +265,9 @@ export function AdminRelicsPage() {
         submitLabel="Khai hoang dị vật"
         cancelLabel="Hủy bỏ"
       >
-        <AdminRelicForm value={newRelic} onChange={setNewRelic} />
+        <React.Suspense fallback={<RelicFormFallback />}>
+          <AdminRelicForm value={newRelic} onChange={setNewRelic} />
+        </React.Suspense>
       </AdminFormDialog>
 
       <AdminFormDialog
@@ -250,64 +284,27 @@ export function AdminRelicsPage() {
         cancelLabel="Hủy bỏ"
       >
         {dialogs.editingItem && (
-          <AdminRelicForm
-            value={{
-              name: dialogs.editingItem.name,
-              rating: dialogs.editingItem.rating,
-              type: dialogs.editingItem.type,
-              effect: dialogs.editingItem.effect,
-            }}
-            onChange={(value) =>
-              dialogs.setEditingItem({ ...dialogs.editingItem!, ...value })
-            }
-          />
+          <React.Suspense fallback={<RelicFormFallback />}>
+            <AdminRelicForm
+              value={{
+                name: dialogs.editingItem.name,
+                rating: dialogs.editingItem.rating,
+                type: dialogs.editingItem.type,
+                effect: dialogs.editingItem.effect,
+              }}
+              onChange={(value) =>
+                dialogs.setEditingItem({ ...dialogs.editingItem!, ...value })
+              }
+            />
+          </React.Suspense>
         )}
       </AdminFormDialog>
 
-      <AdminDetailDialog
+      <AdminRelicDetailDialog
+        relic={detailRelic}
         open={isDetailOpen}
         onOpenChange={setIsDetailOpen}
-        title={detailRelic?.name ?? "Chi tiết dị vật"}
-        size="md"
-        footer={
-          <Button
-            onClick={() => setIsDetailOpen(false)}
-            className="w-full h-11 bg-transparent border border-brand-border text-brand-text-main hover:bg-brand-card-2 rounded-xl font-bold uppercase admin-meta tracking-widest"
-          >
-            Đóng cửa sổ
-          </Button>
-        }
-      >
-        {detailRelic && (
-          <div className="space-y-5">
-            <div className="flex flex-col items-center text-center space-y-4 pb-4 border-b border-brand-border">
-              <div className="w-16 h-16 rounded-xl bg-gradient-to-tr from-brand-gold/25 to-yellow-500/5 border border-brand-gold/30 flex items-center justify-center text-brand-gold shadow-[0_0_20px_rgba(245,180,60,0.1)]">
-                <Gem className="h-8 w-8 text-brand-gold animate-pulse" />
-              </div>
-              <div className="flex items-center justify-center gap-2">
-                <Badge variant={detailRelic.rating === "S" ? "warning-solid" : "default"}>
-                  PHẨM {detailRelic.rating} PHONG ẤN
-                </Badge>
-                <Badge variant="outline">{detailRelic.type.toUpperCase()}</Badge>
-              </div>
-            </div>
-
-            <div className="space-y-1.5">
-              <span className="admin-form-label">Thuộc tính phong ấn & Hiệu ứng</span>
-              <div className="p-4 rounded-xl bg-brand-card-2 border border-brand-border text-brand-text-sub leading-relaxed font-normal whitespace-pre-line admin-body">
-                {detailRelic.effect}
-              </div>
-            </div>
-
-            <div className="space-y-1 bg-brand-card-2/50 p-3.5 border border-brand-border rounded-xl">
-              <div className="flex justify-between items-center admin-meta text-brand-text-sub font-mono">
-                <span>ĐIỂM CHỈ SỐ:</span>
-                <span className="text-brand-gold font-bold">5.0 / 5.0</span>
-              </div>
-            </div>
-          </div>
-        )}
-      </AdminDetailDialog>
+      />
 
       <AdminDeleteDialog
         open={dialogs.isDeleteOpen}

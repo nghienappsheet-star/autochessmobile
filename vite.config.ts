@@ -61,6 +61,33 @@ export default defineConfig(() => {
         '@': path.resolve(__dirname, './src'),
       },
     },
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            const normalized = id.replace(/\\/g, '/')
+            if (normalized.includes('node_modules/recharts') || normalized.includes('node_modules/d3-')) {
+              return 'recharts-vendor'
+            }
+            if (normalized.includes('node_modules/motion')) {
+              return 'motion-vendor'
+            }
+            if (normalized.includes('node_modules/@radix-ui')) {
+              return 'radix-vendor'
+            }
+            if (normalized.includes('/src/components/admin/AdminDashboardCharts')) {
+              return 'admin-charts'
+            }
+            if (normalized.includes('/src/components/admin/')) {
+              return 'admin-ui'
+            }
+            if (normalized.includes('/src/hooks/useAdmin')) {
+              return 'admin-ui'
+            }
+          },
+        },
+      },
+    },
     server: {
       // HMR is disabled in AI Studio via DISABLE_HMR env var.
       // Do not modifyâfile watching is disabled to prevent flickering during agent edits.

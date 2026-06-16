@@ -8,7 +8,7 @@ import {
   Image as ImageIcon, BarChart2, Settings,
   Bell, Globe, Share2
 } from "lucide-react"
-import { motion, AnimatePresence } from "motion/react"
+import { motion, AnimatePresence } from "@/components/motion/MotionProvider"
 
 const ADMIN_NAV = [
   { group: 'Hệ thống', items: [

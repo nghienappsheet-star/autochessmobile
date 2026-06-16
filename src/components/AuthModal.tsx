@@ -1,5 +1,7 @@
 import * as React from "react"
 import { useAuth } from "@/contexts/AuthContext"
+import type { PublicUserRole } from "@/contexts/AuthContext"
+import { stableUuidFromEmail } from "@/lib/auth-bridge"
 import { Button, Input } from "@/components/ui/core"
 import { X, Mail, Lock, User as UserIcon } from "lucide-react"
 import { useTranslation } from "react-i18next"
@@ -10,13 +12,24 @@ export function AuthModal() {
 
   if (!showAuthModal) return null
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    const form = e.currentTarget
+    const email = (form.elements.namedItem("email") as HTMLInputElement).value.trim()
+    const displayName =
+      authMode === "register"
+        ? (form.elements.namedItem("name") as HTMLInputElement).value.trim()
+        : ""
+    const name = displayName || email.split("@")[0] || "Player"
+    const role: PublicUserRole = authMode === "register" ? "Thành viên" : "Thành viên"
+
     login({
-      id: "mock_user_123",
-      name: "PlayerOne",
-      email: "player@example.com",
-      avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704d",
+      id: stableUuidFromEmail(email),
+      name,
+      email,
+      avatar: `https://i.pravatar.cc/150?u=${encodeURIComponent(email)}`,
+      role,
+      metadata: { source: "local-mock", authMode },
     })
   }
 
@@ -38,7 +51,7 @@ export function AuthModal() {
               <label className="text-[13px] text-brand-text-sub font-medium">{t("displayNameLabel")}</label>
               <div className="relative">
                 <UserIcon className="absolute left-3 top-2.5 h-4 w-4 text-brand-text-sub" />
-                <Input required placeholder={t("displayNamePlaceholder")} className="pl-9 bg-brand-card-2 border-brand-border" />
+                <Input required name="name" placeholder={t("displayNamePlaceholder")} className="pl-9 bg-brand-card-2 border-brand-border" />
               </div>
             </div>
           )}
@@ -46,14 +59,14 @@ export function AuthModal() {
             <label className="text-[13px] text-brand-text-sub font-medium">{t("emailLabel")}</label>
             <div className="relative">
               <Mail className="absolute left-3 top-2.5 h-4 w-4 text-brand-text-sub" />
-              <Input type="email" required placeholder="name@example.com" className="pl-9 bg-brand-card-2 border-brand-border" />
+              <Input type="email" name="email" required placeholder="name@example.com" className="pl-9 bg-brand-card-2 border-brand-border" />
             </div>
           </div>
           <div className="space-y-1">
             <label className="text-[13px] text-brand-text-sub font-medium">{t("passwordLabel")}</label>
             <div className="relative">
               <Lock className="absolute left-3 top-2.5 h-4 w-4 text-brand-text-sub" />
-              <Input type="password" required placeholder="••••••••" className="pl-9 bg-brand-card-2 border-brand-border" />
+              <Input type="password" name="password" required placeholder="••••••••" className="pl-9 bg-brand-card-2 border-brand-border" />
             </div>
           </div>
 

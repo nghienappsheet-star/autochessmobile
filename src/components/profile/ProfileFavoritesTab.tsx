@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { Star } from "lucide-react"
-import { motion } from "motion/react"
+import { motion } from "@/components/motion/MotionProvider"
 import { Card, Button } from "@/components/ui/core"
 import { CompListCard } from "@/components/comps/CompListCard"
 import { heroCostBadgeClass } from "@/lib/cost-colors"

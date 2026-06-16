@@ -1,6 +1,6 @@
 import * as React from "react"
 
-export function useAdminCrudDialogs<T extends { id: string }>() {
+export function useAdminCrudDialogs<T extends { id: string | number }>() {
   const [isAddOpen, setIsAddOpen] = React.useState(false)
   const [isEditOpen, setIsEditOpen] = React.useState(false)
   const [editingItem, setEditingItem] = React.useState<T | null>(null)

@@ -1,7 +1,10 @@
 import * as React from "react"
 import { loadJson, saveJson } from "@/lib/storage"
+import { syncPublicLoginToAdminUsers } from "@/lib/auth-bridge"
 
 const AUTH_USER_KEY = "auto_chess_user"
+
+export type PublicUserRole = "Quản trị viên" | "Moderator" | "Thành viên"
 
 export interface User {
   id: string;
@@ -9,6 +12,8 @@ export interface User {
   email: string;
   avatar: string;
   joinedAt?: string;
+  role?: PublicUserRole;
+  metadata?: Record<string, unknown>;
 }
 
 interface AuthContextType {
@@ -56,10 +61,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }
 
   const login = (newUser: User) => {
-    persistUser({
+    const sessionUser = {
       ...newUser,
       joinedAt: newUser.joinedAt ?? new Date().toISOString(),
-    })
+    }
+    persistUser(sessionUser)
+    syncPublicLoginToAdminUsers(sessionUser)
     setShowAuthModal(false)
   }
 

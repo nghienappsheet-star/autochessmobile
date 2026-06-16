@@ -2,12 +2,13 @@ import * as React from "react"
 import { Button, Badge, Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/core"
 import { cn } from "@/lib/utils"
 import { nextNumericId } from "@/lib/admin-utils"
-import { Plus, Edit2, Trash2, Layout, Users, ThumbsUp } from "lucide-react"
+import { Plus, Layout, Users, ThumbsUp } from "lucide-react"
 import { useAppStore } from "@/contexts/DataContext"
 import type { Comp } from "@/types/domain"
 import {
   AdminDeleteDialog,
   AdminPageHeader,
+  AdminSuccessBanner,
   AdminDataTable,
   AdminListShell,
   AdminToolbar,
@@ -18,14 +19,25 @@ import {
   AdminTd,
   AdminTableFooterText,
   AdminFormDialog,
-  AdminCompForm,
+  AdminTableActionButton,
+} from "@/components/admin"
+import {
   EMPTY_COMP_FORM,
   compFormFromComp,
   compFromFormValue,
-} from "@/components/admin"
+} from "@/components/admin/AdminCompForm"
 import { calcSynergiesFromHeroes, recordFromBoardSlots } from "@/lib/comp-formation"
-import { useAdminPagination } from "@/hooks/useAdminPagination"
-import { useAdminCrudDialogs } from "@/hooks/useAdminCrudDialogs"
+import { useAdminListPage } from "@/hooks/useAdminListPage"
+
+const AdminCompForm = React.lazy(() =>
+  import("@/components/admin/AdminCompForm").then((m) => ({ default: m.AdminCompForm }))
+)
+
+function CompFormFallback() {
+  return (
+    <div className="py-12 text-center admin-meta text-brand-text-sub">Đang tải biểu mẫu đội hình...</div>
+  )
+}
 
 export function AdminCompsPage() {
   const { comps, heroes, addComp, updateComp, deleteComp } = useAppStore()
@@ -35,22 +47,39 @@ export function AdminCompsPage() {
   const [editForm, setEditForm] = React.useState(EMPTY_COMP_FORM)
   const [editingId, setEditingId] = React.useState<string | null>(null)
 
-  const dialogs = useAdminCrudDialogs<Comp>()
+  const matchComp = React.useCallback(
+    (comp: Comp, q: string) => {
+      if (q && !comp.name.toLowerCase().includes(q.toLowerCase())) return false
+      if (selectedTier !== "Tất cả tier" && comp.tier !== selectedTier.split(" ")[0]) return false
+      return true
+    },
+    [selectedTier]
+  )
 
-  const filteredComps = comps.filter((comp) => {
-    if (searchTerm && !comp.name.toLowerCase().includes(searchTerm.toLowerCase())) return false
-    if (selectedTier !== "Tất cả tier" && comp.tier !== selectedTier.split(" ")[0]) return false
-    return true
+  const {
+    dialogs,
+    successMessage,
+    showSuccess,
+    filteredItems: filteredComps,
+    paginatedItems: paginatedComps,
+    currentPage,
+    setCurrentPage,
+    totalPages,
+    startIndex,
+    pageSize,
+  } = useAdminListPage({
+    items: comps,
+    searchTerm,
+    match: matchComp,
+    resetDeps: [selectedTier],
   })
-
-  const { currentPage, setCurrentPage, totalPages, startIndex, pageSize, paginatedItems: paginatedComps } =
-    useAdminPagination(filteredComps, [searchTerm, selectedTier])
 
   const handleCreateComp = () => {
     if (!newComp.name.trim()) return
     const id = nextNumericId(comps)
     addComp(compFromFormValue(newComp, id, heroes))
     setNewComp(EMPTY_COMP_FORM)
+    showSuccess(`Đã thêm đội hình "${newComp.name.trim()}".`)
     dialogs.closeAdd()
   }
 
@@ -66,6 +95,7 @@ export function AdminCompsPage() {
       radarStats: editForm.radarStats,
     })
     setEditingId(null)
+    showSuccess(`Đã cập nhật đội hình "${editForm.name.trim()}".`)
     dialogs.closeEdit()
   }
 
@@ -78,6 +108,7 @@ export function AdminCompsPage() {
   const confirmDelete = () => {
     if (dialogs.deleteTarget) {
       deleteComp(dialogs.deleteTarget.id)
+      showSuccess(`Đã xóa đội hình "${dialogs.deleteTarget.name}".`)
       dialogs.closeDelete()
     }
   }
@@ -85,17 +116,20 @@ export function AdminCompsPage() {
   return (
     <AdminListShell
       header={
-        <AdminPageHeader
-          title="Quản lý đội hình"
-          description={`Duyệt và điều chỉnh ${comps.length} đội hình gợi ý cho Meta hiện tại.`}
-        >
-          <Button
-            onClick={dialogs.openAdd}
-            className="gap-2 bg-gold-gradient text-black font-semibold text-[14px] h-11 px-6 rounded-xl transition-all"
+        <>
+          <AdminPageHeader
+            title="Quản lý đội hình"
+            description={`Duyệt và điều chỉnh ${comps.length} đội hình gợi ý cho Meta hiện tại.`}
           >
-            <Plus className="h-5 w-5 stroke-[2px]" /> Thêm đội hình mới
-          </Button>
-        </AdminPageHeader>
+            <Button
+              onClick={dialogs.openAdd}
+              className="gap-2 bg-gold-gradient text-black font-semibold text-[14px] h-11 px-6 rounded-xl transition-all"
+            >
+              <Plus className="h-5 w-5 stroke-[2px]" /> Thêm đội hình mới
+            </Button>
+          </AdminPageHeader>
+          <AdminSuccessBanner message={successMessage ?? ""} />
+        </>
       }
     >
       <AdminDataTable
@@ -218,24 +252,16 @@ export function AdminCompsPage() {
                 </AdminTd>
                 <AdminTd className="text-right">
                   <div className="flex justify-end gap-1.5">
-                    <Button
+                    <AdminTableActionButton
+                      variant="edit"
                       onClick={() => openEdit(row)}
-                      variant="ghost"
-                      size="icon"
-                      className="h-9 w-9 rounded-lg hover:bg-brand-card-2 text-brand-text-sub hover:text-brand-text-main transition-all"
-                      title="Sửa đội hình"
-                    >
-                      <Edit2 className="h-4 w-4 text-brand-gold" />
-                    </Button>
-                    <Button
+                      label="Sửa đội hình"
+                    />
+                    <AdminTableActionButton
+                      variant="delete"
                       onClick={() => dialogs.openDelete(row)}
-                      variant="ghost"
-                      size="icon"
-                      className="h-9 w-9 rounded-lg text-brand-red hover:bg-brand-red/10 transition-all"
-                      title="Xóa đội hình"
-                    >
-                      <Trash2 className="h-4 w-4 text-brand-red/70 hover:text-brand-red" />
-                    </Button>
+                      label="Xóa đội hình"
+                    />
                   </div>
                 </AdminTd>
               </AdminTr>
@@ -254,7 +280,9 @@ export function AdminCompsPage() {
         submitLabel="Công bố Meta"
         cancelLabel="Hủy bỏ"
       >
-        <AdminCompForm value={newComp} onChange={setNewComp} heroes={heroes} autoRadar />
+        <React.Suspense fallback={<CompFormFallback />}>
+          <AdminCompForm value={newComp} onChange={setNewComp} heroes={heroes} autoRadar />
+        </React.Suspense>
       </AdminFormDialog>
 
       <AdminFormDialog
@@ -274,7 +302,9 @@ export function AdminCompsPage() {
         cancelLabel="Hủy bỏ"
       >
         {editingId && (
-          <AdminCompForm value={editForm} onChange={setEditForm} heroes={heroes} autoRadar />
+          <React.Suspense fallback={<CompFormFallback />}>
+            <AdminCompForm value={editForm} onChange={setEditForm} heroes={heroes} autoRadar />
+          </React.Suspense>
         )}
       </AdminFormDialog>
 

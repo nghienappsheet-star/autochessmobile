@@ -1,7 +1,7 @@
 import { Card, Badge } from "@/components/ui/core"
 import { Link } from "react-router-dom"
 import { ChevronRight } from "lucide-react"
-import { motion } from "motion/react"
+import { motion } from "@/components/motion/MotionProvider"
 import { useTranslation } from "react-i18next"
 import { getTraitDetailPath, getTraitHeroes, type TraitItem } from "@/lib/traits"
 import type { Hero } from "@/types/domain"

@@ -1,16 +1,6 @@
 import * as React from "react"
-import {
-  Card,
-  Button,
-  Input,
-  Badge,
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem,
-} from "@/components/ui/core"
-import { Bell, Calendar, Plus, Trash2, Edit2 } from "lucide-react"
+import { Card, Button, Badge } from "@/components/ui/core"
+import { Bell, Calendar, Plus } from "lucide-react"
 import { useAppStore } from "@/contexts/DataContext"
 import type { AdminEvent } from "@/types/domain"
 import { nextNumericId } from "@/lib/admin-utils"
@@ -19,63 +9,64 @@ import {
   AdminSuccessBanner,
   AdminToolbar,
   AdminFormDialog,
-  AdminField,
-  AdminFormGrid,
+  AdminRowActions,
 } from "@/components/admin"
+import {
+  EMPTY_EVENT_FORM,
+  eventFormFromEvent,
+  eventFromFormValue,
+} from "@/components/admin/AdminEventForm"
 import { AdminDeleteDialog } from "@/components/admin/AdminDeleteDialog"
+import { useAdminListPage } from "@/hooks/useAdminListPage"
+
+const AdminEventForm = React.lazy(() =>
+  import("@/components/admin/AdminEventForm").then((m) => ({ default: m.AdminEventForm }))
+)
+
+function EventFormFallback() {
+  return (
+    <div className="py-8 text-center admin-meta text-brand-text-sub">Đang tải biểu mẫu sự kiện...</div>
+  )
+}
 
 export function AdminEventsPage() {
   const { events, addEvent, updateEvent, deleteEvent } = useAppStore()
   const [searchTerm, setSearchTerm] = React.useState("")
-  const [successMsg, setSuccessMsg] = React.useState("")
+  const [newEventForm, setNewEventForm] = React.useState(EMPTY_EVENT_FORM)
 
-  const [newTitle, setNewTitle] = React.useState("")
-  const [newPrize, setNewPrize] = React.useState("")
-  const [newDate, setNewDate] = React.useState("")
-  const [newParticipants, setNewParticipants] = React.useState("64 Kì thủ")
+  const matchEvent = React.useCallback(
+    (event: AdminEvent, q: string) => event.title.toLowerCase().includes(q.toLowerCase()),
+    []
+  )
 
-  const [isEditOpen, setIsEditOpen] = React.useState(false)
-  const [editingEvent, setEditingEvent] = React.useState<AdminEvent | null>(null)
-  const [deleteTarget, setDeleteTarget] = React.useState<AdminEvent | null>(null)
-
-  const showSuccess = (msg: string) => {
-    setSuccessMsg(msg)
-    setTimeout(() => setSuccessMsg(""), 3000)
-  }
+  const { dialogs, successMessage, showSuccess, filteredItems: filteredEvents } = useAdminListPage({
+    items: events,
+    searchTerm,
+    match: matchEvent,
+  })
 
   const handleCreateEvent = () => {
-    if (!newTitle.trim()) return
+    if (!newEventForm.title.trim()) return
     const id = nextNumericId(events)
-    addEvent({
-      id,
-      title: newTitle,
-      prize: newPrize || "Quà lưu niệm",
-      date: newDate || "Chưa ấn định",
-      participants: newParticipants,
-      status: "Sắp diễn ra",
-    })
-    setNewTitle("")
-    setNewPrize("")
-    setNewDate("")
-    showSuccess(`Giải đấu ${newTitle} đã được chuẩn bị tổ chức!`)
+    const created = eventFromFormValue(newEventForm, id)
+    addEvent(created)
+    setNewEventForm(EMPTY_EVENT_FORM)
+    showSuccess(`Giải đấu ${created.title} đã được chuẩn bị tổ chức!`)
   }
 
   const handleUpdateEvent = () => {
-    if (!editingEvent || !editingEvent.title.trim()) return
-    updateEvent(editingEvent.id, editingEvent)
-    setEditingEvent(null)
-    setIsEditOpen(false)
+    if (!dialogs.editingItem || !dialogs.editingItem.title.trim()) return
+    updateEvent(dialogs.editingItem.id, dialogs.editingItem)
+    dialogs.closeEdit()
     showSuccess("Đã cập nhật thông tin sự kiện!")
   }
 
   const handleDeleteEvent = () => {
-    if (!deleteTarget) return
-    deleteEvent(deleteTarget.id)
-    setDeleteTarget(null)
+    if (!dialogs.deleteTarget) return
+    deleteEvent(dialogs.deleteTarget.id)
+    dialogs.closeDelete()
     showSuccess("Đã hủy sự kiện khỏi hệ thống.")
   }
-
-  const filteredEvents = events.filter((e) => e.title.toLowerCase().includes(searchTerm.toLowerCase()))
 
   return (
     <div className="space-y-8 pb-8 font-sans">
@@ -85,7 +76,7 @@ export function AdminEventsPage() {
         description="Điều hành thông tin đăng ký, giải thưởng, quy mô cho các sân chơi cộng đồng Auto Chess Mobile."
       />
 
-      <AdminSuccessBanner message={successMsg} />
+      <AdminSuccessBanner message={successMessage ?? ""} />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-4">
@@ -133,27 +124,12 @@ export function AdminEventsPage() {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-1">
-                    <Button
-                      onClick={() => {
-                        setEditingEvent({ ...ev })
-                        setIsEditOpen(true)
-                      }}
-                      variant="ghost"
-                      size="icon"
-                      className="h-9 w-9 text-brand-gold hover:bg-brand-gold/10 rounded-lg transition-all"
-                    >
-                      <Edit2 className="h-4 w-4" />
-                    </Button>
-                    <Button
-                      onClick={() => setDeleteTarget(ev)}
-                      variant="ghost"
-                      size="icon"
-                      className="h-9 w-9 text-brand-red hover:bg-brand-red/10 rounded-lg transition-all"
-                    >
-                      <Trash2 className="h-4 w-4" />
-                    </Button>
-                  </div>
+                  <AdminRowActions
+                    onEdit={() => dialogs.openEdit({ ...ev })}
+                    onDelete={() => dialogs.openDelete(ev)}
+                    editLabel="Sửa sự kiện"
+                    deleteLabel="Hủy sự kiện"
+                  />
                 </div>
               ))}
             </div>
@@ -165,118 +141,54 @@ export function AdminEventsPage() {
             <h3 className="admin-card-title uppercase flex items-center gap-2 border-b border-brand-border pb-3">
               <Plus className="h-4 w-4 text-brand-gold" /> Chuẩn bị giải đấu
             </h3>
-            <div className="space-y-4">
-              <AdminField label="Tên giải đấu / Sự kiện">
-                <Input
-                  value={newTitle}
-                  onChange={(e) => setNewTitle(e.target.value)}
-                  placeholder="Ví dụ: Đại chiến Vương Giả S20"
-                />
-              </AdminField>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <AdminField label="Giải thưởng">
-                  <Input
-                    value={newPrize}
-                    onChange={(e) => setNewPrize(e.target.value)}
-                    placeholder="20,000,000 VND"
-                  />
-                </AdminField>
-                <AdminField label="Khởi tranh">
-                  <Input
-                    value={newDate}
-                    onChange={(e) => setNewDate(e.target.value)}
-                    placeholder="25/06/2026"
-                  />
-                </AdminField>
-              </div>
-              <AdminField label="Quy mô kì thủ">
-                <Select value={newParticipants} onValueChange={setNewParticipants}>
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="16 Kì thủ">16 Kì thủ</SelectItem>
-                    <SelectItem value="32 Kì thủ">32 Kì thủ</SelectItem>
-                    <SelectItem value="64 Kì thủ">64 Kì thủ</SelectItem>
-                    <SelectItem value="128 Kì thủ">128 Kì thủ</SelectItem>
-                  </SelectContent>
-                </Select>
-              </AdminField>
-
-              <Button
-                onClick={handleCreateEvent}
-                className="w-full bg-gold-gradient text-black font-bold text-[13px] h-11 rounded-xl shadow-none uppercase"
-              >
-                Cấp phép giải đấu mới
-              </Button>
-            </div>
+            <React.Suspense fallback={<EventFormFallback />}>
+              <AdminEventForm value={newEventForm} onChange={setNewEventForm} />
+            </React.Suspense>
+            <Button
+              onClick={handleCreateEvent}
+              className="w-full bg-gold-gradient text-black font-bold text-[13px] h-11 rounded-xl shadow-none uppercase"
+            >
+              Cấp phép giải đấu mới
+            </Button>
           </Card>
         </div>
       </div>
 
       <AdminFormDialog
-        open={isEditOpen}
-        onOpenChange={setIsEditOpen}
+        open={dialogs.isEditOpen}
+        onOpenChange={(open) => {
+          dialogs.setIsEditOpen(open)
+          if (!open) dialogs.setEditingItem(null)
+        }}
         title="Chỉnh sửa sự kiện"
         description="Cập nhật thông tin giải đấu hoặc sự kiện cộng đồng."
         size="md"
         onSubmit={handleUpdateEvent}
         submitLabel="Lưu thay đổi"
       >
-        {editingEvent && (
-          <div className="space-y-4">
-            <AdminField label="Tên sự kiện">
-              <Input
-                value={editingEvent.title}
-                onChange={(e) => setEditingEvent({ ...editingEvent, title: e.target.value })}
-              />
-            </AdminField>
-            <AdminFormGrid>
-              <AdminField label="Giải thưởng">
-                <Input
-                  value={editingEvent.prize}
-                  onChange={(e) => setEditingEvent({ ...editingEvent, prize: e.target.value })}
-                />
-              </AdminField>
-              <AdminField label="Ngày">
-                <Input
-                  value={editingEvent.date}
-                  onChange={(e) => setEditingEvent({ ...editingEvent, date: e.target.value })}
-                />
-              </AdminField>
-              <AdminField label="Quy mô">
-                <Input
-                  value={editingEvent.participants}
-                  onChange={(e) => setEditingEvent({ ...editingEvent, participants: e.target.value })}
-                />
-              </AdminField>
-              <AdminField label="Trạng thái">
-                <Select
-                  value={editingEvent.status}
-                  onValueChange={(status) => setEditingEvent({ ...editingEvent, status })}
-                >
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Cho đăng ký">Cho đăng ký</SelectItem>
-                    <SelectItem value="Sắp diễn ra">Sắp diễn ra</SelectItem>
-                    <SelectItem value="Kết thúc">Kết thúc</SelectItem>
-                  </SelectContent>
-                </Select>
-              </AdminField>
-            </AdminFormGrid>
-          </div>
+        {dialogs.editingItem && (
+          <React.Suspense fallback={<EventFormFallback />}>
+            <AdminEventForm
+              showStatus
+              value={eventFormFromEvent(dialogs.editingItem)}
+              onChange={(value) =>
+                dialogs.setEditingItem(eventFromFormValue(value, dialogs.editingItem!.id))
+              }
+            />
+          </React.Suspense>
         )}
       </AdminFormDialog>
 
       <AdminDeleteDialog
-        open={!!deleteTarget}
-        onOpenChange={(open) => !open && setDeleteTarget(null)}
+        open={dialogs.isDeleteOpen}
+        onOpenChange={(open) => {
+          dialogs.setIsDeleteOpen(open)
+          if (!open) dialogs.setDeleteTarget(null)
+        }}
         title="Hủy sự kiện"
         description={
-          deleteTarget
-            ? `Chắc chắn muốn hủy bỏ sự kiện "${deleteTarget.title}"? Thao tác này không thể hoàn tác.`
+          dialogs.deleteTarget
+            ? `Chắc chắn muốn hủy bỏ sự kiện "${dialogs.deleteTarget.title}"? Thao tác này không thể hoàn tác.`
             : ""
         }
         onConfirm={handleDeleteEvent}

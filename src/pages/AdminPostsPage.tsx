@@ -1,7 +1,6 @@
 import * as React from "react"
 import {
   Button,
-  Input,
   Badge,
   Select,
   SelectTrigger,
@@ -9,20 +8,15 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/core"
-import {
-  Plus,
-  FileText,
-  Calendar,
-  Eye,
-  Edit2,
-  Trash2,
-} from "lucide-react"
+import { Plus, FileText, Calendar, Eye } from "lucide-react"
 import { useAppStore } from "@/contexts/DataContext"
 import { cn } from "@/lib/utils"
 import { useNavigate } from "react-router-dom"
 import { parseViews } from "@/lib/parse-metrics"
+import type { Post } from "@/types/domain"
 import {
   AdminPageHeader,
+  AdminSuccessBanner,
   AdminStatCards,
   AdminDeleteDialog,
   AdminDataTable,
@@ -35,67 +29,78 @@ import {
   AdminTd,
   AdminTableFooterText,
   AdminDetailDialog,
+  AdminRowActions,
 } from "@/components/admin"
+import { useAdminListPage } from "@/hooks/useAdminListPage"
 
 export function AdminPostsPage() {
   const { posts, deletePost } = useAppStore()
   const navigate = useNavigate()
-  const [searchTerm, setSearchTerm] = React.useState('')
-  const [selectedCategory, setSelectedCategory] = React.useState('Tất cả danh mục')
-  const [selectedStatus, setSelectedStatus] = React.useState('Tất cả trạng thái')
-
+  const [searchTerm, setSearchTerm] = React.useState("")
+  const [selectedCategory, setSelectedCategory] = React.useState("Tất cả danh mục")
+  const [selectedStatus, setSelectedStatus] = React.useState("Tất cả trạng thái")
   const [isDetailOpen, setIsDetailOpen] = React.useState(false)
-  const [detailPost, setDetailPost] = React.useState<any>(null)
+  const [detailPost, setDetailPost] = React.useState<Post | null>(null)
 
-  const [isDeleteOpen, setIsDeleteOpen] = React.useState(false)
-  const [postToDelete, setPostToDelete] = React.useState<any>(null)
-  const [currentPage, setCurrentPage] = React.useState(1)
-  const pageSize = 10
+  const matchPost = React.useCallback(
+    (post: Post, q: string) => {
+      if (q && !post.title.toLowerCase().includes(q.toLowerCase())) return false
+      if (selectedCategory !== "Tất cả danh mục" && post.category !== selectedCategory) return false
+      if (selectedStatus !== "Tất cả trạng thái" && post.status !== selectedStatus) return false
+      return true
+    },
+    [selectedCategory, selectedStatus]
+  )
+
+  const {
+    dialogs,
+    successMessage,
+    showSuccess,
+    filteredItems: filteredPosts,
+    paginatedItems: paginatedPosts,
+    currentPage,
+    setCurrentPage,
+    totalPages,
+    startIndex,
+  } = useAdminListPage({
+    items: posts,
+    searchTerm,
+    match: matchPost,
+    resetDeps: [selectedCategory, selectedStatus],
+  })
 
   const confirmDeletePost = () => {
-    if (postToDelete) {
-      deletePost(postToDelete.id)
-      setIsDeleteOpen(false)
-      setPostToDelete(null)
+    if (dialogs.deleteTarget) {
+      deletePost(dialogs.deleteTarget.id)
+      showSuccess(`Đã xóa bài viết "${dialogs.deleteTarget.title}".`)
+      dialogs.closeDelete()
     }
   }
 
-  const filteredPosts = posts.filter(post => {
-    if (searchTerm && !post.title.toLowerCase().includes(searchTerm.toLowerCase())) return false
-    if (selectedCategory !== 'Tất cả danh mục' && post.category !== selectedCategory) return false
-    if (selectedStatus !== 'Tất cả trạng thái' && post.status !== selectedStatus) return false
-    return true
-  })
-
   const totalPosts = posts.length
-  const publishedCount = posts.filter(p => p.status === "Xuất bản").length
-  const draftCount = posts.filter(p => p.status === "Bản nháp" || p.status === "Chờ duyệt").length
+  const publishedCount = posts.filter((p) => p.status === "Xuất bản").length
+  const draftCount = posts.filter((p) => p.status === "Bản nháp" || p.status === "Chờ duyệt").length
   const totalViewsAccum = posts.reduce((sum, p) => sum + parseViews(p.views), 0)
-
-  const totalPages = Math.ceil(filteredPosts.length / pageSize) || 1
-  const startIndex = (currentPage - 1) * pageSize
-  const paginatedPosts = filteredPosts.slice(startIndex, startIndex + pageSize)
-
-  React.useEffect(() => {
-    setCurrentPage(1)
-  }, [searchTerm, selectedCategory, selectedStatus])
 
   return (
     <AdminListShell
       header={
-        <AdminPageHeader
-          icon={FileText}
-          title="Quản lý bài viết"
-          description="Hệ thống biên soạn cẩm nang dũng sỹ, cẩm nang tướng quân, chiến thuật xếp bài và tin điện quan trọng."
-        >
-          <Button
-            size="default"
-            onClick={() => navigate("/admin/bai-viet/them")}
-            className="gap-2 bg-gold-gradient text-black font-bold text-[12px] h-11 px-6 rounded-xl transition-all hover:scale-[1.02]"
+        <>
+          <AdminPageHeader
+            icon={FileText}
+            title="Quản lý bài viết"
+            description="Hệ thống biên soạn cẩm nang dũng sỹ, cẩm nang tướng quân, chiến thuật xếp bài và tin điện quan trọng."
           >
-            <Plus className="h-4.5 w-4.5 stroke-[3px]" /> Soạn bài mới
-          </Button>
-        </AdminPageHeader>
+            <Button
+              size="default"
+              onClick={() => navigate("/admin/bai-viet/them")}
+              className="gap-2 bg-gold-gradient text-black font-bold text-[12px] h-11 px-6 rounded-xl transition-all hover:scale-[1.02]"
+            >
+              <Plus className="h-4.5 w-4.5 stroke-[3px]" /> Soạn bài mới
+            </Button>
+          </AdminPageHeader>
+          <AdminSuccessBanner message={successMessage ?? ""} />
+        </>
       }
       beforeList={
         <AdminStatCards
@@ -118,7 +123,7 @@ export function AdminPostsPage() {
         footer={
           <AdminTableFooterText
             start={filteredPosts.length > 0 ? startIndex + 1 : 0}
-            end={Math.min(startIndex + pageSize, filteredPosts.length)}
+            end={Math.min(startIndex + 10, filteredPosts.length)}
             total={filteredPosts.length}
             label="bài viết"
           />
@@ -170,7 +175,9 @@ export function AdminPostsPage() {
           <tbody>
             {paginatedPosts.map((row, idx) => (
               <AdminTr key={row.id} className="group">
-                <AdminTd className="text-center text-brand-text-sub font-mono text-[11px]">{startIndex + idx + 1}</AdminTd>
+                <AdminTd className="text-center text-brand-text-sub font-mono text-[11px]">
+                  {startIndex + idx + 1}
+                </AdminTd>
                 <AdminTd>
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-xl bg-brand-card-2 flex items-center justify-center flex-shrink-0 border border-brand-border">
@@ -178,13 +185,18 @@ export function AdminPostsPage() {
                     </div>
                     <div className="flex flex-col min-w-0 max-w-[400px]">
                       <button
-                        onClick={() => { setDetailPost(row); setIsDetailOpen(true); }}
+                        onClick={() => {
+                          setDetailPost(row)
+                          setIsDetailOpen(true)
+                        }}
                         className="text-left font-bold text-brand-text-main text-[14.5px] hover:text-brand-gold transition-colors truncate mb-1 leading-snug tracking-tight"
                       >
                         {row.title}
                       </button>
                       <div className="flex items-center gap-3 text-[10px] text-brand-text-sub font-mono tracking-wider uppercase">
-                        <span className="flex items-center gap-1"><Calendar className="h-3 w-3 opacity-60" /> {row.date}</span>
+                        <span className="flex items-center gap-1">
+                          <Calendar className="h-3 w-3 opacity-60" /> {row.date}
+                        </span>
                         <span className="w-1.5 h-1.5 bg-brand-border rounded-full"></span>
                         <span>POST_ID: {row.id}</span>
                       </div>
@@ -200,7 +212,12 @@ export function AdminPostsPage() {
                   </div>
                 </AdminTd>
                 <AdminTd>
-                  <Badge variant="secondary" className="bg-brand-card border-brand-border text-brand-text-sub text-[10px] font-bold uppercase tracking-wider">{row.category}</Badge>
+                  <Badge
+                    variant="secondary"
+                    className="bg-brand-card border-brand-border text-brand-text-sub text-[10px] font-bold uppercase tracking-wider"
+                  >
+                    {row.category}
+                  </Badge>
                 </AdminTd>
                 <AdminTd className="text-center">
                   <div className="inline-flex items-center gap-1 font-bold text-[13px] font-mono text-brand-text-sub">
@@ -209,45 +226,31 @@ export function AdminPostsPage() {
                   </div>
                 </AdminTd>
                 <AdminTd className="text-center">
-                  <span className={cn(
-                    "inline-flex items-center gap-1.5 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider border rounded-md leading-none",
-                    row.status === 'Xuất bản' ? "text-brand-green border-brand-green/15 bg-brand-green/5" :
-                    row.status === 'Chờ duyệt' ? "text-amber-400 border-amber-500/15 bg-amber-500/5" :
-                    "text-brand-text-sub border-brand-border bg-brand-card-2"
-                  )}>
+                  <span
+                    className={cn(
+                      "inline-flex items-center gap-1.5 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider border rounded-md leading-none",
+                      row.status === "Xuất bản"
+                        ? "text-brand-green border-brand-green/15 bg-brand-green/5"
+                        : row.status === "Chờ duyệt"
+                          ? "text-amber-400 border-amber-500/15 bg-amber-500/5"
+                          : "text-brand-text-sub border-brand-border bg-brand-card-2"
+                    )}
+                  >
                     {row.status}
                   </span>
                 </AdminTd>
                 <AdminTd className="text-right">
-                  <div className="flex justify-end gap-1.5">
-                    <Button
-                      onClick={() => { setDetailPost(row); setIsDetailOpen(true); }}
-                      variant="ghost"
-                      size="icon"
-                      className="h-9 w-9 rounded-lg hover:bg-brand-card-2 text-brand-text-sub hover:text-brand-text-main transition-all border border-transparent hover:border-brand-border"
-                      title="Xem chi tiết"
-                    >
-                      <Eye className="h-4 w-4 text-brand-text-sub" />
-                    </Button>
-                    <Button
-                      onClick={() => navigate(`/admin/bai-viet/${row.id}/sua`)}
-                      variant="ghost"
-                      size="icon"
-                      className="h-9 w-9 rounded-lg hover:bg-brand-card-2 text-brand-text-sub hover:text-brand-text-main transition-all border border-transparent hover:border-brand-border"
-                      title="Sửa bài viết"
-                    >
-                      <Edit2 className="h-4 w-4 text-brand-gold" />
-                    </Button>
-                    <Button
-                      onClick={() => { setPostToDelete(row); setIsDeleteOpen(true); }}
-                      variant="ghost"
-                      size="icon"
-                      className="h-9 w-9 rounded-lg hover:bg-brand-card-2 text-brand-text-sub hover:text-brand-red transition-all border border-transparent hover:border-brand-border"
-                      title="Xóa bài viết"
-                    >
-                      <Trash2 className="h-4 w-4 text-brand-red/70 hover:text-brand-red" />
-                    </Button>
-                  </div>
+                  <AdminRowActions
+                    onView={() => {
+                      setDetailPost(row)
+                      setIsDetailOpen(true)
+                    }}
+                    onEdit={() => navigate(`/admin/bai-viet/${row.id}/sua`)}
+                    onDelete={() => dialogs.openDelete(row)}
+                    viewLabel="Xem chi tiết"
+                    editLabel="Sửa bài viết"
+                    deleteLabel="Xóa bài viết"
+                  />
                 </AdminTd>
               </AdminTr>
             ))}
@@ -286,7 +289,7 @@ export function AdminPostsPage() {
         {detailPost && (
           <div className="space-y-4">
             <div className="flex flex-wrap items-center justify-center gap-2">
-              <Badge variant={detailPost.status === 'Xuất bản' ? 'success' : 'warning-solid'}>
+              <Badge variant={detailPost.status === "Xuất bản" ? "success" : "warning-solid"}>
                 TRẠNG THÁI: {detailPost.status.toUpperCase()}
               </Badge>
               <Badge variant="outline">{detailPost.category.toUpperCase()}</Badge>
@@ -294,8 +297,12 @@ export function AdminPostsPage() {
 
             <div className="space-y-4 text-left border-t border-brand-border pt-5 text-[13px]">
               <div className="flex justify-between items-center text-brand-text-sub font-mono text-[11.5px] border-b border-brand-border pb-2.5">
-                <span>TÁC GIẢ: <strong className="text-brand-text-sub font-bold">{detailPost.author}</strong></span>
-                <span>NGÀY ĐĂNG: <strong className="text-brand-text-sub font-bold">{detailPost.date}</strong></span>
+                <span>
+                  TÁC GIẢ: <strong className="text-brand-text-sub font-bold">{detailPost.author}</strong>
+                </span>
+                <span>
+                  NGÀY ĐĂNG: <strong className="text-brand-text-sub font-bold">{detailPost.date}</strong>
+                </span>
               </div>
 
               <div className="space-y-1.5">
@@ -310,15 +317,15 @@ export function AdminPostsPage() {
       </AdminDetailDialog>
 
       <AdminDeleteDialog
-        open={isDeleteOpen}
+        open={dialogs.isDeleteOpen}
         onOpenChange={(open) => {
-          setIsDeleteOpen(open)
-          if (!open) setPostToDelete(null)
+          dialogs.setIsDeleteOpen(open)
+          if (!open) dialogs.setDeleteTarget(null)
         }}
         title="Xác nhận xóa bài viết"
         description={
-          postToDelete
-            ? `Hành động này không thể thu hồi. Bạn có chắc muốn xóa vĩnh viễn bài viết "${postToDelete.title}"?`
+          dialogs.deleteTarget
+            ? `Hành động này không thể thu hồi. Bạn có chắc muốn xóa vĩnh viễn bài viết "${dialogs.deleteTarget.title}"?`
             : ""
         }
         onConfirm={confirmDeletePost}

@@ -7,11 +7,10 @@ import { useTranslation } from "react-i18next"
 import { cn } from "@/lib/utils"
 import { useAppStore } from "@/contexts/DataContext"
 import { useFavorites } from "@/hooks/useFavorites"
-import { motion, AnimatePresence } from "motion/react"
+import { motion, AnimatePresence } from "@/components/motion/MotionProvider"
 import { DetailBreadcrumb } from "@/components/layout/DetailBreadcrumb"
 import { CompHeroChip } from "@/components/comps/CompHeroChip"
 import { CompBoardMini } from "@/components/comps/CompBoardMini"
-import { CompRadarAnalysis } from "@/components/comps/CompRadarAnalysis"
 import { resolveCompBoard } from "@/lib/comp-formation"
 import { getCompTop4 } from "@/lib/comp-stats"
 import {
@@ -21,6 +20,12 @@ import {
 } from "@/lib/comp-detail"
 import { getRecommendedItems } from "@/lib/hero-utils"
 import type { Hero } from "@/types/domain"
+
+const CompRadarAnalysis = React.lazy(() =>
+  import("@/components/comps/CompRadarAnalysis").then((module) => ({
+    default: module.CompRadarAnalysis,
+  }))
+)
 
 import { getTierBadgeVariant } from "@/lib/tier-utils"
 
@@ -405,7 +410,13 @@ export function CompDetailPage() {
             </section>
           )}
 
-          <CompRadarAnalysis comp={comp} heroes={heroes} />
+          <React.Suspense
+            fallback={
+              <div className="h-64 rounded-xl bg-brand-card border border-brand-border animate-pulse" />
+            }
+          >
+            <CompRadarAnalysis comp={comp} heroes={heroes} />
+          </React.Suspense>
         </div>
 
         <div className="space-y-8">

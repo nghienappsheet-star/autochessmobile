@@ -3,12 +3,35 @@ import { Routes, Route, Navigate, useLocation, useNavigate } from "react-router-
 import { getToolNavChildren } from "@/config/nav"
 import { TOOL_SLUG_TO_I18N } from "@/config/icons"
 import { PageHeader } from "@/components/layout/PageHeader"
-import { CompRecommenderTool } from "./tools/CompRecommenderTool"
-import { HeroComparisonTool } from "./tools/HeroComparisonTool"
-import { CompComparisonTool } from "./tools/CompComparisonTool"
-import { TeamBuilderTool } from "./tools/TeamBuilderTool"
-import { BanAdvisorTool } from "./tools/BanAdvisorTool"
 import { useTranslation } from "react-i18next"
+
+const TeamBuilderTool = React.lazy(() =>
+  import("./tools/TeamBuilderTool").then((m) => ({ default: m.TeamBuilderTool }))
+)
+const CompRecommenderTool = React.lazy(() =>
+  import("./tools/CompRecommenderTool").then((m) => ({ default: m.CompRecommenderTool }))
+)
+const CompComparisonTool = React.lazy(() =>
+  import("./tools/CompComparisonTool").then((m) => ({ default: m.CompComparisonTool }))
+)
+const HeroComparisonTool = React.lazy(() =>
+  import("./tools/HeroComparisonTool").then((m) => ({ default: m.HeroComparisonTool }))
+)
+const BanAdvisorTool = React.lazy(() =>
+  import("./tools/BanAdvisorTool").then((m) => ({ default: m.BanAdvisorTool }))
+)
+
+function ToolRouteFallback() {
+  return (
+    <div className="py-16 text-center text-brand-text-sub text-[13px]">
+      Đang tải công cụ...
+    </div>
+  )
+}
+
+function LazyTool({ children }: { children: React.ReactNode }) {
+  return <React.Suspense fallback={<ToolRouteFallback />}>{children}</React.Suspense>
+}
 
 export function ToolsPage() {
   const { t } = useTranslation("tools")
@@ -50,14 +73,49 @@ export function ToolsPage() {
       />
 
       <Routes>
-        <Route path="tao-doi-hinh" element={<TeamBuilderTool />} />
-        <Route path="tim-doi-hinh" element={<CompRecommenderTool />} />
+        <Route
+          path="tao-doi-hinh"
+          element={
+            <LazyTool>
+              <TeamBuilderTool />
+            </LazyTool>
+          }
+        />
+        <Route
+          path="tim-doi-hinh"
+          element={
+            <LazyTool>
+              <CompRecommenderTool />
+            </LazyTool>
+          }
+        />
         <Route path="kich-hoat-toc-he" element={<Navigate to="/cong-cu/tao-doi-hinh" replace />} />
         <Route path="danh-gia-suc-manh" element={<Navigate to="/doi-hinh" replace />} />
         <Route path="de-xuat-trang-bi" element={<Navigate to="/tuong" replace />} />
-        <Route path="ban-advisor" element={<BanAdvisorTool />} />
-        <Route path="so-sanh-tuong" element={<HeroComparisonTool />} />
-        <Route path="so-sanh-doi-hinh" element={<CompComparisonTool />} />
+        <Route
+          path="ban-advisor"
+          element={
+            <LazyTool>
+              <BanAdvisorTool />
+            </LazyTool>
+          }
+        />
+        <Route
+          path="so-sanh-tuong"
+          element={
+            <LazyTool>
+              <HeroComparisonTool />
+            </LazyTool>
+          }
+        />
+        <Route
+          path="so-sanh-doi-hinh"
+          element={
+            <LazyTool>
+              <CompComparisonTool />
+            </LazyTool>
+          }
+        />
       </Routes>
     </div>
   )

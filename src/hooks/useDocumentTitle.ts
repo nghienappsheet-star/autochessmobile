@@ -34,6 +34,7 @@ const ADMIN_ROUTE_TITLES: Record<string, string> = {
   "/admin/nguoi-dung": adminPageTitle("Người dùng"),
   "/admin/vai-tro": adminPageTitle("Vai trò & Phân quyền"),
   "/admin/tuong": adminPageTitle("Tướng"),
+  "/admin/tuong/them": adminPageTitle("Thêm tướng"),
   "/admin/toc-he": adminPageTitle("Tộc / Hệ"),
   "/admin/trang-bi": adminPageTitle("Trang bị"),
   "/admin/di-vat": adminPageTitle("Dị vật"),

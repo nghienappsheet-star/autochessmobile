@@ -17,7 +17,7 @@ import {
   isPostImageUrl,
   estimateReadingMinutes,
 } from "@/contexts/DataContext"
-import { motion } from "motion/react"
+import { motion } from "@/components/motion/MotionProvider"
 import { useTranslation } from "react-i18next"
 import { ArticleProse } from "@/components/ArticleProse"
 import { PostCardThumb } from "@/components/news/PostCardThumb"

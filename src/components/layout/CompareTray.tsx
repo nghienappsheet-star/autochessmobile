@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { X, Scale } from "lucide-react"
 import { useTranslation } from "react-i18next"
-import { motion, AnimatePresence } from "motion/react"
+import { motion, AnimatePresence } from "@/components/motion/MotionProvider"
 import { Button, Badge } from "@/components/ui/core"
 import { HeroIcon } from "@/components/heroes/HeroIcon"
 import { cn } from "@/lib/utils"

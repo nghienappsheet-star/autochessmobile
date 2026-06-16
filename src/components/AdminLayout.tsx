@@ -3,7 +3,7 @@ import { Outlet, useLocation } from "react-router-dom"
 import { AdminSidebar } from "./AdminSidebar"
 import { AdminHeader } from "./AdminHeader"
 import { MobileNav } from "./MobileNav"
-import { AnimatePresence, motion } from "motion/react"
+import { AnimatePresence, motion } from "@/components/motion/MotionProvider"
 import { useAdminDocumentTitle } from "@/hooks/useDocumentTitle"
 
 export function AdminLayout() {

@@ -2,7 +2,7 @@ import * as React from "react"
 import { Card, Button, Badge } from "@/components/ui/core"
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
-import { motion } from "motion/react"
+import { motion } from "@/components/motion/MotionProvider"
 import { PageHeader } from "@/components/layout/PageHeader"
 import {
   FilterToolbar,

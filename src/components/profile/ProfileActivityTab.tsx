@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { MessageSquare, Eye, Pencil, LayoutGrid, Hammer, Users, Trophy } from "lucide-react"
-import { motion } from "motion/react"
+import { motion } from "@/components/motion/MotionProvider"
 import { Card, Button, Badge } from "@/components/ui/core"
 import type { Post, PostStatus } from "@/types/domain"
 

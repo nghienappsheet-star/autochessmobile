@@ -4,6 +4,7 @@ import { BarChart2, TrendingUp, ArrowUpRight, ArrowDownRight, RefreshCw, Downloa
 import {
   AdminPageHeader,
   AdminDemoBadge,
+  AdminSuccessBanner,
   AdminTable,
   AdminThead,
   AdminTh,
@@ -11,6 +12,7 @@ import {
   AdminTd,
   AdminTableScroll,
 } from "@/components/admin"
+import { useAdminSuccessToast } from "@/hooks/useAdminSuccessToast"
 
 const RANGE_SUBTITLES: Record<string, string> = {
   "Hôm nay": "Số liệu tổng hợp trong ngày hôm nay.",
@@ -29,10 +31,14 @@ const MOCK_CSV_ROWS = [
 export function AdminReportsPage() {
   const [isRefreshing, setIsRefreshing] = React.useState(false)
   const [reportRange, setReportRange] = React.useState("Tất cả thời gian")
+  const { successMessage, showSuccess } = useAdminSuccessToast()
 
   const handleRefreshData = () => {
     setIsRefreshing(true)
-    setTimeout(() => setIsRefreshing(false), 800)
+    setTimeout(() => {
+      setIsRefreshing(false)
+      showSuccess("Đã làm mới dữ liệu báo cáo.")
+    }, 800)
   }
 
   const handleExportCsv = () => {
@@ -44,6 +50,7 @@ export function AdminReportsPage() {
     link.download = `bao-cao-${reportRange.replace(/\s+/g, "-").toLowerCase()}.csv`
     link.click()
     URL.revokeObjectURL(url)
+    showSuccess("Đã tải file CSV báo cáo.")
   }
 
   const stats = [
@@ -104,6 +111,8 @@ export function AdminReportsPage() {
           <Download className="h-4 w-4" /> Tải CSV
         </Button>
       </AdminPageHeader>
+
+      <AdminSuccessBanner message={successMessage ?? ""} />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat, idx) => (

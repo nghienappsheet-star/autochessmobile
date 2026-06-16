@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Card, Button, Badge, Separator, Input } from "@/components/ui/core"
 import { Send } from "lucide-react"
-import { motion, AnimatePresence } from "motion/react"
+import { motion, AnimatePresence } from "@/components/motion/MotionProvider"
 import { useTranslation } from "react-i18next"
 import { useAppStore } from "@/contexts/DataContext"
 import type { Comment, CommunityPost } from "@/types/domain"

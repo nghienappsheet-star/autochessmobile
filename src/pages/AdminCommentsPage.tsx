@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Button, Input, Badge, Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/core"
+import { Button, Badge, Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/core"
 import { MessageSquare, Check, Trash2, Eye } from "lucide-react"
 import { useAppStore } from "@/contexts/DataContext"
 import {
@@ -13,22 +13,43 @@ import {
   AdminCommentDetailDrawer,
 } from "@/components/admin"
 import type { Comment } from "@/types/domain"
-
-const PAGE_SIZE = 10
+import { useAdminListPage } from "@/hooks/useAdminListPage"
 
 export function AdminCommentsPage() {
   const { comments, updateComment, deleteComment } = useAppStore()
   const [searchTerm, setSearchTerm] = React.useState("")
   const [selectedStatus, setSelectedStatus] = React.useState("Tất cả trạng thái")
-  const [successMsg, setSuccessMsg] = React.useState("")
-  const [deleteTarget, setDeleteTarget] = React.useState<{ id: string; author: string } | null>(null)
   const [detailComment, setDetailComment] = React.useState<Comment | null>(null)
-  const [currentPage, setCurrentPage] = React.useState(1)
 
-  const showSuccess = (msg: string) => {
-    setSuccessMsg(msg)
-    setTimeout(() => setSuccessMsg(""), 3000)
-  }
+  const matchComment = React.useCallback(
+    (c: Comment, q: string) => {
+      const query = q.toLowerCase()
+      const matchesSearch =
+        c.author.toLowerCase().includes(query) ||
+        c.content.toLowerCase().includes(query) ||
+        c.target.toLowerCase().includes(query)
+      const matchesStatus = selectedStatus === "Tất cả trạng thái" || c.status === selectedStatus
+      return matchesSearch && matchesStatus
+    },
+    [selectedStatus]
+  )
+
+  const {
+    dialogs,
+    successMessage,
+    showSuccess,
+    filteredItems: filteredComments,
+    paginatedItems: paginatedComments,
+    currentPage,
+    setCurrentPage,
+    totalPages,
+    startIndex,
+  } = useAdminListPage({
+    items: comments,
+    searchTerm,
+    match: matchComment,
+    resetDeps: [selectedStatus],
+  })
 
   const handleApprove = (id: string, author: string) => {
     updateComment(id, { status: "Đã duyệt" })
@@ -39,31 +60,14 @@ export function AdminCommentsPage() {
   }
 
   const handleDelete = () => {
-    if (!deleteTarget) return
-    deleteComment(deleteTarget.id)
+    if (!dialogs.deleteTarget) return
+    deleteComment(dialogs.deleteTarget.id)
     showSuccess("Đã ẩn/xoá bình luận vi phạm khỏi cơ sở dữ liệu.")
-    if (detailComment?.id === deleteTarget.id) {
+    if (detailComment?.id === dialogs.deleteTarget.id) {
       setDetailComment(null)
     }
-    setDeleteTarget(null)
+    dialogs.closeDelete()
   }
-
-  const filteredComments = comments.filter((c) => {
-    const matchesSearch =
-      c.author.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      c.content.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      c.target.toLowerCase().includes(searchTerm.toLowerCase())
-    const matchesStatus = selectedStatus === "Tất cả trạng thái" || c.status === selectedStatus
-    return matchesSearch && matchesStatus
-  })
-
-  const totalPages = Math.max(1, Math.ceil(filteredComments.length / PAGE_SIZE))
-  const startIndex = (currentPage - 1) * PAGE_SIZE
-  const paginatedComments = filteredComments.slice(startIndex, startIndex + PAGE_SIZE)
-
-  React.useEffect(() => {
-    setCurrentPage(1)
-  }, [searchTerm, selectedStatus])
 
   const threadComments = detailComment
     ? comments.filter((c) => c.threadId === detailComment.threadId)
@@ -78,7 +82,7 @@ export function AdminCommentsPage() {
             title="Quản lý bình luận"
             description="Duyệt bài bình luận từ người dùng, lọc từ ngữ kích động hoặc nội dung spam."
           />
-          <AdminSuccessBanner message={successMsg} />
+          <AdminSuccessBanner message={successMessage ?? ""} />
         </>
       }
     >
@@ -92,7 +96,7 @@ export function AdminCommentsPage() {
         footer={
           <AdminTableFooterText
             start={filteredComments.length > 0 ? startIndex + 1 : 0}
-            end={Math.min(startIndex + PAGE_SIZE, filteredComments.length)}
+            end={Math.min(startIndex + 10, filteredComments.length)}
             total={filteredComments.length}
             label="bình luận"
           />
@@ -176,7 +180,7 @@ export function AdminCommentsPage() {
                   </Button>
                 )}
                 <Button
-                  onClick={() => setDeleteTarget({ id: comment.id, author: comment.author })}
+                  onClick={() => dialogs.openDelete(comment)}
                   variant="ghost"
                   className="h-9 px-3 gap-1 bg-brand-red/10 text-brand-red hover:bg-brand-red/20 text-[12px] font-semibold rounded-lg border border-brand-red/10 shadow-none"
                 >
@@ -194,16 +198,22 @@ export function AdminCommentsPage() {
         open={!!detailComment}
         onOpenChange={(open) => !open && setDetailComment(null)}
         onApprove={handleApprove}
-        onDelete={(id, author) => setDeleteTarget({ id, author })}
+        onDelete={(id) => {
+          const target = comments.find((c) => c.id === id)
+          if (target) dialogs.openDelete(target)
+        }}
       />
 
       <AdminDeleteDialog
-        open={!!deleteTarget}
-        onOpenChange={(open) => !open && setDeleteTarget(null)}
+        open={dialogs.isDeleteOpen}
+        onOpenChange={(open) => {
+          dialogs.setIsDeleteOpen(open)
+          if (!open) dialogs.setDeleteTarget(null)
+        }}
         title="Xóa bình luận"
         description={
-          deleteTarget
-            ? `Bạn có chắc muốn xóa bình luận của "${deleteTarget.author}"? Hành động này không thể hoàn tác.`
+          dialogs.deleteTarget
+            ? `Bạn có chắc muốn xóa bình luận của "${dialogs.deleteTarget.author}"? Hành động này không thể hoàn tác.`
             : ""
         }
         onConfirm={handleDelete}

@@ -1,16 +1,6 @@
 import * as React from "react"
-import {
-  Card,
-  Button,
-  Input,
-  Badge,
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem,
-} from "@/components/ui/core"
-import { Trophy, Plus, Trash2, Edit2, RefreshCw } from "lucide-react"
+import { Card, Button, Badge } from "@/components/ui/core"
+import { Trophy, Plus, RefreshCw } from "lucide-react"
 import { useAppStore } from "@/contexts/DataContext"
 import type { LeaderboardPlayer } from "@/types/domain"
 import { nextNumericId } from "@/lib/admin-utils"
@@ -19,7 +9,7 @@ import {
   AdminSuccessBanner,
   AdminToolbar,
   AdminFormDialog,
-  AdminField,
+  AdminRowActions,
   AdminTable,
   AdminThead,
   AdminTh,
@@ -27,66 +17,68 @@ import {
   AdminTd,
   AdminTableScroll,
 } from "@/components/admin"
+import {
+  EMPTY_PLAYER_FORM,
+  playerFormFromPlayer,
+  playerFromFormValue,
+  playerPatchFromFormValue,
+} from "@/components/admin/AdminPlayerForm"
 import { AdminDeleteDialog } from "@/components/admin/AdminDeleteDialog"
+import { useAdminListPage } from "@/hooks/useAdminListPage"
+
+const AdminPlayerForm = React.lazy(() =>
+  import("@/components/admin/AdminPlayerForm").then((m) => ({ default: m.AdminPlayerForm }))
+)
+
+function PlayerFormFallback() {
+  return (
+    <div className="py-8 text-center admin-meta text-brand-text-sub">Đang tải biểu mẫu tuyển thủ...</div>
+  )
+}
 
 export function AdminLeaderboardPage() {
   const { players, addPlayer, updatePlayer, deletePlayer, rerankPlayers } = useAppStore()
   const [searchTerm, setSearchTerm] = React.useState("")
   const [isRefreshing, setIsRefreshing] = React.useState(false)
-  const [successMsg, setSuccessMsg] = React.useState("")
+  const [newPlayerForm, setNewPlayerForm] = React.useState(EMPTY_PLAYER_FORM)
 
-  const [newName, setNewName] = React.useState("")
-  const [newMmr, setNewMmr] = React.useState("")
-  const [newTier, setNewTier] = React.useState("Queen")
+  const matchPlayer = React.useCallback(
+    (player: LeaderboardPlayer, q: string) => player.name.toLowerCase().includes(q.toLowerCase()),
+    []
+  )
 
-  const [isEditOpen, setIsEditOpen] = React.useState(false)
-  const [editingPlayer, setEditingPlayer] = React.useState<LeaderboardPlayer | null>(null)
-  const [deleteTarget, setDeleteTarget] = React.useState<LeaderboardPlayer | null>(null)
-
-  const showSuccess = (msg: string) => {
-    setSuccessMsg(msg)
-    setTimeout(() => setSuccessMsg(""), 3000)
-  }
+  const { dialogs, successMessage, showSuccess, filteredItems: filteredList } = useAdminListPage({
+    items: players,
+    searchTerm,
+    match: matchPlayer,
+  })
 
   const handleCreatePlayer = () => {
-    if (!newName.trim() || !newMmr.trim()) return
-    const mmrVal = parseInt(newMmr) || 1200
+    if (!newPlayerForm.name.trim() || !newPlayerForm.mmr.trim()) return
     const id = nextNumericId(players)
-    addPlayer({
-      id,
-      rank: players.length + 1,
-      name: newName,
-      server: "VN-1",
-      mmr: mmrVal,
-      tier: newTier,
-      winRate: "25.0%",
-      matches: 10,
-    })
-    setNewName("")
-    setNewMmr("")
-    showSuccess(`Đã thêm đấu sĩ ${newName} vào bảng xếp hạng!`)
+    const created = playerFromFormValue(newPlayerForm, id, players.length + 1)
+    addPlayer(created)
+    setNewPlayerForm(EMPTY_PLAYER_FORM)
+    showSuccess(`Đã thêm đấu sĩ ${created.name} vào bảng xếp hạng!`)
   }
 
   const handleUpdateMmr = () => {
-    if (!editingPlayer || !editingPlayer.name.trim()) return
-    updatePlayer(editingPlayer.id, {
-      mmr: editingPlayer.mmr,
-      tier: editingPlayer.tier,
-      name: editingPlayer.name,
-      server: editingPlayer.server,
-      winRate: editingPlayer.winRate,
-      matches: editingPlayer.matches,
+    if (!dialogs.editingItem || !dialogs.editingItem.name.trim()) return
+    updatePlayer(dialogs.editingItem.id, {
+      ...playerPatchFromFormValue(playerFormFromPlayer(dialogs.editingItem)),
+      server: dialogs.editingItem.server,
+      winRate: dialogs.editingItem.winRate,
+      matches: dialogs.editingItem.matches,
     })
-    setEditingPlayer(null)
-    setIsEditOpen(false)
-    showSuccess(`Đã cập nhật MMR cho ${editingPlayer.name}!`)
+    dialogs.closeEdit()
+    showSuccess(`Đã cập nhật MMR cho ${dialogs.editingItem.name}!`)
   }
 
   const handleDeletePlayer = () => {
-    if (!deleteTarget) return
-    deletePlayer(deleteTarget.id)
-    setDeleteTarget(null)
-    showSuccess(`Đã loại ${deleteTarget.name} khỏi bảng xếp hạng.`)
+    if (!dialogs.deleteTarget) return
+    deletePlayer(dialogs.deleteTarget.id)
+    dialogs.closeDelete()
+    showSuccess(`Đã loại ${dialogs.deleteTarget.name} khỏi bảng xếp hạng.`)
   }
 
   const handleSyncMMR = () => {
@@ -97,8 +89,6 @@ export function AdminLeaderboardPage() {
       showSuccess("Thao tác đồng bộ dữ liệu MMR trực tiếp từ API Tencent/Dragonest hoàn tất!")
     }, 1500)
   }
-
-  const filteredList = players.filter((p) => p.name.toLowerCase().includes(searchTerm.toLowerCase()))
 
   return (
     <div className="space-y-8 pb-8">
@@ -116,7 +106,7 @@ export function AdminLeaderboardPage() {
         </Button>
       </AdminPageHeader>
 
-      <AdminSuccessBanner message={successMsg} />
+      <AdminSuccessBanner message={successMessage ?? ""} />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2">
@@ -177,27 +167,12 @@ export function AdminLeaderboardPage() {
                       <AdminTd className="text-right font-mono text-brand-text-sub">{player.winRate}</AdminTd>
                       <AdminTd className="text-center font-mono text-brand-text-sub">{player.matches}</AdminTd>
                       <AdminTd className="text-right">
-                        <div className="flex items-center justify-end gap-1">
-                          <Button
-                            onClick={() => {
-                              setEditingPlayer({ ...player })
-                              setIsEditOpen(true)
-                            }}
-                            variant="ghost"
-                            size="icon"
-                            className="h-8 w-8 text-brand-gold rounded-lg"
-                          >
-                            <Edit2 className="h-3.5 w-3.5" />
-                          </Button>
-                          <Button
-                            onClick={() => setDeleteTarget(player)}
-                            variant="ghost"
-                            size="icon"
-                            className="h-8 w-8 text-brand-red rounded-lg"
-                          >
-                            <Trash2 className="h-3.5 w-3.5" />
-                          </Button>
-                        </div>
+                        <AdminRowActions
+                          onEdit={() => dialogs.openEdit({ ...player })}
+                          onDelete={() => dialogs.openDelete(player)}
+                          editLabel="Sửa MMR"
+                          deleteLabel="Loại khỏi bảng"
+                        />
                       </AdminTd>
                     </AdminTr>
                   ))}
@@ -212,100 +187,57 @@ export function AdminLeaderboardPage() {
             <h3 className="admin-card-title uppercase flex items-center gap-2 border-b border-brand-border pb-3">
               <Plus className="h-4 w-4 text-brand-gold" /> Thêm tuyển thủ
             </h3>
-            <div className="space-y-4">
-              <AdminField label="Mã Tên (IGN)">
-                <Input
-                  value={newName}
-                  onChange={(e) => setNewName(e.target.value)}
-                  placeholder="Ví dụ: T_Rex_Auto"
-                />
-              </AdminField>
-              <AdminField label="Điểm số MMR">
-                <Input
-                  value={newMmr}
-                  onChange={(e) => setNewMmr(e.target.value)}
-                  placeholder="Ví dụ: 3200"
-                  type="number"
-                />
-              </AdminField>
-              <AdminField label="Phân hạng">
-                <Select value={newTier} onValueChange={setNewTier}>
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Queen">Bậc Queen (Nữ Hoàng)</SelectItem>
-                    <SelectItem value="King">Bậc King (Vua)</SelectItem>
-                    <SelectItem value="Rook">Bậc Rook (Xe)</SelectItem>
-                    <SelectItem value="Bishop">Bậc Bishop (Tượng)</SelectItem>
-                  </SelectContent>
-                </Select>
-              </AdminField>
-
-              <Button
-                onClick={handleCreatePlayer}
-                className="w-full bg-gold-gradient text-black font-bold text-[13px] h-11 rounded-xl shadow-none uppercase"
-              >
-                Cập nhật lên bảng xếp hạng
-              </Button>
-            </div>
+            <React.Suspense fallback={<PlayerFormFallback />}>
+              <AdminPlayerForm value={newPlayerForm} onChange={setNewPlayerForm} />
+            </React.Suspense>
+            <Button
+              onClick={handleCreatePlayer}
+              className="w-full bg-gold-gradient text-black font-bold text-[13px] h-11 rounded-xl shadow-none uppercase"
+            >
+              Cập nhật lên bảng xếp hạng
+            </Button>
           </Card>
         </div>
       </div>
 
       <AdminFormDialog
-        open={isEditOpen}
-        onOpenChange={setIsEditOpen}
+        open={dialogs.isEditOpen}
+        onOpenChange={(open) => {
+          dialogs.setIsEditOpen(open)
+          if (!open) dialogs.setEditingItem(null)
+        }}
         title="Chỉnh sửa MMR"
         description="Cập nhật điểm MMR và phân hạng của tuyển thủ. Thứ hạng sẽ tự động sắp xếp lại."
         size="sm"
         onSubmit={handleUpdateMmr}
         submitLabel="Lưu MMR"
       >
-        {editingPlayer && (
-          <div className="space-y-4">
-            <AdminField label="Tên tuyển thủ">
-              <Input
-                value={editingPlayer.name}
-                onChange={(e) => setEditingPlayer({ ...editingPlayer, name: e.target.value })}
-              />
-            </AdminField>
-            <AdminField label="MMR">
-              <Input
-                type="number"
-                value={editingPlayer.mmr}
-                onChange={(e) =>
-                  setEditingPlayer({ ...editingPlayer, mmr: parseInt(e.target.value) || 0 })
-                }
-              />
-            </AdminField>
-            <AdminField label="Phân hạng">
-              <Select
-                value={editingPlayer.tier}
-                onValueChange={(tier) => setEditingPlayer({ ...editingPlayer, tier })}
-              >
-                <SelectTrigger>
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="Queen">Queen</SelectItem>
-                  <SelectItem value="King">King</SelectItem>
-                  <SelectItem value="Rook">Rook</SelectItem>
-                  <SelectItem value="Bishop">Bishop</SelectItem>
-                </SelectContent>
-              </Select>
-            </AdminField>
-          </div>
+        {dialogs.editingItem && (
+          <React.Suspense fallback={<PlayerFormFallback />}>
+            <AdminPlayerForm
+              value={playerFormFromPlayer(dialogs.editingItem)}
+              onChange={(value) =>
+                dialogs.setEditingItem({
+                  ...dialogs.editingItem!,
+                  ...playerPatchFromFormValue(value),
+                })
+              }
+              namePlaceholder="Tên tuyển thủ"
+            />
+          </React.Suspense>
         )}
       </AdminFormDialog>
 
       <AdminDeleteDialog
-        open={!!deleteTarget}
-        onOpenChange={(open) => !open && setDeleteTarget(null)}
+        open={dialogs.isDeleteOpen}
+        onOpenChange={(open) => {
+          dialogs.setIsDeleteOpen(open)
+          if (!open) dialogs.setDeleteTarget(null)
+        }}
         title="Loại khỏi bảng xếp hạng"
         description={
-          deleteTarget
-            ? `Bạn chắc chắn muốn loại "${deleteTarget.name}" ra khỏi danh sách bảng xếp hạng?`
+          dialogs.deleteTarget
+            ? `Bạn chắc chắn muốn loại "${dialogs.deleteTarget.name}" ra khỏi danh sách bảng xếp hạng?`
             : ""
         }
         onConfirm={handleDeletePlayer}

@@ -9,6 +9,8 @@ type AdminToolbarProps = {
   searchPlaceholder?: string
   children?: React.ReactNode
   className?: string
+  /** Single-row layout: search + filters without wrapping. */
+  inline?: boolean
 }
 
 /** Shared admin list toolbar: search + optional filter slots. */
@@ -18,16 +20,24 @@ export function AdminToolbar({
   searchPlaceholder = "Tìm kiếm...",
   children,
   className,
+  inline = false,
 }: AdminToolbarProps) {
   return (
     <div
       className={cn(
-        "flex flex-col sm:flex-row items-stretch sm:items-center gap-3 p-4",
+        inline
+          ? "flex flex-row items-center gap-2 p-3 overflow-x-auto"
+          : "flex flex-col sm:flex-row items-stretch sm:items-center gap-3 p-4",
         className
       )}
     >
       {onSearchChange !== undefined && (
-        <div className="relative w-full sm:max-w-sm lg:flex-1 group">
+        <div
+          className={cn(
+            "relative group shrink-0",
+            inline ? "flex-1 min-w-[140px] max-w-xs" : "w-full sm:max-w-sm lg:flex-1"
+          )}
+        >
           <Search
             className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-brand-text-sub group-focus-within:text-brand-gold transition-colors pointer-events-none"
             aria-hidden
@@ -41,7 +51,12 @@ export function AdminToolbar({
         </div>
       )}
       {children && (
-        <div className="flex flex-wrap items-center gap-2 sm:gap-3 w-full sm:w-auto sm:ml-auto">
+        <div
+          className={cn(
+            "flex items-center gap-2 shrink-0",
+            inline ? "flex-nowrap" : "flex-wrap sm:gap-3 w-full sm:w-auto sm:ml-auto"
+          )}
+        >
           {children}
         </div>
       )}

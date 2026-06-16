@@ -6,7 +6,8 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/core"
-import { AdminField, AdminFormGrid, AdminFormGridFull, HeroCheckboxPicker } from "@/components/admin"
+import { AdminField, AdminFormGrid, AdminFormGridFull } from "./AdminField"
+import { HeroCheckboxPicker } from "./HeroCheckboxPicker"
 import type { Hero, Item, ItemCategory } from "@/types/domain"
 
 const ITEM_CATEGORIES: ItemCategory[] = ["attack", "defense", "magic", "utility"]

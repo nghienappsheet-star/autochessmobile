@@ -2,7 +2,7 @@ import * as React from "react"
 import { useTranslation } from "react-i18next"
 import { Button } from "@/components/ui/core"
 import { useAppStore } from "@/contexts/DataContext"
-import { AnimatePresence } from "motion/react"
+import { AnimatePresence } from "@/components/motion/MotionProvider"
 import { PageHeader } from "@/components/layout/PageHeader"
 import { getPageIcon } from "@/config/icons"
 import {

@@ -1,6 +1,6 @@
 import * as React from "react"
 import { useNavigate, useLocation } from "react-router-dom"
-import { AnimatePresence, motion } from "motion/react"
+import { AnimatePresence, motion } from "@/components/motion/MotionProvider"
 import { ChevronRight, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import type { HubKey } from "@/config/nav"

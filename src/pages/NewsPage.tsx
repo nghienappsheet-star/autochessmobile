@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Card, Button, SectionHeader } from "@/components/ui/core"
 import { useAppStore } from "@/contexts/DataContext"
-import { motion } from "motion/react"
+import { motion } from "@/components/motion/MotionProvider"
 import { useNavigate } from "react-router-dom"
 import { PageHeader } from "@/components/layout/PageHeader"
 import {

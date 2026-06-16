@@ -3,7 +3,7 @@ import { Badge, Input, Button, Select, SelectTrigger, SelectValue, SelectContent
 import { Search, Filter, Scale } from "lucide-react"
 import { useFavorites } from "@/hooks/useFavorites"
 import { useAppStore } from "@/contexts/DataContext"
-import { motion } from "motion/react"
+import { motion } from "@/components/motion/MotionProvider"
 import { PageHeader } from "@/components/layout/PageHeader"
 import { CompareTray } from "@/components/layout/CompareTray"
 import { useCompareSelection } from "@/hooks/useCompareSelection"
