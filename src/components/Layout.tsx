@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Outlet, useLocation } from "react-router-dom"
+import { Outlet, useLocation } from "react-router"
 import { Sidebar } from "./Sidebar"
 import { Header } from "./Header"
 import { Footer } from "./Footer"
@@ -9,7 +9,6 @@ import { MobileSearchSheet } from "./MobileSearchSheet"
 import { MobileHubSheet } from "./MobileHubSheet"
 import { AnimatePresence, motion } from "@/components/motion/MotionProvider"
 import type { HubKey } from "@/config/nav"
-import { usePublicDocumentTitle } from "@/hooks/useDocumentTitle"
 import { useSiteSettings } from "@/hooks/useSiteSettings"
 
 function useIsDesktopNav() {
@@ -29,7 +28,6 @@ function useIsDesktopNav() {
 
 export function Layout() {
   const location = useLocation()
-  usePublicDocumentTitle(location.pathname)
   const settings = useSiteSettings()
   const isDesktopNav = useIsDesktopNav()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
@@ -82,7 +80,7 @@ export function Layout() {
           infoOpen={infoOpen}
           onInfoOpenChange={setInfoOpen}
         />
-        <main className="flex-1 py-4 sm:py-6 lg:py-8">
+        <main id="main-content" className="flex-1 py-4 sm:py-6 lg:py-8">
           <PageContainer>
             <AnimatePresence mode="wait">
               <motion.div

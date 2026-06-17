@@ -62,7 +62,7 @@ export function AdminPostsPage() {
     setCurrentPage,
     totalPages,
     startIndex,
-  } = useAdminListPage({
+  } = useAdminListPage<Post>({
     items: posts,
     searchTerm,
     match: matchPost,

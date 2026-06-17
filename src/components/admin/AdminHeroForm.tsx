@@ -391,7 +391,8 @@ export function AdminHeroForm({
             </AdminField>
           </AdminFormGridFull>
           {[1, 2, 3].map((star) => (
-            <AdminFormGridFull key={star}>
+            <React.Fragment key={star}>
+            <AdminFormGridFull>
               <AdminField label={`Mô tả kỹ năng ${star}★`}>
                 <textarea
                   value={descByStar[star - 1] ?? ""}
@@ -407,6 +408,7 @@ export function AdminHeroForm({
                 />
               </AdminField>
             </AdminFormGridFull>
+            </React.Fragment>
           ))}
         </AdminFormGrid>
       )}
@@ -476,8 +478,8 @@ export function AdminHeroForm({
             </div>
             <div className="space-y-3 mt-2">
               {(value.skins ?? []).map((skin, index) => (
+                <React.Fragment key={skin.id}>
                 <SkinRow
-                  key={skin.id}
                   skin={skin}
                   media={media}
                   radioGroupName={`skin-default-${value.id || "new"}`}
@@ -497,6 +499,7 @@ export function AdminHeroForm({
                     patch({ skins })
                   }}
                 />
+                </React.Fragment>
               ))}
               {(value.skins ?? []).length === 0 && (
                 <p className="admin-meta text-brand-text-sub py-2">Chưa có skin — dùng portraitUrl mặc định.</p>

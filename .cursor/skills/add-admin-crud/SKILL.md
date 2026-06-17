@@ -10,9 +10,9 @@ description: Scaffolds an admin list/CRUD page using AdminListShell, AdminDataTa
 ```
 - [ ] Create AdminXxxPage.tsx in src/pages/
 - [ ] Wire useAppStore() data + CRUD setters
-- [ ] Add lazy route under /admin in App.tsx
+- [ ] Create route wrapper in src/routes/_pages/
+- [ ] Register route in src/routes.ts
 - [ ] Add ADMIN_NAV item in AdminSidebar.tsx
-- [ ] Add ADMIN_ROUTE_TITLES entry
 - [ ] Run npm run lint
 ```
 
@@ -41,40 +41,39 @@ import {
   AdminFormDialog,
   AdminDeleteDialog,
 } from "@/components/admin"
+import { useAdminListPage } from "@/hooks/useAdminListPage"
+import type { MyEntity } from "@/types/domain"
 
 export function AdminMyEntityPage() {
   const { myEntities, addMyEntity, updateMyEntity, deleteMyEntity } = useAppStore()
-  // search/filter state, dialog open state, form handlers
-  return (
-    <AdminListShell>
-      <AdminPageHeader title="My Entity" description="Manage my entities" />
-      {/* toolbar + table + dialogs */}
-    </AdminListShell>
-  )
+  const { filteredItems, dialogs, ...rest } = useAdminListPage<MyEntity>({
+    items: myEntities,
+    searchTerm,
+    match: (item, term) => item.name.toLowerCase().includes(term.toLowerCase()),
+  })
+  // ...
 }
 ```
 
-## Step 2 — Route
+## Step 2 — Route wrapper
+
+Create `src/routes/_pages/admin-my-slug.tsx`:
 
 ```tsx
-const AdminMyEntityPage = React.lazy(() =>
-  import("./pages/AdminMyEntityPage").then((m) => ({ default: m.AdminMyEntityPage }))
-)
+import { adminStaticMeta } from "@/lib/seo/loaders"
 
-<Route path="my-entity" element={<AdminMyEntityPage />} />
+export const meta = () => adminStaticMeta("/admin/my-slug", "My Entity")
+export { AdminMyEntityPage as default } from "@/pages/AdminMyEntityPage"
 ```
 
-## Step 3 — Sidebar + title
+Register in [`src/routes.ts`](../../src/routes.ts) under the admin layout.
 
-1. Add item to `ADMIN_NAV` in `src/components/AdminSidebar.tsx` (pick correct group)
-2. Add to `ADMIN_ROUTE_TITLES` in `src/hooks/useDocumentTitle.ts`:
+## Step 3 — Sidebar
 
-```tsx
-"/admin/my-entity": adminPageTitle("My Entity"),
-```
+Add item to `ADMIN_NAV` in `src/components/AdminSidebar.tsx` (pick correct group). Admin labels are Vietnamese hardcoded (existing convention).
 
 ## Notes
 
-- Admin labels in `AdminSidebar` are Vietnamese hardcoded (existing convention)
 - Use `Button`, `Input`, `Select` from `@/components/ui/core` — no inline card styles
 - Type entity props with domain types from `@/types/domain`, not `any`
+- Always pass explicit generic to `useAdminListPage<T>()` for type-safe list rendering

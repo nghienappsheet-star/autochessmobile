@@ -51,7 +51,7 @@ export function AdminMediaPage() {
     [selectedCategory]
   )
 
-  const { dialogs, successMessage, showSuccess, filteredItems: filteredMedia } = useAdminListPage({
+  const { dialogs, successMessage, showSuccess, filteredItems: filteredMedia } = useAdminListPage<MediaAsset>({
     items: media,
     searchTerm,
     match: matchMedia,

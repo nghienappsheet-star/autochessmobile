@@ -864,8 +864,8 @@ function TraitMultiSelectDropdown({
                   filteredTraits.map((trait) => {
                     const count = traitBanCost(trait.name, heroes)
                     return (
+                      <React.Fragment key={trait.name}>
                       <TraitCheckboxRow
-                        key={trait.name}
                         trait={trait.name}
                         traitId={trait.id}
                         icon={trait.icon}
@@ -874,6 +874,7 @@ function TraitMultiSelectDropdown({
                         checked={selected.includes(trait.name)}
                         onToggle={() => onToggle(trait.name)}
                       />
+                      </React.Fragment>
                     )
                   })
                 )}

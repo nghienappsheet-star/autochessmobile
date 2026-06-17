@@ -1,3 +1,4 @@
+import * as React from "react"
 import { Card, Badge } from "@/components/ui/core"
 import { ArrowUp, MessageSquare } from "lucide-react"
 import { useTranslation } from "react-i18next"

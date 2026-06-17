@@ -44,7 +44,7 @@ export function AdminCommentsPage() {
     setCurrentPage,
     totalPages,
     startIndex,
-  } = useAdminListPage({
+  } = useAdminListPage<Comment>({
     items: comments,
     searchTerm,
     match: matchComment,

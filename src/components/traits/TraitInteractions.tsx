@@ -1,3 +1,4 @@
+import * as React from "react"
 import { Card, Badge } from "@/components/ui/core"
 import { GitBranch, Swords, ShieldAlert } from "lucide-react"
 import { Link } from "react-router-dom"
@@ -54,7 +55,9 @@ export function TraitInteractions({ partners, matchups }: TraitInteractionsProps
         {partners.length > 0 ? (
           <div className="flex flex-wrap gap-2">
             {partners.map((p) => (
-              <TraitLinkBadge key={`${p.kind}-${p.id}`} id={p.id} name={p.name} kind={p.kind} />
+              <React.Fragment key={`${p.kind}-${p.id}`}>
+              <TraitLinkBadge id={p.id} name={p.name} kind={p.kind} />
+              </React.Fragment>
             ))}
           </div>
         ) : (
@@ -73,7 +76,9 @@ export function TraitInteractions({ partners, matchups }: TraitInteractionsProps
           {matchups.counters.length > 0 ? (
             <div className="flex flex-wrap gap-2">
               {matchups.counters.map((m) => (
-                <TraitLinkBadge key={`c-${m.kind}-${m.id}`} id={m.id} name={m.name} kind={m.kind} />
+                <React.Fragment key={`c-${m.kind}-${m.id}`}>
+                <TraitLinkBadge id={m.id} name={m.name} kind={m.kind} />
+                </React.Fragment>
               ))}
             </div>
           ) : (
@@ -93,7 +98,9 @@ export function TraitInteractions({ partners, matchups }: TraitInteractionsProps
           {matchups.counteredBy.length > 0 ? (
             <div className="flex flex-wrap gap-2">
               {matchups.counteredBy.map((m) => (
-                <TraitLinkBadge key={`cb-${m.kind}-${m.id}`} id={m.id} name={m.name} kind={m.kind} />
+                <React.Fragment key={`cb-${m.kind}-${m.id}`}>
+                <TraitLinkBadge id={m.id} name={m.name} kind={m.kind} />
+                </React.Fragment>
               ))}
             </div>
           ) : (

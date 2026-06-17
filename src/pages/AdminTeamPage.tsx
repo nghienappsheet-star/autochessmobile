@@ -71,7 +71,7 @@ export function AdminTeamPage() {
     totalPages,
     startIndex,
     pageSize,
-  } = useAdminListPage({
+  } = useAdminListPage<TeamMember>({
     items: teamMembers,
     searchTerm,
     match: matchMember,

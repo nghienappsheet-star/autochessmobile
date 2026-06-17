@@ -11,13 +11,26 @@ export type UseAdminListPageConfig<T> = {
   resetDeps?: React.DependencyList
 }
 
+export type AdminListPageResult<T extends { id: string | number }> = {
+  dialogs: ReturnType<typeof useAdminCrudDialogs<T>>
+  successMessage: string | null
+  showSuccess: (message: string) => void
+  filteredItems: T[]
+  paginatedItems: T[]
+  currentPage: number
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>
+  pageSize: number
+  totalPages: number
+  startIndex: number
+}
+
 export function useAdminListPage<T extends { id: string | number }>({
   items,
   pageSize = 10,
   searchTerm,
   match,
   resetDeps = [],
-}: UseAdminListPageConfig<T>) {
+}: UseAdminListPageConfig<T>): AdminListPageResult<T> {
   const dialogs = useAdminCrudDialogs<T>()
   const { successMessage, showSuccess } = useAdminSuccessToast()
 
@@ -27,7 +40,7 @@ export function useAdminListPage<T extends { id: string | number }>({
     [items, searchTerm, match, ...resetDeps]
   )
 
-  const pagination = useAdminPagination(filteredItems, [searchTerm, ...resetDeps], pageSize)
+  const pagination = useAdminPagination<T>(filteredItems, [searchTerm, ...resetDeps], pageSize)
 
   return {
     dialogs,

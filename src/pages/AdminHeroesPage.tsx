@@ -65,7 +65,7 @@ export function AdminHeroesPage() {
     setCurrentPage,
     totalPages,
     startIndex,
-  } = useAdminListPage({
+  } = useAdminListPage<Hero>({
     items: heroes,
     searchTerm: search,
     match: matchHero,

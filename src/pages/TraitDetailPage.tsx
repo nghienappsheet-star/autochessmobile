@@ -22,8 +22,6 @@ import {
   routeKindToTraitKind,
 } from "@/lib/traits"
 import { getTraitMetaBundle } from "@/lib/trait-meta"
-import { useDocumentTitle } from "@/hooks/useDocumentTitle"
-import { pageTitle } from "@/config/site"
 
 const TIER_VARIANT: Record<string, "tier-s" | "tier-a" | "tier-b" | "tier-c"> = {
   S: "tier-s",
@@ -58,16 +56,6 @@ export function TraitDetailPage() {
     if (!trait) return null
     return getTraitMetaBundle(trait, heroes, comps, allTraits)
   }, [trait, heroes, comps, allTraits])
-
-  React.useEffect(() => {
-    if (!trait) return
-    const metaEl = document.querySelector('meta[name="description"]')
-    if (metaEl) {
-      metaEl.setAttribute("content", trait.description)
-    }
-  }, [trait])
-
-  useDocumentTitle(trait ? pageTitle(trait.name) : pageTitle(t("traits.title")))
 
   if (!trait || !meta) {
     return (

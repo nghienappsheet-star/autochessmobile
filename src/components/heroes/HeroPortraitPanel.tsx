@@ -42,12 +42,13 @@ export function HeroPortraitPanel({ hero, selectedSkinId, onSkinChange }: HeroPo
           </p>
           <div className="flex flex-wrap justify-center gap-2">
             {skins.map((skin) => (
+              <React.Fragment key={skin.id}>
               <SkinThumb
-                key={skin.id}
                 skin={skin}
                 active={skin.id === (activeSkin?.id ?? "default")}
                 onSelect={() => onSkinChange(skin.id)}
               />
+              </React.Fragment>
             ))}
           </div>
         </div>

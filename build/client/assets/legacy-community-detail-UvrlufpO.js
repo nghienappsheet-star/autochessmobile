@@ -1,0 +1,1 @@
+import{aw as o,b as r,ax as a}from"./admin-ui-B4bKXOJP.js";import{j as e}from"./motion-vendor-BB1hHZ5s.js";import"./radix-vendor-BX0Vk7f4.js";const u=o(function(){const{id:t}=r();return t?e.jsx(a,{to:`/thao-luan/${t}`,replace:!0}):e.jsx(a,{to:"/thao-luan",replace:!0})});export{u as default};

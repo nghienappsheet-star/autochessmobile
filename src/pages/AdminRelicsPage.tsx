@@ -74,7 +74,7 @@ export function AdminRelicsPage() {
     totalPages,
     startIndex,
     pageSize,
-  } = useAdminListPage({
+  } = useAdminListPage<Relic>({
     items: relics,
     searchTerm,
     match: matchRelic,

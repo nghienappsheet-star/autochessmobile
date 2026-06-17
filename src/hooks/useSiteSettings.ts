@@ -51,6 +51,7 @@ const DEFAULTS: SiteSettings = {
 }
 
 export function loadSiteSettings(): SiteSettings {
+  if (typeof window === "undefined") return DEFAULTS
   const donateEnabledRaw = localStorage.getItem("setting_donate_enabled")
   return {
     siteName: localStorage.getItem("setting_site_name") || DEFAULTS.siteName,
@@ -72,6 +73,7 @@ export function loadSiteSettings(): SiteSettings {
 }
 
 export function saveSiteSettings(settings: SiteSettings) {
+  if (typeof window === "undefined") return
   localStorage.setItem("setting_site_name", settings.siteName)
   localStorage.setItem("setting_site_desc", settings.siteDesc)
   localStorage.setItem("setting_maintenance", String(settings.maintenance))
@@ -90,9 +92,10 @@ export function saveSiteSettings(settings: SiteSettings) {
 }
 
 export function useSiteSettings(): SiteSettings {
-  const [settings, setSettings] = React.useState<SiteSettings>(loadSiteSettings)
+  const [settings, setSettings] = React.useState<SiteSettings>(DEFAULTS)
 
   React.useEffect(() => {
+    setSettings(loadSiteSettings())
     const sync = () => setSettings(loadSiteSettings())
     window.addEventListener("site-settings-changed", sync)
     window.addEventListener("storage", sync)
@@ -141,6 +144,15 @@ function normalizePagesMeta(raw: unknown): SeoSettings["pagesMeta"] {
 }
 
 export function loadSeoSettings(): SeoSettings {
+  if (typeof window === "undefined") {
+    return {
+      gaId: "",
+      robotsTxt: "User-agent: *\nAllow: /\nDisallow: /admin",
+      jsonLd: "",
+      keywords: ["auto chess", "autochess mobile", "meta"],
+      pagesMeta: DEFAULT_PAGES_META,
+    }
+  }
   const robotsLegacy = localStorage.getItem("seo_robots")
   const jsonLegacy = localStorage.getItem("seo_schema_json")
 
@@ -149,7 +161,7 @@ export function loadSeoSettings(): SeoSettings {
     robotsTxt:
       localStorage.getItem("seo_robots_txt") ||
       robotsLegacy ||
-      "User-agent: *\nAllow: /",
+      "User-agent: *\nAllow: /\nDisallow: /admin",
     jsonLd: localStorage.getItem("seo_json_ld") || jsonLegacy || "",
     keywords: loadJson<string[]>("seo_keywords", ["auto chess", "autochess mobile", "meta"]),
     pagesMeta: normalizePagesMeta(loadJson("seo_pages_meta", DEFAULT_PAGES_META)),
@@ -157,6 +169,7 @@ export function loadSeoSettings(): SeoSettings {
 }
 
 export function saveSeoSettings(settings: SeoSettings) {
+  if (typeof window === "undefined") return
   localStorage.setItem("seo_ga_id", settings.gaId)
   localStorage.setItem("seo_robots_txt", settings.robotsTxt)
   localStorage.setItem("seo_robots", settings.robotsTxt)
@@ -168,9 +181,16 @@ export function saveSeoSettings(settings: SeoSettings) {
 }
 
 export function useSeoSettings(): SeoSettings {
-  const [settings, setSettings] = React.useState<SeoSettings>(loadSeoSettings)
+  const [settings, setSettings] = React.useState<SeoSettings>(() => ({
+    gaId: "",
+    robotsTxt: "User-agent: *\nAllow: /",
+    jsonLd: "",
+    keywords: ["auto chess", "autochess mobile", "meta"],
+    pagesMeta: DEFAULT_PAGES_META,
+  }))
 
   React.useEffect(() => {
+    setSettings(loadSeoSettings())
     const sync = () => setSettings(loadSeoSettings())
     window.addEventListener("seo-settings-changed", sync)
     window.addEventListener("storage", sync)

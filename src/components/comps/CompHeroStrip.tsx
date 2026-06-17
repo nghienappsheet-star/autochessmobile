@@ -1,3 +1,4 @@
+import * as React from "react"
 import { CompHeroChip } from "@/components/comps/CompHeroChip"
 import { cn } from "@/lib/utils"
 import type { Hero } from "@/types/domain"
@@ -18,12 +19,13 @@ export function CompHeroStrip({ heroIds, heroes, coreIds = [], className }: Comp
       {heroIds.map((heroId) => {
         const hero = heroMap.get(heroId)
         return (
+          <React.Fragment key={heroId}>
           <CompHeroChip
-            key={heroId}
             hero={hero}
             size="xs"
             isCore={coreSet.has(heroId)}
           />
+          </React.Fragment>
         )
       })}
     </div>

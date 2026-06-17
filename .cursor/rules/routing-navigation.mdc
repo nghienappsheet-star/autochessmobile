@@ -1,6 +1,6 @@
 ---
-description: Vietnamese URL slugs, nav config, public vs admin routing, lazy loading
-globs: src/App.tsx,src/pages/**,src/config/nav.ts
+description: Vietnamese URL slugs, nav config, public vs admin routing (React Router v7 Framework Mode)
+globs: src/routes.ts,src/routes/**,src/pages/**,src/config/nav.ts
 alwaysApply: false
 ---
 
@@ -12,35 +12,44 @@ Public routes use Vietnamese slugs: `/tuong`, `/doi-hinh`, `/cong-cu`, `/tin-tuc
 
 ## Two shells
 
-| Shell | Layout | Base path |
-|-------|--------|-----------|
-| Public | `Layout` | `/` |
-| Admin | `AdminLayout` | `/admin` |
+| Shell | Layout route | Base path |
+|-------|--------------|-----------|
+| Public | `src/routes/public-layout.tsx` | `/` |
+| Admin | `src/routes/admin-layout.tsx` | `/admin` |
+
+Route tree is defined in [`src/routes.ts`](src/routes.ts). Page components live in `src/pages/`; thin route wrappers live in `src/routes/_pages/` and `src/routes/_redirects/`.
 
 ## Adding a public route
 
-Update all three together:
+Update all of the following:
 
-1. `Route` in `src/App.tsx` under `<Route path="/" element={<Layout />}>`
-2. Entry in `NAV_ITEMS` (`src/config/nav.ts`) with `labelKey`
-3. i18n keys in `src/locales/{vi,en}/nav.json`
+1. Route wrapper in `src/routes/_pages/my-slug.tsx` (export default from page component)
+2. Entry in [`src/routes.ts`](src/routes.ts) under the public layout
+3. Static SEO (if list page): add to `STATIC_ROUTE_META` in `src/lib/seo/meta.ts`
+4. Dynamic SEO (if detail page): add `loader` + `meta` exports in route wrapper (see `src/lib/seo/loaders.ts`)
+5. `NAV_ITEMS` in `src/config/nav.ts` with `labelKey`
+6. i18n keys in `src/locales/{vi,en}/nav.json`
+
+Example route wrapper:
+
+```tsx
+import { staticPageMeta } from "@/lib/seo/meta"
+
+export const meta = staticPageMeta("/my-slug", "Page Name")
+export { MyFeaturePage as default } from "@/pages/MyFeaturePage"
+```
 
 ## Adding an admin route
 
-1. `Route` under `<Route path="/admin" element={<AdminLayout />}>`
-2. Item in `ADMIN_NAV` (`src/components/AdminSidebar.tsx`)
-3. Title entry in `ADMIN_ROUTE_TITLES` (`src/hooks/useDocumentTitle.ts`)
+1. Route wrapper in `src/routes/_pages/admin-my-slug.tsx`
+2. Entry in `src/routes.ts` under the admin layout
+3. `meta` via `adminStaticMeta()` from `src/lib/seo/loaders.ts`
+4. Item in `ADMIN_NAV` (`src/components/AdminSidebar.tsx`)
 
-## Lazy loading (required for new pages)
+## Code splitting
 
-```tsx
-const NewPage = React.lazy(() => import("./pages/NewPage").then(m => ({ default: m.NewPage })))
-
-<React.Suspense fallback={null}>
-  <Route path="new-slug" element={<NewPage />} />
-</React.Suspense>
-```
+React Router v7 Framework Mode splits routes automatically from `src/routes.ts`. Do **not** add manual `React.lazy()` wrappers.
 
 ## Legacy redirects
 
-When renaming trait routes, add redirect components (see `LegacyTraitRedirects.tsx`) — never break old URLs silently.
+When renaming trait routes, add redirect route modules under `src/routes/_redirects/` — never break old URLs silently.

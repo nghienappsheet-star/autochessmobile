@@ -68,7 +68,7 @@ export function AdminUsersPage() {
     totalPages,
     startIndex,
     pageSize,
-  } = useAdminListPage({
+  } = useAdminListPage<AdminUserRecord>({
     items: users,
     searchTerm,
     match: matchUser,

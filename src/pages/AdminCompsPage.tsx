@@ -67,7 +67,7 @@ export function AdminCompsPage() {
     totalPages,
     startIndex,
     pageSize,
-  } = useAdminListPage({
+  } = useAdminListPage<Comp>({
     items: comps,
     searchTerm,
     match: matchComp,

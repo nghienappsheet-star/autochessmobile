@@ -220,12 +220,13 @@ export function CompRecommenderTool() {
           <div className="flex-1 overflow-y-auto space-y-2 pr-1 custom-scrollbar pb-4 min-h-0">
             <AnimatePresence mode="popLayout">
               {filteredHeroes.map((hero) => (
+                <React.Fragment key={hero.id}>
                 <HeroPickerRow
-                  key={hero.id}
                   hero={hero}
                   disabled={selectedHeroes.length >= MAX_SELECTED}
                   onClick={() => toggleHero(hero.id)}
                 />
+                </React.Fragment>
               ))}
             </AnimatePresence>
           </div>
@@ -264,8 +265,8 @@ export function CompRecommenderTool() {
               </div>
             ) : (
               matchedComps.map((comp) => (
+                <React.Fragment key={comp.id}>
                 <MatchedCompCard
-                  key={comp.id}
                   comp={comp}
                   heroes={heroes}
                   selectedHeroes={selectedHeroes}
@@ -273,6 +274,7 @@ export function CompRecommenderTool() {
                   matchPercent={comp.matchPercent}
                   t={t}
                 />
+                </React.Fragment>
               ))
             )}
           </AnimatePresence>

@@ -39,7 +39,7 @@ export function AdminEventsPage() {
     []
   )
 
-  const { dialogs, successMessage, showSuccess, filteredItems: filteredEvents } = useAdminListPage({
+  const { dialogs, successMessage, showSuccess, filteredItems: filteredEvents } = useAdminListPage<AdminEvent>({
     items: events,
     searchTerm,
     match: matchEvent,

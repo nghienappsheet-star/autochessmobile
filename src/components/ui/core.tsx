@@ -72,10 +72,12 @@ const buttonVariants = ({
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = "default", size = "default", asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button"
+    const resolvedVariant = variant as ButtonProps["variant"]
+    const resolvedSize = size as ButtonProps["size"]
     return (
       <Comp
         ref={ref}
-        className={buttonVariants({ variant, size, className })}
+        className={buttonVariants({ variant: resolvedVariant, size: resolvedSize, className })}
         {...props}
       />
     )

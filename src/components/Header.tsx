@@ -112,8 +112,11 @@ export function Header({
         <div className="hidden xl:block w-[1px] h-5 bg-white/10" />
         <div className="hidden xl:flex items-center gap-3">
           <div className="relative" ref={wikiRef}>
-            <button 
+            <button
+              type="button"
               onClick={() => setShowWikiDropdown(!showWikiDropdown)}
+              aria-label={t("nav:wikiHandbook")}
+              aria-expanded={showWikiDropdown}
               className={cn(
                 "w-9 h-9 rounded-lg bg-brand-card border flex items-center justify-center text-brand-text-sub hover:text-white transition-all",
                 showWikiDropdown ? "border-brand-gold/30 text-brand-gold bg-brand-gold/5" : "border-brand-border hover:border-white/10"
@@ -174,8 +177,10 @@ export function Header({
             )}
           </div>
 
-          <button 
+          <button
+            type="button"
             onClick={() => setShowInfoModal(true)}
+            aria-label="Thông tin website"
             className={cn(
               "w-9 h-9 rounded-lg bg-brand-card border flex items-center justify-center text-brand-text-sub hover:text-white transition-all",
               showInfoModal ? "border-brand-gold/30 text-brand-gold bg-brand-gold/5" : "border-brand-border hover:border-white/10"
@@ -188,8 +193,11 @@ export function Header({
 
         {user ? (
           <div className="relative" ref={dropdownRef}>
-            <button 
+            <button
+              type="button"
               onClick={() => setShowDropdown(!showDropdown)}
+              aria-label={t("nav:profile")}
+              aria-expanded={showDropdown}
               className="flex items-center gap-3 focus:outline-none p-1 rounded-xl hover:bg-white/5 transition-all text-left"
             >
               <img src={user.avatar} alt="Avatar" className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl border border-white/10 object-cover" />

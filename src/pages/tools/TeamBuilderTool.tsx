@@ -466,8 +466,8 @@ export function TeamBuilderTool() {
                   const hero = entry ? heroes.find((h) => h.id === entry.heroId) : null
 
                   return (
+                    <React.Fragment key={`cell-${i}`}>
                     <BoardCellDrop
-                      key={`cell-${i}`}
                       index={i}
                       isLight={isLight}
                       onCellClick={() => handleBoardCellClick(i)}
@@ -488,6 +488,7 @@ export function TeamBuilderTool() {
                         </div>
                       )}
                     </BoardCellDrop>
+                    </React.Fragment>
                   )
                 })}
               </div>
@@ -673,12 +674,13 @@ export function TeamBuilderTool() {
             <div className="flex-1 overflow-y-auto space-y-2 pr-2 custom-scrollbar pb-10">
               <AnimatePresence mode="popLayout">
                 {filteredHeroes.map((hero) => (
+                  <React.Fragment key={hero.id}>
                   <LibraryHeroDraggable
-                    key={hero.id}
                     hero={hero}
                     onClick={() => handleHeroInListClick(hero.id)}
                     disabled={isBoardFull}
                   />
+                  </React.Fragment>
                 ))}
               </AnimatePresence>
               {filteredHeroes.length === 0 && (

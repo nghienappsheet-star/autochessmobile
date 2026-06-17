@@ -47,7 +47,7 @@ export function AdminLeaderboardPage() {
     []
   )
 
-  const { dialogs, successMessage, showSuccess, filteredItems: filteredList } = useAdminListPage({
+  const { dialogs, successMessage, showSuccess, filteredItems: filteredList } = useAdminListPage<LeaderboardPlayer>({
     items: players,
     searchTerm,
     match: matchPlayer,

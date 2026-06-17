@@ -1,6 +1,8 @@
 import * as React from "react"
 import { Card, Button, Input, Badge } from "@/components/ui/core"
 import { X, Server } from "lucide-react"
+import { buildPageMeta } from "@/lib/seo/meta"
+import { getSitemapUrlCount } from "@/lib/seo/sitemap"
 import { pageTitle, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/config/site"
 import type { SeoSettings } from "@/hooks/useSiteSettings"
 
@@ -60,7 +62,7 @@ export function buildDefaultSeoDraft(settings: SeoSettings) {
   return {
     gaId: settings.gaId || "G-EBP92XXXXX",
     robots:
-      settings.robotsTxt || `User-agent: *\nAllow: /\nSitemap: ${SITE_URL}/sitemap.xml`,
+      settings.robotsTxt || `User-agent: *\nAllow: /\nDisallow: /admin\n\nSitemap: ${SITE_URL}/sitemap.xml`,
     schemaJson:
       settings.jsonLd ||
       `{\n  "@context": "https://schema.org",\n  "@type": "Game",\n  "name": "${SITE_NAME}",\n  "genre": "Strategy game"\n}`,
@@ -132,10 +134,17 @@ export function AdminSeoForm({ value, onChange }: AdminSeoFormProps) {
               </div>
             ))}
             <p className="admin-meta leading-relaxed pt-2 border-t border-brand-border">
+              Meta tại đây lưu trong trình duyệt (localStorage) và chỉ áp dụng phía client — crawler và
+              share preview Facebook/Zalo nhận meta từ SSR (<span className="font-mono text-brand-gold/80">buildPageMeta</span>{" "}
+              trong route). Để thay đổi meta production, cập nhật{" "}
+              <span className="font-mono text-brand-gold/80">STATIC_ROUTE_META</span> hoặc loader tương ứng.
+            </p>
+            <p className="admin-meta leading-relaxed pt-2">
               Trang chi tiết động (<span className="font-mono text-brand-gold/80">/tuong/:id</span>,{" "}
+              <span className="font-mono text-brand-gold/80">/thao-luan/:id</span>,{" "}
               <span className="font-mono text-brand-gold/80">/trang-bi/:id</span>,{" "}
               <span className="font-mono text-brand-gold/80">/toc-he/toc|he/:id</span>) tự đặt title và mô tả theo
-              dữ liệu từng mục khi người dùng truy cập.
+              dữ liệu từng mục khi render server-side.
             </p>
           </div>
         </Card>
@@ -230,25 +239,45 @@ export function AdminSeoForm({ value, onChange }: AdminSeoFormProps) {
 
         <Card className="bg-brand-card border-brand-border rounded-xl shadow-none p-6 space-y-4">
           <h3 className="admin-card-title uppercase mb-2 flex items-center gap-2">
-            <Server className="h-4 w-4 text-brand-gold" /> SEO Health Status
+            <Server className="h-4 w-4 text-brand-gold" /> Trạng thái SEO
           </h3>
           <div className="space-y-3 max-w-full">
             <div className="flex justify-between admin-meta">
-              <span>Canonical Links:</span>
-              <span className="text-brand-green font-bold">Tự động</span>
+              <span>Canonical:</span>
+              <span className="text-brand-green font-bold">SSR tự động theo route</span>
             </div>
             <div className="flex justify-between admin-meta">
-              <span>SSL Security:</span>
-              <span className="text-brand-green font-bold text-xs uppercase tracking-wider">Đạt chuẩn (HTTPS)</span>
+              <span>robots.txt:</span>
+              <a
+                href={`${SITE_URL}/robots.txt`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand-gold font-bold hover:underline"
+              >
+                {SITE_URL}/robots.txt
+              </a>
             </div>
             <div className="flex justify-between admin-meta">
               <span>Sitemap.xml:</span>
-              <span className="text-brand-green font-bold">Đã tạo (32 link)</span>
+              <a
+                href={`${SITE_URL}/sitemap.xml`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand-gold font-bold hover:underline"
+              >
+                {getSitemapUrlCount()} URL
+              </a>
             </div>
             <div className="flex justify-between admin-meta">
-              <span>Tốc độ tải trang:</span>
-              <span className="text-brand-gold font-bold uppercase tracking-wider">A+ (0.3s)</span>
+              <span>Google Analytics:</span>
+              <span className="text-brand-text-sub font-medium">
+                {import.meta.env.VITE_GA_ID ? "Đã cấu hình qua env" : "Chưa có VITE_GA_ID"}
+              </span>
             </div>
+            <p className="admin-meta leading-relaxed pt-2 border-t border-brand-border">
+              Meta title/description từng trang con ở trên vẫn lưu localStorage cho client overlay.
+              SSR dùng cấu hình route meta mặc định; cập nhật seed/route meta để thay đổi SEO server-side.
+            </p>
           </div>
         </Card>
       </div>

@@ -59,28 +59,37 @@ const resources = {
   },
 } as const
 
-void i18n
-  .use(LanguageDetector)
-  .use(initReactI18next)
-  .init({
-    resources,
-    fallbackLng: DEFAULT_LOCALE,
-    supportedLngs: [...SUPPORTED_LOCALES],
-    ns: [...NAMESPACES],
-    defaultNS: "common",
-    interpolation: { escapeValue: false },
-    detection: {
-      order: ["localStorage", "navigator"],
-      lookupLocalStorage: LOCALE_STORAGE_KEY,
-      caches: ["localStorage"],
-    },
-  })
+const isBrowser = typeof window !== "undefined"
+
+if (isBrowser) {
+  i18n.use(LanguageDetector)
+}
+
+void i18n.use(initReactI18next).init({
+  resources,
+  fallbackLng: DEFAULT_LOCALE,
+  supportedLngs: [...SUPPORTED_LOCALES],
+  lng: isBrowser ? undefined : DEFAULT_LOCALE,
+  ns: [...NAMESPACES],
+  defaultNS: "common",
+  interpolation: { escapeValue: false },
+  detection: isBrowser
+    ? {
+        order: ["localStorage", "navigator"],
+        lookupLocalStorage: LOCALE_STORAGE_KEY,
+        caches: ["localStorage"],
+      }
+    : undefined,
+})
 
 function syncDocumentLang(locale: string) {
+  if (typeof document === "undefined") return
   document.documentElement.lang = resolveHtmlLang(locale)
 }
 
-syncDocumentLang(i18n.language)
-i18n.on("languageChanged", syncDocumentLang)
+if (isBrowser) {
+  syncDocumentLang(i18n.language)
+  i18n.on("languageChanged", syncDocumentLang)
+}
 
 export default i18n

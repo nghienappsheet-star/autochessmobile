@@ -39,7 +39,7 @@ export function CloudinaryFileUpload({
     setUploading(true)
     try {
       const urls: string[] = []
-      for (const file of Array.from(files)) {
+      for (const file of Array.from(files) as File[]) {
         const url = await uploadImageToCloudinary(file)
         urls.push(url)
       }

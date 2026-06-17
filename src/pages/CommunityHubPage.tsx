@@ -205,7 +205,9 @@ export function CommunityHubPage() {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {channels.map((ch) => (
-                <ChannelCard key={ch.id} channel={ch} />
+                <React.Fragment key={ch.id}>
+                <ChannelCard channel={ch} />
+                </React.Fragment>
               ))}
             </div>
           </div>

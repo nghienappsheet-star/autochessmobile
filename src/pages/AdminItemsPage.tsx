@@ -78,7 +78,7 @@ export function AdminItemsPage() {
     totalPages,
     startIndex,
     pageSize,
-  } = useAdminListPage({
+  } = useAdminListPage<Item>({
     items,
     searchTerm: search,
     match: matchItem,

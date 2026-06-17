@@ -20,8 +20,15 @@
         "./src/*"
       ]
     },
+    "rootDirs": [".", "./.react-router/types"],
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "noEmit": true
-  }
+  },
+  "include": [
+    "**/*",
+    "**/.server/**/*",
+    "**/.client/**/*",
+    ".react-router/types/**/*"
+  ]
 }

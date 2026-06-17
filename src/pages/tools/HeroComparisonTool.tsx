@@ -301,8 +301,8 @@ export function HeroComparisonTool() {
 
           <div className="space-y-2">
             {STAT_CONFIG.map(({ key, labelKey, max, unit, reverse }) => (
+              <React.Fragment key={key}>
               <MultiStatRow
-                key={key}
                 label={t(`heroCompare.${labelKey}`)}
                 max={max}
                 unit={unit}
@@ -312,6 +312,7 @@ export function HeroComparisonTool() {
                   value: stats[key],
                 }))}
               />
+              </React.Fragment>
             ))}
           </div>
 

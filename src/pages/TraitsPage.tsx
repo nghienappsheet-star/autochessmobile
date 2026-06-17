@@ -128,7 +128,9 @@ export function TraitsPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           <AnimatePresence mode="popLayout">
             {filteredTraits.map((trait, index) => (
-              <TraitCard key={`${trait.kind}-${trait.id}`} trait={trait} heroes={heroes} index={index} />
+              <React.Fragment key={`${trait.kind}-${trait.id}`}>
+              <TraitCard trait={trait} heroes={heroes} index={index} />
+              </React.Fragment>
             ))}
           </AnimatePresence>
         </div>

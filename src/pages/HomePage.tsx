@@ -186,7 +186,9 @@ function PartnersMarquee({ partners }: { partners: SitePartner[] }) {
       <div className="partners-marquee-viewport hide-scrollbar">
         <div className="partners-marquee-track">
           {loop.map((partner, index) => (
-            <PartnerMarqueeItem key={`${partner.name}-${index}`} partner={partner} />
+            <React.Fragment key={`${partner.name}-${index}`}>
+            <PartnerMarqueeItem partner={partner} />
+            </React.Fragment>
           ))}
         </div>
       </div>
@@ -596,11 +598,12 @@ export function HomePage() {
           />
           <div className="space-y-3">
             {featuredDiscussions.map((post) => (
+              <React.Fragment key={post.id}>
               <CommunityPostCard
-                key={post.id}
                 post={post}
                 onNavigate={() => navigate(`/thao-luan/${post.id}`)}
               />
+              </React.Fragment>
             ))}
           </div>
         </section>
@@ -611,11 +614,12 @@ export function HomePage() {
         <SectionHeader title={t("home:latestPostsTitle")} actionHref="/tin-tuc" />
         <Card className="divide-y divide-brand-border shadow-none border-brand-border">
           {latestPosts.map((article, i) => (
+            <React.Fragment key={article.id}>
             <NewsPostListItem
-              key={article.id}
               post={article}
               onClick={() => navigate(`/tin-tuc/${article.id}`)}
             />
+            </React.Fragment>
           ))}
         </Card>
       </section>

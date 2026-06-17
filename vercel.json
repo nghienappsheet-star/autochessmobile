@@ -1,13 +1,7 @@
 {
   "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "framework": "vite",
-  "rewrites": [
-    {
-      "source": "/((?!api/).*)",
-      "destination": "/index.html"
-    }
-  ],
+  "outputDirectory": "build/client",
+  "framework": null,
   "headers": [
     {
       "source": "/assets/(.*)",
@@ -28,16 +22,16 @@
       ]
     },
     {
-      "source": "/(sw.js|workbox-.*\\.js|registerSW.js)",
+      "source": "/(robots.txt|sitemap.xml)",
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
+          "value": "public, max-age=3600, s-maxage=3600"
         }
       ]
     },
     {
-      "source": "/index.html",
+      "source": "/(sw.js|workbox-.*\\.js|registerSW.js)",
       "headers": [
         {
           "key": "Cache-Control",

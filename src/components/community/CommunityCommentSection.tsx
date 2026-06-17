@@ -109,8 +109,8 @@ function CommentItem({
       {comment.replies.length > 0 && (
         <div className="mt-4 space-y-4">
           {comment.replies.map((reply) => (
+            <React.Fragment key={reply.id}>
             <CommentItem
-              key={reply.id}
               comment={{ ...reply, replies: [] }}
               depth={depth + 1}
               onReply={onReply}
@@ -120,6 +120,7 @@ function CommentItem({
               onSubmitReply={onSubmitReply}
               onCancelReply={onCancelReply}
             />
+            </React.Fragment>
           ))}
         </div>
       )}

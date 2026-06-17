@@ -78,7 +78,7 @@ export function AdminBannersPage() {
     totalPages,
     startIndex,
     pageSize,
-  } = useAdminListPage({
+  } = useAdminListPage<Banner>({
     items: banners,
     searchTerm,
     match: matchBanner,

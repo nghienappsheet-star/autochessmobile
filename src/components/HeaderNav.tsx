@@ -1,5 +1,5 @@
 import * as React from "react"
-import { NavLink, Link, useLocation } from "react-router-dom"
+import { NavLink, Link, useLocation } from "react-router"
 import { cn } from "@/lib/utils"
 import { ChevronDown, isNavChildActive } from "@/config/nav"
 import { useNavItems, type ResolvedNavItem } from "@/hooks/useNavItems"
@@ -66,6 +66,7 @@ function NavDropdown({
               <Link
                 key={child.path}
                 to={child.path}
+                prefetch="intent"
                 onClick={onCloseMenu}
                 className={cn(
                   "flex items-center gap-2.5 px-3 py-2.5 text-[13px] font-medium transition-colors",
@@ -174,6 +175,7 @@ export function HeaderNav({ onDropdownOpen }: HeaderNavProps) {
           <NavLink
             key={item.path}
             to={item.path!}
+            prefetch="intent"
             end={item.path === "/"}
             onMouseEnter={handleCloseAll}
             className={cn(

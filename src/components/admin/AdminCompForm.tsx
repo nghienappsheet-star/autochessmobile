@@ -1,3 +1,4 @@
+import * as React from "react"
 import {
   Input,
   Badge,
@@ -331,7 +332,8 @@ function RadarStatsFields({
       <label className="text-[12px] font-semibold text-brand-text-sub">Chỉ số phân tích (0–100)</label>
       <div className="grid grid-cols-2 gap-3">
         {RADAR_STAT_FIELDS.map(({ key, label }) => (
-          <AdminField key={key} label={label}>
+          <React.Fragment key={key}>
+            <AdminField label={label}>
             <Input
               type="number"
               min={0}
@@ -343,6 +345,7 @@ function RadarStatsFields({
               className="bg-brand-card-2 border-brand-border rounded-xl h-11"
             />
           </AdminField>
+          </React.Fragment>
         ))}
       </div>
     </div>

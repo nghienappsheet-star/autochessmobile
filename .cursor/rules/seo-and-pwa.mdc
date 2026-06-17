@@ -1,25 +1,42 @@
 ---
-description: SEO document titles, meta descriptions, and PWA manifest conventions
-globs: src/pages/**,src/hooks/useDocumentTitle.ts,vite.config.ts
+description: SSR meta tags, JSON-LD, sitemap, and PWA manifest conventions
+globs: src/routes/**,src/lib/seo/**,src/root.tsx,vite.config.ts
 alwaysApply: false
 ---
 
 # SEO & PWA
 
-## Document titles
+## Server-side meta (primary)
 
-Public pages: titles resolved via `usePublicDocumentTitle(pathname)` in `Layout`. Admin pages: `useAdminDocumentTitle(pathname)` in `AdminLayout`.
+Public SEO is rendered on the server via React Router v7 `meta` exports per route.
 
-When adding a new route, add an entry to the appropriate map in `src/hooks/useDocumentTitle.ts`:
+| Route type | Where to configure |
+|------------|-------------------|
+| Static list pages | `STATIC_ROUTE_META` in `src/lib/seo/meta.ts` or `staticPageMeta()` in route wrapper |
+| Dynamic detail pages | `loader` + `meta` in route wrapper; helpers in `src/lib/seo/loaders.ts` |
+| Global JSON-LD | `src/root.tsx` |
+| robots.txt | `src/routes/robots[.]txt.ts` |
+| sitemap.xml | `src/routes/sitemap[.]xml.ts` |
+
+Example detail route wrapper:
 
 ```tsx
-"/new-slug": pageTitle("Page Name"),           // public
-"/admin/new-slug": adminPageTitle("Page Name"), // admin
+import { heroDetailLoader, heroDetailMeta } from "@/lib/seo/loaders"
+
+export const loader = heroDetailLoader
+export const meta = heroDetailMeta
+export { HeroDetailPage as default } from "@/pages/HeroDetailPage"
 ```
 
-## Meta descriptions
+## Admin SEO settings vs SSR
 
-Public meta comes from `useSeoSettings()` → `seo.pagesMeta[path]`. Per-page overrides are managed in Admin SEO (`/admin/seo`).
+Admin panel SEO (`/admin/seo`) stores overrides in **localStorage** via `useSiteSettings()`. These apply client-side only — crawlers and social share previews use SSR meta from route loaders.
+
+To change production meta for static routes, update `STATIC_ROUTE_META` or the route's `meta` export.
+
+## Analytics
+
+Set `VITE_GA_ID` (GA4 measurement ID) in `.env` / Vercel env vars. Loaded in `src/root.tsx` when present.
 
 ## PWA manifest
 
@@ -33,4 +50,11 @@ Do not change theme colors to raw hex outside design tokens when updating manife
 
 ## Site config
 
-Global site name/description: `src/config/site.ts`. SEO settings persisted via `useSiteSettings()`.
+Global site name/description: `src/config/site.ts`. Admin SEO settings persisted via `useSiteSettings()` (client overlay).
+
+## Verification
+
+```bash
+npm run test:e2e -- e2e/seo-ssr.spec.ts
+./scripts/smoke-ssr.sh https://YOUR_DOMAIN
+```

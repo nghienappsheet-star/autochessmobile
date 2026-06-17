@@ -1,15 +1,13 @@
 import * as React from "react"
-import { Outlet, useLocation } from "react-router-dom"
+import { Outlet, useLocation } from "react-router"
 import { AdminSidebar } from "./AdminSidebar"
 import { AdminHeader } from "./AdminHeader"
 import { MobileNav } from "./MobileNav"
 import { AnimatePresence, motion } from "@/components/motion/MotionProvider"
-import { useAdminDocumentTitle } from "@/hooks/useDocumentTitle"
 
 export function AdminLayout() {
-  const location = useLocation();
-  useAdminDocumentTitle(location.pathname);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const location = useLocation()
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
 
   // Close mobile menu on route change
   React.useEffect(() => {

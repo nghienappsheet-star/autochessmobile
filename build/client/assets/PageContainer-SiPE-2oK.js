@@ -1,0 +1,1 @@
+import{j as m}from"./motion-vendor-BB1hHZ5s.js";import{a as o}from"./admin-ui-B4bKXOJP.js";const s={full:"max-w-[1400px]",article:"max-w-3xl",reading:"max-w-4xl",narrow:"max-w-2xl"};function e({children:a,width:x="full",className:r,as:l="div"}){return m.jsx(l,{className:o("mx-auto w-full px-4 sm:px-6 lg:px-8",s[x],r),children:a})}export{e as P};

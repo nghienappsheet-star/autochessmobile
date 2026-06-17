@@ -16,8 +16,6 @@ import {
   getRecommendedHeroes,
   getCompsForItem,
 } from "@/lib/item-utils"
-import { useDocumentTitle } from "@/hooks/useDocumentTitle"
-import { pageTitle } from "@/config/site"
 import * as React from "react"
 
 export function ItemDetailPage() {
@@ -27,16 +25,6 @@ export function ItemDetailPage() {
   const navigate = useNavigate()
 
   const item = items.find((i) => i.id === id)
-
-  React.useEffect(() => {
-    if (!item) return
-    const meta = document.querySelector('meta[name="description"]')
-    if (meta) {
-      meta.setAttribute("content", item.description ?? item.stats)
-    }
-  }, [item])
-
-  useDocumentTitle(item ? pageTitle(item.name) : pageTitle(t("items.title")))
 
   if (!item) {
     return (

@@ -1,3 +1,4 @@
+import * as React from "react"
 import { Link } from "react-router-dom"
 import { Star, ThumbsUp } from "lucide-react"
 import { useTranslation } from "react-i18next"
@@ -77,13 +78,14 @@ export function CompTrendingCard({
           {visibleHeroIds.map((heroId) => {
             const hero = heroMap.get(heroId)
             return (
+              <React.Fragment key={heroId}>
               <CompHeroChip
-                key={heroId}
                 hero={hero}
                 size="xs"
                 isMainCore={comp.mainCoreId === heroId}
                 linkable={false}
               />
+              </React.Fragment>
             )
           })}
           {overflowCount > 0 && (

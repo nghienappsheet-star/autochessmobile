@@ -73,7 +73,7 @@ export function AdminChannelsPage() {
     totalPages,
     startIndex,
     pageSize,
-  } = useAdminListPage({
+  } = useAdminListPage<CommunityChannel>({
     items: communityChannels,
     searchTerm,
     match: matchChannel,

@@ -20,8 +20,6 @@ import {
   getHeroSkins,
   type HeroStar,
 } from "@/lib/hero-utils"
-import { useDocumentTitle } from "@/hooks/useDocumentTitle"
-import { pageTitle } from "@/config/site"
 import { useFavorites } from "@/hooks/useFavorites"
 import { cn } from "@/lib/utils"
 
@@ -63,16 +61,6 @@ export function HeroDetailPage() {
     else params.set("star", String(next))
     setSearchParams(params, { replace: true })
   }
-
-  React.useEffect(() => {
-    if (!hero) return
-    const meta = document.querySelector('meta[name="description"]')
-    if (meta) {
-      meta.setAttribute("content", hero.description ?? skill?.desc ?? hero.name)
-    }
-  }, [hero, skill?.desc])
-
-  useDocumentTitle(hero ? pageTitle(hero.name) : pageTitle(t("heroes.title")))
 
   if (!hero || !skill || !stats) {
     return (
