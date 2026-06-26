@@ -1,0 +1,1 @@
+import"./index-Ai49Rh6i.js";import{as as a}from"./admin-ui-CEYQ6jM-.js";const n={vi:"vi-VN",en:"en-US"};function o(e){return a.language.startsWith("en")?n.en:n.vi}function i(e,t){return new Date(e).toLocaleDateString(o())}export{i as f};

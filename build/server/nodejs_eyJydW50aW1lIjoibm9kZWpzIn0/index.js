@@ -1,11 +1,8 @@
-import { j, s, k, l, m, n, o, p, q, r, t, u } from "./assets/server-build-DuEoM95q.js";
-import "react/jsx-runtime";
-import "node:stream";
-import "@react-router/node";
+import { j, s, k, l, m, n, o, p, q, r, t, u } from "./assets/server-build-DAGg-s7D.js";
+import "@vercel/react-router/entry.server";
 import "react-router";
-import "isbot";
-import "react-dom/server";
-import "./assets/admin-ui-BjWfzkMI.js";
+import "react/jsx-runtime";
+import "./assets/admin-ui-DF1jhL5E.js";
 import "clsx";
 import "react-router-dom";
 import "lucide-react";

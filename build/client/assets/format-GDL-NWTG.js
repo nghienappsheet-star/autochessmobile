@@ -1,1 +1,0 @@
-import"./index-DdRu_e2_.js";import{as as a}from"./admin-ui-B4bKXOJP.js";const n={vi:"vi-VN",en:"en-US"};function o(e){return a.language.startsWith("en")?n.en:n.vi}function i(e,t){return new Date(e).toLocaleDateString(o())}export{i as f};

@@ -1,0 +1,1 @@
+import{j as a}from"./motion-vendor-BB1hHZ5s.js";import{a as d}from"./admin-ui-CEYQ6jM-.js";function s({children:r,className:o}){return a.jsx("div",{className:d("bg-brand-card p-3 rounded-xl border border-brand-border",o),children:r})}export{s as F};

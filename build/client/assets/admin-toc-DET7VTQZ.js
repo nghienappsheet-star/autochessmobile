@@ -1,1 +1,0 @@
-import{aw as t,ax as o}from"./admin-ui-B4bKXOJP.js";import{j as a}from"./motion-vendor-BB1hHZ5s.js";import"./radix-vendor-BX0Vk7f4.js";const n=t(function(){return a.jsx(o,{to:"/admin/toc-he?tab=race",replace:!0})});export{n as default};

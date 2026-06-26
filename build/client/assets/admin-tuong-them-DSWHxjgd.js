@@ -1,1 +1,0 @@
-import{b as t}from"./meta-h05IHhAv.js";import{a as m}from"./loaders-CUpf1hSc.js";import{A as d}from"./AdminHeroEditorPage-Cg8t2_PZ.js";import"./admin-ui-B4bKXOJP.js";import"./motion-vendor-BB1hHZ5s.js";import"./radix-vendor-BX0Vk7f4.js";import"./jsonld-4_Wdl9mw.js";function n(){return t(m("/admin/tuong/them","Thêm tướng"))}export{d as default,n as meta};

@@ -1,1 +1,0 @@
-import{a}from"./motion-vendor-BB1hHZ5s.js";import{N as c,O as f}from"./admin-ui-B4bKXOJP.js";const r=s=>`auto_chess_favorites_${s}`;function g(s){const[t,i]=a.useState(()=>c(r(s),[]));return a.useEffect(()=>{f(r(s),t)},[t,s]),{favorites:t,toggleFavorite:o=>{i(e=>e.includes(o)?e.filter(n=>n!==o):[...e,o])},isFavorite:o=>t.includes(o)}}export{g as u};

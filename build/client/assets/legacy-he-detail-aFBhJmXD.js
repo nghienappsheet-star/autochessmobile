@@ -1,0 +1,1 @@
+import{aw as r,b as o,ax as t}from"./admin-ui-CEYQ6jM-.js";import{j as a}from"./motion-vendor-BB1hHZ5s.js";import"./radix-vendor-BX0Vk7f4.js";const p=r(function(){const{id:e}=o();return e?a.jsx(t,{to:`/toc-he/he/${e}`,replace:!0}):a.jsx(t,{to:"/toc-he",replace:!0})});export{p as default};

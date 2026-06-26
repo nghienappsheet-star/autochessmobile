@@ -1,0 +1,1 @@
+import{aw as t,ax as a}from"./admin-ui-CEYQ6jM-.js";import{j as e}from"./motion-vendor-BB1hHZ5s.js";import"./radix-vendor-BX0Vk7f4.js";const m=t(function(){return e.jsx(a,{to:"/admin/toc-he?tab=class",replace:!0})});export{m as default};
