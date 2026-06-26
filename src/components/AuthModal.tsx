@@ -6,28 +6,43 @@ import { Button, Input } from "@/components/ui/core"
 import { X, Mail, Lock, User as UserIcon } from "lucide-react"
 import { useTranslation } from "react-i18next"
 
+const DEMO_LOGIN_EMAIL = "admin@5fedu.com"
+const DEMO_LOGIN_PASSWORD = "123456"
+
 export function AuthModal() {
   const { showAuthModal, setShowAuthModal, authMode, setAuthMode, login } = useAuth()
   const { t } = useTranslation("auth")
+  const [email, setEmail] = React.useState("")
+  const [password, setPassword] = React.useState("")
+
+  React.useEffect(() => {
+    if (!showAuthModal) return
+    if (authMode === "login") {
+      setEmail(DEMO_LOGIN_EMAIL)
+      setPassword(DEMO_LOGIN_PASSWORD)
+    } else {
+      setEmail("")
+      setPassword("")
+    }
+  }, [showAuthModal, authMode])
 
   if (!showAuthModal) return null
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const form = e.currentTarget
-    const email = (form.elements.namedItem("email") as HTMLInputElement).value.trim()
+    const trimmedEmail = email.trim()
     const displayName =
       authMode === "register"
-        ? (form.elements.namedItem("name") as HTMLInputElement).value.trim()
+        ? (e.currentTarget.elements.namedItem("name") as HTMLInputElement).value.trim()
         : ""
-    const name = displayName || email.split("@")[0] || "Player"
+    const name = displayName || trimmedEmail.split("@")[0] || "Player"
     const role: PublicUserRole = authMode === "register" ? "Thành viên" : "Thành viên"
 
     login({
-      id: stableUuidFromEmail(email),
+      id: stableUuidFromEmail(trimmedEmail),
       name,
-      email,
-      avatar: `https://i.pravatar.cc/150?u=${encodeURIComponent(email)}`,
+      email: trimmedEmail,
+      avatar: `https://i.pravatar.cc/150?u=${encodeURIComponent(trimmedEmail)}`,
       role,
       metadata: { source: "local-mock", authMode },
     })
@@ -59,14 +74,30 @@ export function AuthModal() {
             <label className="text-[13px] text-brand-text-sub font-medium">{t("emailLabel")}</label>
             <div className="relative">
               <Mail className="absolute left-3 top-2.5 h-4 w-4 text-brand-text-sub" />
-              <Input type="email" name="email" required placeholder="name@example.com" className="pl-9 bg-brand-card-2 border-brand-border" />
+              <Input
+                type="email"
+                name="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="name@example.com"
+                className="pl-9 bg-brand-card-2 border-brand-border"
+              />
             </div>
           </div>
           <div className="space-y-1">
             <label className="text-[13px] text-brand-text-sub font-medium">{t("passwordLabel")}</label>
             <div className="relative">
               <Lock className="absolute left-3 top-2.5 h-4 w-4 text-brand-text-sub" />
-              <Input type="password" name="password" required placeholder="••••••••" className="pl-9 bg-brand-card-2 border-brand-border" />
+              <Input
+                type="password"
+                name="password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="••••••••"
+                className="pl-9 bg-brand-card-2 border-brand-border"
+              />
             </div>
           </div>
 
